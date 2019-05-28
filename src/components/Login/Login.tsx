@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
+import store from '../../stores/store';
 import SignIn from '../Login/SignIn';
 import SignUp from '../Login/SignUp';
 import { observer } from 'mobx-react';
 import { observable } from 'mobx';
 
-class Login extends Component {
+interface LoginProps {
+    history : any
+}
+
+class Login extends React.Component<LoginProps> {
 
     @observable signInForm: boolean = true;
 
-    constructor(props: {}) {
+    constructor(props: any) {
         super(props);
+        if(store.isLogged){
+            props.history.push ("/home");
+}
     }
 
     handleLoginState(signin: boolean) {
