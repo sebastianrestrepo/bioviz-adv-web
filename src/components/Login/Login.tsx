@@ -21,12 +21,11 @@ class Login extends Component {
             <section className="info-section">
                 <div className="logo">BioViz</div>
                 <div className="img-div">
-                    <img src="./assets/ave-photo.png" alt="" width="280" />
+                    <img src="./assets/login-photo.png" alt="" width="330" />
                 </div>
-                <h1>Hola!</h1>
-                <p>Bienvenido/a a la plataforma de análisis bioacústico <br></br> más usada por los biólogos en el mundo entero. </p>
+                <h1>¡Hola!</h1>
+                <p>Bienvenido/a a la plataforma de análisis bioacústico más usada <br></br> por todos los biólogos en el mundo entero. </p>
                 <p className="statement">Organiza, etiqueta y comparte.</p>
-                <p>Inicia Sesión para comenzar.</p>
             </section>
             <section className="login-section">
 
