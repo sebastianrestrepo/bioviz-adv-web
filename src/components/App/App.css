@@ -190,6 +190,68 @@
   cursor: pointer;
 }
 
+.dash-menu {
+  background-color: #282032;
+  width: 90px;
+  height: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.dash-menu .logo {
+  font-size: 13px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  margin: 40px 0 40px 0;
+  color: white;
+}
+
+.dash-menu h4 {
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  color: white;
+}
+
+.dash-menu .dash-icon {
+  width: 90px;
+  margin-bottom: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.dash-menu button {
+  width: 90px;
+  background-color: #282032;
+  cursor: pointer;
+}
+
+.home {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
 * {
   margin: 0;
   padding: 0;

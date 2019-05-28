@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import * as React from 'react';
+
 import { withRouter } from 'react-router';
 import authStore from '../../stores/authStore';
 import SignIn from '../Login/SignIn';
@@ -10,12 +11,13 @@ interface LoginProps {
     history : any
 }
 
-class Login extends React.Component<LoginProps> {
+@observer export class Login extends React.Component<LoginProps> {
 
     @observable signInForm: boolean = true;
 
     constructor(props: any) {
         super(props);
+        console.log('estado auth home', authStore.isLogged);
         if(authStore.isLogged){
             props.history.push ("/home");
 }
@@ -33,7 +35,7 @@ class Login extends React.Component<LoginProps> {
                     <img src="./assets/login-photo.png" alt="" width="340" />
                 </div>
                 <h1>¡Hola!</h1>
-                <p>Bienvenido/a a la plataforma de análisis bioacústico más usada <br></br> por todos los biólogos en el mundo entero. </p>
+                <p>Bienvenido/a a la plataforma de análisis y etiquetado bioacústico <br></br>  más usada por todos los biólogos en el mundo entero. </p>
                 <p className="statement">Organiza, etiqueta y comparte.</p>
             </section>
             <section className="login-section">
@@ -67,4 +69,4 @@ class Login extends React.Component<LoginProps> {
     }
 }
 
-export default observer(Login);
+export default Login;

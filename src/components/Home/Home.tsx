@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import authStore from '../../stores/authStore';
 import { observable } from 'mobx';
+import DashMenu from '../DashMenu/DashMenu';
 
 interface HomeProps {
     history: any
@@ -19,8 +20,8 @@ interface HomeProps {
     }
 
     render() {
-        return (<div className="Home">
-            Home
+        return (<div className="home">
+            <DashMenu />
             <button
                 onClick={() => {
                     authStore.signOut();

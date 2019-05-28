@@ -1,12 +1,9 @@
-import { observable, autorun, toJS, configure, action, computed } from 'mobx';
-
+import { observable, autorun, toJS, configure, action, computed, extendObservable } from 'mobx';
 import firebase from 'firebase';
-
 import { History } from 'history';
-
 import { storage, auth } from '../firebaseConfig';
 
-class Store {
+class AuthStore {
 
   constructor() {
     auth.onAuthStateChanged((receivedUser) => {
@@ -59,6 +56,7 @@ class Store {
     this.isNewUSer = true;
     this.isLogged = true;
     console.log(firebase.auth().currentUser, 'se registró');
+    console.log('estado', this.isLogged);
   }
 
   @action login(email: string, password: string) {
@@ -70,14 +68,16 @@ class Store {
         logged = false;
         alert(errorMessage);
       });
-    //history.go(1);
+    window.history.go(1);
     console.log(firebase.auth().currentUser, 'inició sesión');
+    console.log('estado', this.isLogged);
   }
 
   @action signOut() {
     auth.signOut();
     console.log(firebase.auth().currentUser, 'cerró sesión');
     this.isLogged = false;
+    console.log('estado', this.isLogged);
   }
 
   @action setIsLogged(value: any) {
@@ -98,6 +98,6 @@ class Store {
 
 }
 
-const store = new Store();
+const authStore = new AuthStore();
 
-export default store;
+export default authStore;

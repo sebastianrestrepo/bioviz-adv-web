@@ -1,0 +1,37 @@
+.dash-menu {
+    background-color: #282032;
+    width: 90px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .logo {
+        font-size: 13px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        margin: 40px 0 40px 0;
+        color: white;
+    }
+
+    h4 {
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        color: white;
+    }
+
+    .dash-icon {
+        width: 90px;
+        margin-bottom: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    button{
+        width: 90px;
+        background-color: #282032;
+        cursor: pointer;
+    }
+}
