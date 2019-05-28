@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
-import store from '../../stores/store';
+import authStore from '../../stores/authStore';
 import { observer } from 'mobx-react';
 
 interface formRegisterProps {
@@ -11,7 +11,7 @@ const SignUp = observer(withRouter((formRegisterProps) => {
 
     return (<form className="sign-up" onSubmit={(e: any) => {
         e.preventDefault();
-        if (store.isLogged) {
+        if (authStore.isLogged) {
             formRegisterProps.history.push("/home");
         } else {
 
@@ -25,18 +25,18 @@ const SignUp = observer(withRouter((formRegisterProps) => {
             <label>Correo Electrónico*</label>
             <input type="text" id="mail" name="mail" required
                 onChange={(e: any) => {
-                    store.credentials.email = e.target.value;
+                    authStore.credentials.email = e.target.value;
                 }} />
         </div>
         <div className="form-imput">
             <label>Contraseña*</label>
             <input type="password" id="password" name="password" required
                 onChange={(e: any) => {
-                    store.credentials.password = e.target.value;
+                    authStore.credentials.password = e.target.value;
                 }} />
         </div>
         <button className="sign-up-btn" onClick={() => {
-            store.register(store.credentials.email, store.credentials.password);
+            authStore.register(authStore.credentials.email, authStore.credentials.password);
         }}>Registrarse</button>
         <p>¿Ya tienes una cuenta? <a>Inicia Sesión</a></p>
     </form>

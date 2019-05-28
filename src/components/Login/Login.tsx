@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
-import store from '../../stores/store';
+import authStore from '../../stores/authStore';
 import SignIn from '../Login/SignIn';
 import SignUp from '../Login/SignUp';
 import { observer } from 'mobx-react';
@@ -16,7 +16,7 @@ class Login extends React.Component<LoginProps> {
 
     constructor(props: any) {
         super(props);
-        if(store.isLogged){
+        if(authStore.isLogged){
             props.history.push ("/home");
 }
     }

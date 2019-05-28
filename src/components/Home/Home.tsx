@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
-import store from '../../stores/store';
+import authStore from '../../stores/authStore';
 import { observable } from 'mobx';
 
 interface HomeProps {
@@ -13,7 +13,7 @@ interface HomeProps {
 
     constructor(props: any) {
         super(props);
-        if (!store.isLogged) {
+        if (!authStore.isLogged) {
             props.history.push("/");
         }
     }
@@ -23,7 +23,7 @@ interface HomeProps {
             Home
             <button
                 onClick={() => {
-                    store.signOut();
+                    authStore.signOut();
                     this.props.history.push("/");
                 }}>
                 Cerrar Sesión
