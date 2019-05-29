@@ -35,7 +35,10 @@ class ImgDropzone extends Component {
                         <section>
                             <div {...getRootProps()}>
                                 <input {...getInputProps()} />
+                                <div className="add-img-btn">
+                                <img src="./assets/add-profile-ph-btn.png" alt="" width="150" />
                                 <p>Agrega una foto de perfil</p>
+                                </div>
                             </div>
                         </section>
                     )}
@@ -44,7 +47,7 @@ class ImgDropzone extends Component {
                 {this.file && <div>
                     <img src={this.file} style={{ width: '100%' }} />
                     <input type="text" onInput={(e: any) => this.fileName = e.target.value} />
-                    <button onClick={() => {
+                    <button className="subir-img-btn" onClick={() => {
                         authStore.uploadProfilePhoto(this.fileName + '.jpg', this.file);
                         authStore.updateUserStatus();
                         //this.history.push("/home");

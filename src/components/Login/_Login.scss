@@ -153,3 +153,31 @@
         }
     }
 }
+
+.img-dropzone{
+    section{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .add-img-btn{
+            cursor: pointer;
+            margin: 20px;
+        }
+    }
+
+    .subir-img-btn{
+        font-size: 14px;
+        border-radius: 2px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        width: 300px;
+        min-height: 30px;
+        margin-bottom: 20px;
+        background-color: #282032;
+        color: white;
+        border: none;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+}
