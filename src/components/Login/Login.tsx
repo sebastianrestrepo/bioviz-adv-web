@@ -6,21 +6,25 @@ import SignIn from '../Login/SignIn';
 import SignUp from '../Login/SignUp';
 import { observer } from 'mobx-react';
 import { observable } from 'mobx';
+import ImgDropzone from '../Login/ImgDropzone'
+import Dropzone from 'react-dropzone';
 
 interface LoginProps {
-    history : any
+    history: any
 }
 
 @observer export class Login extends React.Component<LoginProps> {
 
     @observable signInForm: boolean = true;
+    @observable isRegistered: boolean = false;
+
 
     constructor(props: any) {
         super(props);
         console.log('estado auth home', authStore.isLogged);
-        if(authStore.isLogged){
-            props.history.push ("/home");
-}
+        if (authStore.isLogged) {
+            props.history.push("/home");
+        }
     }
 
     handleLoginState(signin: boolean) {
@@ -60,7 +64,16 @@ interface LoginProps {
                             ?
                             < SignIn />
                             :
-                            < SignUp />
+                            (!authStore.registerDone)
+                                ?
+                                <SignUp />
+                                :
+                                <div>
+                                <ImgDropzone />
+                                <button className="sign-up-btn" onClick={() => {
+                                    this.props.history.push("/home");
+                                }}>Registrarse</button>
+                                </div>
                         }
                     </div>
                 </div>

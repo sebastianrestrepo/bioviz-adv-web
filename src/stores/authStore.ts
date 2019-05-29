@@ -1,43 +1,40 @@
 import { observable, autorun, toJS, configure, action, computed, extendObservable } from 'mobx';
 import firebase from 'firebase';
 import { History } from 'history';
-import { storage, auth } from '../firebaseConfig';
+import { db, storage, auth } from '../firebaseConfig';
 
 class AuthStore {
-
-  constructor() {
-    auth.onAuthStateChanged((receivedUser) => {
-      if (receivedUser) {
-        this.user = receivedUser;
-        this.isLogged = true;
-        if (this.isNewUSer) {
-          this.addNewUser(this.user)
-          this.isNewUSer = false;
-        }
-      } else {
-        this.user = null;
-        this.isLogged = false;
-      }
-    });
-  }
-
-  @observable credentials = {
-    email: "",
-    password: ""
-  }
-
-  @observable newUser = {
-    email: "",
-    uid: "",
-  }
 
   @observable user: any = null;
   @observable error: any = null;
   @observable isError: boolean = false;
   @observable isNewUSer: boolean = false;
   @observable isLogged: boolean = false;
+  @observable registerDone: boolean = false;
 
-  @action register(email: string, password: string) {
+  constructor() {
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in.
+        this.isLogged = true;
+      } else {
+        // No user is signed in.
+        this.isLogged = false;
+      }
+    });
+
+  }
+
+  @observable credentials = {
+    name: "",
+    email: "",
+    password: "",
+    isOnline: ""
+  }
+
+  @action register(name: string, email: string, password: string) {
+    this.credentials.name = name;
     this.credentials.email = email;
     this.credentials.password = password;
 
@@ -54,10 +51,14 @@ class AuthStore {
     })
     this.isError = false;
     this.isNewUSer = true;
-    this.isLogged = true;
-    console.log(firebase.auth().currentUser, 'se registró');
-    console.log('estado', this.isLogged);
+
+    this.writeUserData(123, name, email, "false");
+
+    this.registerDone = true;
+    /*console.log(firebase.auth().currentUser, 'se registró');
+    console.log('estado', this.isLogged);*/
   }
+
 
   @action login(email: string, password: string) {
     let logged = false;
@@ -69,6 +70,8 @@ class AuthStore {
         alert(errorMessage);
       });
     window.history.go(1);
+    
+    this.isLogged = true;
     console.log(firebase.auth().currentUser, 'inició sesión');
     console.log('estado', this.isLogged);
   }
@@ -80,20 +83,29 @@ class AuthStore {
     console.log('estado', this.isLogged);
   }
 
-  @action setIsLogged(value: any) {
-    this.isLogged = value;
-    console.log(this.isLogged);
+  @action writeUserData(userId, name, email, isOnline) {
+    db.ref('users/' + userId).set({
+      username: name,
+      email: email,
+      isOnline: isOnline,
+    });
   }
 
-  @action addNewUser(user: any) {
-    if (user != null) {
-      this.newUser.email = user.email;
-      this.newUser.uid = user.uid;
-      let img = user.email.split("@");
-      console.log("agregando usuario:")
-      //db.collection("Users").add(this.newUser);
-      console.log(this.newUser.email)
-    }
+  @action updateUserStatus() {
+    /*db.ref('users/' + userId).child(isOnline).set("true")
+      .then().catch();*/
+      this.isLogged = true;
+      console.log('ESTADO LOG', this.isLogged);
+  }
+
+  @action uploadProfilePhoto(fileName: string, fileContent: string) {
+    let storage = firebase.storage().ref();
+    let file = storage.child('profile_photos/' + fileName);
+    file.putString(fileContent, 'data_url').then(function (snapshot) {
+      console.log('Uploaded a base64url string!');
+    });
+    localStorage.setItem('logState', JSON.stringify(true));
+    authStore.isLogged = Boolean(localStorage.getItem('logState'));
   }
 
 }

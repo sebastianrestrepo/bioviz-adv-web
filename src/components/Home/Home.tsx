@@ -24,8 +24,8 @@ interface HomeProps {
             <DashMenu />
             <button
                 onClick={() => {
-                    authStore.signOut();
                     this.props.history.push("/");
+                    authStore.signOut();
                 }}>
                 Cerrar Sesión
                 </button>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import authStore from '../../stores/authStore';
 import { observer } from 'mobx-react';
+import ImgDropzone from '../Login/ImgDropzone'
 
 interface formRegisterProps {
 
@@ -17,9 +18,12 @@ const SignUp = observer(withRouter((formRegisterProps) => {
 
         }
     }}>
+
         <div className="form-imput">
             <label>Nombres y Apellidos*</label>
-            <input type="text" id="name" name="name" />
+            <input type="text" id="name" name="name" onChange={(e: any) => {
+                authStore.credentials.name = e.target.value;
+            }} />
         </div>
         <div className="form-imput">
             <label>Correo Electrónico*</label>
@@ -36,7 +40,7 @@ const SignUp = observer(withRouter((formRegisterProps) => {
                 }} />
         </div>
         <button className="sign-up-btn" onClick={() => {
-            authStore.register(authStore.credentials.email, authStore.credentials.password);
+            authStore.register(authStore.credentials.name, authStore.credentials.email, authStore.credentials.password);
         }}>Registrarse</button>
         <p>¿Ya tienes una cuenta? <a>Inicia Sesión</a></p>
     </form>
