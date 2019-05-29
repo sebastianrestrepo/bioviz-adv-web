@@ -70,6 +70,9 @@
                 width: 100px;
                 height: 30px;
             }
+            .login-btn:hover {
+                background-color: #F4F4F4;
+            }
         }
 
         .login-box {
@@ -122,6 +125,13 @@
                     cursor: pointer;
                 }
 
+                .sign-in-btn:hover {
+                    background-color: #2FD37B;
+                    -webkit-box-shadow: 1px 1px 15px 5px rgba(237,237,237,0.5);
+                    -moz-box-shadow: 1px 1px 15px 5px rgba(237,237,237,0.5);
+                    box-shadow: 1px 1px 15px 5px rgba(237,237,237,0.5);
+                }
+
                 .sign-up-btn {
                     font-size: 14px;
                     border-radius: 2px;
@@ -136,6 +146,14 @@
                     text-decoration: none;
                     cursor: pointer;
                 }
+
+                .sign-up-btn:hover {
+                    background-color: #2FD37B;
+                    -webkit-box-shadow: 1px 1px 15px 5px rgba(237,237,237,0.5);
+                    -moz-box-shadow: 1px 1px 15px 5px rgba(237,237,237,0.5);
+                    box-shadow: 1px 1px 15px 5px rgba(237,237,237,0.5);
+                }
+
 
                 p {
                     font-size: 13px;
@@ -154,18 +172,19 @@
     }
 }
 
-.img-dropzone{
-    section{
+.img-dropzone {
+    section {
         display: flex;
         flex-direction: column;
         align-items: center;
-        .add-img-btn{
+
+        .add-img-btn {
             cursor: pointer;
             margin: 20px;
         }
     }
 
-    .subir-img-btn{
+    .subir-img-btn {
         font-size: 14px;
         border-radius: 2px;
         font-family: 'Roboto', sans-serif;
@@ -179,5 +198,5 @@
         text-decoration: none;
         cursor: pointer;
     }
-    
+
 }

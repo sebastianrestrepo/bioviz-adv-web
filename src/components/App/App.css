@@ -99,6 +99,10 @@
   height: 30px;
 }
 
+.Login .login-section .login-options-btns .login-btn:hover {
+  background-color: #F4F4F4;
+}
+
 .Login .login-section .login-box {
   border-radius: 2px;
   display: -webkit-box;
@@ -162,6 +166,12 @@
   cursor: pointer;
 }
 
+.Login .login-section .login-box .form-box .sign-in-btn:hover {
+  background-color: #2FD37B;
+  -webkit-box-shadow: 1px 1px 15px 5px rgba(237, 237, 237, 0.5);
+  box-shadow: 1px 1px 15px 5px rgba(237, 237, 237, 0.5);
+}
+
 .Login .login-section .login-box .form-box .sign-up-btn {
   font-size: 14px;
   border-radius: 2px;
@@ -175,6 +185,12 @@
   border: none;
   text-decoration: none;
   cursor: pointer;
+}
+
+.Login .login-section .login-box .form-box .sign-up-btn:hover {
+  background-color: #2FD37B;
+  -webkit-box-shadow: 1px 1px 15px 5px rgba(237, 237, 237, 0.5);
+  box-shadow: 1px 1px 15px 5px rgba(237, 237, 237, 0.5);
 }
 
 .Login .login-section .login-box .form-box p {
@@ -271,8 +287,10 @@
 
 .dash-menu button {
   width: 90px;
-  background-color: #282032;
+  padding: 10px 0 10px 0;
   cursor: pointer;
+  border: none;
+  text-decoration: none;
 }
 
 .home {
