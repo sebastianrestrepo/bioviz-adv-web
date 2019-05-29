@@ -3,6 +3,8 @@ import { observer } from 'mobx-react';
 import authStore from '../../stores/authStore';
 import { observable } from 'mobx';
 import DashMenu from '../DashMenu/DashMenu';
+import ProfileIcon from '../ProfileIcon/ProfileIcon';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 interface HomeProps {
     history: any
@@ -22,13 +24,7 @@ interface HomeProps {
     render() {
         return (<div className="home">
             <DashMenu />
-            <button
-                onClick={() => {
-                    this.props.history.push("/");
-                    authStore.signOut();
-                }}>
-                Cerrar Sesión
-                </button>
+            <ProfileIcon />
         </div>);
     }
 }

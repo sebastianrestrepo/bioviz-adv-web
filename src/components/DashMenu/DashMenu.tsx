@@ -6,6 +6,15 @@ import { observable } from 'mobx';
 
 @observer class DashMenu extends Component {
 
+    @observable homeBtnSelected: boolean = false;
+    @observable projectBtnSelected: boolean = false;
+    @observable chatBtnSelected: boolean = false;
+
+
+    @observable homeBtnOver: boolean = false;
+    @observable projectBtnOver: boolean = false;
+    @observable chatBtnOver: boolean = false;
+
     constructor(props: any) {
         super(props);
     }
@@ -16,9 +25,25 @@ import { observable } from 'mobx';
 
             <div className="dash-icon" id="home-icon">
                 <button id="home-btn"
-                    onClick={() => { }}
+                    onClick={() => {
+                        this.homeBtnSelected = true;
+                        this.projectBtnSelected = false;
+                        this.chatBtnSelected = false;
+                    }}
+                    onMouseOver={() => {
+                        this.homeBtnOver = true;
+                        this.projectBtnOver = false;
+                        this.chatBtnOver = false;
+                    }}
+                    onMouseOut={() => {
+                        this.homeBtnOver = false;
+                        this.projectBtnOver = false;
+                        this.chatBtnOver = false;
+                    }}
                     style={{
-                        backgroundColor: true ? '#35E285' : '#282032'
+                        backgroundColor: this.homeBtnSelected
+                            ? '#35E285'
+                            : this.homeBtnOver ? '#50445F' : '#282032'
                     }}>
                     <svg width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0)">
@@ -36,9 +61,25 @@ import { observable } from 'mobx';
 
             <div className="dash-icon" id="analysis-icon">
                 <button id="analysis-btn"
-                    onClick={() => { }}
+                    onClick={() => {
+                        this.homeBtnSelected = false;
+                        this.projectBtnSelected = true;
+                        this.chatBtnSelected = false;
+                    }}
+                    onMouseOver={() => {
+                        this.homeBtnOver = false;
+                        this.projectBtnOver = true;
+                        this.chatBtnOver = false;
+                    }}
+                    onMouseOut={() => {
+                        this.homeBtnOver = false;
+                        this.projectBtnOver = false;
+                        this.chatBtnOver = false;
+                    }}
                     style={{
-                        backgroundColor: true ? '#35E285' : '#282032'
+                        backgroundColor: this.projectBtnSelected
+                            ? '#35E285'
+                            : this.projectBtnOver ? '#50445F' : '#282032'
                     }}>
                     <svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17.9261 2.87506C9.61738 2.87506 2.88184 9.61061 2.88184 17.9194C2.88184 26.2281 9.61738 32.9636 17.9261 32.9636C26.2349 32.9636 32.9704 26.2281 32.9704 17.9194C32.9614 9.61437 26.2311 2.88411 17.9261 2.87506ZM17.9261 4.30785C22.3513 4.31134 26.4981 6.46805 29.0417 10.0892L27.2507 11.8801C26.8149 11.6164 26.3159 11.4753 25.8065 11.4718C24.2239 11.4718 22.9409 12.7548 22.9409 14.3374C22.9434 14.8474 23.0837 15.3471 23.3471 15.7838L18.6561 20.4747C17.7679 19.9331 16.6516 19.9331 15.7633 20.4747L12.5052 17.2166C12.7685 16.7799 12.9089 16.2802 12.9114 15.7702C12.9133 14.1907 11.6346 12.9087 10.0551 12.9067C8.74884 12.9051 7.60754 13.7887 7.28193 15.0538H4.62411C5.98051 8.79007 11.5173 4.31725 17.9261 4.30785ZM27.2393 14.3374C27.2393 15.1287 26.5978 15.7702 25.8065 15.7702C25.0151 15.7702 24.3737 15.1287 24.3737 14.3374C24.3737 13.546 25.0151 12.9046 25.8065 12.9046C26.5978 12.9046 27.2393 13.546 27.2393 14.3374ZM18.6425 22.9341C18.6425 23.7255 18.0011 24.3669 17.2097 24.3669C16.4184 24.3669 15.7769 23.7255 15.7769 22.9341C15.7769 22.1428 16.4184 21.5013 17.2097 21.5013C18.0011 21.5013 18.6425 22.1428 18.6425 22.9341ZM11.4786 15.7702C11.4786 16.5615 10.8371 17.203 10.0458 17.203C9.25444 17.203 8.613 16.5615 8.613 15.7702C8.613 14.9788 9.25444 14.3374 10.0458 14.3374C10.8371 14.3374 11.4786 14.9788 11.4786 15.7702ZM24.5397 29.821C22.5166 30.9443 20.2403 31.5328 17.9261 31.5308C10.4138 31.5359 4.31973 25.4502 4.31463 17.9379C4.31427 17.4531 4.33988 16.9685 4.39128 16.4865H7.28193C7.60762 17.7478 8.74311 18.6307 10.0458 18.6357C10.5558 18.6332 11.0555 18.4928 11.4922 18.2295L14.7504 21.4876C14.487 21.9243 14.3467 22.424 14.3442 22.934C14.3442 24.5166 15.6271 25.7996 17.2097 25.7996C18.7923 25.7996 20.0753 24.5166 20.0753 22.934C20.0728 22.424 19.9325 21.9243 19.6691 21.4876L24.3601 16.7967C24.7967 17.06 25.2965 17.2004 25.8065 17.2029C27.3891 17.2029 28.6721 15.9199 28.6721 14.3373C28.6695 13.8273 28.5292 13.3275 28.2659 12.8909L29.8276 11.3299C33.4736 17.8963 31.1061 26.1751 24.5397 29.821Z" fill="white" />
@@ -50,9 +91,25 @@ import { observable } from 'mobx';
 
             <div className="dash-icon" id="chat-icon">
                 <button id="chat-btn"
-                    onClick={() => { }}
+                    onClick={() => {
+                        this.homeBtnSelected = false;
+                        this.projectBtnSelected = false;
+                        this.chatBtnSelected = true;
+                    }}
+                    onMouseOver={() => {
+                        this.homeBtnOver = false;
+                        this.projectBtnOver = false;
+                        this.chatBtnOver = true;
+                    }}
+                    onMouseOut={() => {
+                        this.homeBtnOver = false;
+                        this.projectBtnOver = false;
+                        this.chatBtnOver = false;
+                    }}
                     style={{
-                        backgroundColor: true ? '#35E285' : '#282032'
+                        backgroundColor: this.chatBtnSelected
+                            ? '#35E285'
+                            : this.chatBtnOver ? '#50445F' : '#282032'
                     }}>
                     <svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M31.2666 4.26288H2.42136C1.08617 4.26288 0 5.34905 0 6.68415V23.9897C0 25.3248 1.08617 26.411 2.42136 26.411H4.29178V32.8535C4.29178 33.2637 4.53886 33.6336 4.91797 33.7907C5.04344 33.8427 5.1753 33.8679 5.30598 33.8679C5.57002 33.8679 5.82937 33.7648 6.02346 33.5708L13.1832 26.4111H14.6197C15.18 26.4111 15.6341 25.957 15.6341 25.3967C15.6341 24.8364 15.1798 24.3823 14.6197 24.3823C14.6197 24.3823 12.7141 24.3836 12.6942 24.3857C12.458 24.4017 12.2262 24.499 12.0457 24.6794L6.32051 30.4046C6.32051 30.4046 6.31874 25.3326 6.31547 25.3063C6.2697 24.7884 5.83533 24.3823 5.30564 24.3823H2.42136C2.20485 24.3823 2.02881 24.2062 2.02881 23.9898V6.68415C2.02881 6.46764 2.20493 6.29161 2.42136 6.29161H31.2666C31.4831 6.29161 31.6591 6.46772 31.6591 6.68415V13.3236C31.6591 13.8838 32.1134 14.3379 32.6735 14.3379C33.2336 14.3379 33.6879 13.8838 33.6879 13.3236V6.68415C33.6879 5.34905 32.6017 4.26288 31.2666 4.26288Z" fill="white" />
