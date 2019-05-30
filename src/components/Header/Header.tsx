@@ -4,6 +4,7 @@ import { observer } from 'mobx-react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import authStore from '../../stores/authStore';
 import ProfileMenu from '../ProfileMenu/ProfileMenu';
+import SearchBar from '../SearchBar/SearchBar';
 
 class Header extends Component {
 
@@ -14,7 +15,8 @@ class Header extends Component {
   render() {
     return (<header>
       <h3>HOME</h3>
-            <ProfileMenu />
+      <SearchBar />
+      <ProfileMenu />
     </header>);
   }
 }

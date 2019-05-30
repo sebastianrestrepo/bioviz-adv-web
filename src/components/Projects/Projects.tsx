@@ -24,7 +24,21 @@ interface ProjectsProps {
     render() {
         return (<div className="projects">
             <DashMenu />
-            <Header />
+            <div className="projects-layout">
+                <Header />
+                <div className="projects-div">
+                    <div className="no-projects-view">
+                        <img src="./assets/birds-illustration.png" alt="" width="180" />
+                        <h3>¡Bienvenido a BioViz, Sebastián!</h3>
+                        <p>Aquí aparecerán tus proyectos para que puedas gestionarlos. <br></br> Crea carpertas y organiza.</p>
+                        <button>Crea un nuevo proyecto</button>
+                    </div>
+                </div>
+                <button className="add-project-float-btn">
+                <img src="./assets/add-icon.png" alt="" width="40" />
+            </button>
+            </div>
+
         </div>);
     }
 }
