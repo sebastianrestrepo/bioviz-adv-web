@@ -304,6 +304,17 @@
   background-color: #E5E5E5;
 }
 
+.projects {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  background-color: #E5E5E5;
+}
+
 .profile-icon .profile-photo {
   cursor: pointer;
   border: none;
