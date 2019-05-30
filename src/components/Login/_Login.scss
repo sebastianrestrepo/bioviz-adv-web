@@ -1,6 +1,7 @@
 .Login {
     display: flex;
     flex-direction: row;
+    height: 100vh;
 
     .info-section {
         background-color: #35E285;
@@ -8,7 +9,7 @@
         padding: 30px;
 
         .logo {
-            font-size: 15px;
+            font-size: 20px;
             font-family: 'Roboto', sans-serif;
             font-weight: 700;
             margin: 0 0 12px 20px;
@@ -26,14 +27,14 @@
         }
 
         h1 {
-            font-size: 32px;
+            font-size: 35px;
             font-family: 'Roboto', sans-serif;
-            margin: 10px 50px 0 20px;
+            margin: 10px 50px 10px 20px;
             font-weight: 700;
         }
 
         p {
-            font-size: 16px;
+            font-size: 19px;
             font-family: 'Roboto', sans-serif;
             margin: 0 10px 10px 20px;
             font-weight: 700;
@@ -59,7 +60,7 @@
             background-color: #FCFCFC;
 
             .login-btn {
-                font-size: 13px;
+                font-size: 16px;
                 font-family: 'Roboto', sans-serif;
                 font-weight: 700;
                 background-color: #FCFCFC;
@@ -67,9 +68,10 @@
                 border: none;
                 text-decoration: none;
                 cursor: pointer;
-                width: 100px;
-                height: 30px;
+                width: 150px;
+                height: 40px;
             }
+
             .login-btn:hover {
                 background-color: #F4F4F4;
             }
@@ -80,7 +82,7 @@
             display: flex;
             flex-direction: column;
             background-color: #FFF;
-            width: 340px;
+            width: 450px;
             -webkit-box-shadow: -1px 1px 1px -1px rgba(0, 0, 0, 0.1);
             -moz-box-shadow: -1px 1px 1px -1px rgba(0, 0, 0, 0.1);
             box-shadow: -1px 1px 1px -1px rgba(0, 0, 0, 0.1);
@@ -92,18 +94,18 @@
                 padding: 45px 30px 45px 30px;
 
                 label {
-                    font-size: 12px;
+                    font-size: 15px;
                     font-family: 'Roboto', sans-serif;
                     font-weight: 700;
                     color: #35E285
                 }
 
                 input {
-                    font-size: 14px;
+                    font-size: 16px;
                     border-radius: 2px;
                     font-family: 'Roboto', sans-serif;
-                    width: 300px;
-                    min-height: 30px;
+                    width: 400px;
+                    min-height: 40px;
                     margin-bottom: 20px;
                     background-color: #F4F4F4;
                     border: none;
@@ -112,12 +114,13 @@
                 }
 
                 .sign-in-btn {
-                    font-size: 14px;
+                    padding: 0 10px 0 10px;
+                    font-size: 16px;
                     border-radius: 2px;
                     font-family: 'Roboto', sans-serif;
                     font-weight: 700;
-                    width: 300px;
-                    min-height: 30px;
+                    width: 420px;
+                    min-height: 40px;
                     margin-bottom: 20px;
                     background-color: #35E285;
                     color: white;
@@ -128,18 +131,19 @@
 
                 .sign-in-btn:hover {
                     background-color: #2FD37B;
-                    -webkit-box-shadow: 1px 1px 15px 5px rgba(237,237,237,0.5);
-                    -moz-box-shadow: 1px 1px 15px 5px rgba(237,237,237,0.5);
-                    box-shadow: 1px 1px 15px 5px rgba(237,237,237,0.5);
+                    -webkit-box-shadow: 1px 1px 15px 5px rgba(237, 237, 237, 0.5);
+                    -moz-box-shadow: 1px 1px 15px 5px rgba(237, 237, 237, 0.5);
+                    box-shadow: 1px 1px 15px 5px rgba(237, 237, 237, 0.5);
                 }
 
                 .sign-up-btn {
-                    font-size: 14px;
+                    padding: 0 10px 0 10px;
+                    font-size: 16px;
                     border-radius: 2px;
                     font-family: 'Roboto', sans-serif;
                     font-weight: 700;
-                    width: 300px;
-                    min-height: 30px;
+                    width: 420px;
+                    min-height: 40px;
                     margin-bottom: 20px;
                     background-color: #35E285;
                     color: white;
@@ -150,18 +154,19 @@
 
                 .sign-up-btn:hover {
                     background-color: #2FD37B;
-                    -webkit-box-shadow: 1px 1px 15px 5px rgba(237,237,237,0.5);
-                    -moz-box-shadow: 1px 1px 15px 5px rgba(237,237,237,0.5);
-                    box-shadow: 1px 1px 15px 5px rgba(237,237,237,0.5);
+                    -webkit-box-shadow: 1px 1px 15px 5px rgba(237, 237, 237, 0.5);
+                    -moz-box-shadow: 1px 1px 15px 5px rgba(237, 237, 237, 0.5);
+                    box-shadow: 1px 1px 15px 5px rgba(237, 237, 237, 0.5);
                 }
 
 
                 p {
-                    font-size: 13px;
+                    font-size: 16px;
                     border-radius: 2px;
                     font-family: 'Roboto', sans-serif;
                     color: #B8B9B9;
                     font-weight: 700;
+                    text-align: center;
 
                     a {
                         color: #35E285;
@@ -180,19 +185,26 @@
         align-items: center;
 
         .add-img-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             cursor: pointer;
             margin: 20px;
+
+            p {
+                margin: 10px;
+            }
         }
     }
 
     .subir-img-btn {
-        font-size: 14px;
+        font-size: 16px;
         border-radius: 2px;
         font-family: 'Roboto', sans-serif;
         font-weight: 700;
-        width: 300px;
-        min-height: 30px;
-        margin-bottom: 20px;
+        width: 420px;
+        min-height: 40px;
+        margin-bottom: 5px;
         background-color: #282032;
         color: white;
         border: none;

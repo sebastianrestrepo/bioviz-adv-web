@@ -28,7 +28,7 @@ interface ProjectsProps {
                 <Header />
                 <div className="projects-div">
                     <div className="no-projects-view">
-                        <img src="./assets/birds-illustration.png" alt="" width="200" />
+                        <img src="./assets/birds-illustration.png" alt="" width="220" />
                         <h3>¡Bienvenido a BioViz, Sebastián!</h3>
                         <p>Aquí aparecerán tus proyectos para que puedas gestionarlos. <br></br> Crea carpertas y organiza.</p>
                         <button>Crea un nuevo proyecto</button>

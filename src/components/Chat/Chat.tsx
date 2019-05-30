@@ -3,6 +3,7 @@ import { observer } from 'mobx-react';
 import authStore from '../../stores/authStore';
 import { observable } from 'mobx';
 import DashMenu from '../DashMenu/DashMenu';
+import WriteMessageBox from '../Chat/WriteMessageBox';
 import Header from '../Header/Header';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -24,7 +25,10 @@ interface ChatProps {
     render() {
         return (<div className="chat">
             <DashMenu />
-            <Header />
+            <div className="chat-layout">
+            <div className="messages-box"></div>
+            <WriteMessageBox />
+            </div>
         </div>);
     }
 }

@@ -7,6 +7,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  height: 100vh;
 }
 
 .Login .info-section {
@@ -16,7 +17,7 @@
 }
 
 .Login .info-section .logo {
-  font-size: 15px;
+  font-size: 20px;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   margin: 0 0 12px 20px;
@@ -39,14 +40,14 @@
 }
 
 .Login .info-section h1 {
-  font-size: 32px;
+  font-size: 35px;
   font-family: 'Roboto', sans-serif;
-  margin: 10px 50px 0 20px;
+  margin: 10px 50px 10px 20px;
   font-weight: 700;
 }
 
 .Login .info-section p {
-  font-size: 16px;
+  font-size: 19px;
   font-family: 'Roboto', sans-serif;
   margin: 0 10px 10px 20px;
   font-weight: 700;
@@ -87,7 +88,7 @@
 }
 
 .Login .login-section .login-options-btns .login-btn {
-  font-size: 13px;
+  font-size: 16px;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   background-color: #FCFCFC;
@@ -95,8 +96,8 @@
   border: none;
   text-decoration: none;
   cursor: pointer;
-  width: 100px;
-  height: 30px;
+  width: 150px;
+  height: 40px;
 }
 
 .Login .login-section .login-options-btns .login-btn:hover {
@@ -113,7 +114,7 @@
       -ms-flex-direction: column;
           flex-direction: column;
   background-color: #FFF;
-  width: 340px;
+  width: 450px;
   -webkit-box-shadow: -1px 1px 1px -1px rgba(0, 0, 0, 0.1);
   box-shadow: -1px 1px 1px -1px rgba(0, 0, 0, 0.1);
 }
@@ -133,18 +134,18 @@
 }
 
 .Login .login-section .login-box .form-box label {
-  font-size: 12px;
+  font-size: 15px;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   color: #35E285;
 }
 
 .Login .login-section .login-box .form-box input {
-  font-size: 14px;
+  font-size: 16px;
   border-radius: 2px;
   font-family: 'Roboto', sans-serif;
-  width: 300px;
-  min-height: 30px;
+  width: 400px;
+  min-height: 40px;
   margin-bottom: 20px;
   background-color: #F4F4F4;
   border: none;
@@ -153,12 +154,13 @@
 }
 
 .Login .login-section .login-box .form-box .sign-in-btn {
-  font-size: 14px;
+  padding: 0 10px 0 10px;
+  font-size: 16px;
   border-radius: 2px;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
-  width: 300px;
-  min-height: 30px;
+  width: 420px;
+  min-height: 40px;
   margin-bottom: 20px;
   background-color: #35E285;
   color: white;
@@ -174,12 +176,13 @@
 }
 
 .Login .login-section .login-box .form-box .sign-up-btn {
-  font-size: 14px;
+  padding: 0 10px 0 10px;
+  font-size: 16px;
   border-radius: 2px;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
-  width: 300px;
-  min-height: 30px;
+  width: 420px;
+  min-height: 40px;
   margin-bottom: 20px;
   background-color: #35E285;
   color: white;
@@ -195,11 +198,12 @@
 }
 
 .Login .login-section .login-box .form-box p {
-  font-size: 13px;
+  font-size: 16px;
   border-radius: 2px;
   font-family: 'Roboto', sans-serif;
   color: #B8B9B9;
   font-weight: 700;
+  text-align: center;
 }
 
 .Login .login-section .login-box .form-box p a {
@@ -221,18 +225,32 @@
 }
 
 .img-dropzone section .add-img-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   cursor: pointer;
   margin: 20px;
 }
 
+.img-dropzone section .add-img-btn p {
+  margin: 10px;
+}
+
 .img-dropzone .subir-img-btn {
-  font-size: 14px;
+  font-size: 16px;
   border-radius: 2px;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
-  width: 300px;
-  min-height: 30px;
-  margin-bottom: 20px;
+  width: 420px;
+  min-height: 40px;
+  margin-bottom: 5px;
   background-color: #282032;
   color: white;
   border: none;
@@ -242,7 +260,7 @@
 
 .dash-menu {
   background-color: #282032;
-  width: 90px;
+  width: 110px;
   height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -257,22 +275,22 @@
 }
 
 .dash-menu .logo {
-  font-size: 13px;
+  font-size: 16px;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
-  margin: 20px 0 50px 0;
+  margin: 30px 0 50px 0;
   color: white;
 }
 
 .dash-menu h4 {
-  font-size: 14px;
+  font-size: 15px;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   color: white;
 }
 
 .dash-menu .dash-icon {
-  width: 90px;
+  width: 110px;
   margin-bottom: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -287,7 +305,7 @@
 }
 
 .dash-menu button {
-  width: 90px;
+  width: 110px;
   padding: 10px 0 10px 0;
   cursor: pointer;
   border: none;
@@ -370,7 +388,7 @@
 .projects .projects-div .no-projects-view h3 {
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
-  margin: 15px;
+  margin: 20px;
   font-size: 20px;
 }
 
@@ -378,17 +396,17 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   text-align: center;
-  font-size: 14px;
-  margin-bottom: 15px;
+  font-size: 18px;
+  margin-bottom: 16px;
 }
 
 .projects .projects-div .no-projects-view button {
-  font-size: 14px;
+  font-size: 16px;
   border-radius: 2px;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
-  width: 230px;
-  min-height: 30px;
+  width: 250px;
+  min-height: 40px;
   margin-bottom: 20px;
   background-color: #35E285;
   color: white;
@@ -421,6 +439,80 @@
 }
 
 .projects .add-project-float-btn:hover {
+  background-color: #2FD37B;
+  -webkit-box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+.chat {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  background-color: #E5E5E5;
+}
+
+.chat .chat-layout {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+
+.chat .chat-layout section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  bottom: 0;
+  width: 100%;
+  height: 77px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: white;
+}
+
+.chat .chat-layout section .write-message-box .write-input {
+  width: 800px;
+  color: #3E3549;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  margin-right: 10px;
+  height: 40px;
+  border: none;
+  border-radius: 2px;
+  padding: 0 10px 0 10px;
+}
+
+.chat .chat-layout section .write-message-box .send-btn {
+  font-size: 16px;
+  border-radius: 2px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  width: 150px;
+  height: 40px;
+  background-color: #35E285;
+  color: white;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.chat .chat-layout section .write-message-box .send-btn:hover {
   background-color: #2FD37B;
   -webkit-box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
@@ -469,7 +561,7 @@
 
 header {
   width: 100%;
-  height: 50px;
+  height: 77px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -495,23 +587,23 @@ header h3 {
 
 .search-bar input {
   min-width: 500px;
-  width: 550px;
+  width: 800px;
   color: #3E3549;
-  font-size: 14px;
+  font-size: 16px;
   font-family: 'Roboto', sans-serif;
-  height: 30px;
+  height: 40px;
   border: none;
   border-radius: 2px;
   padding: 0 10px 0 10px;
 }
 
 .search-bar .search-btn {
-  font-size: 14px;
+  font-size: 16px;
   border-radius: 2px;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
-  width: 100px;
-  min-height: 30px;
+  width: 150px;
+  min-height: 40px;
   margin-left: 10px;
   background-color: #35E285;
   color: white;
