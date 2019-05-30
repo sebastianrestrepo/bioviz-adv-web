@@ -3,7 +3,7 @@ import { observer } from 'mobx-react';
 import authStore from '../../stores/authStore';
 import { observable } from 'mobx';
 import DashMenu from '../DashMenu/DashMenu';
-import ProfileIcon from '../ProfileIcon/ProfileIcon';
+import Header from '../Header/Header';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 interface HomeProps {
@@ -24,7 +24,7 @@ interface HomeProps {
     render() {
         return (<div className="home">
             <DashMenu />
-            <ProfileIcon />
+            <Header />
         </div>);
     }
 }
