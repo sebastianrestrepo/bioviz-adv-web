@@ -29,7 +29,7 @@ interface SearchBarProps {
                 }}
                 style={{
                     backgroundColor: this.searchBarClicked
-                        ? '#FFFFFF'
+                        ? '#F4F4F4'
                         : '#E5E5E5',
                     borderColor: this.searchBarClicked
                         ? '#E5E5E5'

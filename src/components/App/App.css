@@ -336,14 +336,17 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: space-around;
-      -ms-flex-align: space-around;
-          align-items: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -ms-flex-line-pack: center;
       align-content: center;
+  height: 100vh;
 }
 
 .projects .projects-div .no-projects-view {
@@ -367,7 +370,8 @@
 .projects .projects-div .no-projects-view h3 {
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
-  margin: 10px;
+  margin: 15px;
+  font-size: 20px;
 }
 
 .projects .projects-div .no-projects-view p {
@@ -375,7 +379,7 @@
   font-weight: 400;
   text-align: center;
   font-size: 14px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .projects .projects-div .no-projects-view button {
@@ -402,6 +406,11 @@
 .projects .add-project-float-btn {
   border-radius: 50%;
   background-color: #35E285;
+  position: absolute;
+  margin-right: 40px;
+  bottom: 50px;
+  left: auto;
+  right: 0;
   width: 60px;
   height: 60px;
   border: none;
