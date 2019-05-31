@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "00234c01a2dc254f8592ac373079f63e",
+    "revision": "2f58c830183afd7d63edff5e74a8ec0b",
     "url": "/bioviz-adv-web/index.html"
   },
   {
-    "revision": "31dbaaee2f9daa3f9d3e",
+    "revision": "23b788c793ea8df3b239",
     "url": "/bioviz-adv-web/static/css/main.d721f947.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bioviz-adv-web/static/js/2.aed840eb.chunk.js"
   },
   {
-    "revision": "31dbaaee2f9daa3f9d3e",
-    "url": "/bioviz-adv-web/static/js/main.80cb2ee2.chunk.js"
+    "revision": "23b788c793ea8df3b239",
+    "url": "/bioviz-adv-web/static/js/main.7342315e.chunk.js"
   },
   {
     "revision": "4e07b0735666d335042b",

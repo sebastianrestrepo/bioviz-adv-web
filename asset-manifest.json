@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/bioviz-adv-web/static/css/main.d721f947.chunk.css",
-    "main.js": "/bioviz-adv-web/static/js/main.80cb2ee2.chunk.js",
-    "main.js.map": "/bioviz-adv-web/static/js/main.80cb2ee2.chunk.js.map",
+    "main.js": "/bioviz-adv-web/static/js/main.7342315e.chunk.js",
+    "main.js.map": "/bioviz-adv-web/static/js/main.7342315e.chunk.js.map",
     "runtime~main.js": "/bioviz-adv-web/static/js/runtime~main.e9418d32.js",
     "runtime~main.js.map": "/bioviz-adv-web/static/js/runtime~main.e9418d32.js.map",
     "static/js/2.aed840eb.chunk.js": "/bioviz-adv-web/static/js/2.aed840eb.chunk.js",
     "static/js/2.aed840eb.chunk.js.map": "/bioviz-adv-web/static/js/2.aed840eb.chunk.js.map",
     "index.html": "/bioviz-adv-web/index.html",
-    "precache-manifest.ff49cc1878131cc9f539e96656c8cce9.js": "/bioviz-adv-web/precache-manifest.ff49cc1878131cc9f539e96656c8cce9.js",
+    "precache-manifest.762946db22821fb4e1247da292daa92a.js": "/bioviz-adv-web/precache-manifest.762946db22821fb4e1247da292daa92a.js",
     "service-worker.js": "/bioviz-adv-web/service-worker.js",
     "static/css/main.d721f947.chunk.css.map": "/bioviz-adv-web/static/css/main.d721f947.chunk.css.map"
   }
