@@ -3,6 +3,7 @@ import { observer } from 'mobx-react';
 import authStore from '../../stores/authStore';
 import { observable } from 'mobx';
 import chatStore from '../../stores/chatStore';
+import Chat from '../Chat/Chat';
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -16,6 +17,8 @@ class WriteMessageBox extends Component {
     }
 
     sendMessage() {
+        console.log('USSSERRRNAME', chatStore.username);
+
         chatStore.writeMessageToDB(this.textValue);
         console.log(this.textValue);
     }

@@ -22,8 +22,11 @@ interface LoginProps {
     constructor(props: any) {
         super(props);
         console.log('estado auth home', authStore.isLogged);
-        if (authStore.isLogged) {
-            props.history.push("/home");
+        if (authStore.statusChecked) {
+            if (authStore.user !== null) {
+                console.log('USUARIO NO ES NULO');
+                props.history.push("/home");
+            }
         }
     }
 
@@ -69,10 +72,10 @@ interface LoginProps {
                                 <SignUp />
                                 :
                                 <div>
-                                <ImgDropzone />
-                                <button className="sign-up-btn" onClick={() => {
-                                    this.props.history.push("/home");
-                                }}>Registrarse</button>
+                                    <ImgDropzone />
+                                    <button className="sign-up-btn" onClick={() => {
+                                        this.props.history.push("/home");
+                                    }}>Registrarse</button>
                                 </div>
                         }
                     </div>

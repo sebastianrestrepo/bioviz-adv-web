@@ -2,6 +2,9 @@ import { observable, autorun, toJS, configure, action, computed, extendObservabl
 import firebase from 'firebase';
 import { History } from 'history';
 import { db, storage, auth } from '../firebaseConfig';
+import { userInfo } from 'os';
+import React, { Component } from 'react';
+
 
 class AuthStore {
 
@@ -11,26 +14,65 @@ class AuthStore {
   @observable isNewUSer: boolean = false;
   @observable isLogged: boolean = false;
   @observable registerDone: boolean = false;
+  @observable statusChecked: boolean = false;
+
 
   constructor() {
-
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
+    auth.onAuthStateChanged((userAuth) => {
+      if (userAuth) {
         // User is signed in.
+        this.user = userAuth;
         this.isLogged = true;
+        console.log('User is signed in.', userAuth);
+        console.log('this.user', this.user);
+
       } else {
         // No user is signed in.
+        console.log('NO user is signed in.');
         this.isLogged = false;
       }
-    });
-
+    })
   }
+
+
 
   @observable credentials = {
     name: "",
     email: "",
     password: "",
+    id: "",
     isOnline: ""
+  }
+
+
+  @action checkUserStatus() {
+    auth.onAuthStateChanged((userAuth) => {
+      if (userAuth) {
+        // User is signed in.
+        this.user = userAuth;
+        this.isLogged = true;
+        console.log('User is signed in.', userAuth);
+        console.log('this.user', this.user);
+        this.statusChecked = true;
+      } else {
+        // No user is signed in.
+        console.log('NO user is signed in.');
+        this.isLogged = false;
+        this.statusChecked = true;
+      }
+    })
+  }
+
+@action getUserName() {
+    var userId = authStore.user.uid;
+    return db.ref('/users/' + userId).once('value').then(function (snapshot) {
+      var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+      // ...
+    });
+  }
+
+  @action setStatusChecked(value: boolean) {
+    this.statusChecked = value;
   }
 
   @action register(name: string, email: string, password: string) {
@@ -52,7 +94,7 @@ class AuthStore {
     this.isError = false;
     this.isNewUSer = true;
 
-    this.writeUserData(123, name, email, "false");
+    this.writeUserData(name, email, "false");
 
     this.registerDone = true;
     /*console.log(firebase.auth().currentUser, 'se registró');
@@ -70,32 +112,39 @@ class AuthStore {
         alert(errorMessage);
       });
     window.history.go(1);
-    
+
     this.isLogged = true;
     console.log(firebase.auth().currentUser, 'inició sesión');
     console.log('estado', this.isLogged);
   }
 
-  @action signOut() {
-    auth.signOut();
-    console.log(firebase.auth().currentUser, 'cerró sesión');
-    this.isLogged = false;
-    console.log('estado', this.isLogged);
+  @action userState() {
+    return this.user;
   }
 
-  @action writeUserData(userId, name, email, isOnline) {
-    db.ref('users/' + userId).set({
-      username: name,
-      email: email,
-      isOnline: isOnline,
-    });
+  @action signOut() {
+    auth.signOut();
+    this.user = null;
+    console.log(firebase.auth().currentUser, 'cerró sesión');
+    this.isLogged = false;
+  }
+
+  @action writeUserData(name, email, isOnline) {
+    if (this.user != null) {
+
+      db.ref('users/' + this.user.uid).set({
+        username: name,
+        email: email,
+        isOnline: isOnline,
+      });
+    }
   }
 
   @action updateUserStatus() {
     /*db.ref('users/' + userId).child(isOnline).set("true")
       .then().catch();*/
-      this.isLogged = true;
-      console.log('ESTADO LOG', this.isLogged);
+    this.isLogged = true;
+    console.log('ESTADO LOG', this.isLogged);
   }
 
   @action uploadProfilePhoto(fileContent: string) {

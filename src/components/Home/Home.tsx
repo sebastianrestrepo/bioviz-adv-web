@@ -5,6 +5,7 @@ import { observable } from 'mobx';
 import DashMenu from '../DashMenu/DashMenu';
 import Header from '../Header/Header';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { auth } from 'firebase';
 
 interface HomeProps {
     history: any
@@ -16,8 +17,13 @@ interface HomeProps {
 
     constructor(props: any) {
         super(props);
-        if (!authStore.isLogged) {
-            props.history.push("/");
+        authStore.checkUserStatus();
+        if (authStore.statusChecked) {
+            if (authStore.user === null) {
+                console.log('USUARIO ES NULO', authStore.user);
+                props.history.push("/");
+                authStore.setStatusChecked(false);
+            }
         }
     }
 

@@ -25,7 +25,15 @@ interface ChatProps {
 
     renderMessages = () => {
         return chatStore.messages.map(message => (
-               <div className="message-box-wrapper"> <p className="message-box">
+               <div className="message-box-wrapper"> <p className="message-box"
+               style={{
+                   float: (message.userName === authStore.getUserName()) 
+                   ? 'right'
+                   : 'left',
+                   backgroundColor: (message.userName === authStore.getUserName()) 
+                   ? '#35E285'
+                   : '#FFFFFF'
+               }}>
                     {message.text}</p></div>
         ))
     }

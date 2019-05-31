@@ -453,6 +453,7 @@
       -ms-flex-direction: row;
           flex-direction: row;
   background-color: #E5E5E5;
+  height: 100vh;
 }
 
 .chat .chat-layout {
@@ -464,6 +465,7 @@
       -ms-flex-direction: column;
           flex-direction: column;
   width: 100%;
+  height: 100vh;
 }
 
 .chat .chat-layout .messages-list {
@@ -474,13 +476,14 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  height: 100vh;
 }
 
 .chat .chat-layout .messages-list .message-box-wrapper .message-box {
   display: inline-block;
-  background-color: #FFFFFF;
+  border-radius: 2px;
   margin: 5px 20px 5px 20px;
-  padding: 5px;
+  padding: 8px;
   color: #3E3549;
   font-size: 16px;
   font-family: 'Roboto', sans-serif;

@@ -88,6 +88,7 @@ class ProfileMenu extends Component {
               onClick={() => {
                 //this.props.history.push("/");
                 authStore.signOut();
+                console.log('CERRANDO SESIÓN LOL');
 
                 this.profileBtnSelected = false;
                 this.configBtnSelected = false;
