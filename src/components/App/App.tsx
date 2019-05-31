@@ -13,18 +13,14 @@ class App extends Component {
   }
 
   render() {
-    return (
+    return (<div className="App">
       <BrowserRouter basename="/bioviz-adv-web">
-      <Router>
-        <div className="App">
-          <Route exact path="/bioviz-adv-web" component={Login} />
-          <Route exact path="bioviz-adv-web/home" component={Home} />
-          <Route exact path="bioviz-adv-web/projects" component={Projects} />
-          <Route exact path="bioviz-adv-web/chat" component={Chat} />
-
-        </div>
-      </Router>
+        <Route exact path="/" component={Login} />
+        <Route exact path="/home" component={Home} />
+        <Route exact path="/projects" component={Projects} />
+        <Route exact path="/chat" component={Chat} />
       </BrowserRouter>
+    </div>
     );
   }
 }
