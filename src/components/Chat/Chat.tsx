@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import authStore from '../../stores/authStore';
+import chatStore from '../../stores/chatStore';
 import { observable } from 'mobx';
 import DashMenu from '../DashMenu/DashMenu';
 import WriteMessageBox from '../Chat/WriteMessageBox';
@@ -22,12 +23,21 @@ interface ChatProps {
         }
     }
 
+    renderMessages = () => {
+        return chatStore.messages.map(message => (
+               <div className="message-box-wrapper"> <p className="message-box">
+                    {message.text}</p></div>
+        ))
+    }
+
     render() {
         return (<div className="chat">
             <DashMenu />
             <div className="chat-layout">
-            <div className="messages-box"></div>
-            <WriteMessageBox />
+                <div className="messages-list">
+                    {this.renderMessages()}
+                </div>
+                <WriteMessageBox />
             </div>
         </div>);
     }

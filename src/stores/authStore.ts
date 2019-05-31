@@ -98,9 +98,12 @@ class AuthStore {
       console.log('ESTADO LOG', this.isLogged);
   }
 
-  @action uploadProfilePhoto(fileName: string, fileContent: string) {
+  @action uploadProfilePhoto(fileContent: string) {
     let storage = firebase.storage().ref();
-    let file = storage.child('profile_photos/' + fileName);
+    let userEmail = this.credentials.email;
+    let img = userEmail.split("@");
+    let userProfilePicture = img[0] + ".jpg";
+    let file = storage.child('profile_photos/' + userProfilePicture);
     file.putString(fileContent, 'data_url').then(function (snapshot) {
       console.log('Uploaded a base64url string!');
     });
