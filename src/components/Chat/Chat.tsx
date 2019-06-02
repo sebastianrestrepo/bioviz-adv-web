@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import authStore from '../../stores/authStore';
 import chatStore from '../../stores/chatStore';
-import { observable } from 'mobx';
+import { observable, autorun } from 'mobx';
 import DashMenu from '../DashMenu/DashMenu';
 import WriteMessageBox from '../Chat/WriteMessageBox';
 import Header from '../Header/Header';

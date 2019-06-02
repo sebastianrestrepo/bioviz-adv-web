@@ -13,14 +13,22 @@ class ChatStore {
 
     constructor() {
         this.getMessages();
+        autorun(() => {
+            var userId: any = authStore.user.uid;
+            var database = db.ref('users/' + userId + '/username');
+            database.once('value').then((snapshot: any) => {
+                console.log('snapshote value', snapshot.val());
+                this.username = snapshot.val();
+            });
+        });
     }
 
-   @action getUserName() {
+    @action sendMessage(message) {
         var userId: any = authStore.user.uid;
-       /* var starCountRef = firebase.database().ref('users/' + userId + '/username');
-        starCountRef.on('value', (snapshot: any) => {
-            this.username = snapshot.val();
-        });*/
+        /* var starCountRef = firebase.database().ref('users/' + userId + '/username');
+         starCountRef.on('value', (snapshot: any) => {
+             this.username = snapshot.val();
+         });*/
         /*return firebase.database().ref('/users/' + userId).once('value').then((snapshot: any) => {
             this.username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
             // ...
@@ -28,14 +36,15 @@ class ChatStore {
         autorun(() => {
             var database = db.ref('users/' + userId + '/username');
             database.once('value').then((snapshot: any) => {
-              console.log('snapshote value', snapshot.val());
-              this.username = snapshot.val();
+                console.log('snapshote value', snapshot.val());
+                this.username = snapshot.val();
+                this.writeMessageToDB(message);
             });
-          });
+        });
     }
 
     @action writeMessageToDB = message => {
-        this.getUserName();
+        //this.getUserName();
         db.ref("messages/")
             .push({
                 username: this.username,
@@ -54,7 +63,7 @@ class ChatStore {
             snapshot.forEach(child => {
                 var message = child.val();
                 newMessages.push({
-                    username: this.username,
+                    username: message.username,
                     id: child.key,
                     text: message.text,
                 });

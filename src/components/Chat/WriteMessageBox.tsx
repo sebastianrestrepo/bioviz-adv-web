@@ -18,7 +18,8 @@ class WriteMessageBox extends Component {
 
     sendMessage() {
         console.log('USSSERRRNAME', chatStore.username);
-        chatStore.writeMessageToDB(this.textValue);
+        //chatStore.writeMessageToDB(this.textValue);
+        chatStore.sendMessage(this.textValue);
         console.log(this.textValue);
     }
 
