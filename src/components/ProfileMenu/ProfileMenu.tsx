@@ -20,9 +20,12 @@ class ProfileMenu extends Component {
   @observable configBtnOver = false;
   @observable signOutBtnOver = false;
 
+  @observable profilePhoto: any = false;
+
 
   constructor(props: any) {
     super(props);
+    authStore.readEmail();
   }
 
   render() {
@@ -30,7 +33,13 @@ class ProfileMenu extends Component {
       <button onClick={() => {
         this.showProfileMenu = !this.showProfileMenu;
       }} className="profile-photo">
-        <img src="./assets/generic-profile-photo.png" alt="" width="35" />
+        {(authStore.profilePhotoURL !== "")
+          ? <img src={"" + authStore.profilePhotoURL + ""} alt="" width="37"
+            style={{
+              borderRadius: '100px'
+            }} />
+          : <img src="./assets/generic-profile-photo.png" alt="" width="35" />
+        }
       </button>
       {(this.showProfileMenu)
         ?
@@ -43,10 +52,12 @@ class ProfileMenu extends Component {
                 this.signOutBtnSelected = false;
               }}
               onMouseOver={() => {
-                this.profileBtnOver = true;
+                //this.profileBtnOver = true;
+                this.profileBtnSelected = true;
               }}
               onMouseOut={() => {
-                this.profileBtnOver = false;
+                //this.profileBtnOver = false;
+                this.profileBtnSelected = false;
                 console.log('lmao');
               }}
               style={{
@@ -61,10 +72,12 @@ class ProfileMenu extends Component {
                 this.signOutBtnSelected = false;
               }}
               onMouseOver={() => {
-                this.configBtnOver = true;
+                //this.configBtnOver = true;
+                this.configBtnSelected = true;
               }}
               onMouseOut={() => {
-                this.configBtnOver = false;
+                //this.configBtnOver = false;
+                this.configBtnSelected = false;
                 console.log('lmao');
               }}
               style={{
@@ -74,10 +87,12 @@ class ProfileMenu extends Component {
               }}>CONFIGURACIÓN</button>
             <button
               onMouseOver={() => {
-                this.signOutBtnOver = true;
+                //this.signOutBtnOver = true;
+                this.signOutBtnSelected = true;
               }}
               onMouseOut={() => {
-                this.signOutBtnOver = false;
+                //this.signOutBtnOver = false;
+                this.signOutBtnSelected = false;
                 console.log('lmao');
               }}
               style={{

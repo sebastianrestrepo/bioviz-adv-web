@@ -43,7 +43,8 @@ import { observable } from 'mobx';
                     style={{
                         backgroundColor: this.homeBtnSelected
                             ? '#35E285'
-                            : this.homeBtnOver ? '#50445F' : '#282032'
+                            : this.homeBtnOver ? '#50445F' : this.homeBtnSelected 
+                            ? '#35E285': '#282032'
                     }}>
                     <svg width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0)">

@@ -15,23 +15,30 @@ class ChatStore {
         this.getMessages();
     }
 
-    getUserName() {
+   @action getUserName() {
         var userId: any = authStore.user.uid;
        /* var starCountRef = firebase.database().ref('users/' + userId + '/username');
         starCountRef.on('value', (snapshot: any) => {
             this.username = snapshot.val();
         });*/
-        return firebase.database().ref('/users/' + userId).once('value').then((snapshot: any) => {
+        /*return firebase.database().ref('/users/' + userId).once('value').then((snapshot: any) => {
             this.username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
             // ...
-        });
+        });*/
+        autorun(() => {
+            var database = db.ref('users/' + userId + '/username');
+            database.once('value').then((snapshot: any) => {
+              console.log('snapshote value', snapshot.val());
+              this.username = snapshot.val();
+            });
+          });
     }
 
     @action writeMessageToDB = message => {
         this.getUserName();
         db.ref("messages/")
             .push({
-                userName: this.getUserName(),
+                username: this.username,
                 id: authStore.user.uid,
                 text: message
             })
@@ -47,7 +54,7 @@ class ChatStore {
             snapshot.forEach(child => {
                 var message = child.val();
                 newMessages.push({
-                    userName: this.username,
+                    username: this.username,
                     id: child.key,
                     text: message.text,
                 });

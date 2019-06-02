@@ -15,8 +15,10 @@ class AuthStore {
   @observable isLogged: boolean = false;
   @observable registerDone: boolean = false;
   @observable statusChecked: boolean = false;
-  @observable profilePhoto: any = false;
+  @observable profilePhoto: any = "";
 
+  @observable currentEmail: any = "";
+  @observable profilePhotoURL: any = "";
 
   constructor() {
     this.checkUserStatus();
@@ -146,6 +148,51 @@ class AuthStore {
     file.putString(fileContent, 'data_url').then(function (snapshot) {
       console.log('Uploaded a base64url string!');
     });
+  }
+
+ readEmail() {
+    autorun(() => {
+      var database = db.ref('users/' + this.user.uid + '/email');
+      database.once('value').then((snapshot: any) => {
+        console.log('snapshote value', snapshot.val());
+        this.currentEmail = snapshot.val();
+        this.retrieveProfilePhoto(this.currentEmail);
+      });
+    });
+  }
+
+  @action retrieveProfilePhoto(email: any) {
+
+    var storage: any = firebase.storage().ref();
+    
+    let userEmail: any = this.currentEmail;
+    //let img: any = userEmail.split("@");
+    console.log('Jose es marica', userEmail);
+    let img = userEmail.split("@");
+    let userProfilePicture = img[0] + ".jpg";
+    console.log('Jose es puto', userProfilePicture);
+    console.log('EQUIS DEE', storage.child('profile_photos/' + 'sebrestrepo.jpg'));
+
+    storage.child('profile_photos/' + userProfilePicture).getDownloadURL().then((url: any) => {
+      // `url` is the download URL for 'images/stars.jpg'
+
+      // This can be downloaded directly:
+      var xhr = new XMLHttpRequest();
+      xhr.responseType = 'blob';
+      xhr.onload = function (event: any) {
+        var blob = xhr.response;
+      };
+      xhr.open('GET', url);
+      xhr.send();
+
+      this.profilePhotoURL = url;
+      // Or inserted into an <img> element:
+      console.log('foto: ', url);
+      return url;
+    }).catch(function (error) {
+      // Handle any errors
+    });
+
   }
 
 }

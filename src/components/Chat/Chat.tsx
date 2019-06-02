@@ -24,18 +24,20 @@ interface ChatProps {
     }
 
     renderMessages = () => {
-        return chatStore.messages.map(message => (
-               <div className="message-box-wrapper"> <p className="message-box"
-               style={{
-                   float: (message.userName === authStore.getUserName()) 
-                   ? 'right'
-                   : 'left',
-                   backgroundColor: (message.userName === authStore.getUserName()) 
-                   ? '#35E285'
-                   : '#FFFFFF'
-               }}>
-                    {message.text}</p></div>
-        ))
+        return chatStore.messages.map(message => (<div className="message-box-wrapper">
+            <p className="message-user" style={{
+                float: (message.username === chatStore.username)
+                    ? 'right'
+                    : 'left'}}>{message.username}</p>
+            <p className="message-box"
+                style={{
+                    float: (message.username === chatStore.username)
+                        ? 'right'
+                        : 'left',
+                    backgroundColor: (message.username === chatStore.username)
+                        ? '#35E285'
+                        : '#FFFFFF'
+                }}>{message.text}</p></div>));
     }
 
     render() {
@@ -49,6 +51,7 @@ interface ChatProps {
             </div>
         </div>);
     }
+
 }
 
 export default observer(Chat);

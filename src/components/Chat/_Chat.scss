@@ -17,6 +17,13 @@
             height: 100vh;
 
             .message-box-wrapper {
+                display: block;
+                .message-user{
+                    display: block;
+                    color: #3E3549;
+                    font-size: 14px;
+                    font-family: 'Roboto', sans-serif;
+                }
                 .message-box {
                     display: inline-block;
                     //background-color: #FFFFFF;
