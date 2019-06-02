@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/bioviz-adv-web/precache-manifest.05ca42ce2c40c7db148b5ad73663783e.js"
+  "/bioviz-adv-web/precache-manifest.edf2243106e7eedf63aff6186cef6254.js"
 );
 
 self.addEventListener('message', (event) => {
