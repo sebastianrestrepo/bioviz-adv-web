@@ -73,10 +73,10 @@
                 height: 40px;
             }
 
-            #sign-in-state{
+            #sign-in-state {
                 border-radius: 2px 0 0 0;
             }
-            
+
 
             .login-btn:hover {
                 background-color: #F4F4F4;
@@ -190,7 +190,6 @@
         align-items: center;
 
         .add-img-btn {
-            display: flex;
             flex-direction: column;
             align-items: center;
             cursor: pointer;
@@ -200,6 +199,23 @@
                 margin: 5px 0 10px 0;
             }
         }
+
+        }
+
+        .user-img-div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .user-img {
+                //align-items: center;
+                margin: 0 20px 5px 20px;
+            }
+            p {
+                margin: 5px 0 10px 0;
+            }
+
     }
 
     .subir-img-btn {
