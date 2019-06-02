@@ -18,7 +18,7 @@ const SignUp = observer(withRouter((formRegisterProps) => {
 
         }
     }}>
-
+        <ImgDropzone />
         <div className="form-imput">
             <label>Nombres y Apellidos*</label>
             <input type="text" id="name" name="name" onChange={(e: any) => {
@@ -41,6 +41,7 @@ const SignUp = observer(withRouter((formRegisterProps) => {
         </div>
         <button className="sign-up-btn" onClick={() => {
             authStore.register(authStore.credentials.name, authStore.credentials.email, authStore.credentials.password);
+            formRegisterProps.history.push("/home");
         }}>Registrarse</button>
         <p>¿Ya tienes una cuenta? <a>Inicia Sesión</a></p>
     </form>

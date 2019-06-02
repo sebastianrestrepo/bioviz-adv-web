@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import authStore from '../../stores/authStore';
-import { observable } from 'mobx';
+import { observable, autorun } from 'mobx';
 import DashMenu from '../DashMenu/DashMenu';
 import Header from '../Header/Header';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -17,14 +17,11 @@ interface HomeProps {
 
     constructor(props: any) {
         super(props);
-        authStore.checkUserStatus();
-        if (authStore.statusChecked) {
-            if (authStore.user === null) {
-                console.log('USUARIO ES NULO', authStore.user);
+        autorun(() => {
+            if (!authStore.isLogged) {
                 props.history.push("/");
-                authStore.setStatusChecked(false);
             }
-        }
+        });
     }
 
     render() {

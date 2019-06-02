@@ -15,25 +15,12 @@ class AuthStore {
   @observable isLogged: boolean = false;
   @observable registerDone: boolean = false;
   @observable statusChecked: boolean = false;
+  @observable profilePhoto: any = false;
 
 
   constructor() {
-    auth.onAuthStateChanged((userAuth) => {
-      if (userAuth) {
-        // User is signed in.
-        this.user = userAuth;
-        this.isLogged = true;
-        console.log('User is signed in.', userAuth);
-        console.log('this.user', this.user);
-
-      } else {
-        // No user is signed in.
-        console.log('NO user is signed in.');
-        this.isLogged = false;
-      }
-    })
+    this.checkUserStatus();
   }
-
 
 
   @observable credentials = {
@@ -44,30 +31,32 @@ class AuthStore {
     isOnline: ""
   }
 
-
   @action checkUserStatus() {
-    auth.onAuthStateChanged((userAuth) => {
-      if (userAuth) {
-        // User is signed in.
-        this.user = userAuth;
-        this.isLogged = true;
-        console.log('User is signed in.', userAuth);
-        console.log('this.user', this.user);
-        this.statusChecked = true;
-      } else {
-        // No user is signed in.
-        console.log('NO user is signed in.');
-        this.isLogged = false;
-        this.statusChecked = true;
-      }
-    })
+    autorun(() => {
+      console.log('autorun in checkUserStatus() working');
+      auth.onAuthStateChanged((userAuth) => {
+        if (userAuth) {
+          // User is signed in.
+          this.user = userAuth;
+          this.isLogged = true;
+          console.log('User is signed in.', userAuth);
+          console.log('isLogged state: ', this.isLogged);
+          this.statusChecked = true;
+        } else {
+          // No user is signed in.
+          console.log('NO user is signed in.');
+          console.log('isLogged state: ', this.isLogged);
+          this.isLogged = false;
+          this.statusChecked = true;
+        }
+      })
+    });
   }
 
-@action getUserName() {
+  @action getUserName() {
     var userId = authStore.user.uid;
     return db.ref('/users/' + userId).once('value').then(function (snapshot) {
       var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
-      // ...
     });
   }
 
@@ -93,12 +82,12 @@ class AuthStore {
     })
     this.isError = false;
     this.isNewUSer = true;
-
-    this.writeUserData(name, email, "false");
-
-    this.registerDone = true;
-    /*console.log(firebase.auth().currentUser, 'se registró');
-    console.log('estado', this.isLogged);*/
+    autorun(() => {
+      if (this.user != null) {
+        this.uploadProfilePhoto(this.profilePhoto);
+        this.writeUserData(name, email, this.profilePhoto);
+      }
+    });
   }
 
 
@@ -114,12 +103,6 @@ class AuthStore {
     window.history.go(1);
 
     this.isLogged = true;
-    console.log(firebase.auth().currentUser, 'inició sesión');
-    console.log('estado', this.isLogged);
-  }
-
-  @action userState() {
-    return this.user;
   }
 
   @action signOut() {
@@ -127,24 +110,31 @@ class AuthStore {
     this.user = null;
     console.log(firebase.auth().currentUser, 'cerró sesión');
     this.isLogged = false;
+    this.registerDone = false;
   }
 
-  @action writeUserData(name, email, isOnline) {
+  @action writeUserData(name, email, profile_picture) {
     if (this.user != null) {
-
+      console.log('writing user info')
       db.ref('users/' + this.user.uid).set({
         username: name,
         email: email,
-        isOnline: isOnline,
+        profile_picture: profile_picture
       });
     }
   }
 
   @action updateUserStatus() {
-    /*db.ref('users/' + userId).child(isOnline).set("true")
-      .then().catch();*/
     this.isLogged = true;
-    console.log('ESTADO LOG', this.isLogged);
+  }
+
+  @action setProfilePhoto(value: any) {
+    this.profilePhoto = value;
+  }
+
+  @action setRegisterStatus(value: boolean) {
+    console.log('value changed');
+    this.registerDone = value;
   }
 
   @action uploadProfilePhoto(fileContent: string) {
@@ -156,8 +146,6 @@ class AuthStore {
     file.putString(fileContent, 'data_url').then(function (snapshot) {
       console.log('Uploaded a base64url string!');
     });
-    localStorage.setItem('logState', JSON.stringify(true));
-    authStore.isLogged = Boolean(localStorage.getItem('logState'));
   }
 
 }

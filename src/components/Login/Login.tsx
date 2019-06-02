@@ -5,7 +5,7 @@ import authStore from '../../stores/authStore';
 import SignIn from '../Login/SignIn';
 import SignUp from '../Login/SignUp';
 import { observer } from 'mobx-react';
-import { observable } from 'mobx';
+import { observable, autorun } from 'mobx';
 import ImgDropzone from '../Login/ImgDropzone'
 import Dropzone from 'react-dropzone';
 
@@ -21,13 +21,13 @@ interface LoginProps {
 
     constructor(props: any) {
         super(props);
-        console.log('estado auth home', authStore.isLogged);
-        if (authStore.statusChecked) {
-            if (authStore.user !== null) {
-                console.log('USUARIO NO ES NULO');
+        authStore.checkUserStatus();
+        autorun(() => {
+            if (authStore.isLogged) {
                 props.history.push("/home");
+                console.log('redirected to home');
             }
-        }
+        });
     }
 
     handleLoginState(signin: boolean) {
@@ -62,21 +62,16 @@ interface LoginProps {
                             Registrarse
                                 </button>
                     </div>
-                    <div className="form-box">
+                    <div className="form-box" style={{
+                        padding: this.signInForm
+                            ? '45px 30px 45px 30px'
+                            : '20px 30px 25px 30px'
+                    }}>
                         {(this.signInForm)
                             ?
-                            < SignIn />
+                            <SignIn />
                             :
-                            (!authStore.registerDone)
-                                ?
-                                <SignUp />
-                                :
-                                <div>
-                                    <ImgDropzone />
-                                    <button className="sign-up-btn" onClick={() => {
-                                        this.props.history.push("/home");
-                                    }}>Registrarse</button>
-                                </div>
+                            <SignUp />
                         }
                     </div>
                 </div>

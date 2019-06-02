@@ -85,6 +85,7 @@
       -ms-flex-direction: row;
           flex-direction: row;
   background-color: #FCFCFC;
+  border-radius: 2px 2px 0 0;
 }
 
 .Login .login-section .login-options-btns .login-btn {
@@ -98,6 +99,10 @@
   cursor: pointer;
   width: 150px;
   height: 40px;
+}
+
+.Login .login-section .login-options-btns #sign-in-state {
+  border-radius: 2px 0 0 0;
 }
 
 .Login .login-section .login-options-btns .login-btn:hover {
@@ -130,7 +135,6 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 45px 30px 45px 30px;
 }
 
 .Login .login-section .login-box .form-box label {
@@ -236,11 +240,11 @@
       -ms-flex-align: center;
           align-items: center;
   cursor: pointer;
-  margin: 20px;
+  margin: 0 20px 5px 20px;
 }
 
 .img-dropzone section .add-img-btn p {
-  margin: 10px;
+  margin: 5px 0 10px 0;
 }
 
 .img-dropzone .subir-img-btn {

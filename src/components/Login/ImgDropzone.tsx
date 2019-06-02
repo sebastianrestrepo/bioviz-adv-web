@@ -48,8 +48,7 @@ class ImgDropzone extends Component {
                     <img src={this.file} style={{ width: '100%' }} />
                 {/*<input type="text" onInput={(e: any) => this.fileName = e.target.value} />*/}
                     <button className="subir-img-btn" onClick={() => {
-                        authStore.uploadProfilePhoto(this.file);
-                        authStore.updateUserStatus();
+                        authStore.setProfilePhoto(this.file);
                         //this.history.push("/home");
                     }}>Subir Foto</button>
                 </div>}
