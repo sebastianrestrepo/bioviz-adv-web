@@ -10,6 +10,8 @@ class ChatStore {
     @observable username: any = "";
     @observable messages: any[] = [];
     @observable text: any = "";
+    @observable profile_photo: any = "";
+
 
     constructor() {
         this.getMessages();
@@ -49,7 +51,8 @@ class ChatStore {
             .push({
                 username: this.username,
                 id: authStore.user.uid,
-                text: message
+                text: message,
+                profile_photo: authStore.profilePhotoURL
             })
         console.log('ESTE ES EL NOMBRE DE USUARIO', this.username);
     }
@@ -66,6 +69,7 @@ class ChatStore {
                     username: message.username,
                     id: child.key,
                     text: message.text,
+                    profile_photo: message.profile_photo
                 });
                 this.messages = newMessages;
                 console.log(this.messages);

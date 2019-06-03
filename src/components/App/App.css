@@ -501,24 +501,56 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  overflow-y: hidden;
   height: 100vh;
 }
 
 .chat .chat-layout .messages-list .message-box-wrapper {
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 20px 20px 0 20px;
 }
 
-.chat .chat-layout .messages-list .message-box-wrapper .message-user {
+.chat .chat-layout .messages-list .message-box-wrapper .message-box-photo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.chat .chat-layout .messages-list .message-box-wrapper .message-box-photo .message-box-itself {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.chat .chat-layout .messages-list .message-box-wrapper .message-box-photo .message-box-itself .message-user {
   display: block;
   color: #3E3549;
-  font-size: 14px;
+  font-size: 13px;
   font-family: 'Roboto', sans-serif;
+  margin-left: 20px;
 }
 
-.chat .chat-layout .messages-list .message-box-wrapper .message-box {
+.chat .chat-layout .messages-list .message-box-wrapper .message-box-photo .message-box-itself .message-box {
   display: inline-block;
   border-radius: 2px;
-  margin: 5px 20px 5px 20px;
+  margin: 2px 20px 5px 20px;
   padding: 8px;
   color: #3E3549;
   font-size: 16px;

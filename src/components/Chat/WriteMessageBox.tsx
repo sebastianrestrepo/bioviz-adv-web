@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 class WriteMessageBox extends Component {
 
     @observable writeInputClicked: boolean = false;
-    @observable textValue: string = 'xd';
+    @observable textValue: string = '';
 
     constructor(props: any) {
         super(props);
@@ -23,9 +23,20 @@ class WriteMessageBox extends Component {
         console.log(this.textValue);
     }
 
+    handleMessageSubmit = e => {
+        e.preventDefault();
+        const msg = e.target;
+    } 
+
     render() {
         return (<section>
-            <div className="write-message-box">
+            <form className="write-message-box"
+                onSubmit={
+                    (e: any) => {
+                        e.preventDefault();
+                        this.sendMessage();
+                    }
+                }>
                 <input className="write-input" name="" placeholder="Escribe un mensaje..."
                     onChange={(e) => {
                         this.textValue = e.target.value;
@@ -50,11 +61,10 @@ class WriteMessageBox extends Component {
                             ? '1.3px'
                             : '',
                     }} />
-                <button className="send-btn"
-                    onClick={() => {
-                        this.sendMessage()
-                    }}>Enviar</button>
-            </div>
+                <input className="send-btn"
+                    type="submit"
+                    value="Enviar"></input>
+            </form>
         </section>);
     }
 }

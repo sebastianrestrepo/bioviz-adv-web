@@ -14,26 +14,44 @@
         .messages-list {
             display: flex;
             flex-direction: column;
+            overflow-y: hidden;
             height: 100vh;
 
             .message-box-wrapper {
-                display: block;
-                .message-user{
-                    display: block;
-                    color: #3E3549;
-                    font-size: 14px;
-                    font-family: 'Roboto', sans-serif;
-                }
-                .message-box {
-                    display: inline-block;
-                    //background-color: #FFFFFF;
-                    border-radius: 2px;
-                    margin: 5px 20px 5px 20px;
-                    padding: 8px;
-                    color: #3E3549;
-                    font-size: 16px;
-                    font-family: 'Roboto', sans-serif;
-                    margin-right: 10px;
+                display: flex;
+                flex-direction: column;
+                margin: 20px 20px 0 20px;
+
+                .message-box-photo {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+
+                    .message-box-itself {
+                        display: flex;
+                        flex-direction: column;
+
+                        .message-user {
+                            display: block;
+                            color: #3E3549;
+                            font-size: 13px;
+                            font-family: 'Roboto', sans-serif;
+                            margin-left: 20px;
+                        }
+
+                        .message-box {
+                            display: inline-block;
+                            //background-color: #FFFFFF;
+                            //width: 150px;
+                            border-radius: 2px;
+                            margin: 2px 20px 5px 20px;
+                            padding: 8px;
+                            color: #3E3549;
+                            font-size: 16px;
+                            font-family: 'Roboto', sans-serif;
+                            margin-right: 10px;
+                        }
+                    }
                 }
             }
         }
