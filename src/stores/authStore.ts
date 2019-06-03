@@ -18,6 +18,7 @@ class AuthStore {
   @observable profilePhoto: any = "";
 
   @observable currentEmail: any = "";
+  @observable currentUsername: any = "";
   @observable profilePhotoURL: any = "";
 
   constructor() {
@@ -44,6 +45,7 @@ class AuthStore {
           console.log('User is signed in.', userAuth);
           console.log('isLogged state: ', this.isLogged);
           this.statusChecked = true;
+          this.getUserName();
         } else {
           // No user is signed in.
           console.log('NO user is signed in.');
@@ -56,10 +58,14 @@ class AuthStore {
   }
 
   @action getUserName() {
-    var userId = authStore.user.uid;
-    return db.ref('/users/' + userId).once('value').then(function (snapshot) {
-      var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
-    });
+    autorun(() => {
+      var userId: any = authStore.user.uid;
+      var database = db.ref('users/' + userId + '/username');
+      database.once('value').then((snapshot: any) => {
+          console.log('snapshote value', snapshot.val());
+          this.currentUsername = snapshot.val();
+      });
+  });
   }
 
   @action setStatusChecked(value: boolean) {

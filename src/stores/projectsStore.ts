@@ -24,7 +24,7 @@ class ProjectsStore {
     }
 
     @action createProject(projectName, username, email){
-        db.ref('projects/' + authStore.user.uid).set({
+        db.ref('projects/' + authStore.user.uid).push({
             projectName: projectName,
             username: username,
             email: email,

@@ -35,7 +35,8 @@ interface ProjectsProps {
                             <form className="create-project-form" onSubmit={
                                 (e: any) => {
                                     e.preventDefault();
-                                    projectsStore.createProject(this.newProjectName, authStore.credentials.name, authStore.credentials.email);
+                                    projectsStore.createProject(this.newProjectName, authStore.currentUsername, authStore.currentEmail);
+                                    this.showNewProjectForm = false;
                                 }}>
                                 <h1>NUEVO PROYECTO</h1>
                                 <input className="new-project-input" type="text" id="name" name="name" onChange={(e: any) => {
