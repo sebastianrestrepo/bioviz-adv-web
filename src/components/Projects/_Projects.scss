@@ -19,6 +19,79 @@
         align-content: center;
         height: 100vh;
 
+        .create-project-div {
+            background-color: rgba(40, 32, 50, 0.3);
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .create-project-form {
+                display: flex;
+                flex-direction: column;
+                padding: 20px;
+                background-color: white;
+                width: 380px;
+                height: 130px;
+
+                h1 {
+                    font-family: 'Roboto', sans-serif;
+                    font-weight: 700;
+                    font-size: 18px;
+                    color: #282032;
+                    margin-bottom: 10px;
+                }
+
+                .new-project-input {
+                    font-size: 16px;
+                    border-radius: 2px;
+                    font-family: 'Roboto', sans-serif;
+                    width: 350px;
+                    height: 35px;
+                    margin-bottom: 20px;
+                    background-color: #F4F4F4;
+                    border: none;
+                    text-decoration: none;
+                    padding: 0 10px 0 10px;
+                }
+
+                .new-project-btns {
+                    display: flex;
+                    flex-direction: row;
+
+                    .create-project-btn {
+                        cursor: pointer;
+                        background-color: #35E285;
+                        width: 100px;
+                        height: 35px;
+                        color: white;
+                        font-size: 16px;
+                        border-radius: 2px;
+                        font-family: 'Roboto', sans-serif;
+                        border: none;
+                        text-decoration: none;
+                    }
+
+                    .cancel-btn {
+                        cursor: pointer;
+                        background-color: white;
+                        width: 100px;
+                        height: 35px;
+                        color: #282032;
+                        border: none;
+                        text-decoration: none;
+                        font-size: 16px;
+                        border-radius: 2px;
+                        font-family: 'Roboto', sans-serif;
+                    }
+                }
+            }
+        }
+
         .no-projects-view {
             display: flex;
             flex-direction: column;

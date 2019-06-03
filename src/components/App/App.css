@@ -392,6 +392,95 @@
   height: 100vh;
 }
 
+.projects .projects-div .create-project-div {
+  background-color: rgba(40, 32, 50, 0.3);
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.projects .projects-div .create-project-div .create-project-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 20px;
+  background-color: white;
+  width: 380px;
+  height: 130px;
+}
+
+.projects .projects-div .create-project-div .create-project-form h1 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #282032;
+  margin-bottom: 10px;
+}
+
+.projects .projects-div .create-project-div .create-project-form .new-project-input {
+  font-size: 16px;
+  border-radius: 2px;
+  font-family: 'Roboto', sans-serif;
+  width: 350px;
+  height: 35px;
+  margin-bottom: 20px;
+  background-color: #F4F4F4;
+  border: none;
+  text-decoration: none;
+  padding: 0 10px 0 10px;
+}
+
+.projects .projects-div .create-project-div .create-project-form .new-project-btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.projects .projects-div .create-project-div .create-project-form .new-project-btns .create-project-btn {
+  cursor: pointer;
+  background-color: #35E285;
+  width: 100px;
+  height: 35px;
+  color: white;
+  font-size: 16px;
+  border-radius: 2px;
+  font-family: 'Roboto', sans-serif;
+  border: none;
+  text-decoration: none;
+}
+
+.projects .projects-div .create-project-div .create-project-form .new-project-btns .cancel-btn {
+  cursor: pointer;
+  background-color: white;
+  width: 100px;
+  height: 35px;
+  color: #282032;
+  border: none;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 2px;
+  font-family: 'Roboto', sans-serif;
+}
+
 .projects .projects-div .no-projects-view {
   display: -webkit-box;
   display: -ms-flexbox;
