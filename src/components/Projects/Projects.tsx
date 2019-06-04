@@ -24,18 +24,35 @@ interface ProjectsProps {
         }
     }
 
+    renderProjects = () => {
+        return projectsStore.projects.map(project => (<div className="project">
+            <h4 className="project-name">{project.projectName}</h4>
+            <p className="project-date">{project.creationDate}</p>
+        </div>))
+    }
+
     render() {
         return (<div className="projects">
             <DashMenu />
             <div className="projects-layout">
                 <Header />
-                <div className="projects-div">
+                <div className="projects-div" style={{
+                    alignItems: (projectsStore.projects.length > 0)
+                        ? 'flex-start'
+                        : 'center',
+                    alignContent: (projectsStore.projects.length > 0)
+                        ? 'flex-start'
+                        : 'center',
+                    justifyContent: (projectsStore.projects.length > 0)
+                        ? 'flex-start'
+                        : 'center'
+                }}>
                     {(this.showNewProjectForm)
                         ? <div className="create-project-div">
                             <form className="create-project-form" onSubmit={
                                 (e: any) => {
                                     e.preventDefault();
-                                    projectsStore.createProject(this.newProjectName, authStore.currentUsername, authStore.currentEmail);
+                                    projectsStore.addProjectToDB(this.newProjectName, authStore.currentUsername, authStore.currentEmail);
                                     this.showNewProjectForm = false;
                                 }}>
                                 <h1>NUEVO PROYECTO</h1>
@@ -55,15 +72,18 @@ interface ProjectsProps {
                             </form>
                         </div>
                         : ''}
-
-                    <div className="no-projects-view">
-                        <img src="./assets/birds-illustration.png" alt="" width="220" />
-                        <h3>¡Bienvenido a BioViz, Sebastián!</h3>
-                        <p>Aquí aparecerán tus proyectos para que puedas gestionarlos. <br></br> Crea carpertas y organiza.</p>
-                        <button onClick={() => {
-                            this.showNewProjectForm = true;
-                        }}>Crea un nuevo proyecto</button>
-                    </div>
+                    {(projectsStore.projects.length > 0)
+                        ? <div className="projects-view">
+                            {this.renderProjects()}
+                        </div>
+                        : <div className="no-projects-view">
+                            <img src="./assets/birds-illustration.png" alt="" width="220" />
+                            <h3>¡Bienvenido a BioViz, Sebastián!</h3>
+                            <p>Aquí aparecerán tus proyectos para que puedas gestionarlos. <br></br> Crea carpertas y organiza.</p>
+                            <button onClick={() => {
+                                this.showNewProjectForm = true;
+                            }}>Crea un nuevo proyecto</button>
+                        </div>}
                 </div>
                 <button className="add-project-float-btn"
                     onClick={() => {

@@ -15,9 +15,40 @@
         flex-direction: column;
         flex-wrap: wrap;
         align-items: center;
-        justify-content: center;
-        align-content: center;
+        /*justify-content: center;
+        align-content: center;*/
         height: 100vh;
+
+        .projects-view {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            //align-items: flex-start;
+            //justify-items: flex-start;
+
+            .project {
+                padding: 20px;
+                background-color: white;
+                border-radius: 2px;
+                margin: 20px 0px 0px 20px;
+                height: 40px;
+                cursor: pointer;
+                -webkit-box-shadow: -1px 1px 1px -1px rgba(0, 0, 0, 0.1);
+                -moz-box-shadow: -1px 1px 1px -1px rgba(0, 0, 0, 0.1);
+                box-shadow: -1px 1px 1px -1px rgba(0, 0, 0, 0.1);
+
+                .project-name {
+                    font-family: 'Roboto', sans-serif;
+                    font-weight: 700;
+                    font-size: 18px;
+                }
+
+                .project-date {
+                    font-family: 'Roboto', sans-serif;
+                    font-size: 16px;
+                }
+            }
+        }
 
         .create-project-div {
             background-color: rgba(40, 32, 50, 0.3);
