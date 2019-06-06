@@ -61,17 +61,21 @@ interface ProjectsProps {
                                 <h1>NUEVO PROYECTO</h1>
                                 <input className="new-project-input" type="text" id="name" name="name" onChange={(e: any) => {
                                     this.newProjectName = e.target.value;
+                                    projectsStore.projectName = e.target.value;
                                 }} />
                                 <NewProjectCard />
                                 <div className="new-project-btns">
                                     <button className="cancel-btn" onClick={() => {
                                         this.showNewProjectForm = false;
+                                        console.log('AUDIO FILE STATE', projectsStore.audioFileUploaded);
                                     }}>
                                         Cancelar
                                     </button>
-                                    <input className="create-project-btn"
+                                    <button className="create-project-btn"
                                         type="submit"
-                                        value="Crear"></input>
+                                        value="Crear" disabled={
+                                            !projectsStore.audioFileUploaded
+                                        }>Crear</button>
                                 </div>
                             </form>
                         </div>
