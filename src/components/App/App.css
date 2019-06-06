@@ -449,7 +449,7 @@
   padding: 20px;
   background-color: white;
   width: 380px;
-  height: 130px;
+  height: 230px;
 }
 
 .projects .projects-div .create-project-div .create-project-form h1 {
@@ -464,13 +464,59 @@
   font-size: 16px;
   border-radius: 2px;
   font-family: 'Roboto', sans-serif;
-  width: 350px;
+  width: 360px;
   height: 35px;
-  margin-bottom: 20px;
   background-color: #F4F4F4;
   border: none;
   text-decoration: none;
   padding: 0 10px 0 10px;
+}
+
+.projects .projects-div .create-project-div .create-project-form .audio-dropzone {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.projects .projects-div .create-project-div .create-project-form .audio-drop-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px 0 10px 0;
+  margin: 20px 0 20px 0;
+  border-style: dashed;
+  border-width: 2px;
+  color: gray;
+  cursor: pointer;
+}
+
+.projects .projects-div .create-project-div .create-project-form .audio-drop-section .add-audio-dropzone {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.projects .projects-div .create-project-div .create-project-form .audio-drop-section p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
 }
 
 .projects .projects-div .create-project-div .create-project-form .new-project-btns {
@@ -481,6 +527,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .projects .projects-div .create-project-div .create-project-form .new-project-btns .create-project-btn {

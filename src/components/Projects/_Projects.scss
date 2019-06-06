@@ -67,7 +67,7 @@
                 padding: 20px;
                 background-color: white;
                 width: 380px;
-                height: 130px;
+                height: 230px;
 
                 h1 {
                     font-family: 'Roboto', sans-serif;
@@ -81,18 +81,48 @@
                     font-size: 16px;
                     border-radius: 2px;
                     font-family: 'Roboto', sans-serif;
-                    width: 350px;
+                    width: 360px;
                     height: 35px;
-                    margin-bottom: 20px;
+                    //margin-bottom: 10px;
                     background-color: #F4F4F4;
                     border: none;
                     text-decoration: none;
                     padding: 0 10px 0 10px;
                 }
 
+                .audio-dropzone {
+                    display: flex;
+                }
+
+                .audio-drop-section {
+                    display: flex;
+                    width: 100%;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 10px 0 10px 0;
+                    margin: 20px 0 20px 0;
+                    border-style: dashed;
+                    border-width: 2px;
+                    color: gray;
+                    cursor: pointer;
+
+                    .add-audio-dropzone {
+                        display: flex;
+                        width: 100%;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                    p {
+                        font-family: 'Roboto', sans-serif;
+                        font-size: 14px;
+                    }
+                }
+
                 .new-project-btns {
                     display: flex;
                     flex-direction: row;
+                    justify-content: flex-end;
 
                     .create-project-btn {
                         cursor: pointer;

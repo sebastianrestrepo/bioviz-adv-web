@@ -5,6 +5,9 @@ import projectsStore from '../../stores/projectsStore';
 import { observable } from 'mobx';
 import DashMenu from '../DashMenu/DashMenu';
 import Header from '../Header/Header';
+import AudioDropzone from './Projects';
+import NewProjectCard from './NewProjectCard';
+
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 interface ProjectsProps {
@@ -59,6 +62,7 @@ interface ProjectsProps {
                                 <input className="new-project-input" type="text" id="name" name="name" onChange={(e: any) => {
                                     this.newProjectName = e.target.value;
                                 }} />
+                                <NewProjectCard />
                                 <div className="new-project-btns">
                                     <button className="cancel-btn" onClick={() => {
                                         this.showNewProjectForm = false;
