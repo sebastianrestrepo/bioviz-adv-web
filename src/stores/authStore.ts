@@ -148,12 +148,15 @@ class AuthStore {
   @action uploadProfilePhoto(fileContent: string) {
     let storage = firebase.storage().ref();
     let userEmail = this.credentials.email;
-    let img = userEmail.split("@");
-    let userProfilePicture = img[0] + ".jpg";
-    let file = storage.child('profile_photos/' + userProfilePicture);
-    file.putString(fileContent, 'data_url').then(function (snapshot) {
-      console.log('Uploaded a base64url string!');
-    });
+    if (userEmail != null) {
+      let img = userEmail.split("@");
+      let userProfilePicture = img[0] + ".jpg";
+      let file = storage.child('profile_photos/' + userProfilePicture);
+      file.putString(fileContent, 'data_url').then(function (snapshot) {
+        console.log('Uploaded a base64url string!');
+      });
+    }
+    
   }
 
  readEmail() {
@@ -174,30 +177,33 @@ class AuthStore {
     let userEmail: any = this.currentEmail;
     //let img: any = userEmail.split("@");
     console.log('Jose es marica', userEmail);
-    let img = userEmail.split("@");
-    let userProfilePicture = img[0] + ".jpg";
-    console.log('Jose es puto', userProfilePicture);
-    console.log('EQUIS DEE', storage.child('profile_photos/' + 'sebrestrepo.jpg'));
+    if (userEmail != null) {
+      let img = userEmail.split("@");
+      let userProfilePicture = img[0] + ".jpg";
+      console.log('Jose es puto', userProfilePicture);
+      console.log('EQUIS DEE', storage.child('profile_photos/' + 'sebrestrepo.jpg'));
+  
+      storage.child('profile_photos/' + userProfilePicture).getDownloadURL().then((url: any) => {
+        // `url` is the download URL for 'images/stars.jpg'
+  
+        // This can be downloaded directly:
+        var xhr = new XMLHttpRequest();
+        xhr.responseType = 'blob';
+        xhr.onload = function (event: any) {
+          var blob = xhr.response;
+        };
+        xhr.open('GET', url);
+        xhr.send();
+  
+        this.profilePhotoURL = url;
+        // Or inserted into an <img> element:
+        console.log('foto: ', url);
+        return url;
+      }).catch(function (error) {
+        // Handle any errors
+      });
+    }
 
-    storage.child('profile_photos/' + userProfilePicture).getDownloadURL().then((url: any) => {
-      // `url` is the download URL for 'images/stars.jpg'
-
-      // This can be downloaded directly:
-      var xhr = new XMLHttpRequest();
-      xhr.responseType = 'blob';
-      xhr.onload = function (event: any) {
-        var blob = xhr.response;
-      };
-      xhr.open('GET', url);
-      xhr.send();
-
-      this.profilePhotoURL = url;
-      // Or inserted into an <img> element:
-      console.log('foto: ', url);
-      return url;
-    }).catch(function (error) {
-      // Handle any errors
-    });
 
   }
 
