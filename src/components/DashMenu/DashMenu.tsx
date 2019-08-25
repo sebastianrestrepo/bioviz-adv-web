@@ -23,7 +23,7 @@ import { Component } from 'react';
     }
 
     render() {
-        return (<section className="dash-menu">
+        return (<section className="dash-menu closed">
             <div className="logo">BioViz</div>
 
             <div className="dash-icon" id="home-icon">
@@ -46,7 +46,7 @@ import { Component } from 'react';
                     style={{
                         backgroundColor: this.homeBtnSelected
                             ? '#35E285'
-                            : this.homeBtnOver ? '#50445F' : '#282032'
+                            : this.homeBtnOver ? '#4F4F4F' : '#272E2E'
                     }}>
                     <img src="./assets/dashmenu-icons/home-button.svg" alt=""/>
                     <h4>Inicio</h4>
@@ -77,8 +77,8 @@ import { Component } from 'react';
                     }}
                     style={{
                         backgroundColor: this.projectBtnSelected
-                            ? '#35E285'
-                            : this.projectBtnOver ? '#50445F' : '#282032'
+                        ? '#35E285'
+                        : this.projectBtnOver ? '#4F4F4F' : '#272E2E'
                     }}>
                     <img src="./assets/dashmenu-icons/projects-button.svg" alt=""/>
                     <h4>Proyectos</h4>
