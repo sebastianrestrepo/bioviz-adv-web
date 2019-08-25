@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './_SearchBar.scss'
 import { observer } from 'mobx-react';
 import authStore from '../../stores/authStore';
 import { observable } from 'mobx';
