@@ -24,7 +24,10 @@ import { Component } from 'react';
 
     render() {
         return (<section className="dash-menu closed">
-            <div className="logo">BioViz</div>
+            <div className="logo">
+                <p>Bioviz</p>
+                <img src="./assets/dashmenu-icons/expand-dash.svg" alt=""/>
+            </div>
 
             <div className="dash-icon" id="home-icon">
                 <button id="home-btn"
