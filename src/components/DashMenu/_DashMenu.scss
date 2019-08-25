@@ -25,15 +25,17 @@
         width: 110px;
         margin-bottom: 30px;
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        align-items: flex-start;
     }
-
     button{
         width: 110px;
         padding: 10px 0 10px 0;
         cursor: pointer;
         border: none;
         text-decoration: none;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
     }
 }
