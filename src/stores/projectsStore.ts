@@ -93,6 +93,7 @@ class ProjectsStore {
 
         let storage = firebase.storage().ref();
         let userEmail = authStore.currentEmail;
+        console.log(authStore.currentEmail)
         let user = userEmail.split("@");
         //let audioFile = user[0] + '-' + this.projectName + ".mp3";
         let file = storage.child('audio_files/'  + user[0] + '/' + this.projectName + '/'+ this.audioName);

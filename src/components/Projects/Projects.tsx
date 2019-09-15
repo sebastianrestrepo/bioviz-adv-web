@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './_Projects.scss'
 import { observer } from 'mobx-react';
 import authStore from '../../stores/authStore';
 import projectsStore from '../../stores/projectsStore';
@@ -63,7 +64,7 @@ interface ProjectsProps {
                                     this.newProjectName = e.target.value;
                                     projectsStore.projectName = e.target.value;
                                 }} />
-                                <NewProjectCard />
+                                {/*<NewProjectCard />*/}
                                 <div className="new-project-btns">
                                     <button className="cancel-btn" onClick={() => {
                                         this.showNewProjectForm = false;
@@ -74,7 +75,7 @@ interface ProjectsProps {
                                     <button className="create-project-btn"
                                         type="submit"
                                         value="Crear" disabled={
-                                            !projectsStore.audioFileUploaded
+                                           false// !projectsStore.audioFileUploaded
                                         }>Crear</button>
                                 </div>
                             </form>

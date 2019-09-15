@@ -165,6 +165,7 @@ class AuthStore {
       database.once('value').then((snapshot: any) => {
         console.log('snapshote value', snapshot.val());
         this.currentEmail = snapshot.val();
+        console.log('correo', this.currentEmail);
         this.retrieveProfilePhoto(this.currentEmail);
       });
     });
@@ -176,12 +177,11 @@ class AuthStore {
     
     let userEmail: any = this.currentEmail;
     //let img: any = userEmail.split("@");
-    console.log('Jose es marica', userEmail);
     if (userEmail != null) {
       let img = userEmail.split("@");
       let userProfilePicture = img[0] + ".jpg";
-      console.log('Jose es puto', userProfilePicture);
-      console.log('EQUIS DEE', storage.child('profile_photos/' + 'sebrestrepo.jpg'));
+      console.log('foto perfil', userProfilePicture);
+      console.log('foto url', storage.child('profile_photos/' + 'sebrestrepo.jpg'));
   
       storage.child('profile_photos/' + userProfilePicture).getDownloadURL().then((url: any) => {
         // `url` is the download URL for 'images/stars.jpg'

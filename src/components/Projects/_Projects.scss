@@ -67,7 +67,8 @@
                 padding: 20px;
                 background-color: white;
                 width: 380px;
-                height: 230px;
+                height: auto;
+                max-height: 230px;
 
                 h1 {
                     font-family: 'Roboto', sans-serif;
@@ -149,7 +150,7 @@
                     display: flex;
                     flex-direction: row;
                     justify-content: flex-end;
-
+                    margin: 1rem 0 0 0;
                     .create-project-btn {
                         cursor: pointer;
                         background-color: #35E285;

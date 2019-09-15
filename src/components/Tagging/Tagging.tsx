@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
-import './_Home.scss'
+import './_Tagging.scss'
 import { observer } from 'mobx-react';
 import authStore from '../../stores/authStore';
 import { observable, autorun } from 'mobx';
 import DashMenu from '../DashMenu/DashMenu';
-import Header from '../Header/Header';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { auth } from 'firebase';
+import ProjectNavBar from '../ProjectNavBar/ProjectNavBar';
 
-interface HomeProps {
+interface TaggingProps {
     history: any
 }
 
-@observer class Home extends React.Component<HomeProps> {
+@observer class Tagging extends React.Component<TaggingProps> {
 
     @observable signInForm: boolean = true;
 
@@ -26,11 +24,11 @@ interface HomeProps {
     }
 
     render() {
-        return (<div className="home">
+        return (<div className="tagging">
             <DashMenu />
-            <Header />
+            <ProjectNavBar/>
         </div>);
     }
 }
 
-export default observer(Home);
+export default observer(Tagging);

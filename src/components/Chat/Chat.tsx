@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './_Chat.scss'
 import { observer } from 'mobx-react';
 import authStore from '../../stores/authStore';
 import chatStore from '../../stores/chatStore';
