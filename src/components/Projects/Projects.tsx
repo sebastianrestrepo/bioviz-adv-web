@@ -64,7 +64,7 @@ interface ProjectsProps {
                                     this.newProjectName = e.target.value;
                                     projectsStore.projectName = e.target.value;
                                 }} />
-                                <NewProjectCard />
+                                {/*<NewProjectCard />*/}
                                 <div className="new-project-btns">
                                     <button className="cancel-btn" onClick={() => {
                                         this.showNewProjectForm = false;
@@ -75,7 +75,7 @@ interface ProjectsProps {
                                     <button className="create-project-btn"
                                         type="submit"
                                         value="Crear" disabled={
-                                            !projectsStore.audioFileUploaded
+                                           false// !projectsStore.audioFileUploaded
                                         }>Crear</button>
                                 </div>
                             </form>
