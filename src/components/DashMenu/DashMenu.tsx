@@ -5,6 +5,7 @@ import authStore from '../../stores/authStore';
 import { observer } from 'mobx-react';
 import { observable } from 'mobx';
 import { Component } from 'react';
+import genStore from '../../stores/genStore';
 
 
 @observer class DashMenu extends Component {
@@ -23,10 +24,10 @@ import { Component } from 'react';
     }
 
     render() {
-        return (<section className="dash-menu closed">
+        return (<section className={(genStore.isDashOpen) ? "dash-menu open" : "dash-menu closed"}>
             <div className="logo">
                 <p>Bioviz</p>
-                <img src="./assets/dashmenu-icons/expand-dash.svg" alt=""/>
+                <img onClick={()=>genStore.openDash()} src="./assets/dashmenu-icons/expand-dash.svg" alt=""/>
             </div>
 
             <div className="dash-icon" id="home-icon">

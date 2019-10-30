@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import Login from '../Login/Login';
 import Home from '../Home/Home';
 import { observer } from 'mobx-react';

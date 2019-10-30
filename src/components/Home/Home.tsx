@@ -28,7 +28,6 @@ interface HomeProps {
     render() {
         return (<div className="home">
             <DashMenu />
-            <Header />
         </div>);
     }
 }

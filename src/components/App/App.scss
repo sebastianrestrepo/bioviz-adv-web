@@ -1,6 +1,246 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,600,700,900&display=swap');
 
 * {
-    margin:0; 
-    padding:0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+$mainActiveColor: #44cd88;
+$secondActiveColor: #AFEA7D;
+$mainDarkColor: #333333;
+$mainDarkColorHover: rgb(25, 29, 29);
+$darkBorderColor: rgb(153, 153, 153);
+$lightBorderColor: rgb(219, 219, 219);
+$ligthGray2: #F4F4F4;
+$lightColoredBorderColor: #CBE2D7;
+$white: white;
+$semiWhite: #F9F9F9;
+$hintColor: rgb(172, 172, 172);
+$boxShadow: rgba(0, 0, 0, 0.05);
+$doubt: #f3773e;
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    ;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: $mainActiveColor;
+}
+
+.green-text {
+    color: $mainActiveColor;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 18px;
+}
+
+.tooltip {
+    position: relative;
+
+    &:hover .tooltiptext {
+        display: inherit;
+    }
+
+    .tooltiptext {
+        display: none;
+        min-width: 120px;
+        word-wrap: break-word;
+        max-width: 200px;
+        background-color: $mainDarkColor;
+        color: $white;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        top: 150%;
+        left: 50%;
+        margin-left: -60px;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent $mainDarkColor transparent;
+        }
+    }
+}
+
+.close-icon {
+    cursor: pointer;
+}
+
+.text-title {
+    font-weight: 800;
+}
+
+.input-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+}
+
+.question-structure {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem 0;
+
+    label {
+        margin: 0 0 0.5rem 0;
+    }
+}
+
+.mainBtn {
+    min-width: 200px;
+    background-color: $mainActiveColor;
+    color: white;
+    border-style: none;
+    height: 35px;
+    font-weight: 800px;
+    cursor: pointer;
+}
+
+.green-link {
+    font-weight: 600;
+    text-decoration: underline;
+    color: $mainActiveColor;
+    cursor: pointer;
+}
+
+.green-subtitle {
+    font-weight: 700;
+    color: $mainActiveColor;
+}
+
+textarea {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    padding: 7px;
+    border-radius: 4px;
+    border: solid 1px #CBE2D7;
+    overflow-y: auto;
+}
+
+.basic-multi-select {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+
+    .select__control {
+        height: 25px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        align-content: center;
+    }
+
+
+
+}
+
+input {
+
+    padding: 5px;
+    height: 35px;
+    border-radius: 3px;
+    border: solid 1px $lightColoredBorderColor;
+
+    &:focus {
+        border: solid 1px $mainActiveColor;
+    }
+}
+
+select {
+    margin: 0 0.5rem;
+    padding: 5px;
+    border-radius: 3px;
+    border: solid 1px $darkBorderColor;
+
+    &:focus {
+        border: solid 1px $mainActiveColor;
+    }
+}
+
+.hint-text {
+    font-style: italic;
+    color: $hintColor;
+    font-size: 14px;
+    padding: 0.3rem 1rem;
+}
+
+.green-button {
+    border-style: none;
+    background-color: $secondActiveColor;
+    color: $mainDarkColor;
+    font-weight: 800;
+    border-radius: 2px;
+    padding: 0.7rem 1rem;
+    min-width: 120px;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $mainActiveColor;
+    }
+}
+
+.dark-button {
+    border-style: none;
+    background-color: $mainDarkColor;
+    color: $white;
+    font-weight: 800;
+    border-radius: 2px;
+    padding: 0.7rem 1rem;
+    min-width: 120px;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $mainDarkColorHover;
+    }
+}
+
+.card-section {
+    border-bottom: solid 1px;
+    padding: 0.5rem 0;
+}
+
+input[type="checkbox"] {
+    height: auto;
+}
+
+h1 {
+    font-size: 21px;
 }

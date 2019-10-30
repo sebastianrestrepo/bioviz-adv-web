@@ -10,6 +10,8 @@ import AudioDropzone from './Projects';
 import NewProjectCard from './NewProjectCard';
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import CreateProject from './CreateProject';
+import MainNavBar from '../MainNavBar/MainNavBar';
 
 interface ProjectsProps {
     history: any
@@ -39,6 +41,7 @@ interface ProjectsProps {
         return (<div className="projects">
             <DashMenu />
             <div className="projects-layout">
+                <MainNavBar />
                 <Header />
                 <div className="projects-div" style={{
                     alignItems: (projectsStore.projects.length > 0)
@@ -51,34 +54,9 @@ interface ProjectsProps {
                         ? 'flex-start'
                         : 'center'
                 }}>
-                    {(this.showNewProjectForm)
+                    {(!this.showNewProjectForm)
                         ? <div className="create-project-div">
-                            <form className="create-project-form" onSubmit={
-                                (e: any) => {
-                                    e.preventDefault();
-                                    projectsStore.addProjectToDB(this.newProjectName, authStore.currentUsername, authStore.currentEmail);
-                                    this.showNewProjectForm = false;
-                                }}>
-                                <h1>NUEVO PROYECTO</h1>
-                                <input className="new-project-input" type="text" id="name" name="name" onChange={(e: any) => {
-                                    this.newProjectName = e.target.value;
-                                    projectsStore.projectName = e.target.value;
-                                }} />
-                                {/*<NewProjectCard />*/}
-                                <div className="new-project-btns">
-                                    <button className="cancel-btn" onClick={() => {
-                                        this.showNewProjectForm = false;
-                                        console.log('AUDIO FILE STATE', projectsStore.audioFileUploaded);
-                                    }}>
-                                        Cancelar
-                                    </button>
-                                    <button className="create-project-btn"
-                                        type="submit"
-                                        value="Crear" disabled={
-                                           false// !projectsStore.audioFileUploaded
-                                        }>Crear</button>
-                                </div>
-                            </form>
+                            <CreateProject></CreateProject>
                         </div>
                         : ''}
                     {(projectsStore.projects.length > 0)

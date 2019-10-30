@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 import authStore from '../../stores/authStore';
 import { observable, autorun } from 'mobx';
 import DashMenu from '../DashMenu/DashMenu';
-import ProjectNavBar from '../ProjectNavBar/ProjectNavBar';
+import MainNavBar from '../MainNavBar/MainNavBar';
 
 interface TaggingProps {
     history: any
@@ -26,7 +26,7 @@ interface TaggingProps {
     render() {
         return (<div className="tagging">
             <DashMenu />
-            <ProjectNavBar/>
+            <MainNavBar></MainNavBar>
         </div>);
     }
 }
