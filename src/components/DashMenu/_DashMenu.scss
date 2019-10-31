@@ -15,7 +15,7 @@
             }
             p {display: none;}
         }
-        button{
+        span{
             width: 100%;
             padding: 10px 0;
             display: flex;
@@ -56,6 +56,17 @@
         flex-direction: row;
         align-items: flex-start;
         margin: 0;
+
+        #analysis-btn, #home-btn {
+            cursor: pointer;
+            background-color: #272E2E;
+            &:hover {
+                background-color: #4F4F4F;
+            }
+            &.selected {
+                background-color: #35E285;
+            }
+        }
     }
     button{
         width: 100%;
@@ -73,3 +84,4 @@
         }
     }
 }
+

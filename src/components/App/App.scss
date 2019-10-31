@@ -119,14 +119,17 @@ h1 {
     }
 }
 
+button {
+    border-style: none;
+    height: 35px;
+    font-weight: 800px;
+    border-radius: 4px;
+    cursor: pointer;
+}
 .mainBtn {
     min-width: 200px;
     background-color: $mainActiveColor;
     color: white;
-    border-style: none;
-    height: 35px;
-    font-weight: 800px;
-    cursor: pointer;
 }
 
 .green-link {
@@ -198,16 +201,21 @@ select {
     padding: 0.3rem 1rem;
 }
 
+button{
+    letter-spacing: -0.5px;
+    font-size: 15px;
+   
+}
+
 .green-button {
     border-style: none;
     background-color: $secondActiveColor;
     color: $mainDarkColor;
-    font-weight: 800;
+    font-weight: 700;
     border-radius: 2px;
-    padding: 0.7rem 1rem;
+    padding: 0 1rem;
     min-width: 120px;
     font-family: 'Lato', sans-serif;
-    font-size: 16px;
     cursor: pointer;
 
     &:hover {
@@ -219,12 +227,11 @@ select {
     border-style: none;
     background-color: $mainDarkColor;
     color: $white;
-    font-weight: 800;
+    font-weight: 700;
     border-radius: 2px;
-    padding: 0.7rem 1rem;
+    padding: 0 1rem;
     min-width: 120px;
     font-family: 'Lato', sans-serif;
-    font-size: 16px;
     cursor: pointer;
 
     &:hover {

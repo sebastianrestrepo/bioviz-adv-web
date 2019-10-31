@@ -7,7 +7,6 @@ import { observable, autorun } from 'mobx';
 import DashMenu from '../DashMenu/DashMenu';
 import WriteMessageBox from '../Chat/WriteMessageBox';
 import ScrollToBottom from 'react-scroll-to-bottom';
-import Header from '../Header/Header';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 interface ChatProps {

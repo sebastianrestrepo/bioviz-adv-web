@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Select from 'react-select'
+import projectsStore from '../../stores/projectsStore';
 
 const options = [
     { value: 'diana', label: 'diana@icesi.edu.co' },
@@ -19,7 +20,7 @@ class CreateProject extends Component {
                 <span className="title-row">
                     <img src="./assets/gen-icons/back-arrow.svg" width="27px" alt="" />
                     <h1 >Detalles del Proyecto</h1>
-                    <img src="./assets/gen-icons/close-x.svg" width="21px" alt="" />
+                    <img onClick={() => projectsStore.onCancelProjectCreation()} src="./assets/gen-icons/close-x.svg" width="21px" alt="" />
                 </span>
                 <section className="details">
 

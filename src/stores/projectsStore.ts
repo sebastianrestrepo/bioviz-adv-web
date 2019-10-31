@@ -137,6 +137,16 @@ class ProjectsStore {
 
     }
 
+    ///////////7
+    @observable showNewProjectForm: boolean = false;
+
+    @action onCreateProject() {
+        this.showNewProjectForm = true;
+    }
+
+    @action onCancelProjectCreation() {
+        this.showNewProjectForm = false;
+    }
 
 }
 

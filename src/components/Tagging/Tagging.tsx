@@ -5,6 +5,7 @@ import authStore from '../../stores/authStore';
 import { observable, autorun } from 'mobx';
 import DashMenu from '../DashMenu/DashMenu';
 import MainNavBar from '../MainNavBar/MainNavBar';
+import genStore from '../../stores/genStore';
 
 interface TaggingProps {
     history: any
@@ -26,7 +27,7 @@ interface TaggingProps {
     render() {
         return (<div className="tagging">
             <DashMenu />
-            <MainNavBar></MainNavBar>
+            <MainNavBar title={genStore.navBarTitle} />
         </div>);
     }
 }

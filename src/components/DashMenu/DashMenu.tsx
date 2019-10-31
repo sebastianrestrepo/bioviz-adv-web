@@ -1,23 +1,12 @@
 import * as React from 'react';
 import './_DashMenu.scss';
 import { Link, withRouter, Redirect, Route, Router } from 'react-router-dom';
-import authStore from '../../stores/authStore';
 import { observer } from 'mobx-react';
-import { observable } from 'mobx';
 import { Component } from 'react';
 import genStore from '../../stores/genStore';
 
 
 @observer class DashMenu extends Component {
-
-    @observable homeBtnSelected: boolean = false;
-    @observable projectBtnSelected: boolean = false;
-    @observable chatBtnSelected: boolean = false;
-
-
-    @observable homeBtnOver: boolean = false;
-    @observable projectBtnOver: boolean = false;
-    @observable chatBtnOver: boolean = false;
 
     constructor(props: any) {
         super(props);
@@ -27,66 +16,33 @@ import genStore from '../../stores/genStore';
         return (<section className={(genStore.isDashOpen) ? "dash-menu open" : "dash-menu closed"}>
             <div className="logo">
                 <p>Bioviz</p>
-                <img onClick={()=>genStore.openDash()} src="./assets/dashmenu-icons/expand-dash.svg" alt=""/>
+                <img onClick={() => genStore.openDash()} src="./assets/dashmenu-icons/expand-dash.svg" alt="" />
             </div>
 
             <div className="dash-icon" id="home-icon">
-                <button id="home-btn"
+                <span id="home-btn"  className={(genStore.isHomeActive) ? 'selected' : ''}
                     onClick={() => {
-                        this.homeBtnSelected = true;
-                        this.projectBtnSelected = false;
-                        this.chatBtnSelected = false;
-                    }}
-                    onMouseOver={() => {
-                        this.homeBtnOver = true;
-                        this.projectBtnOver = false;
-                        this.chatBtnOver = false;
-                    }}
-                    onMouseOut={() => {
-                        this.homeBtnOver = false;
-                        this.projectBtnOver = false;
-                        this.chatBtnOver = false;
-                    }}
-                    style={{
-                        backgroundColor: this.homeBtnSelected
-                            ? '#35E285'
-                            : this.homeBtnOver ? '#4F4F4F' : '#272E2E'
+                        genStore.onDahshNavClick('home')
+
                     }}>
-                    <img src="./assets/dashmenu-icons/home-button.svg" alt=""/>
+                    <img src="./assets/dashmenu-icons/home-button.svg" alt="" />
                     <h4>Inicio</h4>
-                </button>
-                {this.homeBtnSelected
+                </span>
+                {genStore.isHomeActive
                     ? <Redirect to='/home' />
-                    : this.projectBtnSelected ? <Redirect to='/projects' />
-                    : this.chatBtnSelected ? <Redirect to='/chat' /> :''
+                    : genStore.isProjectsActive ? <Redirect to='/projects' />
+                    : ''
                 }
             </div>
 
             <div className="dash-icon" id="analysis-icon">
-                <button id="analysis-btn"
+                <span id="analysis-btn" className={(genStore.isProjectsActive) ? 'selected' : ''}
                     onClick={() => {
-                        this.homeBtnSelected = false;
-                        this.projectBtnSelected = true;
-                        this.chatBtnSelected = false;
-                    }}
-                    onMouseOver={() => {
-                        this.homeBtnOver = false;
-                        this.projectBtnOver = true;
-                        this.chatBtnOver = false;
-                    }}
-                    onMouseOut={() => {
-                        this.homeBtnOver = false;
-                        this.projectBtnOver = false;
-                        this.chatBtnOver = false;
-                    }}
-                    style={{
-                        backgroundColor: this.projectBtnSelected
-                        ? '#35E285'
-                        : this.projectBtnOver ? '#4F4F4F' : '#272E2E'
+                        genStore.onDahshNavClick('projects')
                     }}>
-                    <img src="./assets/dashmenu-icons/projects-button.svg" alt=""/>
+                    <img src="./assets/dashmenu-icons/projects-button.svg" alt="" />
                     <h4>Proyectos</h4>
-                </button>
+                </span>
             </div>
         </section>);
     }

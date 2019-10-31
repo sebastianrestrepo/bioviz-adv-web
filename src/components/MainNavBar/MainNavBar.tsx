@@ -8,6 +8,7 @@ import { observable, autorun } from 'mobx';
 import ProfileMenu from '../ProfileMenu/ProfileMenu';
 
 interface MainNavBarProps {
+    title: string
 }
 
 @observer class MainNavBar extends React.Component<MainNavBarProps> {
@@ -20,7 +21,7 @@ interface MainNavBarProps {
 
     render() {
         return (<div className="mainNavBar">
-            <h3>Proyectos</h3>
+            <h3>{this.props.title}</h3>
             <ProfileMenu />
         </div>);
     }
