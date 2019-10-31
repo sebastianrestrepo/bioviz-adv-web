@@ -1,9 +1,7 @@
-import { observable, autorun, toJS, configure, action, computed, extendObservable } from 'mobx';
+import { observable, autorun, action} from 'mobx';
 import firebase from 'firebase';
-import { History } from 'history';
 import authStore from '../stores/authStore';
-import { db, storage, auth } from '../firebaseConfig';
-import { observer } from 'mobx-react';
+import { db} from '../firebaseConfig';
 
 class ProjectsStore {
 
@@ -29,7 +27,7 @@ class ProjectsStore {
     }
 
     @action addProjectToDB(projectName: any, username: any, email: any) {
-        
+
         db.ref('projects/' + authStore.user.uid).push({
             projectName: projectName,
             username: username,
@@ -96,7 +94,7 @@ class ProjectsStore {
         console.log(authStore.currentEmail)
         let user = userEmail.split("@");
         //let audioFile = user[0] + '-' + this.projectName + ".mp3";
-        let file = storage.child('audio_files/'  + user[0] + '/' + this.projectName + '/'+ this.audioName);
+        let file = storage.child('audio_files/' + user[0] + '/' + this.projectName + '/' + this.audioName);
         file.putString(fileContent, 'data_url').then((snapshot: any) => {
             console.log('Uploaded a base64url string!');
             this.retrieveAudioFile();
@@ -114,7 +112,7 @@ class ProjectsStore {
         let audioFile = user[0] + '-' + this.projectName + ".mp3";
         console.log('audiofilename', audioFile);
 
-        storage.child('audio_files/'  + user[0] + '/' + this.projectName + '/'+ this.audioName).getDownloadURL().then((url: any) => {
+        storage.child('audio_files/' + user[0] + '/' + this.projectName + '/' + this.audioName).getDownloadURL().then((url: any) => {
             // `url` is the download URL for 'images/stars.jpg'
 
             // This can be downloaded directly:
@@ -137,7 +135,7 @@ class ProjectsStore {
 
     }
 
-    ///////////7
+    ///////////
     @observable showNewProjectForm: boolean = false;
 
     @action onCreateProject() {
@@ -148,6 +146,35 @@ class ProjectsStore {
         this.showNewProjectForm = false;
     }
 
+    ///// PROJECT CREATION
+
+    @observable creationStep = 1;
+    @observable stepTitle = 'Detalles del Proyecto'
+
+    @action setStepTitle() {
+        switch (this.creationStep) {
+            case 0:
+                this.showNewProjectForm = false;
+                this.creationStep = 1;
+                break;
+            case 1:
+                this.stepTitle = 'Detalles del Proyecto'
+                break;
+            case 2:
+                this.stepTitle = 'Objetivo del proyecto'
+                break;
+        }
+    }
+    @action onNextStepClick() {
+        this.creationStep += 1;
+        console.log(this.creationStep)
+        this.setStepTitle()
+    }
+
+    @action onStepBackClick() {
+        this.creationStep -= 1;
+        this.setStepTitle()
+    }
 }
 
 const projectsStore = new ProjectsStore();
