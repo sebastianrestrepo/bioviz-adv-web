@@ -9,6 +9,7 @@
 
 
 $mainActiveColor: #44cd88;
+$mainActiveColorHover: #43b37b ;
 $secondActiveColor: #AFEA7D;
 $mainDarkColor: #333333;
 $mainDarkColorHover: rgb(25, 29, 29);
@@ -130,6 +131,9 @@ button {
     min-width: 200px;
     background-color: $mainActiveColor;
     color: white;
+    &:hover {
+        background-color: $mainActiveColorHover;
+    }
 }
 
 .green-link {

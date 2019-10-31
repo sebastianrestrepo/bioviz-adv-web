@@ -4,71 +4,127 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    &.open{
+
+    &.open {
         width: 200px;
-    }  
-    &.closed{
-        width: 50px;
+
+        .logo {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+
+            img {
+                display: inherit;
+                -webkit-transform: scaleX(-1);
+                transform: scaleX(-1);
+            }
+
+            p {
+                display: flex;
+            }
+        }
+
+        span {
+            width: 100%;
+            padding: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            font-weight: 800;
+
+            img {
+                width: 22px;
+                height: auto;
+                margin: 0 0.5rem 0 0;
+            }
+        }
+    }
+
+    &.closed {
+        width: 45px;
+
         .logo {
             img {
                 display: inherit;
             }
-            p {display: none;}
+
+            p {
+                display: none;
+            }
         }
-        span{
+
+        span {
             width: 100%;
             padding: 10px 0;
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: center;
+
             img {
                 width: 22px;
                 height: auto;
             }
+
             h4 {
                 display: none;
             }
         }
     }
+
     .logo {
         font-size: 16px;
-        font-family: 'Roboto', sans-serif;
         font-weight: 700;
         color: white;
         margin: 15px 0;
+
         img {
             width: 27px;
             height: auto;
             display: none;
+            cursor: pointer;
         }
     }
+
     h4 {
-        font-size: 15px;
-        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
         font-weight: 700;
         color: white;
     }
 
     .dash-icon {
-       width: 100%;
+        width: 100%;
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         margin: 0;
 
-        #analysis-btn, #home-btn {
+        #analysis-btn,
+        #home-btn {
             cursor: pointer;
             background-color: #272E2E;
+
             &:hover {
                 background-color: #4F4F4F;
             }
+
             &.selected {
-                background-color: #35E285;
+                background-color: #AFEA7D;
+
+                h4 {
+                    color: #333333;
+                }
+
+                img {
+                    filter: invert(100%);
+                }
             }
         }
     }
-    button{
+
+    button {
         width: 100%;
         padding: 15px 0 15px 10px;
         cursor: pointer;
@@ -78,10 +134,10 @@
         flex-direction: row;
         align-items: center;
         justify-content: flex-start;
+
         img {
             width: 22px;
             height: auto;
         }
     }
 }
-
