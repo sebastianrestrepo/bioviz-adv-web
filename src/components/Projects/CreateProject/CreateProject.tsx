@@ -75,17 +75,47 @@ class CreateProject extends Component {
                         <div className="method-cont">
                             <span className="question-structure">
                                 <label className="green-subtitle">Modos de recolección</label>
-                                <input placeholder="Por nombre científico o común" type="text" />
+                                <br/>
+                                <span className="checks-cont">
+                                    <label className="check-container">
+                                        <input type="checkbox" />
+                                        Por intervalos
+                                    <span className="checkmark"></span>
+                                    </label>
+                                    <label className="check-container">
+                                        <input type="checkbox" />
+                                        Continua
+                                    <span className="checkmark"></span>
+                                    </label>
+                                </span>
                             </span>
+                            <span className="row-question-structure">
+                                <label > Duración en minutos
+                                </label>
+                                <input placeholder="0 min" type="number" />
+
+
+                            </span>
+                            <span className="row-question-structure">
+                                <label > Frecuencia en el día
+                                </label>
+                                <input placeholder="0" type="number" />
+
+                            </span>
+
                             <span className="question-structure">
                                 <label className="green-subtitle">Tipo de micrófono utilizado</label>
-                                <input placeholder="Por nombre científico o común" type="text" />
+                                <Select
+                                    placeholder="Escoger dispositivo"
+                                    options={projectsStore.monitoringSystems} />
                             </span>
                             <span className="question-structure">
-                                <label className="green-subtitle">Estructura de MONAC utilizada</label>
-                                <input placeholder="seleccionar" type="text" />
+                                <label className="green-subtitle">Distribución de micrófonos de MONAC utilizada</label>
+                                <Select
+                                    placeholder="Escoger distribución"
+                                    options={projectsStore.monacDistribution} />
                             </span>
-                            
+
                         </div>
                         <div className="audio-cont">
                             <label className="green-subtitle">Audios recolectados</label>

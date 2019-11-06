@@ -150,7 +150,16 @@ class ProjectsStore {
 
     @observable creationStep = 1;
     @observable stepTitle = 'Detalles del Proyecto'
-
+    @observable monacDistribution = [
+        { value: '6', label: 'Hexágono' },
+        { value: '4', label: 'Cruz' },
+        { value: '5', label: 'Pentágono' }
+    ]
+    @observable monitoringSystems = [
+        { value: 'arbimon', label: 'Arbimon' },
+        { value: 'monac', label: 'MONAC' },
+        { value: 'audiomoth', label: 'AudioMoth' }
+    ]
     @action setStepTitle() {
         switch (this.creationStep) {
             case 0:
