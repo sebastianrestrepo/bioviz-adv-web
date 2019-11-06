@@ -34,7 +34,7 @@ import genStore from '../../stores/genStore';
                     : ''
                 }
             </div>
-
+                
             <div className="dash-icon" id="analysis-icon">
                 <span id="analysis-btn" className={(genStore.isProjectsActive) ? 'selected' : ''}
                     onClick={() => {

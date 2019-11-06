@@ -7,7 +7,7 @@ import { observable } from 'mobx';
 import DashMenu from '../DashMenu/DashMenu';
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import CreateProject from './CreateProject';
+import CreateProject from './CreateProject/CreateProject';
 import MainNavBar from '../MainNavBar/MainNavBar';
 import TopBar from './TopBar';
 import ProjectCard from './ProjectCard';

@@ -104,6 +104,52 @@
                         max-width: 650px;
                     }
                 }
+
+                #objective {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    .location-cont{
+                        width: 40%;
+                    }
+                    .species-cont {
+                        width: 40%;
+                        input {
+                            width: 80%;
+                        }
+                        p {
+                            margin: 0.5rem 0 1.5rem 0;
+                        }
+                        .species-list-cont {
+                            width: 80%;
+                            min-height: 300px;
+                            background-color: white;
+                            border-radius: 5px;
+                            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.05);
+                        }
+                    }
+                }
+
+                #data-collection {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    .method-cont{
+                        width: 40%;
+                    }
+                    .audio-cont {
+                        width: 40%;
+                        input {
+                            width: 80%;
+                        }
+                        p {
+                            margin: 0.5rem 0 1.5rem 0;
+                        }
+                        
+                    }
+                }
             }
 
             .create-project-form {

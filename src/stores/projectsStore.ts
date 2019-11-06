@@ -1,7 +1,7 @@
-import { observable, autorun, action} from 'mobx';
+import { observable, autorun, action } from 'mobx';
 import firebase from 'firebase';
 import authStore from '../stores/authStore';
-import { db} from '../firebaseConfig';
+import { db } from '../firebaseConfig';
 
 class ProjectsStore {
 
@@ -162,6 +162,13 @@ class ProjectsStore {
                 break;
             case 2:
                 this.stepTitle = 'Objetivo del proyecto'
+                break;
+            case 3:
+                this.stepTitle = 'Datos recolectados'
+                break;
+            case 4:
+                this.showNewProjectForm = false;
+                this.creationStep = 1;
                 break;
         }
     }
