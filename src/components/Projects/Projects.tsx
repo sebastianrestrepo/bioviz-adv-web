@@ -38,10 +38,10 @@ interface ProjectsProps {
     render() {
         return (<div className="projects ">
             <DashMenu />
-            <div className="projects-layout firstdisplay">
+            <div className="projects-layout ">
                 <MainNavBar title={genStore.navBarTitle} />
                 <TopBar />
-                <div className="projects-div" style={{
+                <div className="projects-div firstdisplay" style={{
                     alignItems: (projectsStore.projects.length > 0)
                         ? 'flex-start'
                         : 'center',
