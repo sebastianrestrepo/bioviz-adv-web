@@ -21,9 +21,12 @@ interface LoginProps {
 
     constructor(props: any) {
         super(props);
-        (authStore.isLogged) ?
+        autorun(() => {
+            (authStore.isLogged) ?
             props.history.push ("/home")
         : props.history.push("/") 
+        })
+        
     }
 
     handleLoginState(signin: boolean) {
