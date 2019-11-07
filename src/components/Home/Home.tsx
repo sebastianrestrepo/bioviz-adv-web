@@ -4,9 +4,10 @@ import { observer } from 'mobx-react';
 import authStore from '../../stores/authStore';
 import { observable, autorun } from 'mobx';
 import DashMenu from '../DashMenu/DashMenu';
-import Header from '../Header/Header';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { auth } from 'firebase';
+import genStore from '../../stores/genStore';
+import MainNavBar from '../MainNavBar/MainNavBar';
 
 interface HomeProps {
     history: any
@@ -19,16 +20,18 @@ interface HomeProps {
     constructor(props: any) {
         super(props);
         autorun(() => {
-            if (!authStore.isLogged) {
-                props.history.push("/");
-            }
+            (authStore.isLogged) ?
+            props.history.push("/home")
+            : props.history.push("/")
         });
+        
     }
 
     render() {
         return (<div className="home">
             <DashMenu />
-            <Header />
+            <MainNavBar title={genStore.navBarTitle} />
+
         </div>);
     }
 }

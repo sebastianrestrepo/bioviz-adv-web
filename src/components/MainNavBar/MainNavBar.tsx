@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import './_ProjectNavBar.scss'
+import './_MainNavBar.scss'
 import { Link, withRouter, Redirect, Route, Router } from 'react-router-dom';
 
 import { observer } from 'mobx-react';
 import authStore from '../../stores/authStore';
 import { observable, autorun } from 'mobx';
+import ProfileMenu from '../ProfileMenu/ProfileMenu';
 
-interface ProjectNavBarProps {
+interface MainNavBarProps {
+    title: string
 }
 
-@observer class ProjectNavBar extends React.Component<ProjectNavBarProps> {
+@observer class MainNavBar extends React.Component<MainNavBarProps> {
 
     @observable signInForm: boolean = true;
 
@@ -18,10 +20,11 @@ interface ProjectNavBarProps {
     }
 
     render() {
-        return (<div className="projectNavBar">
-            
+        return (<div className="mainNavBar">
+            <h3>{this.props.title}</h3>
+            <ProfileMenu />
         </div>);
     }
 }
 
-export default observer(ProjectNavBar);
+export default observer(MainNavBar);

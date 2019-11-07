@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './_ProfileMenu.scss'
 import { observable } from 'mobx';
 import { observer } from 'mobx-react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import authStore from '../../stores/authStore';
 
 interface ProfileIconProps {
@@ -26,11 +26,12 @@ class ProfileMenu extends Component {
 
   constructor(props: any) {
     super(props);
-    authStore.readEmail();
   }
 
   render() {
+    
     return (<div className="profile-icon">
+      {(!authStore.isLogged) ? <Redirect to='/' /> : ''}
       <button onClick={() => {
         this.showProfileMenu = !this.showProfileMenu;
       }} className="profile-photo">
@@ -109,6 +110,8 @@ class ProfileMenu extends Component {
                 this.profileBtnSelected = false;
                 this.configBtnSelected = false;
                 this.signOutBtnSelected = !this.signOutBtnSelected;
+                
+
               }}>
               CERRAR SESIÓN
           </button>

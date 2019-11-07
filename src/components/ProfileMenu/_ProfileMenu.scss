@@ -1,19 +1,18 @@
 .profile-icon {
+    position: relative;
     .profile-photo {
         cursor: pointer;
         border: none;
         text-decoration: none;
         background-color: rgba(0, 0, 0, 0);
-        margin-right: 30px;
     }
 
     .complete-menu{
     }
 
     .profile-menu {
-        margin-top: 10px;
-        margin-right: 30px;
-        left: auto;
+        margin: -1px 0 0 0;
+        top: 100%;
         right: 0;
         position: absolute;
         display: flex;
