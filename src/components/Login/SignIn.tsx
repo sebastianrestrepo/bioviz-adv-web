@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import authStore from '../../stores/authStore';
 import { observer } from 'mobx-react';
+import { Redirect } from 'react-router-dom';
 
 interface formLoginProps {
 
@@ -13,12 +14,8 @@ const SignIn = observer(withRouter((formLoginProps) => {
         onSubmit={(event: any) => {
             event.preventDefault();
             authStore.login(authStore.credentials.email, authStore.credentials.password);
-            if (authStore.isLogged) {
-                console.log(authStore.isLogged);
-                formLoginProps.history.push("/home");
-            } else {
+          
 
-            }
         }}>
 
         <div className="form-imput">

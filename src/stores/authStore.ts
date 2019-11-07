@@ -8,12 +8,12 @@ import React, { Component } from 'react';
 
 class AuthStore {
 
+
   @observable user: any = null;
   @observable error: any = null;
   @observable isError: boolean = false;
   @observable isNewUSer: boolean = false;
   @observable isLogged: boolean = false;
-  @observable registerDone: boolean = false;
   @observable statusChecked: boolean = false;
   @observable profilePhoto: any = "";
 
@@ -22,62 +22,58 @@ class AuthStore {
   @observable profilePhotoURL: any = "";
 
   constructor() {
-    this.checkUserStatus();
+    // this.checkUserStatus();
+    auth.onAuthStateChanged((retrievedUser) => {
+      if (retrievedUser) {
+        // User is signed in.
+        this.user = retrievedUser;
+        this.isLogged = true;
+        this.statusChecked = true;
+        this.getUserData(this.user.uid);
+        console.log("hello", this.isNewUSer)
+        if (this.isNewUSer) {
+          this.addNewUser(this.user)
+          this.isNewUSer = false;
+        }
+
+      } else {
+       
+        this.isLogged = false;
+        this.statusChecked = true;
+      }
+    })
   }
 
 
   @observable credentials = {
     name: "",
     email: "",
-    password: "",
-    id: "",
-    isOnline: ""
+    password: ""
+  }
+  @observable newUser = {
+    name: "",
+    email: "",
+    id: ""
+  }
+  @observable currentUserInfo = {
+    name: "",
+    email: "",
+    id: ""
   }
 
-  @action checkUserStatus() {
-    autorun(() => {
-      console.log('autorun in checkUserStatus() working');
-      auth.onAuthStateChanged((userAuth) => {
-        if (userAuth) {
-          // User is signed in.
-          this.user = userAuth;
-          this.isLogged = true;
-          console.log('User is signed in.', userAuth);
-          console.log('isLogged state: ', this.isLogged);
-          this.statusChecked = true;
-          this.getUserName();
-        } else {
-          // No user is signed in.
-          console.log('NO user is signed in.');
-          console.log('isLogged state: ', this.isLogged);
-          this.isLogged = false;
-          this.statusChecked = true;
-        }
-      })
-    });
-  }
 
-  @action getUserName() {
-    autorun(() => {
-      var userId: any = authStore.user.uid;
-      var database = db.ref('users/' + userId + '/username');
-      database.once('value').then((snapshot: any) => {
-          console.log('snapshote value', snapshot.val());
-          this.currentUsername = snapshot.val();
-      });
-  });
-  }
-
-  @action setStatusChecked(value: boolean) {
-    this.statusChecked = value;
-  }
 
   @action register(name: string, email: string, password: string) {
     this.credentials.name = name;
     this.credentials.email = email;
     this.credentials.password = password;
 
-    auth.createUserWithEmailAndPassword(email, password).catch(error => {
+    let that = this;
+    auth.createUserWithEmailAndPassword(email, password).then(
+      () => {
+        this.isNewUSer = true;
+      }
+    ).catch(error => {
       let errorCode = error.code;
       let errorMessage = error.message;
 
@@ -89,16 +85,60 @@ class AuthStore {
       }
     })
     this.isError = false;
-    this.isNewUSer = true;
-    autorun(() => {
-      if (this.user != null) {
-        this.uploadProfilePhoto(this.profilePhoto);
-        this.writeUserData(name, email, this.profilePhoto);
-      }
-    });
+
   }
 
+  addNewUser(user) {
+    this.newUser.name = this.credentials.name;
+    this.newUser.email = user.email;
+    this.newUser.id = user.uid;
 
+    let that = this;
+    db.collection("users").add(this.newUser)
+      .then(function (docRef) {
+        that.isNewUSer = false;
+        that.credentials = {
+          name: "",
+          email: "",
+          password: ""
+        }
+        that.newUser = {
+          name: "",
+          email: "",
+          id: ""
+        }
+      })
+      .catch(function (error) {
+        console.error("Error adding document: ", error);
+      });
+    console.log('Subido')
+
+  }
+
+  @action getUserData(userIDRetrieved: string) {
+    console.log('obteniendo info.....')
+    let that = this;
+    db.collection("users").where("id", "==", userIDRetrieved)
+      .get().then( function(querySnapshot) {
+        querySnapshot.forEach((doc) => {
+          console.log('encontró el doc.....')
+
+          that.currentUserInfo = {
+            name: doc.data().name,
+            email: doc.data().email,
+            id: doc.data().id
+
+          }
+          console.log('el doc es .....', doc.data())
+
+          console.log(that.currentUserInfo.name)
+        });
+      });
+  }
+
+  @action setStatusChecked(value: boolean) {
+    this.statusChecked = value;
+  }
   @action login(email: string, password: string) {
     let logged = false;
     auth.signInWithEmailAndPassword(email, password)
@@ -110,25 +150,20 @@ class AuthStore {
       });
     window.history.go(1);
 
-    this.isLogged = true;
   }
 
   @action signOut() {
+    console.log(firebase.auth().currentUser, 'va cerrar sesión');
+
     auth.signOut();
     this.user = null;
     console.log(firebase.auth().currentUser, 'cerró sesión');
     this.isLogged = false;
-    this.registerDone = false;
-  }
+    this.currentUserInfo = {
+      name: '',
+      email: '',
+      id: ''
 
-  @action writeUserData(name, email, profile_picture) {
-    if (this.user != null) {
-      console.log('writing user info')
-      db.ref('users/' + this.user.uid).set({
-        username: name,
-        email: email,
-        profile_picture: profile_picture
-      });
     }
   }
 
@@ -140,41 +175,24 @@ class AuthStore {
     this.profilePhoto = value;
   }
 
-  @action setRegisterStatus(value: boolean) {
-    console.log('value changed');
-    this.registerDone = value;
-  }
-
   @action uploadProfilePhoto(fileContent: string) {
-    let storage = firebase.storage().ref();
-    let userEmail = this.credentials.email;
-    if (userEmail != null) {
-      let img = userEmail.split("@");
-      let userProfilePicture = img[0] + ".jpg";
-      let file = storage.child('profile_photos/' + userProfilePicture);
-      file.putString(fileContent, 'data_url').then(function (snapshot) {
-        console.log('Uploaded a base64url string!');
-      });
-    }
-    
-  }
-
- readEmail() {
-    autorun(() => {
-      var database = db.ref('users/' + this.user.uid + '/email');
-      database.once('value').then((snapshot: any) => {
-        console.log('snapshote value', snapshot.val());
-        this.currentEmail = snapshot.val();
-        console.log('correo', this.currentEmail);
-        this.retrieveProfilePhoto(this.currentEmail);
-      });
-    });
+    /*  let storage = firebase.storage().ref();
+      let userEmail = this.credentials.email;
+      if (userEmail != null) {
+        let img = userEmail.split("@");
+        let userProfilePicture = img[0] + ".jpg";
+        let file = storage.child('profile_photos/' + userProfilePicture);
+        file.putString(fileContent, 'data_url').then(function (snapshot) {
+          console.log('Uploaded a base64url string!');
+        });
+      }
+  */
   }
 
   @action retrieveProfilePhoto(email: any) {
 
     var storage: any = firebase.storage().ref();
-    
+
     let userEmail: any = this.currentEmail;
     //let img: any = userEmail.split("@");
     if (userEmail != null) {
@@ -182,10 +200,10 @@ class AuthStore {
       let userProfilePicture = img[0] + ".jpg";
       console.log('foto perfil', userProfilePicture);
       console.log('foto url', storage.child('profile_photos/' + 'sebrestrepo.jpg'));
-  
+
       storage.child('profile_photos/' + userProfilePicture).getDownloadURL().then((url: any) => {
         // `url` is the download URL for 'images/stars.jpg'
-  
+
         // This can be downloaded directly:
         var xhr = new XMLHttpRequest();
         xhr.responseType = 'blob';
@@ -194,7 +212,7 @@ class AuthStore {
         };
         xhr.open('GET', url);
         xhr.send();
-  
+
         this.profilePhotoURL = url;
         // Or inserted into an <img> element:
         console.log('foto: ', url);

@@ -1,11 +1,11 @@
 import { observable, autorun, action } from 'mobx';
 import firebase from 'firebase';
-import authStore from '../stores/authStore';
 import { db } from '../firebaseConfig';
+import authStore from './authStore';
 
 class ProjectsStore {
 
-    @observable username: any = "";
+    @observable username: any = authStore.currentUsername;
     @observable projects: any[] = [];
     @observable text: any = "";
     @observable profile_photo: any = "";
@@ -15,31 +15,24 @@ class ProjectsStore {
     @observable audioName: any = "";
 
     constructor() {
-        autorun(() => {
-            var userId: any = authStore.user.uid;
-            this.getProjects(userId);
-            var database = db.ref('users/' + userId + '/username');
-            database.once('value').then((snapshot: any) => {
-                console.log('snapshote value', snapshot.val());
-                this.username = snapshot.val();
-            });
-        });
+
     }
 
     @action addProjectToDB(projectName: any, username: any, email: any) {
-
+/*
         db.ref('projects/' + authStore.user.uid).push({
             projectName: projectName,
             username: username,
             email: email,
             creationDate: this.getCurrentDate(),
             audio_file: this.audioFileURL
-        });
+        }); */
 
         this.setAudioFileUploaded(false);
 
     }
 
+    /*
     getProjects = (userId: any) => {
         var projectsDB =
             db.ref('projects/' + userId)
@@ -58,7 +51,7 @@ class ProjectsStore {
                 console.log(this.projects);
             });
         });
-    }
+    } */
 
     getCurrentDate() {
         var today: any = new Date();

@@ -3,7 +3,7 @@ import './_Projects.scss'
 import { observer } from 'mobx-react';
 import authStore from '../../stores/authStore';
 import projectsStore from '../../stores/projectsStore';
-import { observable } from 'mobx';
+import { observable, autorun } from 'mobx';
 import DashMenu from '../DashMenu/DashMenu';
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -24,13 +24,15 @@ interface ProjectsProps {
 
     constructor(props: any) {
         super(props);
-        if (!authStore.isLogged) {
-            props.history.push("/");
-        }
+        autorun(() => {
+            (authStore.isLogged) ?
+                props.history.push("/projects")
+                : props.history.push("/")
+        });
     }
 
     renderProjects = () => {
-        return projectsStore.projects.map(project => ( <ProjectCard name={project.projectName} date={project.creationDate} ></ProjectCard>))
+        return projectsStore.projects.map(project => (<ProjectCard name={project.projectName} date={project.creationDate} ></ProjectCard>))
     }
 
     render() {

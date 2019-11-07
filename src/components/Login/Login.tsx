@@ -21,13 +21,9 @@ interface LoginProps {
 
     constructor(props: any) {
         super(props);
-        authStore.checkUserStatus();
-        autorun(() => {
-            if (authStore.isLogged) {
-                props.history.push("/home");
-                console.log('redirected to home');
-            }
-        });
+        (authStore.isLogged) ?
+            props.history.push ("/home")
+        : props.history.push("/") 
     }
 
     handleLoginState(signin: boolean) {
@@ -35,6 +31,7 @@ interface LoginProps {
     }
 
     render() {
+        
         return (<div className="Login">
             <section className="info-section">
                 <div className="logo">BioViz</div>

@@ -3,20 +3,16 @@ import { withRouter } from 'react-router';
 import authStore from '../../stores/authStore';
 import { observer } from 'mobx-react';
 import ImgDropzone from '../Login/ImgDropzone'
+import { Redirect } from 'react-router-dom';
 
 interface formRegisterProps {
 
 }
 
 const SignUp = observer(withRouter((formRegisterProps) => {
-
     return (<form className="sign-up" onSubmit={(e: any) => {
         e.preventDefault();
-        if (authStore.isLogged) {
-            formRegisterProps.history.push("/home");
-        } else {
 
-        }
     }}>
         <ImgDropzone />
         <div className="form-imput">
@@ -41,7 +37,7 @@ const SignUp = observer(withRouter((formRegisterProps) => {
         </div>
         <button className="sign-up-btn" onClick={() => {
             authStore.register(authStore.credentials.name, authStore.credentials.email, authStore.credentials.password);
-            formRegisterProps.history.push("/home");
+
         }}>Registrarse</button>
         <p>¿Ya tienes una cuenta? <a>Inicia Sesión</a></p>
     </form>
