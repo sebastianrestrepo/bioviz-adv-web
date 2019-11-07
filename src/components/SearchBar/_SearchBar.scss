@@ -1,22 +1,21 @@
 .search-bar {
+    display: flex;
+    flex-wrap: nowrap;
     input {
-        min-width: 500px;
-        width: 800px;
+        width: 35vw;
+        max-width: 600px;
         color: #3E3549;
-        font-size: 16px;
-        font-family: 'Roboto', sans-serif;
-        height: 40px;
+        font-size: 15px;
+        height: 35px;
         border: none;
         border-radius: 2px;
         padding: 0 10px 0 10px;
     }
     .search-btn{
-        font-size: 16px;
         border-radius: 2px;
-        font-family: 'Roboto', sans-serif;
         font-weight: 700;
         width: 150px;
-        min-height: 40px;
+        min-height: 35px;
         margin-left: 10px;
         background-color: #35E285;
         color: white;

@@ -1,0 +1,22 @@
+.mainNavBar{
+    display: flex;
+    flex-direction: row;
+    background-color: #313838;
+    height: 45px;
+    min-height: 45px;
+    width:100%;
+    justify-content: center;
+    position: relative;
+    h3 {
+        height: auto;
+        text-align: center;
+        margin: auto;
+        color: white;
+        font-size: 16px;
+    }
+    .profile-icon {
+        position: absolute;
+        top: 5px;
+        right: 15px;
+    }
+}

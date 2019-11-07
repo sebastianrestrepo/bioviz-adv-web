@@ -1,6 +1,342 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,600,700,900&display=swap');
 
 * {
-    margin:0; 
-    padding:0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+
+$mainActiveColor: #44cd88;
+$mainActiveColorHover: #43b37b;
+$secondActiveColor: #AFEA7D;
+$mainDarkColor: #333333;
+$mainDarkColorHover: rgb(25, 29, 29);
+$darkBorderColor: rgb(153, 153, 153);
+$lightBorderColor: rgb(219, 219, 219);
+$ligthGray2: #F4F4F4;
+$lightColoredBorderColor: #CBE2D7;
+$white: white;
+$semiWhite: #F9F9F9;
+$hintColor: rgb(172, 172, 172);
+$boxShadow: rgba(0, 0, 0, 0.05);
+$doubt: #f3773e;
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    ;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: $mainActiveColor;
+}
+
+.green-text {
+    color: $mainActiveColor;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 18px;
+}
+
+.tooltip {
+    position: relative;
+
+    &:hover .tooltiptext {
+        display: inherit;
+    }
+
+    .tooltiptext {
+        display: none;
+        min-width: 120px;
+        word-wrap: break-word;
+        max-width: 200px;
+        background-color: $mainDarkColor;
+        color: $white;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        top: 150%;
+        left: 50%;
+        margin-left: -60px;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent $mainDarkColor transparent;
+        }
+    }
+}
+
+.close-icon {
+    cursor: pointer;
+}
+
+.text-title {
+    font-weight: 800;
+}
+
+.input-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+}
+
+.question-structure {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem 0;
+
+    label {
+        margin: 0 0 0.5rem 0;
+    }
+}
+
+button {
+    border-style: none;
+    height: 35px;
+    font-weight: 800px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.mainBtn {
+    min-width: 200px;
+    background-color: $mainActiveColor;
+    color: white;
+
+    &:hover {
+        background-color: $mainActiveColorHover;
+    }
+}
+
+.green-link {
+    font-weight: 600;
+    text-decoration: underline;
+    color: $mainActiveColor;
+    cursor: pointer;
+}
+
+.green-subtitle {
+    font-weight: 700;
+    color: $mainActiveColor;
+}
+
+textarea {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    padding: 7px;
+    border-radius: 4px;
+    border: solid 1px #CBE2D7;
+    overflow-y: auto;
+}
+
+.basic-multi-select {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+
+    .select__control {
+        height: 25px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        align-content: center;
+    }
+
+
+
+}
+
+input {
+
+    padding: 5px;
+    height: 35px;
+    border-radius: 3px;
+    border: solid 1px $lightColoredBorderColor;
+
+    &:focus {
+        border: solid 1px $mainActiveColor;
+    }
+}
+
+select {
+    margin: 0 0.5rem;
+    padding: 5px;
+    border-radius: 3px;
+    border: solid 1px $darkBorderColor;
+
+    &:focus {
+        border: solid 1px $mainActiveColor;
+    }
+}
+
+.hint-text {
+    font-style: italic;
+    color: $hintColor;
+    font-size: 14px;
+    padding: 0.3rem 1rem;
+}
+
+button {
+    letter-spacing: -0.5px;
+    font-size: 15px;
+
+}
+
+.green-button {
+    border-style: none;
+    background-color: $secondActiveColor;
+    color: $mainDarkColor;
+    font-weight: 700;
+    border-radius: 2px;
+    padding: 0 1rem;
+    min-width: 120px;
+    font-family: 'Lato', sans-serif;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $mainActiveColor;
+    }
+}
+
+.dark-button {
+    border-style: none;
+    background-color: $mainDarkColor;
+    color: $white;
+    font-weight: 700;
+    border-radius: 2px;
+    padding: 0 1rem;
+    min-width: 120px;
+    font-family: 'Lato', sans-serif;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $mainDarkColorHover;
+    }
+}
+
+.card-section {
+    border-bottom: solid 1px;
+    padding: 0.5rem 0;
+}
+
+input[type="checkbox"] {
+    height: auto;
+}
+
+h1 {
+    font-size: 21px;
+}
+
+.react-selector,  .css-2b097c-container {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+
+    .css-1pahdxg-control {
+        height: 25px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        align-content: center;
+    }
+
+    .css-yk16xz-control {
+        height: 21  px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        align-content: center;
+
+        .css-1hwfws3 {
+            height: 25px;
+        }
+    }
+}
+
+.check-container {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    &:hover input ~ .checkmark {
+      background-color: rgb(247, 247, 247);
+    }
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+      &:checked ~ .checkmark:after {
+          display: block;
+        }
+      &:checked ~ .checkmark {
+          background-color: $secondActiveColor;
+          border: none;
+  
+        }
+    }
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      background-color: rgb(255, 255, 255);
+      border-radius: 4px;
+      border: 1.5px solid $mainActiveColor;
+      &:after {
+          content: "";
+          position: absolute;
+          display: none;
+        }
+      &:after {
+          left: 6px;
+          top: 2px;
+          width: 5px;
+          height: 10px;
+          border: solid white;
+          border-width: 0 3px 3px 0;
+          -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+    }
+    
+  }

@@ -1,6 +1,257 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,600,700,900&display=swap");
 * {
   margin: 0;
   padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #44cd88;
+}
+
+.green-text {
+  color: #44cd88;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 18px;
+}
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip:hover .tooltiptext {
+  display: inherit;
+}
+
+.tooltip .tooltiptext {
+  display: none;
+  min-width: 120px;
+  word-wrap: break-word;
+  max-width: 200px;
+  background-color: #333333;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #333333 transparent;
+}
+
+.close-icon {
+  cursor: pointer;
+}
+
+.text-title {
+  font-weight: 800;
+}
+
+.input-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.question-structure {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0.5rem 0;
+}
+
+.question-structure label {
+  margin: 0 0 0.5rem 0;
+}
+
+button {
+  border-style: none;
+  height: 35px;
+  font-weight: 800px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.mainBtn {
+  min-width: 200px;
+  background-color: #44cd88;
+  color: white;
+}
+
+.green-link {
+  font-weight: 600;
+  text-decoration: underline;
+  color: #44cd88;
+  cursor: pointer;
+}
+
+.green-subtitle {
+  font-weight: 700;
+  color: #44cd88;
+}
+
+textarea {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  padding: 7px;
+  border-radius: 4px;
+  border: solid 1px #CBE2D7;
+  overflow-y: auto;
+}
+
+.basic-multi-select {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+}
+
+.basic-multi-select .select__control {
+  height: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+input {
+  padding: 5px;
+  height: 35px;
+  border-radius: 3px;
+  border: solid 1px #CBE2D7;
+}
+
+input:focus {
+  border: solid 1px #44cd88;
+}
+
+select {
+  margin: 0 0.5rem;
+  padding: 5px;
+  border-radius: 3px;
+  border: solid 1px #999999;
+}
+
+select:focus {
+  border: solid 1px #44cd88;
+}
+
+.hint-text {
+  font-style: italic;
+  color: #acacac;
+  font-size: 14px;
+  padding: 0.3rem 1rem;
+}
+
+button {
+  letter-spacing: -0.5px;
+  font-size: 15px;
+}
+
+.green-button {
+  border-style: none;
+  background-color: #AFEA7D;
+  color: #333333;
+  font-weight: 700;
+  border-radius: 2px;
+  padding: 0 1rem;
+  min-width: 120px;
+  font-family: 'Lato', sans-serif;
+  cursor: pointer;
+}
+
+.green-button:hover {
+  background-color: #44cd88;
+}
+
+.dark-button {
+  border-style: none;
+  background-color: #333333;
+  color: white;
+  font-weight: 700;
+  border-radius: 2px;
+  padding: 0 1rem;
+  min-width: 120px;
+  font-family: 'Lato', sans-serif;
+  cursor: pointer;
+}
+
+.dark-button:hover {
+  background-color: #191d1d;
+}
+
+.card-section {
+  border-bottom: solid 1px;
+  padding: 0.5rem 0;
+}
+
+input[type="checkbox"] {
+  height: auto;
+}
+
+h1 {
+  font-size: 21px;
 }
 /*# sourceMappingURL=App.css.map */

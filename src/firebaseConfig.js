@@ -6,19 +6,19 @@ require("firebase/storage");
 require("firebase/auth");
 
 const config = {
-    apiKey: "AIzaSyBAfPkOSKZSYdXA69R_752YKcUCSo39Fpk",
-    authDomain: "bioviz-adv-web.firebaseapp.com",
-    databaseURL: "https://bioviz-adv-web.firebaseio.com",
-    projectId: "bioviz-adv-web",
-    storageBucket: "bioviz-adv-web.appspot.com",
-    messagingSenderId: "925443219612",
-    appId: "1:925443219612:web:6beee62118e3c9af"
+  apiKey: "AIzaSyDS4HMTx8MAmmFbsbnvU3muvyjcrFFebAk",
+  authDomain: "bioviz-webapp.firebaseapp.com",
+  databaseURL: "https://bioviz-webapp.firebaseio.com",
+  projectId: "bioviz-webapp",
+  storageBucket: "bioviz-webapp.appspot.com",
+  messagingSenderId: "377420984887",
+  appId: "1:377420984887:web:37b52a53fccb69ae5785b2",
+  measurementId: "G-T9XZ7VYC5S"
   };
 
 firebase.initializeApp(config);
 
-//export const db = firebase.firestore();
-export var db = firebase.database();
+export const db = firebase.firestore();
 export const storage = firebase.storage();
 export const auth =  firebase.auth();
 
