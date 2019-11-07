@@ -36,9 +36,9 @@ interface ProjectsProps {
     }
 
     render() {
-        return (<div className="projects">
+        return (<div className="projects ">
             <DashMenu />
-            <div className="projects-layout">
+            <div className="projects-layout firstdisplay">
                 <MainNavBar title={genStore.navBarTitle} />
                 <TopBar />
                 <div className="projects-div" style={{

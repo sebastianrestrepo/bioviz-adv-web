@@ -35,7 +35,7 @@ interface LoginProps {
 
     render() {
         
-        return (<div className="Login">
+        return (<div className="Login firstdisplay">
             <section className="info-section">
                 <div className="logo">BioViz</div>
                 <div className="img-div">
