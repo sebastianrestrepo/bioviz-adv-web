@@ -230,7 +230,23 @@ class ProjectsStore {
         console.error("Error adding document: ", error);
       });
     console.log('Subido')
+  }
 
+  @observable actualProject:any = {};
+
+  @action retreiveOnlyProjectInfo(projectId:string) {
+    let docRef = db.collection("projects").doc(projectId);
+    let that = this;
+    docRef.get().then(function(doc) {
+        if (doc.exists) {
+            that.actualProject = doc.data();
+        } else {
+            console.log("No such project!");
+        }
+    }).catch(function(error) {
+        console.log("Error getting project:", error);
+    });
+    
   }
 
 }

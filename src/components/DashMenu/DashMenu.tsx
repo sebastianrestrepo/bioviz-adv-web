@@ -18,23 +18,19 @@ import genStore from '../../stores/genStore';
                 <p>Bioviz</p>
                 <img onClick={() => genStore.openDash()} src="./assets/dashmenu-icons/expand-dash.svg" alt="" />
             </div>
-
+            <Link to="/" className="dash-icon-link">
             <div className="dash-icon" id="home-icon">
                 <span id="home-btn"  className={(genStore.isHomeActive) ? 'selected' : ''}
                     onClick={() => {
                         genStore.onDahshNavClick('home')
-
                     }}>
                     <img src="./assets/dashmenu-icons/home-button.svg" alt="" />
                     <h4>Inicio</h4>
                 </span>
-                {genStore.isHomeActive
-                    ? <Redirect to='/home' />
-                    : genStore.isProjectsActive ? <Redirect to='/projects' />
-                    : ''
-                }
+               
             </div>
-                
+            </Link>
+            <Link to="/projects" className="dash-icon-link">
             <div className="dash-icon" id="analysis-icon">
                 <span id="analysis-btn" className={(genStore.isProjectsActive) ? 'selected' : ''}
                     onClick={() => {
@@ -44,6 +40,7 @@ import genStore from '../../stores/genStore';
                     <h4>Proyectos</h4>
                 </span>
             </div>
+            </Link>
         </section>);
     }
 }

@@ -3,8 +3,8 @@ import './App.scss';
 import Login from '../Login/Login';
 import Home from '../Home/Home';
 import { observer } from 'mobx-react';
-import { Route } from "react-router-dom";
-import { HashRouter} from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import Projects from '../Projects/Projects';
 import projectsStore from '../../stores/projectsStore';
 import ProjectOverview from '../Projects/Overview/ProjectOverview';
@@ -21,10 +21,15 @@ class App extends Component {
   render() {
     return (<div className="App">
       <HashRouter>
-        <Route exact path="/" component={Login} />
-        <Route exact path="/home" component={Home} />
+        <Route exact path="/" component={Home} />
+        <Route path="/login" component={Login} />
+        <Switch>
         <Route exact path="/projects" component={Projects} />
-        <Route path="/projects/:projectID" component={ProjectOverview} />
+        <Route path="/projects/:projectID" render={props => {
+        return <ProjectOverview {...props} projectId={props.match.params.projectID} />;
+      }} />
+        </Switch>
+        
       </HashRouter>
     </div>
     );

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './_ProfileMenu.scss'
 import { observable } from 'mobx';
 import { observer } from 'mobx-react';
-import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import authStore from '../../stores/authStore';
 
 interface ProfileIconProps {

@@ -21,8 +21,8 @@ interface HomeProps {
         super(props);
         autorun(() => {
             (authStore.isLogged) ?
-            props.history.push("/home")
-            : props.history.push("/")
+            props.history.push("/")
+            : props.history.push("/login")
         });
         
     }
