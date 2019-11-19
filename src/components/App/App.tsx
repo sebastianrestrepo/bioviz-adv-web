@@ -3,11 +3,10 @@ import './App.scss';
 import Login from '../Login/Login';
 import Home from '../Home/Home';
 import { observer } from 'mobx-react';
-import { Route } from "react-router-dom";
-import { HashRouter} from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import Projects from '../Projects/Projects';
-import projectsStore from '../../stores/projectsStore';
-import ProjectOverview from '../Projects/Overview/ProjectOverview';
+import Tagging from '../Tagging/Tagging';
 interface AppProps {
   history: any
 }
@@ -15,16 +14,15 @@ interface AppProps {
 class App extends Component {
   constructor(props: {}) {
     super(props);
-    projectsStore.onRetrieveProjects();
+
   }
 
   render() {
     return (<div className="App">
       <HashRouter>
         <Route exact path="/" component={Login} />
-        <Route exact path="/home" component={Home} />
-        <Route exact path="/projects" component={Projects} />
-        <Route path="/projects/:projectID" component={ProjectOverview} />
+        <Route  path="/home" component={Home} />
+        <Route  path="/projects" component={Projects} />
       </HashRouter>
     </div>
     );

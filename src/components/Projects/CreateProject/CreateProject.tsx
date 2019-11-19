@@ -25,26 +25,16 @@ class CreateProject extends Component {
                     <img onClick={() => projectsStore.onCancelProjectCreation()} src="./assets/gen-icons/close-x.svg" width="21px" alt="" />
                 </span>
                 {
-                    (projectsStore.creationStep == 1) ? <section className="details firstdisplay">
+                    (projectsStore.creationStep == 1) ? <section className="details">
                         <form className="content" >
                             <span className="question-structure">
                                 <label className="green-subtitle">Nombre del proyecto</label>
-                                <input placeholder="Escribe el nombre del proyecto" 
-                                onChange={(e: any) => {
-                                    projectsStore.newProject.name = e.target.value;
-                                }}
-                                value={projectsStore.newProject.name}
-                                type="text" />
+                                <input placeholder="Escribe el nombre del proyecto" type="text" />
                             </span>
                             <br />
                             <span className="question-structure">
                                 <label className="green-subtitle">Descripción del proyecto</label>
-                                <textarea placeholder="Resume tu proyecto en unas cuantas palabras..." 
-                                onChange={(e: any) => {
-                                    projectsStore.newProject.description = e.target.value;
-                                }}
-                                value={projectsStore.newProject.description}
-                                name="" id=""></textarea>
+                                <textarea placeholder="Resume tu proyecto en unas cuantas palabras..." name="" id=""></textarea>
                             </span>
                             <br />
                             <span className="question-structure">
@@ -59,7 +49,7 @@ class CreateProject extends Component {
                                 />
                             </span>
                         </form>
-                    </section> : (projectsStore.creationStep == 2) ? <section id="objective" className="firstdisplay">
+                    </section> : (projectsStore.creationStep == 2) ? <section id="objective">
                         <div className="location-cont">
                             <form className="content" >
                                 <span className="question-structure">
@@ -81,7 +71,7 @@ class CreateProject extends Component {
 
                             </div>
                         </div>
-                    </section> : (projectsStore.creationStep == 3) ? <section id="data-collection" className="firstdisplay">
+                    </section> : (projectsStore.creationStep == 3) ? <section id="data-collection">
                         <div className="method-cont">
                             <span className="question-structure">
                                 <label className="green-subtitle">Modos de recolección</label>
@@ -102,22 +92,14 @@ class CreateProject extends Component {
                             <span className="row-question-structure">
                                 <label > Duración en minutos
                                 </label>
-                                <input placeholder="0 min" 
-                                 onChange={(e: any) => {
-                                    projectsStore.newProject.audioDuration = e.target.value;
-                                }}
-                                 type="number" />
+                                <input placeholder="0 min" type="number" />
 
 
                             </span>
                             <span className="row-question-structure">
                                 <label > Frecuencia en el día
                                 </label>
-                                <input placeholder="0" value={projectsStore.newProject.frequency}
-                                 onChange={(e: any) => {
-                                    projectsStore.newProject.frequency = e.target.value;
-                                }}
-                                type="number" />
+                                <input placeholder="0" type="number" />
 
                             </span>
 

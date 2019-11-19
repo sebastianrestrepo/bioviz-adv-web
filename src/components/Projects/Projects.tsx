@@ -32,22 +32,16 @@ interface ProjectsProps {
     }
 
     renderProjects = () => {
-        return projectsStore.projects.map(project => 
-            (
-                <Link to={`/projects/${project.id}`} key={project.id}> 
-                <ProjectCard name={project.name} date={project.date} ></ProjectCard>
-                </Link>
-            ))
+        return projectsStore.projects.map(project => (<ProjectCard name={project.projectName} date={project.creationDate} ></ProjectCard>))
     }
 
     render() {
-
-        return (<div className="projects ">
+        return (<div className="projects">
             <DashMenu />
-            <div className="projects-layout ">
+            <div className="projects-layout">
                 <MainNavBar title={genStore.navBarTitle} />
                 <TopBar />
-                <div className="projects-div firstdisplay" style={{
+                <div className="projects-div" style={{
                     alignItems: (projectsStore.projects.length > 0)
                         ? 'flex-start'
                         : 'center',

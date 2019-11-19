@@ -17,11 +17,7 @@ interface TaggingProps {
 
     constructor(props: any) {
         super(props);
-        autorun(() => {
-            if (!authStore.isLogged) {
-                props.history.push("/");
-            }
-        });
+      
     }
 
     render() {
