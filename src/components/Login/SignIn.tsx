@@ -8,7 +8,7 @@ interface formLoginProps {
 
 }
 
-const SignIn = observer(withRouter((formLoginProps) => {
+const SignIn = observer((formLoginProps) => {
 
     return (<form className="sign-in firstdisplay"
         onSubmit={(event: any) => {
@@ -36,6 +36,6 @@ const SignIn = observer(withRouter((formLoginProps) => {
         <p>¿Aún no tienes cuenta? <a>Regístrate</a></p>
     </form>
     );
-}));
+});
 
 export default SignIn;
