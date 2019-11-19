@@ -31,7 +31,6 @@ interface HomeProps {
         return (<div className="home">
             <DashMenu />
             <MainNavBar title={genStore.navBarTitle} />
-
         </div>);
     }
 }
