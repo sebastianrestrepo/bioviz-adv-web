@@ -5,7 +5,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: all 0.4s;
 }
 
 
@@ -24,28 +23,8 @@ $hintColor: rgb(172, 172, 172);
 $boxShadow: rgba(0, 0, 0, 0.05);
 $doubt: #f3773e;
 
-a {
-    &:hover, &:link, &:visited, &:active {
-        text-decoration: none;
-        color: #333333;
-    }
-}
 body {
     font-family: 'Lato', sans-serif;
-}
-
-@keyframes showcomponent {
-    0% {
-        opacity: 0;
-    }
-
-    50% {
-        opacity: 1;
-    }
-}
-
-.firstdisplay {
-    animation: showcomponent 1.3s 1;
 }
 
 /* width */
@@ -279,8 +258,7 @@ h1 {
     font-size: 21px;
 }
 
-.react-selector,
-.css-2b097c-container {
+.react-selector,  .css-2b097c-container {
     margin: 0;
     padding: 0;
     font-family: 'Lato', sans-serif;
@@ -295,7 +273,7 @@ h1 {
     }
 
     .css-yk16xz-control {
-        height: 21 px;
+        height: 21  px;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -316,56 +294,49 @@ h1 {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-
-    &:hover input~.checkmark {
-        background-color: rgb(247, 247, 247);
+    &:hover input ~ .checkmark {
+      background-color: rgb(247, 247, 247);
     }
-
     input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        height: 0;
-        width: 0;
-
-        &:checked~.checkmark:after {
-            display: block;
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+      &:checked ~ .checkmark:after {
+          display: block;
         }
-
-        &:checked~.checkmark {
-            background-color: $secondActiveColor;
-            border: none;
-
+      &:checked ~ .checkmark {
+          background-color: $secondActiveColor;
+          border: none;
+  
         }
     }
-
     .checkmark {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 20px;
-        width: 20px;
-        background-color: rgb(255, 255, 255);
-        border-radius: 4px;
-        border: 1.5px solid $mainActiveColor;
-
-        &:after {
-            content: "";
-            position: absolute;
-            display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      background-color: rgb(255, 255, 255);
+      border-radius: 4px;
+      border: 1.5px solid $mainActiveColor;
+      &:after {
+          content: "";
+          position: absolute;
+          display: none;
         }
-
-        &:after {
-            left: 6px;
-            top: 2px;
-            width: 5px;
-            height: 10px;
-            border: solid white;
-            border-width: 0 3px 3px 0;
-            -webkit-transform: rotate(45deg);
-            -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
+      &:after {
+          left: 6px;
+          top: 2px;
+          width: 5px;
+          height: 10px;
+          border: solid white;
+          border-width: 0 3px 3px 0;
+          -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
         }
     }
-
-}
+    
+  }
