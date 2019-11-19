@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { auth } from 'firebase';
 import genStore from '../../stores/genStore';
 import MainNavBar from '../MainNavBar/MainNavBar';
+import SpectroComp from '../Tagging/SpectroComp';
 
 interface HomeProps {
     history: any
@@ -21,16 +22,19 @@ interface HomeProps {
         super(props);
         autorun(() => {
             (authStore.isLogged) ?
-            props.history.push("/")
-            : props.history.push("/login")
+                props.history.push("/")
+                : props.history.push("/login")
         });
-        
+
     }
 
     render() {
         return (<div className="home">
             <DashMenu />
-            <MainNavBar title={genStore.navBarTitle} />
+            <div className="page-layout">
+                <MainNavBar title={genStore.navBarTitle} />
+                <SpectroComp />
+            </div>
         </div>);
     }
 }
