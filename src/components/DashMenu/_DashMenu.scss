@@ -16,8 +16,7 @@
 
             img {
                 display: inherit;
-                -webkit-transform: scaleX(-1);
-                transform: scaleX(-1);
+                transform: rotate(-180deg);
             }
 
             p {

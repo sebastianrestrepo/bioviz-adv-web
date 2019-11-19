@@ -9,7 +9,7 @@ interface formRegisterProps {
 
 }
 
-const SignUp = observer(withRouter((formRegisterProps) => {
+const SignUp = observer((formRegisterProps) => {
     return (<form className="sign-up" onSubmit={(e: any) => {
         e.preventDefault();
 
@@ -42,6 +42,6 @@ const SignUp = observer(withRouter((formRegisterProps) => {
         <p>¿Ya tienes una cuenta? <a>Inicia Sesión</a></p>
     </form>
     );
-}));
+});
 
 export default SignUp;

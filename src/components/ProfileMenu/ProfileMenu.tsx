@@ -45,7 +45,7 @@ class ProfileMenu extends Component {
       </button>
       {(this.showProfileMenu)
         ?
-        <div className="complete-menu">
+        <div className="complete-menu firstdisplay">
           <div className="profile-menu">
             <button
               onClick={() => {
