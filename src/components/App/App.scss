@@ -24,6 +24,12 @@ $hintColor: rgb(172, 172, 172);
 $boxShadow: rgba(0, 0, 0, 0.05);
 $doubt: #f3773e;
 
+a {
+    &:hover, &:link, &:visited, &:active {
+        text-decoration: none;
+        color: #333333;
+    }
+}
 body {
     font-family: 'Lato', sans-serif;
 }

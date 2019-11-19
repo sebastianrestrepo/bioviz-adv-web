@@ -15,21 +15,6 @@ class ProjectsStore {
     @observable audioName: any = "";
 
     constructor() {
-
-    }
-
-    @action addProjectToDB(projectName: any, username: any, email: any) {
-/*
-        db.ref('projects/' + authStore.user.uid).push({
-            projectName: projectName,
-            username: username,
-            email: email,
-            creationDate: this.getCurrentDate(),
-            audio_file: this.audioFileURL
-        }); */
-
-        this.setAudioFileUploaded(false);
-
     }
 
     /*
@@ -139,6 +124,16 @@ class ProjectsStore {
         this.showNewProjectForm = false;
     }
 
+    @action onRetrieveProjects() {
+        let that = this;
+        db.collection("projects").onSnapshot((querySnapshot) => { 
+            this.projects = [];
+            querySnapshot.forEach((doc) => {
+                this.projects.push(doc.data())
+            });
+        })
+    }
+
     ///// PROJECT CREATION
 
     @observable creationStep = 1;
@@ -169,8 +164,7 @@ class ProjectsStore {
                 this.stepTitle = 'Datos recolectados'
                 break;
             case 4:
-                this.showNewProjectForm = false;
-                this.creationStep = 1;
+                this.uploadNewProject();
                 break;
         }
     }
@@ -184,6 +178,61 @@ class ProjectsStore {
         this.creationStep -= 1;
         this.setStepTitle()
     }
+
+    @observable newProject = {
+        id: "",
+        date:"",
+        name: "",
+        description: "",
+        colleagues: "",
+        location:"",
+        species: [],
+        intervalMode: false,
+        continousMode: false,
+        audioDuration: 5,
+        frequency: 0,
+        microhphone: '',
+        monacDistribution: '',
+        audioFiles: ''
+      }
+
+      
+  @action uploadNewProject() {
+    this.newProject.date = this.getCurrentDate();
+    let that = this;
+    let tempId = '';
+    db.collection("projects").add(this.newProject)
+      .then(function (docRef) {
+        tempId = docRef.id;
+        db.collection("projects").doc(tempId).update({
+            "id": tempId
+        })
+        that.newProject = {
+            id: "",
+            date:"",
+            name: "",
+            description: "",
+            colleagues: "",
+            location:"",
+            species: [],
+            intervalMode: false,
+            continousMode: false,
+            audioDuration: 5,
+            frequency: 0,
+            microhphone: '',
+            monacDistribution: '',
+            audioFiles: ''
+        }
+        that.showNewProjectForm = false;
+        that.creationStep = 1;
+      })
+      .catch(function (error) {
+        console.error("Error adding document: ", error);
+      });
+    console.log('Subido')
+
+  }
+
 }
 
 const projectsStore = new ProjectsStore();

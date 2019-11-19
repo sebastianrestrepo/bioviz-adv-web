@@ -29,12 +29,22 @@ class CreateProject extends Component {
                         <form className="content" >
                             <span className="question-structure">
                                 <label className="green-subtitle">Nombre del proyecto</label>
-                                <input placeholder="Escribe el nombre del proyecto" type="text" />
+                                <input placeholder="Escribe el nombre del proyecto" 
+                                onChange={(e: any) => {
+                                    projectsStore.newProject.name = e.target.value;
+                                }}
+                                value={projectsStore.newProject.name}
+                                type="text" />
                             </span>
                             <br />
                             <span className="question-structure">
                                 <label className="green-subtitle">Descripción del proyecto</label>
-                                <textarea placeholder="Resume tu proyecto en unas cuantas palabras..." name="" id=""></textarea>
+                                <textarea placeholder="Resume tu proyecto en unas cuantas palabras..." 
+                                onChange={(e: any) => {
+                                    projectsStore.newProject.description = e.target.value;
+                                }}
+                                value={projectsStore.newProject.description}
+                                name="" id=""></textarea>
                             </span>
                             <br />
                             <span className="question-structure">
@@ -92,14 +102,22 @@ class CreateProject extends Component {
                             <span className="row-question-structure">
                                 <label > Duración en minutos
                                 </label>
-                                <input placeholder="0 min" type="number" />
+                                <input placeholder="0 min" 
+                                 onChange={(e: any) => {
+                                    projectsStore.newProject.audioDuration = e.target.value;
+                                }}
+                                 type="number" />
 
 
                             </span>
                             <span className="row-question-structure">
                                 <label > Frecuencia en el día
                                 </label>
-                                <input placeholder="0" type="number" />
+                                <input placeholder="0" value={projectsStore.newProject.frequency}
+                                 onChange={(e: any) => {
+                                    projectsStore.newProject.frequency = e.target.value;
+                                }}
+                                type="number" />
 
                             </span>
 
