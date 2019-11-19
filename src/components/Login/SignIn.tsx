@@ -10,7 +10,7 @@ interface formLoginProps {
 
 const SignIn = observer((formLoginProps) => {
 
-    return (<form className="sign-in"
+    return (<form className="sign-in firstdisplay"
         onSubmit={(event: any) => {
             event.preventDefault();
             authStore.login(authStore.credentials.email, authStore.credentials.password);
