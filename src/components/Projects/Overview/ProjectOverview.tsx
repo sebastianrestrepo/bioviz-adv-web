@@ -4,6 +4,7 @@ import DashMenu from '../../DashMenu/DashMenu';
 import MainNavBar from '../../MainNavBar/MainNavBar';
 import './_ProjectOverview.scss'
 import projectsStore from '../../../stores/projectsStore';
+import ProjectHeader from './ProjectHeader';
 interface ProjectOverviewProps {
     projectId: string,
 }
@@ -20,6 +21,7 @@ class ProjectOverview  extends React.Component<ProjectOverviewProps> {
             <DashMenu></DashMenu>
             <div className="projectOverview-layout ">
                 <MainNavBar title={projectsStore.actualProject.name} />
+                <ProjectHeader name={projectsStore.actualProject.name} description={projectsStore.actualProject.description}/>
             </div>
         </section>
     }

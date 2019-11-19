@@ -13,14 +13,16 @@
             display: flex;
             flex-direction: row;
             justify-content: space-around;
+            height: 31px;
 
-            img {
+            .ham-icon {
                 display: inherit;
                 transform: rotate(-180deg);
             }
 
-            p {
+            .logo-file {
                 display: flex;
+                width: 62%;
             }
         }
 
@@ -45,11 +47,17 @@
         width: 45px;
 
         .logo {
-            img {
+            height: 31px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .ham-icon {
                 display: inherit;
+                margin: auto 0;
             }
 
-            p {
+            .logo-file {
                 display: none;
             }
         }
@@ -79,7 +87,11 @@
         color: white;
         margin: 15px 0;
 
-        img {
+        .logo-file {
+            display: none;
+        }
+
+        .ham-icon {
             width: 27px;
             height: auto;
             display: none;
@@ -92,6 +104,7 @@
         font-weight: 700;
         color: white;
     }
+
     .dash-icon-link {
         width: 100%;
         display: flex;
@@ -99,6 +112,29 @@
         align-items: flex-start;
         margin: 0;
     }
+
+    .project-nav {
+        width: 100%;
+
+        .p-project {
+            color: white;
+            font-weight: 400;
+            font-size: 15px;
+        }
+        .project-section-handler{
+            .project-section-btn{
+                padding: 7px 0 7px 1.5rem;
+                cursor:default;
+                &:hover {
+                    background-color: #4F4F4F;
+                }
+                h4 {
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+
     .dash-icon {
         width: 100%;
         display: flex;
@@ -107,7 +143,11 @@
         margin: 0;
 
         #analysis-btn,
-        #home-btn {
+        #actualProject-btn,
+        #home-btn,
+        #notifications-btn,
+        #lists-btn {
+
             cursor: pointer;
             background-color: #272E2E;
 
@@ -124,6 +164,10 @@
 
                 img {
                     filter: invert(100%);
+                }
+
+                .color-icon {
+                    filter: invert(0%);
                 }
             }
         }
