@@ -1,17 +1,18 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import DashMenu from '../../DashMenu/DashMenu';
-import './_ProjectOverview.scss'
+import './_ActualProject.scss'
 import projectsStore from '../../../stores/projectsStore';
-import ProjectHeader from './ProjectHeader';
+import ProjectHeader from './Overview/ProjectHeader';
 import TabNavBar from './TabNavBar';
 import { autorun } from 'mobx';
 import authStore from '../../../stores/authStore';
-interface ProjectOverviewProps {
+import Tagging from './Tagging/Tagging';
+interface ActualProjectProps {
     projectId: string,
 }
 @observer
-class ProjectOverview extends React.Component<ProjectOverviewProps> {
+class ActualProject extends React.Component<ActualProjectProps> {
     constructor(props: any) {
         super(props);
         projectsStore.retreiveOnlyProjectInfo(this.props.projectId);
@@ -32,7 +33,7 @@ class ProjectOverview extends React.Component<ProjectOverviewProps> {
                     (projectsStore.projectTabs[0].selected) ? <section>
                         <ProjectHeader name={projectsStore.actualProject.name} description={projectsStore.actualProject.description} />
                     </section> : (projectsStore.projectTabs[1].selected) ? <section>
-                        Etiquetado
+                        <Tagging></Tagging>
                     </section> : (projectsStore.projectTabs[2].selected) ? <section>
                         Listado
                     </section> : (projectsStore.projectTabs[3].selected) ? <section>
@@ -46,4 +47,4 @@ class ProjectOverview extends React.Component<ProjectOverviewProps> {
     }
 }
 
-export default ProjectOverview;
+export default ActualProject;

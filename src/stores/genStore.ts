@@ -23,14 +23,12 @@ class GenStore {
                 this.isProjectsActive = false
                 this.isActualProjectActive = false
                 this.navBarTitle = 'Inicio'
-                projectsStore.actualProject = {}
                 break;
             case 'projects':
                 this.isHomeActive = false;
                 this.isProjectsActive = true
                 this.isActualProjectActive = false
                 this.navBarTitle = 'Proyectos'
-                projectsStore.actualProject = {}
                 break;
             case 'actualproject':
                 this.isHomeActive = false;
