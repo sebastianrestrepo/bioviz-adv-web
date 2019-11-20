@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { observer } from 'mobx-react';
 import DashMenu from '../../DashMenu/DashMenu';
-import MainNavBar from '../../MainNavBar/MainNavBar';
 import './_ProjectOverview.scss'
 import projectsStore from '../../../stores/projectsStore';
 import ProjectHeader from './ProjectHeader';
 import TabNavBar from './TabNavBar';
+import { autorun } from 'mobx';
+import authStore from '../../../stores/authStore';
 interface ProjectOverviewProps {
     projectId: string,
 }
@@ -14,6 +15,11 @@ class ProjectOverview extends React.Component<ProjectOverviewProps> {
     constructor(props: any) {
         super(props);
         projectsStore.retreiveOnlyProjectInfo(this.props.projectId);
+        autorun(() => {
+            if (!authStore.isLogged) {
+                props.history.push("/login")
+            }
+        });
     }
 
 

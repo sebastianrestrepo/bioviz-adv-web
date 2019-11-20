@@ -15,7 +15,7 @@ class TabNavBar extends Component {
         return <section className="project-tabbar-navigation">
             {
                 projectsStore.projectTabs.map((tab,index)=> {
-               if (tab.open) { return <Tab name={tab.name} selected={tab.selected} id={index}></Tab> }
+               if (tab.open) { return <Tab key={index} name={tab.name} selected={tab.selected} id={index}></Tab> }
                 })
             }
            

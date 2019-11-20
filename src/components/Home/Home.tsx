@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './_Home.scss'
 import { observer } from 'mobx-react';
 import authStore from '../../stores/authStore';
 import { observable, autorun } from 'mobx';
 import DashMenu from '../DashMenu/DashMenu';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { auth } from 'firebase';
 import genStore from '../../stores/genStore';
 import MainNavBar from '../MainNavBar/MainNavBar';
 
@@ -20,9 +18,9 @@ interface HomeProps {
     constructor(props: any) {
         super(props);
         autorun(() => {
-            (authStore.isLogged) ?
-            props.history.push("/")
-            : props.history.push("/login")
+            if (!authStore.isLogged) {
+                props.history.push("/login")
+            }
         });
         
     }

@@ -1,9 +1,7 @@
-import { observable, autorun, toJS, configure, action, computed, extendObservable } from 'mobx';
+import { observable, action} from 'mobx';
 import firebase from 'firebase';
-import { History } from 'history';
-import { db, storage, auth } from '../firebaseConfig';
-import { userInfo } from 'os';
-import React, { Component } from 'react';
+import { db, auth } from '../firebaseConfig';
+
 
 
 class AuthStore {
@@ -23,8 +21,12 @@ class AuthStore {
 
   constructor() {
     // this.checkUserStatus();
+    this.authChange();
+  }
+
+  @action authChange() {
     auth.onAuthStateChanged((retrievedUser) => {
-      if (retrievedUser) {
+      if (retrievedUser != null) {
         // User is signed in.
         this.user = retrievedUser;
         this.isLogged = true;
@@ -37,13 +39,11 @@ class AuthStore {
         }
 
       } else {
-       
         this.isLogged = false;
         this.statusChecked = true;
       }
     })
   }
-
 
   @observable credentials = {
     name: "",
@@ -154,7 +154,6 @@ class AuthStore {
 
   @action signOut() {
     console.log(firebase.auth().currentUser, 'va cerrar sesión');
-
     auth.signOut();
     this.user = null;
     console.log(firebase.auth().currentUser, 'cerró sesión');

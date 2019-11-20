@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router';
+import React from 'react';
 import authStore from '../../stores/authStore';
 import { observer } from 'mobx-react';
 import ImgDropzone from '../Login/ImgDropzone'
-import { Redirect } from 'react-router-dom';
 
 interface formRegisterProps {
 

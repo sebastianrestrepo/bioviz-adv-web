@@ -27,7 +27,7 @@ interface ProjectsProps {
         autorun(() => {
             (authStore.isLogged) ?
                 props.history.push("/projects")
-                : props.history.push("/")
+                : props.history.push("/login")
         });
     }
 

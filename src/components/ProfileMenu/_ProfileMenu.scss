@@ -1,5 +1,14 @@
 .profile-icon {
     position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    h4 {
+        color: white;
+        margin:  0 1rem 0 0 ;
+    }
     .profile-photo {
         cursor: pointer;
         border: none;
@@ -9,7 +18,7 @@
 
     .profile-menu {
         margin: -1px 0 0 0;
-        top: 100%;
+        top: 116%;
         right: 0;
         position: absolute;
         display: flex;

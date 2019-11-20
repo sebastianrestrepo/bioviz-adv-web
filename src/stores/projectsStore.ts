@@ -1,4 +1,4 @@
-import { observable, autorun, action } from 'mobx';
+import { observable, action } from 'mobx';
 import firebase from 'firebase';
 import { db } from '../firebaseConfig';
 import authStore from './authStore';
@@ -16,27 +16,6 @@ class ProjectsStore {
 
     constructor() {
     }
-
-    /*
-    getProjects = (userId: any) => {
-        var projectsDB =
-            db.ref('projects/' + userId)
-                .limitToLast(500);
-        projectsDB.on("value", snapshot => {
-            let newProjects: any[] = [];
-            snapshot.forEach(child => {
-                var project = child.val();
-                newProjects.push({
-                    projectName: project.projectName,
-                    username: project.username,
-                    email: project.email,
-                    creationDate: project.creationDate
-                });
-                this.projects = newProjects;
-                console.log(this.projects);
-            });
-        });
-    } */
 
     getCurrentDate() {
         var today: any = new Date();
@@ -288,7 +267,7 @@ class ProjectsStore {
     }
     @action onCloseProjectTab(section: number) {
         this.projectTabs.map((tab, index) => {
-            if (index == section) {  tab.selected = false; tab.open = false; }
+            if (index == section) { tab.selected = false; tab.open = false; }
         })
     }
 }
