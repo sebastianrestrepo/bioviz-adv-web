@@ -6,7 +6,8 @@ class TaggingStore {
 
     @observable dayAnalyzing: any = ''
     @observable focusedDayInput: boolean = false;
-
+    @observable actualTime: any = '00:01'
+    @observable isAiOn: boolean =  false;
     //------------------------------------ Color edition -------------------//
     @observable colorEditionStatus: boolean = false;
     @observable contrastEditionStatus: boolean = false;

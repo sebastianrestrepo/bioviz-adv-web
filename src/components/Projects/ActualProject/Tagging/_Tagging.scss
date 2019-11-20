@@ -1,0 +1,116 @@
+@import './../../../../variables.scss';
+
+.tag-header-cont {
+    background-color: white;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+        font-weight: 900;
+    }
+
+    .datetime {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        label {
+            margin: 0 1rem;
+        }
+    }
+
+    label {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        p {
+            margin: 0 0.5rem;
+        }
+        input[type=time]::-webkit-datetime-edit-ampm-field {
+            display: none;
+          }
+    }
+    .right-handlers {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        button {
+            margin: 0 1rem;
+        }
+        div {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            p {
+                font-weight: 700;
+            }
+            label {
+                margin: 0 1rem;
+            }
+        }
+    }
+
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 25px;
+
+        input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+
+            &:before {
+                position: absolute;
+                content: "";
+                height: 21px;
+                width: 21px;
+                left: 2px;
+                bottom: 2px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+        }
+
+        .slider.round {
+            border-radius: 7px;
+        }
+
+        .slider.round:before {
+            border-radius: 30%;
+        }
+
+
+        input:checked+.slider {
+            background-color: $thirdActiveColor;
+        }
+
+        input:focus+.slider {
+            box-shadow: 0 0 1px rgb(187, 197, 204);
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(15px);
+            -ms-transform: translateX(15px);
+            transform: translateX(15px);
+        }
+    }
+}
