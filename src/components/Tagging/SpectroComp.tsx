@@ -6,6 +6,7 @@ import Timeline from 'wavesurfer.js/dist/plugin/wavesurfer.timeline.js';
 import Minimap from 'wavesurfer.js/dist/plugin/wavesurfer.minimap';
 import Regions from 'wavesurfer.js/dist/plugin/wavesurfer.regions';
 import Cursor from 'wavesurfer.js/dist/plugin/wavesurfer.cursor';
+import taggingStore from '../../stores/taggingStore';
 
 const SpectroComp = () => {
 
@@ -23,8 +24,8 @@ const SpectroComp = () => {
     React.useEffect(() => {
         wsRef.current = WaveSurfer.create({
             container: containerRef.current,
-            waveColor: 'rgba(175, 234, 125, 0.1)',
-            progressColor: 'rgba(137, 212, 110, 0.1)',
+            waveColor: 'rgba(175, 234, 125, 0.05)',
+            progressColor: 'rgba(137, 212, 110, 0.05)',
             cursorWidth: 4,
             cursorColor: '#AFEA7D',
             height: 120,
@@ -38,12 +39,12 @@ const SpectroComp = () => {
                 Timeline.create({
                     container: containerTimelineRef.current
                 }),
-                Minimap.create({
+                /*Minimap.create({
                     container: containerSpecSel.current,
                     waveColor: '#777',
                     progressColor: '#222',
                     height: 50
-                }),
+                }),*/
                 Cursor.create({
                     showTime: true,
                     opacity: 0.8,
@@ -74,17 +75,10 @@ const SpectroComp = () => {
         });
 
         wsRef.current.load('/data/Anchicaya_LaLocaTrocha_2019.06.22_07.50.35_1_mitad.mp3');
+
+        taggingStore.wsRef = wsRef.current;
     }, []);
 
-    const handleColorChange = () => {
-        wsRef.current.setWaveColor('#95BDFF');
-        wsRef.current.setProgressColor('#2B72E9');
-    }
-
-    const handlePlayPause = () => {
-        wsRef.current.playPause();
-        saveRegions();
-    }
 
     function saveRegions() {
         localStorage.regions = JSON.stringify(
@@ -114,17 +108,6 @@ const SpectroComp = () => {
         <div id="timeline" ref={containerTimelineRef} />
         <div id="waveform" ref={containerRef}>
             <div id="wave-spectrogram" ref={containerSpecRef} />
-        </div>
-        {/*<div id="minimap" ref={containerSpecSel} />*/}
-
-        <div className="div-btns">
-            <button id="color-change" onClick={handleColorChange}>Cambiar color de onda</button>
-            <button id="play-pause" onClick={handlePlayPause}>Reproducir/Pausar</button>
-            <div id="zoom-bar">
-                <img src="./assets/temp-icons/zoom-out-icon.png" width="30" height="30" />
-                <input id="slider" type="range" min="1" max="200" onChange={handleSliderChange} ref={sliderRef} />
-                <img src="./assets/temp-icons/zoom-in-icon.png" width="30" height="30" />
-            </div>
         </div>
 
     </div>);

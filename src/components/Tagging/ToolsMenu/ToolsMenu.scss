@@ -5,13 +5,13 @@
     justify-content: space-between;
 
     .audio-options {
-        margin-left: 30px;
+        margin-left: 45px;
     }
 
     .edition-options {
         display: flex;
         flex-direction: row;
-        margin-right: 30px;   
+        margin-right: 45px;   
     }
 
     .tool-btn {
@@ -19,6 +19,8 @@
         cursor: pointer;
         border: none;
         text-decoration: none;
+        height: 100%;
+        border-radius: 0px;
     }
 
     .tool-btn:hover {
