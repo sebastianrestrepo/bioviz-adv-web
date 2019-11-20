@@ -1,6 +1,7 @@
 import { observable, action} from 'mobx';
 import firebase from 'firebase';
 import { db, auth } from '../firebaseConfig';
+import projectsStore from './projectsStore';
 
 
 
@@ -155,6 +156,8 @@ class AuthStore {
   @action signOut() {
     console.log(firebase.auth().currentUser, 'va cerrar sesión');
     auth.signOut();
+    projectsStore.actualProject = {}
+    projectsStore.projects = []
     this.user = null;
     console.log(firebase.auth().currentUser, 'cerró sesión');
     this.isLogged = false;

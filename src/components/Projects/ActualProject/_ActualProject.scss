@@ -1,15 +1,17 @@
  @import './../../../variables.scss';
-.project-overview {
+.project-dashboard {
     display: flex;
     flex-direction: row;
     background-color: #E5E5E5;
-    .projectOverview-layout  {
+    .projectDash-layout  {
         display: flex;
         width: 100%;
-        height: calc(100vh - 45px);
+        height: 100vh;
         flex-direction: column;
-
-      
+        .dash-section {
+            height: 100%;
+            overflow-y: scroll;
+        }
     }
 }
 
@@ -63,6 +65,10 @@
         cursor: default;
         transition: all 0.1s;
         border-left: 0.5px solid rgb(87, 97, 97);
+        &:hover {
+            background-color: rgb(83, 92, 92);
+
+        }
         h4 {
             font-size: 15px;
         }

@@ -108,7 +108,9 @@ class ProjectsStore {
         db.collection("projects").onSnapshot((querySnapshot) => {
             this.projects = [];
             querySnapshot.forEach((doc) => {
+                if (doc.data().owner == authStore.currentUserInfo.id) {
                 this.projects.push(doc.data())
+                }
             });
         })
     }
@@ -163,6 +165,7 @@ class ProjectsStore {
         date: "",
         name: "",
         description: "",
+        owner: "",
         colleagues: "",
         location: "",
         species: [],
@@ -178,6 +181,7 @@ class ProjectsStore {
 
     @action uploadNewProject() {
         this.newProject.date = this.getCurrentDate();
+        this.newProject.owner = authStore.currentUserInfo.id;
         let that = this;
         let tempId = '';
         db.collection("projects").add(this.newProject)
@@ -189,6 +193,7 @@ class ProjectsStore {
                 that.newProject = {
                     id: "",
                     date: "",
+                    owner: "",
                     name: "",
                     description: "",
                     colleagues: "",

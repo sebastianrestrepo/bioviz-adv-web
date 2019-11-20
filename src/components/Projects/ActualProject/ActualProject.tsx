@@ -25,20 +25,20 @@ class ActualProject extends React.Component<ActualProjectProps> {
 
 
     render() {
-        return <section className="project-overview">
+        return <section className="project-dashboard">
             <DashMenu></DashMenu>
-            <div className="projectOverview-layout ">
+            <div className="projectDash-layout ">
                 <TabNavBar />
                 {
-                    (projectsStore.projectTabs[0].selected) ? <section>
+                    (projectsStore.projectTabs[0].selected) ? <section className="dash-section">
                         <ProjectHeader name={projectsStore.actualProject.name} description={projectsStore.actualProject.description} />
-                    </section> : (projectsStore.projectTabs[1].selected) ? <section>
+                    </section> : (projectsStore.projectTabs[1].selected) ? <section className="dash-section">
                         <Tagging></Tagging>
-                    </section> : (projectsStore.projectTabs[2].selected) ? <section>
+                    </section> : (projectsStore.projectTabs[2].selected) ? <section className="dash-section">
                         Listado
-                    </section> : (projectsStore.projectTabs[3].selected) ? <section>
+                    </section> : (projectsStore.projectTabs[3].selected) ? <section className="dash-section">
                         Visualización
-                    </section> : (projectsStore.projectTabs[4].selected) ? <section>
+                    </section> : (projectsStore.projectTabs[4].selected) ? <section className="dash-section">
                         Audios
                     </section> : ''
                 }

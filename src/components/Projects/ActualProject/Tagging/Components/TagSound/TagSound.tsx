@@ -38,7 +38,7 @@ export class TagSound extends React.Component {
     render() {
         return <section className="tagging-section">
             <div className="card-header">
-                <h1>Selección</h1>
+                <h3>Selección</h3>
                 <img className="close-icon" src="./assets/icons/close.svg" alt="" />
             </div>
             <div className="spec">
@@ -50,9 +50,10 @@ export class TagSound extends React.Component {
             <div className="cards-cont">
             
                 {
-                    suggestionStore.speciesSuggested.map((e) => {
+                    suggestionStore.speciesSuggested.map((e,i) => {
                         const jsonData =JSON.stringify(e.otherSongs);
                         return <TagSuggestion
+                            key={i}
                             sciName={e.sciName}
                             commonName={e.commonName}
                             order={e.order}

@@ -8,8 +8,6 @@ const SignIn = observer(() => {
         onSubmit={(event: any) => {
             event.preventDefault();
             authStore.login(authStore.credentials.email, authStore.credentials.password);
-          
-
         }}>
 
         <div className="form-imput">

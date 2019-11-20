@@ -24,11 +24,7 @@ interface ProjectsProps {
 
     constructor(props: any) {
         super(props);
-        autorun(() => {
-            (authStore.isLogged) ?
-                props.history.push("/projects")
-                : props.history.push("/login")
-        });
+        projectsStore.onRetrieveProjects();
     }
 
     renderProjects = () => {

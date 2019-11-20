@@ -95,7 +95,7 @@ class TagSuggestion extends Component<tagSuggestionProps> {
             <div className="card-section ai-sources">
                 <p className={(tagStore.isUnfoldedReference) ? 'unfolded' : ''}
                     onClick={() => tagStore.onDisplayOtherSings()}>
-                    <div className="arrow-down"></div>
+                    <span className="arrow-down"></span>
                     Ver otros cantos de esta especie encontrados en eBird:</p>
                 {
                     (tagStore.isUnfoldedReference) ? <span className="row">

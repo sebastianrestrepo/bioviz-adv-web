@@ -74,6 +74,7 @@ import projectsStore from '../../stores/projectsStore';
                     </Link>
                     {
                         (genStore.isDashOpen) ? <section>
+                             <Link to={`/projects/${projectsStore.actualProject.id}`} className="dash-icon-link">
                             <div className="dash-icon project-section-handler"
                                 onClick={() => {
                                     genStore.onDahshNavClick('actualproject')
@@ -84,7 +85,8 @@ import projectsStore from '../../stores/projectsStore';
                                     <h4>Vista general</h4>
                                 </span>
                             </div>
-
+                            </Link>
+                            <Link to={`/projects/${projectsStore.actualProject.id}`} className="dash-icon-link">
                             <div className="dash-icon project-section-handler"
                                 onClick={() => {
                                     genStore.onDahshNavClick('actualproject')
@@ -95,6 +97,8 @@ import projectsStore from '../../stores/projectsStore';
                                     <h4>Etiquetado</h4>
                                 </span>
                             </div>
+                            </Link>
+                            <Link to={`/projects/${projectsStore.actualProject.id}`} className="dash-icon-link">
                             <div className="dash-icon project-section-handler"
                                 onClick={() => {
                                     genStore.onDahshNavClick('actualproject')
@@ -105,6 +109,8 @@ import projectsStore from '../../stores/projectsStore';
                                     <h4>Visualización</h4>
                                 </span>
                             </div>
+                            </Link>
+                            <Link to={`/projects/${projectsStore.actualProject.id}`} className="dash-icon-link">
                             <div className="dash-icon project-section-handler"
                                 onClick={() => {
                                     genStore.onDahshNavClick('actualproject')
@@ -116,6 +122,8 @@ import projectsStore from '../../stores/projectsStore';
                                     <h4>Listado</h4>
                                 </span>
                             </div>
+                            </Link>
+                            <Link to={`/projects/${projectsStore.actualProject.id}`} className="dash-icon-link">
                             <div className="dash-icon project-section-handler"
                                 onClick={() => {
                                     genStore.onDahshNavClick('actualproject')
@@ -127,6 +135,7 @@ import projectsStore from '../../stores/projectsStore';
                                     <h4>Audios subidos</h4>
                                 </span>
                             </div>
+                            </Link>
                         </section> : ''
                     }
 
