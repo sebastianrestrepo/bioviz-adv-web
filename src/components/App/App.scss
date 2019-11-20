@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Lato:400,600,700,900&display=swap');
+@import './../../variables.scss';
 
 * {
     margin: 0;
@@ -8,28 +9,17 @@
     transition: all 0.4s;
 }
 
-
-$mainActiveColor: #44cd88;
-$mainActiveColorHover: #43b37b;
-$secondActiveColor: #AFEA7D;
-$mainDarkColor: #333333;
-$mainDarkColorHover: rgb(25, 29, 29);
-$darkBorderColor: rgb(153, 153, 153);
-$lightBorderColor: rgb(219, 219, 219);
-$ligthGray2: #F4F4F4;
-$lightColoredBorderColor: #CBE2D7;
-$white: white;
-$semiWhite: #F9F9F9;
-$hintColor: rgb(172, 172, 172);
-$boxShadow: rgba(0, 0, 0, 0.05);
-$doubt: #f3773e;
-
 a {
-    &:hover, &:link, &:visited, &:active {
+
+    &:hover,
+    &:link,
+    &:visited,
+    &:active {
         text-decoration: none;
         color: #333333;
     }
 }
+
 body {
     font-family: 'Lato', sans-serif;
 }
@@ -86,11 +76,20 @@ h1 {
         display: inherit;
     }
 
+    &:hover {
+
+        .tooltiptextUp,
+        .tooltiptext {
+            display: inherit;
+        }
+    }
+
+
     .tooltiptext {
         display: none;
         min-width: 120px;
         word-wrap: break-word;
-        max-width: 200px;
+        max-width: 210px;
         background-color: $mainDarkColor;
         color: $white;
         text-align: center;
@@ -98,9 +97,11 @@ h1 {
         padding: 5px 0;
         position: absolute;
         z-index: 1;
-        top: 150%;
         left: 50%;
         margin-left: -60px;
+        top: 150%;
+
+
 
         &::after {
             content: "";
@@ -111,6 +112,34 @@ h1 {
             border-width: 5px;
             border-style: solid;
             border-color: transparent transparent $mainDarkColor transparent;
+        }
+    }
+
+    .tooltiptextUp {
+        display: none;
+        min-width: 120px;
+        word-wrap: break-word;
+        max-width: 210px;
+        background-color: $mainDarkColor;
+        color: $white;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        margin-left: -60px;
+        bottom: 150%;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: $mainDarkColor transparent transparent transparent;
         }
     }
 }
@@ -193,13 +222,9 @@ textarea {
         align-items: center;
         align-content: center;
     }
-
-
-
 }
 
 input {
-
     padding: 5px;
     height: 35px;
     border-radius: 3px;
@@ -228,6 +253,17 @@ select {
     padding: 0.3rem 1rem;
 }
 
+.gray-text {
+    color: $hintColor;
+}
+
+._14px {
+    font-size: 14px;
+}
+
+._12px {
+    font-size: 12px;
+}
 button {
     letter-spacing: -0.5px;
     font-size: 15px;
@@ -273,6 +309,11 @@ button {
 
 input[type="checkbox"] {
     height: auto;
+}
+
+#card-for-tagging {
+    position: absolute;
+    background-color: $white;
 }
 
 h1 {
