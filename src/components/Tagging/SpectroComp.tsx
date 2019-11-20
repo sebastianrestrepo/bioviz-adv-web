@@ -6,7 +6,7 @@ import Timeline from 'wavesurfer.js/dist/plugin/wavesurfer.timeline.js';
 import Minimap from 'wavesurfer.js/dist/plugin/wavesurfer.minimap';
 import Regions from 'wavesurfer.js/dist/plugin/wavesurfer.regions';
 import Cursor from 'wavesurfer.js/dist/plugin/wavesurfer.cursor';
-import taggingStore from '../../stores/taggingStore';
+import toolsStore from '../../stores/toolsStore';
 
 const SpectroComp = () => {
 
@@ -70,13 +70,13 @@ const SpectroComp = () => {
             ]
         });
 
-        wsRef.current.on('ready', function () {
+        /*wsRef.current.on('ready', function () {
             wsRef.current.play();
-        });
+        });*/
 
         wsRef.current.load('/data/Anchicaya_LaLocaTrocha_2019.06.22_07.50.35_1_mitad.mp3');
 
-        taggingStore.wsRef = wsRef.current;
+        toolsStore.wsRef = wsRef.current;
     }, []);
 
 

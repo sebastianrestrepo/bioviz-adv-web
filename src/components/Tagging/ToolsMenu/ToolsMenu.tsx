@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './ToolsMenu.scss'
 import { observer } from 'mobx-react';
-import taggingStore from '../../../stores/taggingStore';
+import toolsStore from '../../../stores/toolsStore';
 
 @observer
 export default class ToolsMenu extends React.Component {
@@ -10,11 +10,11 @@ export default class ToolsMenu extends React.Component {
         return <div className="tool-bar">
             <div className="audio-options">
                 <span className="tooltip">
-                    <button className="tool-btn" onClick={taggingStore.handlePlay}><img src="./assets/tool-bar-assets/play-icon.svg" alt="" height="50" width="50"></img></button>
+                    <button className="tool-btn" onClick={toolsStore.handlePlay}><img src="./assets/tool-bar-assets/play-icon.svg" alt="" height="50" width="50"></img></button>
                     <span className="tooltiptext">Reproducir</span>
                 </span>
                 <span className="tooltip">
-                    <button className="tool-btn" onClick={taggingStore.handlePause}><img src="./assets/tool-bar-assets/pause-icon.svg" alt="" height="50" width="50"></img></button>
+                    <button className="tool-btn" onClick={toolsStore.handlePause}><img src="./assets/tool-bar-assets/pause-icon.svg" alt="" height="50" width="50"></img></button>
                     <span className="tooltiptext">Pausar</span>
                 </span>
                 <span className="tooltip">

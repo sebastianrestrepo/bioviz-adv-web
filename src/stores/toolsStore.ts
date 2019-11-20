@@ -1,6 +1,6 @@
 import { observable, autorun, action } from 'mobx';
 
-class TaggingStore {
+class ToolsStore {
 
     @observable wsRef: any;
 
@@ -17,6 +17,6 @@ class TaggingStore {
 
 }
 
-const taggingStore = new TaggingStore();
+const toolsStore = new ToolsStore();
 
-export default taggingStore;
+export default toolsStore;
