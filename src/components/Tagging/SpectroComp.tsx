@@ -115,7 +115,7 @@ const SpectroComp = () => {
         <div id="waveform" ref={containerRef}>
             <div id="wave-spectrogram" ref={containerSpecRef} />
         </div>
-        <div id="minimap" ref={containerSpecSel} />
+        {/*<div id="minimap" ref={containerSpecSel} />*/}
 
         <div className="div-btns">
             <button id="color-change" onClick={handleColorChange}>Cambiar color de onda</button>
@@ -126,7 +126,7 @@ const SpectroComp = () => {
                 <img src="./assets/temp-icons/zoom-in-icon.png" width="30" height="30" />
             </div>
         </div>
-        
+
     </div>);
 }
 

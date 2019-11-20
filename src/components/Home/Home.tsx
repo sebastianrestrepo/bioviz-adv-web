@@ -9,6 +9,7 @@ import { auth } from 'firebase';
 import genStore from '../../stores/genStore';
 import MainNavBar from '../MainNavBar/MainNavBar';
 import SpectroComp from '../Tagging/SpectroComp';
+import ToolsMenu from '../Tagging/ToolsMenu/ToolsMenu';
 
 interface HomeProps {
     history: any
@@ -34,6 +35,7 @@ interface HomeProps {
             <div className="page-layout">
                 <MainNavBar title={genStore.navBarTitle} />
                 <SpectroComp />
+                <ToolsMenu />
             </div>
         </div>);
     }
