@@ -8,6 +8,7 @@ import { HashRouter } from "react-router-dom";
 import Projects from '../Projects/Projects';
 import projectsStore from '../../stores/projectsStore';
 import ActualProject from '../Projects/ActualProject/ActualProject';
+
 interface AppProps {
   history: any
 }

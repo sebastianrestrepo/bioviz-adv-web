@@ -2,6 +2,11 @@ import { observable, action } from "mobx";
 
 class TaggingStore {
 
+    //---------------------------------DATE selection -----------------------------//
+
+    @observable dayAnalyzing: any = ''
+    @observable focusedDayInput: boolean = false;
+
     //------------------------------------ Color edition -------------------//
     @observable colorEditionStatus: boolean = false;
     @observable contrastEditionStatus: boolean = false;
