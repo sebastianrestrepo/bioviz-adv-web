@@ -4,7 +4,7 @@ import projectsStore from './projectsStore';
 
 class GenStore {
 
-    @observable isDashOpen = false;
+    @observable isDashOpen = true;
     @observable isHomeActive = true;
     @observable isProjectsActive = false;
     @observable isNotificationsActive = false;

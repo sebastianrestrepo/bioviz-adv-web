@@ -56,13 +56,14 @@ import projectsStore from '../../stores/projectsStore';
             </div>
             {
                 (projectsStore.actualProject.name != null) ? <div className="firstdisplay project-nav">
-                    <span>
+                    <span className="p-wrapper">
                         <p className="p-project">{(genStore.isDashOpen) ? "Trabajando en: " : "En:"}</p>
                     </span>
                     <Link to={`/projects/${projectsStore.actualProject.id}`} className="dash-icon-link">
                         <div className="dash-icon" id="actualProject-icon"
                             onClick={() => {
                                 genStore.onDahshNavClick('actualproject')
+                                projectsStore.openProjectTab(0)
                             }}
                         >
                             <span id="actualProject-btn" className={(genStore.isActualProjectActive) ? 'selected' : ''}>
@@ -71,52 +72,64 @@ import projectsStore from '../../stores/projectsStore';
                             </span>
                         </div>
                     </Link>
-                    <div className="dash-icon project-section-handler" 
-                        onClick={() => {
-                            genStore.onDahshNavClick('actualproject')
-                        }}>
-                        <span  className={(genStore.isActualProjectActive) ? 'selected project-section-btn' : 'project-section-btn'}>
-                            <div className="dot"></div>
-                            <h4>Vista general</h4>
-                        </span>
-                    </div>
- 
-                    <div className="dash-icon project-section-handler" 
-                        onClick={() => {
-                            genStore.onDahshNavClick('actualproject')
-                        }}>
-                        <span  className={(genStore.isActualProjectActive) ? 'selected project-section-btn' : 'project-section-btn'}>
-                            <div className="dot"></div>
-                            <h4>Etiquetado</h4>
-                        </span>
-                    </div>
-                    <div className="dash-icon project-section-handler" 
-                        onClick={() => {
-                            genStore.onDahshNavClick('actualproject')
-                        }}>
-                        <span  className={(genStore.isActualProjectActive) ? 'selected project-section-btn' : 'project-section-btn'}>
-                            <div className="dot"></div>
-                            <h4>Visualización</h4>
-                        </span>
-                    </div>
-                    <div className="dash-icon project-section-handler" 
-                        onClick={() => {
-                            genStore.onDahshNavClick('actualproject')
-                        }}>
-                        <span  className={(genStore.isActualProjectActive) ? 'selected project-section-btn' : 'project-section-btn'}>
-                            <div className="dot"></div>
-                            <h4>Listado</h4>
-                        </span>
-                    </div>
-                    <div className="dash-icon project-section-handler" 
-                        onClick={() => {
-                            genStore.onDahshNavClick('actualproject')
-                        }}>
-                        <span  className={(genStore.isActualProjectActive) ? 'selected project-section-btn' : 'project-section-btn'}>
-                            <div className="dot"></div>
-                            <h4>Audios subidos</h4>
-                        </span>
-                    </div>
+                    {
+                        (genStore.isDashOpen) ? <section>
+                            <div className="dash-icon project-section-handler"
+                                onClick={() => {
+                                    genStore.onDahshNavClick('actualproject')
+                                    projectsStore.openProjectTab(0)
+                                }}>
+                                <span className={(genStore.isActualProjectActive) ? 'selected project-section-btn' : 'project-section-btn'}>
+                                    <div className={(projectsStore.projectTabs[0].open) ? 'dot tab-open' : 'dot'}></div>
+                                    <h4>Vista general</h4>
+                                </span>
+                            </div>
+
+                            <div className="dash-icon project-section-handler"
+                                onClick={() => {
+                                    genStore.onDahshNavClick('actualproject')
+                                  projectsStore.openProjectTab(1)
+                                }}>
+                                <span className={(genStore.isActualProjectActive) ? 'selected project-section-btn' : 'project-section-btn'}>
+                                    <div className={(projectsStore.projectTabs[1].open) ? 'dot tab-open' : 'dot'}></div>
+                                    <h4>Etiquetado</h4>
+                                </span>
+                            </div>
+                            <div className="dash-icon project-section-handler"
+                                onClick={() => {
+                                    genStore.onDahshNavClick('actualproject')
+                                    projectsStore.openProjectTab(3)
+                                }}>
+                                <span className={(genStore.isActualProjectActive) ? 'selected project-section-btn' : 'project-section-btn'}>
+                                    <div className={(projectsStore.projectTabs[3].open) ? 'dot tab-open' : 'dot'}></div>
+                                    <h4>Visualización</h4>
+                                </span>
+                            </div>
+                            <div className="dash-icon project-section-handler"
+                                onClick={() => {
+                                    genStore.onDahshNavClick('actualproject')
+                                    projectsStore.openProjectTab(2)
+
+                                }}>
+                                <span className={(genStore.isActualProjectActive) ? 'selected project-section-btn' : 'project-section-btn'}>
+                                    <div className={(projectsStore.projectTabs[2].open) ? 'dot tab-open' : 'dot'}></div>
+                                    <h4>Listado</h4>
+                                </span>
+                            </div>
+                            <div className="dash-icon project-section-handler"
+                                onClick={() => {
+                                    genStore.onDahshNavClick('actualproject')
+                                    projectsStore.openProjectTab(4)
+
+                                }}>
+                                <span className={(genStore.isActualProjectActive) ? 'selected project-section-btn' : 'project-section-btn'}>
+                                    <div className={(projectsStore.projectTabs[4].open) ? 'dot tab-open' : 'dot'}></div>
+                                    <h4>Audios subidos</h4>
+                                </span>
+                            </div>
+                        </section> : ''
+                    }
+
                 </div> : ''
             }
             <div>
