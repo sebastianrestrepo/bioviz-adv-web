@@ -3,6 +3,7 @@ import './_Tagging.scss'
 import { observer } from 'mobx-react';
 import ColorEditor from './Components/SpectroEditor/ColorEditor';
 import ContrastEditor from './Components/SpectroEditor/ContrastEditor';
+import { TagSound } from './Components/TagSound/TagSound';
 
 interface TaggingProps {
 }
@@ -15,7 +16,7 @@ interface TaggingProps {
 
     render() {
         return (<div className="tagging">
-            <ColorEditor/>
+            <TagSound/>
         </div>);
     }
 }

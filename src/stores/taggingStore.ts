@@ -98,6 +98,101 @@ class TaggingStore {
 
     @observable brightVal = 1;
     @observable contrastVal = 1;
+
+    //--------------------------------SAVE DATA LABELED --------------------------------//
+
+    
+    @observable playingSuggestion = false;
+    @observable selected1 = false;
+    @observable selected2 = false;
+    @observable selected3 = false;
+    @observable selected4 = false;
+    @observable selected5 = false;
+    @observable selected6 = false;
+    @observable isSomethingSelected = false;
+
+    @observable isPlaying = false;
+    @observable verified = false;
+
+    @action updateMark() {
+        this.verified = true;
+    }
+
+    @action playBirdSong(url) {
+        let a = new Audio(url);
+        let setPlay = true;
+        if (!this.isPlaying) {
+            this.isPlaying = true;
+            a.play()
+            let that = this;
+            setTimeout(function () {
+                that.isPlaying = false;
+                a.pause();
+
+            },
+                4500)
+        }
+
+    }
+
+    //Without AI
+
+    @observable isNoteActivated = false;
+    @observable commonName;
+    @observable sciName;
+    
+    @action onNoteClick() {
+        this.isNoteActivated = true;
+    }
+
+    
+    @action birdClick(value: number) {
+        switch (value) {
+            case 1:
+                this.commonName = 'Barranquero bocon'
+                this.sciName = 'Electron platyrhynchum'
+                break;
+            case 2:
+                this.commonName = 'Piranga Roja'
+                this.sciName = 'Piranga rubra'
+                break;
+            case 3:
+                this.commonName = 'Mosquero moñudo'
+                this.sciName = 'Mitrephanes phaeocercus'
+                break;
+            case 4:
+                this.commonName = 'Torito cabeciblanco'
+                this.sciName = 'Capito maculicoronatus'
+                break;
+        }
+
+    }
+
+
+    
+
+    //with AI
+    @observable mainSpecSuggested = false;
+    @observable isSomethingZoomed = false;
+    @observable zoomedSpeImgUrl = ""
+    @observable zoomedSpeAudioUrl = ""
+
+    @action onSpecZoomView(img, audio) {
+        this.isSomethingZoomed = true;
+        this.zoomedSpeAudioUrl = audio;
+        this.zoomedSpeImgUrl = img;
+    }
+
+    @action onExitZoomView() {
+        this.isSomethingZoomed = false;
+        this.zoomedSpeAudioUrl = '';
+        this.zoomedSpeImgUrl = '';
+    }
+
+    @observable isUnfoldedReference = false;
+    @action onDisplayOtherSings() {
+        this.isUnfoldedReference = !this.isUnfoldedReference;
+    }
 }
 const tagStore = new TaggingStore();
 
