@@ -44,6 +44,7 @@ export class TagSound extends React.Component {
             <div className="spec">
                 <img src="./assets/spectroSelected.png" alt="" />
             </div>
+            <div className={(tagStore.isAiOn) ? 'suggestion-cont' : 'suggestion-cont undisplay'}>
             <div className="suggest-header">
                     <h1>Sugerencias del sistema</h1>
                 </div>
@@ -86,6 +87,8 @@ export class TagSound extends React.Component {
                 </span>
 
             </div>
+            </div>
+  
             <div className="card-section">
                 <span className="description-items-row">
                     <p><span className="text-title">Esta identificación está:</span> </p>

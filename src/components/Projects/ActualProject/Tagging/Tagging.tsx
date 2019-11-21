@@ -2,6 +2,7 @@ import React from 'react';
 import './_Tagging.scss'
 import { observer } from 'mobx-react';
 import { TaggingHeader } from './Components/TaggingHeader';
+import { TagSound } from './Components/TagSound/TagSound';
 
 interface TaggingProps {
 }
@@ -15,6 +16,10 @@ interface TaggingProps {
     render() {
         return (<div className="tagging">
             <TaggingHeader></TaggingHeader>
+            <div className="two-sections">
+                <div className="spectro-selection"></div>
+                <TagSound></TagSound>
+            </div>
         </div>);
     }
 }

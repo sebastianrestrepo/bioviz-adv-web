@@ -21,7 +21,7 @@ class TagSuggestion extends Component<tagSuggestionProps> {
         super(props);
     }
     render() {
-        return <div className="suggest-card-cont">
+        return <div className={(tagStore.isAiOn) ? 'suggest-card-cont firstdisplay' : 'suggest-card-cont undisplay firstdisplay'}>
 
             <div className="ai-section">
                 <div className="column-wrapper">

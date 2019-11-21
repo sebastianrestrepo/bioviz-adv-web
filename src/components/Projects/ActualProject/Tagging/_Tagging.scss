@@ -114,3 +114,22 @@
         }
     }
 }
+
+.tagging {
+    .two-sections {
+        display: flex;
+        flex-direction: row;
+         padding: 7px;
+        .spectro-selection {
+            width: 50%;
+            background-color: white;
+        }
+        .tagging-section {
+            .suggestion-cont{
+                &.undisplay {
+                    display: none;
+                }
+            }
+        }
+    }
+}
