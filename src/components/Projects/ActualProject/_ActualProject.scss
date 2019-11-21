@@ -3,18 +3,20 @@
     display: flex;
     flex-direction: row;
     background-color: #E5E5E5;
+
     .projectDash-layout  {
         display: flex;
         width: 100%;
         height: 100vh;
         flex-direction: column;
+        
         .dash-section {
             height: 100%;
-            overflow-y: auto;
-            overflow: hidden;
         }
     }
 }
+
+
 
 .project-header {
    width: 100%;         

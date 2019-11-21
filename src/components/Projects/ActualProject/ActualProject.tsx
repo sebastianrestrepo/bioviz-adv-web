@@ -8,6 +8,7 @@ import TabNavBar from './TabNavBar';
 import { autorun } from 'mobx';
 import authStore from '../../../stores/authStore';
 import Tagging from './Tagging/Tagging';
+import { SpeciesList } from './SpeciesReport/SpeciesList';
 interface ActualProjectProps {
     projectId: string,
 }
@@ -35,7 +36,7 @@ class ActualProject extends React.Component<ActualProjectProps> {
                     </section> : (projectsStore.projectTabs[1].selected) ? <section className="dash-section">
                         <Tagging></Tagging>
                     </section> : (projectsStore.projectTabs[2].selected) ? <section className="dash-section">
-                        Listado
+                        <SpeciesList></SpeciesList>
                     </section> : (projectsStore.projectTabs[3].selected) ? <section className="dash-section">
                         Visualización
                     </section> : (projectsStore.projectTabs[4].selected) ? <section className="dash-section">
