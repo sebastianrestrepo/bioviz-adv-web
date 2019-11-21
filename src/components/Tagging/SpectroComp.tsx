@@ -37,7 +37,11 @@ const SpectroComp = () => {
                     labels: true
                 }),
                 Timeline.create({
-                    container: containerTimelineRef.current
+                    container: containerTimelineRef.current,
+                    primaryColor: '#838383',
+                    secondaryColor: '#838383',
+                    primaryFontColor:'#838383',
+                    secondaryFontColor:'#838383',
                 }),
                 /*Minimap.create({
                     container: containerSpecSel.current,
@@ -69,7 +73,6 @@ const SpectroComp = () => {
                 }),
             ]
         });
-
         /*wsRef.current.on('ready', function () {
             wsRef.current.play();
         });*/
@@ -77,31 +80,14 @@ const SpectroComp = () => {
         wsRef.current.load('/data/Anchicaya_LaLocaTrocha_2019.06.22_07.50.35_1_mitad.mp3');
 
         toolsStore.wsRef = wsRef.current;
+
+        wsRef.current.on('region-updated', () => {
+            toolsStore.saveRegions();
+            //console.log('askjdbflkasdfsdlfasd');
+        });
+
+        //console.log();
     }, []);
-
-
-    function saveRegions() {
-        localStorage.regions = JSON.stringify(
-            Object.keys(wsRef.current.regions.list).map(function(id) {
-                var region = wsRef.current.regions.list[id];
-                console.log(region);
-                console.log(region.start);
-                return {
-                    start: region.start,
-                    end: region.end,
-                    attributes: region.attributes,
-                    data: region.data
-                };
-            })
-        );
-    }
-
-    const handleSliderChange = () => {
-        sliderRef.current.oninput = function () {
-            var zoomLevel = Number(sliderRef.current.value);
-            wsRef.current.zoom(zoomLevel);
-        };
-    }
 
     return (<div className="container">
 

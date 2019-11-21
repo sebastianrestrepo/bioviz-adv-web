@@ -36,7 +36,7 @@ export default class ToolsMenu extends React.Component {
                     <span className="tooltiptext">Cursor</span>
                 </span>
                 <span className="tooltip">
-                    <button className="tool-btn"><img src="./assets/tool-bar-assets/select-icon.svg" alt="" height="50" width="50"></img></button>
+                    <button className="tool-btn" onClick={toolsStore.saveRegions}><img src="./assets/tool-bar-assets/select-icon.svg" alt="" height="50" width="50"></img></button>
                     <span className="tooltiptext">Realizar una selección</span>
                 </span>
                 <span className="tooltip">

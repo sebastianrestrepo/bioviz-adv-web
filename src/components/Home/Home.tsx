@@ -9,7 +9,9 @@ import { auth } from 'firebase';
 import genStore from '../../stores/genStore';
 import MainNavBar from '../MainNavBar/MainNavBar';
 import SpectroComp from '../Tagging/SpectroComp';
+import SpectroSel from '../Tagging/SpectroSel';
 import ToolsMenu from '../Tagging/ToolsMenu/ToolsMenu';
+import toolsStore from '../../stores/toolsStore';
 
 interface HomeProps {
     history: any
@@ -36,6 +38,9 @@ interface HomeProps {
                 <MainNavBar title={genStore.navBarTitle} />
                 <SpectroComp />
                 <ToolsMenu />
+                <div>
+                    <SpectroSel regionEnd={toolsStore.regionEnd} regionStart={toolsStore.regionStart} />
+                </div>
             </div>
         </div>);
     }
