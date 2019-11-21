@@ -1,13 +1,23 @@
+.sel-cont {
+    overflow-x: scroll;
+    width: 600px;
+    overflow: hidden;
+}
+
 .container-sel {
     margin: 20px 0 20px 0;
     background-color: #ECECEC;
 
+
     #waveform {
         cursor: pointer;
         height: 215px;
+        width: 100%;
+
         wave {
             height: 215px;
-            .wavesurfer-region{
+
+            .wavesurfer-region {
                 height: 215px !important;
             }
         }
@@ -19,7 +29,6 @@
 
     #wave-spectrogram {
         position: absolute;
-        width: 2000px;
         height: 215px;
         opacity: 0.9;
     }

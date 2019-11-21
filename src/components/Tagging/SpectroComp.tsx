@@ -77,7 +77,7 @@ const SpectroComp = () => {
             wsRef.current.play();
         });*/
 
-        wsRef.current.load('/data/Anchicaya_LaLocaTrocha_2019.06.22_07.50.35_1_mitad.mp3');
+        wsRef.current.load('/assets/audio-files/1_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3');
 
         toolsStore.wsRef = wsRef.current;
 

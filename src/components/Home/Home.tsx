@@ -39,7 +39,7 @@ interface HomeProps {
                 <SpectroComp />
                 <ToolsMenu />
                 <div>
-                    <SpectroSel regionEnd={toolsStore.regionEnd} specWidth={toolsStore.selSpecWidth} regionStart={toolsStore.regionStart} />
+                    <SpectroSel regionEnd={toolsStore.regionEnd} specWidth={toolsStore.selSpecWidth} regionStart={toolsStore.regionStart} selSpecLeftPos={toolsStore.selSpecLeftPos} genSpecWidth={toolsStore.genSpecWidth} />
                 </div>
             </div>
         </div>);

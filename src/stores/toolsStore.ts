@@ -8,6 +8,7 @@ class ToolsStore {
     @observable genSpecWidth: number = 0;
     @observable selSpecLeftPos: number = 0;
     @observable selSpecWidth: number = 0;
+    
     constructor() {
     }
 
@@ -38,8 +39,9 @@ class ToolsStore {
         );
         this.settingsSelSpectro();
     }
+
     settingsSelSpectro(){
-        let secondWidth = this.genSpecWidth/150;
+        let secondWidth = this.genSpecWidth/59;
         this.selSpecLeftPos = -secondWidth*this.regionStart;
         console.log('LEFT POS=', this.selSpecLeftPos)
         this.selSpecWidth =  secondWidth*(this.regionEnd-this.regionStart)
