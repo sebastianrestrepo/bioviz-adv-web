@@ -7,6 +7,7 @@ class ToolsStore {
     @observable regionEnd: any;
     @observable genSpecWidth: number = 0;
     @observable selSpecLeftPos: number = 0;
+    @observable selSpecWidth: number = 0;
     constructor() {
     }
 
@@ -41,6 +42,8 @@ class ToolsStore {
         let secondWidth = this.genSpecWidth/150;
         this.selSpecLeftPos = -secondWidth*this.regionStart;
         console.log('LEFT POS=', this.selSpecLeftPos)
+        this.selSpecWidth =  secondWidth*(this.regionEnd-this.regionStart)
+
     }
 }
 

@@ -11,9 +11,9 @@ import * as CSS from 'csstype';
 interface spectroSelProps {
     regionEnd: any;
     regionStart: any;
-
+    specWidth: any;
 }
-const SpectroSel = ({regionEnd, regionStart} : spectroSelProps) => {
+const SpectroSel = ({regionEnd, regionStart, specWidth} : spectroSelProps) => {
 
     // Selección Spectro
     const containerRef: any = React.useRef();
@@ -82,7 +82,7 @@ const SpectroSel = ({regionEnd, regionStart} : spectroSelProps) => {
     }, []);
     
     const SpectroSelStyles: CSS.Properties = {
-        width: '' + (regionEnd - regionStart)*10 + 'px',
+        width: specWidth*3 + 'px',
         
     }
 
@@ -93,7 +93,7 @@ const SpectroSel = ({regionEnd, regionStart} : spectroSelProps) => {
     return (<div className="container-sel">
 
         <div id="timeline" style={SpectroSelStyles} ref={containerTimelineRef}  />
-        <div id="waveform" style={SpectroSelStyles} ref={containerRef}>
+        <div id="waveform" ref={containerRef}>
             <div id="wave-spectrogram" style={SpectroSelStyles}ref={containerSpecRef} />
         </div>
 
