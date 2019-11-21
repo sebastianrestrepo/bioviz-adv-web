@@ -11,6 +11,7 @@
     "@types/react-dom": "^16.8.4",
     "@types/react-router": "^5.0.1",
     "@types/react-router-dom": "^4.3.3",
+    "alamp": "^0.1.6",
     "firebase": "^6.6.2",
     "gh-pages": "^2.0.1",
     "mobx": "^5.9.4",

@@ -8,6 +8,7 @@ import Regions from 'wavesurfer.js/dist/plugin/wavesurfer.regions';
 import Cursor from 'wavesurfer.js/dist/plugin/wavesurfer.cursor';
 import toolsStore from '../../stores/toolsStore';
 import * as CSS from 'csstype';
+import { Decoder, BufferManipulations, Encoder } from 'alamp';
 
 interface spectroSelProps {
     regionEnd: any;
@@ -27,6 +28,7 @@ const SpectroSel = ({ regionEnd, regionStart, specWidth, selSpecLeftPos, genSpec
     const containerRegion: any = React.useRef();
 
     React.useEffect(() => {
+
         wsRef.current = WaveSurfer.create({
             container: containerRef.current,
             waveColor: 'rgba(175, 234, 125, 0.01)',
@@ -61,10 +63,35 @@ const SpectroSel = ({ regionEnd, regionStart, specWidth, selSpecLeftPos, genSpec
             ]
         });
 
-        wsRef.current.load('/assets/audio-files/1_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3');
-        console.log('uy', wsRef.current);
+        tryingBlob();
         //console.log();
     }, []);
+
+    async function tryingBlob() {
+        const decoder = new Decoder();
+        // Lo decodifico, para poder cortarlo
+        let blob = await fetch('/assets/audio-files/1_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3').then(r => r.blob());
+        const buf = await decoder.decodeFile(blob);
+        // Esta clase recibe el audio decodificado y permite hacer algunas modificaciones
+        const manipulator = new BufferManipulations(buf);
+        // Crop a piece of audio. From 1st second to 5th second.
+        manipulator.cut(1000, 5000);
+        // Apply cuts and fades and get modified buffer.
+        const processedBuffer = await manipulator.apply();
+
+        const encoder = new Encoder();
+
+        // Encode modified buffer to MP3 data. Este es el blob que deberia cargarse en el wave
+        const newBlob = await encoder.encodeToMP3Blob(processedBuffer, 196);
+        // Your file blob is ready here. Esta es una url del blob que utilizo par poder descargar el archivo
+        //let modified = URL.createObjectURL(newBlob);
+
+        // Aqui cargo el audio a wavesurfer como un blob, ya solo seria configurar el espectrograma y eso, pero si funciona
+        wsRef.current.loadBlob(newBlob);
+
+        //wsRef.current.load('/assets/audio-files/1_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3');
+        console.log('uy', wsRef.current);
+    }
 
     const SpectroWidthStyles: CSS.Properties = {
         width: specWidth + 'px',
@@ -81,14 +108,14 @@ const SpectroSel = ({ regionEnd, regionStart, specWidth, selSpecLeftPos, genSpec
     }
 
     return (<div className="sel-cont">
-        <div className="container-sel" style={SpectroWidthStyles}>
+        <div className="container-sel">
 
             <div id="timeline" ref={containerTimelineRef} onClick={() => {
                 wsRef.current.zoom(2000);
                 console.log('lmao');
             }} />
             <div id="waveform" ref={containerRef}>
-                <div id="wave-spectrogram" style={SpectroPosStyles} ref={containerSpecRef} />
+                <div id="wave-spectrogram" ref={containerSpecRef} />
             </div>
 
         </div>

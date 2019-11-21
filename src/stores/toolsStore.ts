@@ -1,4 +1,5 @@
 import { observable, autorun, action } from 'mobx';
+import { Decoder, BufferManipulations, Encoder } from 'alamp';
 
 class ToolsStore {
 
@@ -39,6 +40,26 @@ class ToolsStore {
         );
         this.settingsSelSpectro();
     }
+
+@action async cropAudio(){
+    const decoder = new Decoder();
+    // Lo decodifico, para poder cortarlo
+    let blob = await fetch('/assets/audio-files/1_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3').then(r => r.blob());
+    const buf = await decoder.decodeFile(blob);
+    // Esta clase recibe el audio decodificado y permite hacer algunas modificaciones
+    const manipulator = new BufferManipulations(buf);
+    // Crop a piece of audio. From 1st second to 5th second.
+    manipulator.cut(1000, 5000);
+    // Apply cuts and fades and get modified buffer.
+    const processedBuffer = await manipulator.apply();
+
+    const encoder = new Encoder();
+
+  
+    // Encode modified buffer to MP3 data. Este es el blob que deberia cargarse en el wave
+    return await encoder.encodeToMP3Blob(processedBuffer, 196);
+
+}
 
     settingsSelSpectro(){
         let secondWidth = this.genSpecWidth/59;
