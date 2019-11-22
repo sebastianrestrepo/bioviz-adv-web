@@ -26,7 +26,7 @@ export class SpeciesList extends React.Component {
         return <div className="species-list-cont">
             <div className="list-header">
                 <h1>Listado de especies</h1>
-                <button onClick={() => reportStore.onSaveDataLabeled('Hola', 'bichofue')}>Añadir specie</button>
+                <button onClick={() => reportStore.onSaveDataLabeled('Coryphospingus pileatus', 'bichofue')}>Añadir specie</button>
                 <button className="green-button" onClick={() => {
                     reportStore.onDownloadList();
                     (reportStore.convertionDone) ? this.downloadCsvFile()
@@ -54,7 +54,9 @@ export class SpeciesList extends React.Component {
                             return <SpecieRow key={i}
                                 index={i}
                                 sciName={data.sciName}
-                                commonName={data.commonName}></SpecieRow>
+                                commonName={data.commonName}
+                                family={data.family}
+                                order={data.order}></SpecieRow>
                         })
                     }
                 </tbody>

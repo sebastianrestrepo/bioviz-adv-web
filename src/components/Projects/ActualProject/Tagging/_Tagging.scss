@@ -1,5 +1,8 @@
 @import './../../../../variables.scss';
 
+.tagging {
+  
+}
 .tag-header-cont {
     background-color: white;
     padding: 0.5rem;
@@ -119,12 +122,20 @@
     .two-sections {
         display: flex;
         flex-direction: row;
-         padding: 7px;
+         padding: 7px 7px 0 7px;
+         height: calc(100vh - 100px);
+        justify-content: space-between;
         .spectro-selection {
             width: 50%;
             background-color: white;
+            border-radius: 5px;
+
         }
         .tagging-section {
+            overflow-y: scroll;
+            width: 50%;
+            border-radius: 5px;
+            overflow-x: hidden;
             .suggestion-cont{
                 &.undisplay {
                     display: none;

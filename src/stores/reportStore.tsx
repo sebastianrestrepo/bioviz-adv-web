@@ -1,10 +1,11 @@
+import birdsDataJSON from './../bird_classification.json';
 import { observable, action } from "mobx";
 import { db } from "../firebaseConfig";
 import projectsStore from './projectsStore';
 
 class ReportStore {
 
-
+    @observable birdsData: any = [];
     @observable speciesList: any = []
     @observable newSpecieLabeled: any = {
         sciName: '',
@@ -18,6 +19,9 @@ class ReportStore {
     }
 
     constructor() {
+        this.birdsData = birdsDataJSON;
+        console.log(this.birdsData)
+
     }
 
     @action onRetrieveSpeciesList() {
@@ -31,9 +35,16 @@ class ReportStore {
     }
 
     @action onSaveDataLabeled(sciname, commonName) {
+
         this.newSpecieLabeled.sciName = sciname;
         this.newSpecieLabeled.commonName = commonName;
 
+        this.birdsData.map((e) => {
+            if (e.SCI_NAME === sciname) {
+                this.newSpecieLabeled.order = e.ORDER1;
+                this.newSpecieLabeled.family = e.FAMILY;
+            }
+        })
         let that = this;
         db.collection("projects").doc(projectsStore.actualProject.id).collection("speciesList").add(this.newSpecieLabeled)
             .then(function (docRef) {
@@ -88,10 +99,10 @@ class ReportStore {
             CSV += _row + '\r\n';
         }
 
-        if (CSV == '') {        
+        if (CSV == '') {
             alert("Invalid data");
             return;
-        }   
+        }
 
         this.listFileName = "listado"
 

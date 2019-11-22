@@ -4,16 +4,18 @@ import { observer } from 'mobx-react';
 interface specieRowProps {
     sciName: string;
     commonName: boolean;
+    family: string;
+    order: string;
     index: any
 }
 
-const SpecieRow = observer(({ sciName, commonName, index }: specieRowProps) => {
+const SpecieRow = observer(({ sciName, commonName, index, order, family }: specieRowProps) => {
 
     return (
         <tr >
             <td className="gray-cell">{index + 1}</td>
-            <td className="blank-cell">Orden</td>
-            <td className="blank-cell">Familia</td>
+            <td className="blank-cell">{order}</td>
+            <td className="blank-cell">{family}</td>
             <td className="blank-cell">Género</td>
             <td className="blank-cell">{sciName}</td>
             <td className="blank-cell">{commonName}</td>
