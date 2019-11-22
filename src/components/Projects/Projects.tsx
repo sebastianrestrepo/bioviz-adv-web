@@ -24,18 +24,15 @@ interface ProjectsProps {
 
     constructor(props: any) {
         super(props);
-        autorun(() => {
-            (authStore.isLogged) ?
-                props.history.push("/projects")
-                : props.history.push("/")
-        });
+        projectsStore.onRetrieveProjects();
     }
 
     renderProjects = () => {
-        return projectsStore.projects.map(project => 
+        return projectsStore.projects.map(project =>
             (
-                <Link to={`/projects/${project.id}`} key={project.id}> 
-                <ProjectCard name={project.name} date={project.date} ></ProjectCard>
+                <Link to={`/projects/${project.id}`} key={project.id}
+                    onClick={() => projectsStore.openProjectTab(0)}>
+                    <ProjectCard name={project.name} date={project.date} ></ProjectCard>
                 </Link>
             ))
     }

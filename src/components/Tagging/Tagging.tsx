@@ -1,33 +1,38 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './_Tagging.scss'
 import { observer } from 'mobx-react';
-import authStore from '../../stores/authStore';
-import { observable, autorun } from 'mobx';
-import DashMenu from '../DashMenu/DashMenu';
-import MainNavBar from '../MainNavBar/MainNavBar';
-import genStore from '../../stores/genStore';
+import { TaggingHeader } from './Components/TaggingHeader';
+import { TagSound } from './Components/TagSound/TagSound';
+import SpectroComp from './Components/GenSpectro/SpectroComp';
+import SpectroSel from './Components/SpectroSel/SpectroSel';
+import toolsStore from '../../stores/toolsStore';
+import ToolsMenu from './Components/ToolsMenu/ToolsMenu';
 
 interface TaggingProps {
-    history: any
 }
 
 @observer class Tagging extends React.Component<TaggingProps> {
 
-    @observable signInForm: boolean = true;
-
     constructor(props: any) {
         super(props);
-        autorun(() => {
-            if (!authStore.isLogged) {
-                props.history.push("/");
-            }
-        });
     }
 
     render() {
         return (<div className="tagging">
-            <DashMenu />
-            <MainNavBar title={genStore.navBarTitle} />
+            <TaggingHeader></TaggingHeader>
+            <SpectroComp />
+            <ToolsMenu />
+
+            <div className="two-sections">
+                <div className="spectro-selection">
+                    <SpectroSel regionEnd={toolsStore.regionEnd}
+                        specWidth={toolsStore.selSpecWidth}
+                        regionStart={toolsStore.regionStart}
+                        selSpecLeftPos={toolsStore.selSpecLeftPos}
+                        genSpecWidth={toolsStore.genSpecWidth} />
+                </div>
+                <TagSound></TagSound>
+            </div>
         </div>);
     }
 }

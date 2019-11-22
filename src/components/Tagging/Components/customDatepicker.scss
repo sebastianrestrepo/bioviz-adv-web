@@ -1,0 +1,45 @@
+@import './../../../variables.scss';
+.rc-time-picker-input[style] {
+    height: 28px !important;   
+
+}
+.DateInput_input {
+    font-size: 15px;
+    padding: 5px 11px 4px 11px;
+    height: 28px;
+
+    &:focus {
+        border: none;
+    }
+}
+
+svg.DateInput_fang[style] {
+    top: 35px !important;
+}
+
+.SingleDatePicker_picker[style] {
+    top: 46px !important;
+    font-size: 15px;
+}
+
+.CalendarDay__selected:hover {
+    background: $secondActiveColor;
+    border: 1px double $secondActiveColor;
+    color: $mainDarkColor;
+}
+
+.CalendarDay__selected {
+    background: $mainActiveColor;
+    color: white;
+}
+
+.CalendarDay__selected_span {
+    background: #82e0aa; //background
+    color: white; //text
+    border: 1px solid $mainActiveColor; //default styles include a border
+}
+
+.CalendarDay__hovered_span:hover,
+.CalendarDay__hovered_span {
+    background: $secondActiveColor;
+}

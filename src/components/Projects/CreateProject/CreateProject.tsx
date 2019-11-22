@@ -25,7 +25,7 @@ class CreateProject extends Component {
                     <img onClick={() => projectsStore.onCancelProjectCreation()} src="./assets/gen-icons/close-x.svg" width="21px" alt="" />
                 </span>
                 {
-                    (projectsStore.creationStep == 1) ? <section className="details firstdisplay">
+                    (projectsStore.creationStep === 1) ? <section className="details firstdisplay">
                         <form className="content" >
                             <span className="question-structure">
                                 <label className="green-subtitle">Nombre del proyecto</label>
@@ -59,7 +59,7 @@ class CreateProject extends Component {
                                 />
                             </span>
                         </form>
-                    </section> : (projectsStore.creationStep == 2) ? <section id="objective" className="firstdisplay">
+                    </section> : (projectsStore.creationStep === 2) ? <section id="objective" className="firstdisplay">
                         <div className="location-cont">
                             <form className="content" >
                                 <span className="question-structure">
@@ -81,7 +81,7 @@ class CreateProject extends Component {
 
                             </div>
                         </div>
-                    </section> : (projectsStore.creationStep == 3) ? <section id="data-collection" className="firstdisplay">
+                    </section> : (projectsStore.creationStep === 3) ? <section id="data-collection" className="firstdisplay">
                         <div className="method-cont">
                             <span className="question-structure">
                                 <label className="green-subtitle">Modos de recolección</label>

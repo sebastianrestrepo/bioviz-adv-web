@@ -1,0 +1,113 @@
+.sel-cont {
+    overflow-x: scroll;
+    width: 600px;
+    overflow: hidden;
+}
+
+.container-sel {
+    margin: 20px 0 20px 0;
+    background-color: #ECECEC;
+
+
+    #waveform {
+        cursor: pointer;
+        height: 215px;
+        width: 100%;
+
+        wave {
+            height: 215px;
+
+            .wavesurfer-region {
+                height: 215px !important;
+            }
+        }
+    }
+
+    #waveform wave canvas {
+        height: 215px !important;
+    }
+
+    #wave-spectrogram {
+        position: absolute;
+        height: 215px;
+        opacity: 0.9;
+    }
+
+    #wave-spectrogram canvas {
+        left: 0;
+        position: inline-block;
+        height: 215px !important;
+    }
+
+    spectrogram {
+        height: 215px !important;
+    }
+
+    #wave-spectrogram .spectrogram {
+        height: 215px;
+    }
+
+    #wave-spectrogram .spec-labels {
+        position: absolute;
+        display: none;
+    }
+}
+
+/*.wavesurfer-region{
+    border-right: 5px solid black;
+    border-left: 5px solid black;
+}*/
+
+.wavesurfer-handle {
+    width: 5px !important;
+    max-width: 5px !important;
+    background-color: black;
+}
+
+#zoom-bar {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+
+    #slider {
+        margin: 10px;
+        cursor: grab;
+        width: 150px;
+    }
+}
+
+
+.div-btns {
+    background-color: #F4F4F4;
+    display: flex;
+    flex-direction: row;
+    max-height: 55px;
+}
+
+#play-pause {
+    cursor: pointer;
+    border-radius: 27;
+    border-style: none;
+    padding: .5rem 1rem;
+    border-radius: 27px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 800;
+    font-size: 19;
+    margin: 10px;
+    background-color: #5855ff;
+    color: white;
+}
+
+#color-change {
+    cursor: pointer;
+    border-radius: 27;
+    border-style: none;
+    padding: .5rem 1rem;
+    border-radius: 27px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 800;
+    font-size: 19;
+    margin: 10px;
+    background-color: #ffd255;
+    color: black;
+}
