@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import 'rc-slider/assets/index.css';
-import tagStore from '../../../../../../stores/taggingStore';
 import Slider from 'rc-slider';
 import './_spectroEditor.scss'
+import tagStore from '../../../../stores/taggingStore';
 
 interface contrastEditorProps {
     

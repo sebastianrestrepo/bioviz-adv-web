@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
-import tagStore from '../../../../../../stores/taggingStore';
 import './_spectroEditor.scss'
+import tagStore from '../../../../stores/taggingStore';
 interface colorEditorProps {
     
 }

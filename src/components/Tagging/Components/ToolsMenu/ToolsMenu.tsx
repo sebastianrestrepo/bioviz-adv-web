@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './ToolsMenu.scss'
 import { observer } from 'mobx-react';
-import toolsStore from '../../../stores/toolsStore';
+import toolsStore from '../../../../stores/toolsStore';
 
 @observer
 export default class ToolsMenu extends React.Component {

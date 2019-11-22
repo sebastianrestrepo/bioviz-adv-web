@@ -4,8 +4,8 @@ import Select from 'react-select'
 import CreatableSelect from 'react-select/creatable';
 import { observer } from 'mobx-react';
 import TagSuggestion from './TagSuggestion';
-import tagStore from '../../../../../../stores/taggingStore';
-import { suggestionStore } from '../../../../../../stores/suggestionStore';
+import tagStore from '../../../../stores/taggingStore';
+import { suggestionStore } from '../../../../stores/suggestionStore';
 
 const options = [
     { value: 'song', label: 'Canción' },

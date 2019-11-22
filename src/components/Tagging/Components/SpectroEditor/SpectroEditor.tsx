@@ -3,7 +3,7 @@ import './_spectroEditor.scss';
 
 import { observer } from 'mobx-react';
 import * as CSS from 'csstype';
-import tagStore from '../../../../../../stores/taggingStore';
+import tagStore from '../../../../stores/taggingStore';
 
 @observer
 export class SpectroEditor extends React.Component {

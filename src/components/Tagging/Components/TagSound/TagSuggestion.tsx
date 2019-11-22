@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
-import tagStore from '../../../../../../stores/taggingStore';
+import tagStore from '../../../../stores/taggingStore';
 
 interface tagSuggestionProps {
     sciName: string;

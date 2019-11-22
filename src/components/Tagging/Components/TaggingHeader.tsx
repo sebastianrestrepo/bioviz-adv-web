@@ -6,11 +6,11 @@ import 'react-dates/lib/css/_datepicker.css';
 import './customDatepicker.scss';
 
 import { SingleDatePicker } from 'react-dates';
-import tagStore from '../../../../../stores/taggingStore';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
 
 import TimePicker from 'rc-time-picker';
+import tagStore from '../../../stores/taggingStore';
 const showSecond = false;
 const str = showSecond ? 'HH:mm:ss' : 'HH:mm';
 

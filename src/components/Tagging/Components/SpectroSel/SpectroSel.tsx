@@ -2,13 +2,9 @@ import React from 'react';
 import './_SpectroSel.scss'
 import WaveSurfer from 'wavesurfer.js';
 import Spectrogram from 'wavesurfer.js/dist/plugin/wavesurfer.spectrogram.js';
-import Timeline from 'wavesurfer.js/dist/plugin/wavesurfer.timeline.js';
-import Minimap from 'wavesurfer.js/dist/plugin/wavesurfer.minimap';
-import Regions from 'wavesurfer.js/dist/plugin/wavesurfer.regions';
 import Cursor from 'wavesurfer.js/dist/plugin/wavesurfer.cursor';
-import toolsStore from '../../stores/toolsStore';
 import * as CSS from 'csstype';
-import { Decoder, BufferManipulations, Encoder } from 'alamp';
+import toolsStore from '../../../../stores/toolsStore';
 
 interface spectroSelProps {
     regionEnd: any;

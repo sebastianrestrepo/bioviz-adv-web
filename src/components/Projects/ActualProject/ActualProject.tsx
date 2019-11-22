@@ -7,8 +7,8 @@ import ProjectHeader from './Overview/ProjectHeader';
 import TabNavBar from './TabNavBar';
 import { autorun } from 'mobx';
 import authStore from '../../../stores/authStore';
-import Tagging from './Tagging/Tagging';
 import { SpeciesList } from './SpeciesReport/SpeciesList';
+import Tagging from '../../Tagging/Tagging';
 interface ActualProjectProps {
     projectId: string,
 }

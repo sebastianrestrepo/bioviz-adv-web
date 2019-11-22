@@ -6,10 +6,6 @@ import { observable, autorun } from 'mobx';
 import DashMenu from '../DashMenu/DashMenu';
 import genStore from '../../stores/genStore';
 import MainNavBar from '../MainNavBar/MainNavBar';
-import SpectroComp from '../Tagging/SpectroComp';
-import SpectroSel from '../Tagging/SpectroSel';
-import ToolsMenu from '../Tagging/ToolsMenu/ToolsMenu';
-import toolsStore from '../../stores/toolsStore';
 
 interface HomeProps {
     history: any
@@ -34,11 +30,6 @@ interface HomeProps {
             <DashMenu />
             <div className="page-layout">
                 <MainNavBar title={genStore.navBarTitle} />
-                <SpectroComp />
-                <ToolsMenu />
-                <div>
-                    <SpectroSel regionEnd={toolsStore.regionEnd} specWidth={toolsStore.selSpecWidth} regionStart={toolsStore.regionStart} selSpecLeftPos={toolsStore.selSpecLeftPos} genSpecWidth={toolsStore.genSpecWidth} />
-                </div>
             </div>
         </div>);
     }
