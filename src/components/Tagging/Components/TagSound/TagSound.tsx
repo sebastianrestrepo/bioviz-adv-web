@@ -39,7 +39,7 @@ export class TagSound extends React.Component {
         return <section className="tagging-section">
             <div className="card-header">
                 <h3>Selección</h3>
-                <img className="close-icon" src="./assets/icons/close.svg" alt="" />
+                <img className="close-icon" src="./assets/gen-icons/dark-x-close.svg" alt="" />
             </div>
             <div className="spec">
                 <img src="./assets/spectroSelected.png" alt="" />

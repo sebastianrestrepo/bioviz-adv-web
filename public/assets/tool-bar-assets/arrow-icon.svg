@@ -1,3 +1,10 @@
-<svg width="65" height="62" viewBox="0 0 65 62" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M44.384 29.9671L22.7832 18.149C22.3368 17.9056 21.7847 17.9646 21.4079 18.2956C21.0263 18.6265 20.8967 19.1559 21.0863 19.6215L30.6866 43.2578C30.8666 43.7022 31.301 43.9952 31.7859 44C31.7907 44 31.7954 44 31.8003 44C32.2803 44 32.7147 43.7187 32.9043 43.2838L36.3148 35.4461L44.2735 32.0873C44.6935 31.91 44.9743 31.5106 44.9984 31.0615C45.0223 30.6124 44.7823 30.187 44.384 29.9671Z" fill="white"/>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 65 62" style="enable-background:new 0 0 65 62;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+</style>
+<path class="st0" d="M54.8,29L13.3,6.4c-0.8-0.5-1.9-0.4-2.6,0.2c-0.8,0.6-1,1.7-0.6,2.6l18.4,45.4c0.3,0.9,1.2,1.4,2.1,1.4l0,0
+	c0.9,0,1.8-0.6,2.1-1.4l6.5-15.1l15.3-6.4c0.8-0.3,1.4-1.1,1.4-1.9C56.1,30.3,55.6,29.5,54.8,29z"/>
 </svg>
