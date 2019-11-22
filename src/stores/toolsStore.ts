@@ -34,6 +34,7 @@ class ToolsStore {
                 that.regionStart = region.start;
                 that.regionEnd = region.end;
                 that.genSpecWidth = that.wsRef.spectrogram.drawer.width;
+                console.log('Timeline', that.wsRef.timeline);
                 console.log('that region start',  that.regionStart);
                 console.log('normie region start',  region.start);
                 return {
@@ -81,6 +82,78 @@ class ToolsStore {
 
         //wsRef.current.load('/assets/audio-files/1_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3');
         console.log('uy', this.wsSelectionRef);
+    }
+
+    // Override Timeline Formatting
+    @action formatTimeCallback(seconds, pxPerSec) {
+        seconds = Number(seconds);
+        var minutes = Math.floor(seconds / 60);
+        seconds = seconds % 60;
+    
+        // fill up seconds with zeroes
+        var secondsStr = Math.round(seconds).toString();
+        if (pxPerSec >= 25 * 10) {
+            secondsStr = seconds.toFixed(2);
+        } else if (pxPerSec >= 25 * 1) {
+            secondsStr = seconds.toFixed(1);
+        }
+    
+        if (minutes > 0) {
+            if (seconds < 10) {
+                secondsStr = '0' + secondsStr;
+            }
+            return `${minutes}:${secondsStr}`;
+        }
+        return secondsStr;
+    }
+    
+    @action timeInterval(pxPerSec) {
+        var retval = 1;
+        if (pxPerSec >= 25 * 100) {
+            retval = 0.01;
+        } else if (pxPerSec >= 25 * 40) {
+            retval = 0.025;
+        } else if (pxPerSec >= 25 * 10) {
+            retval = 0.1;
+        } else if (pxPerSec >= 25 * 4) {
+            retval = 0.25;
+        } else if (pxPerSec >= 25) {
+            retval = 1;
+        } else if (pxPerSec * 5 >= 25) {
+            retval = 5;
+        } else if (pxPerSec * 15 >= 25) {
+            retval = 15;
+        } else {
+            retval = Math.ceil(0.5 / pxPerSec) * 60;
+        }
+        return retval;
+    }
+    
+    @action primaryLabelInterval(pxPerSec) {
+        var retval = 1;
+        if (pxPerSec >= 25 * 100) {
+            retval = 10;
+        } else if (pxPerSec >= 25 * 40) {
+            retval = 4;
+        } else if (pxPerSec >= 25 * 10) {
+            retval = 10;
+        } else if (pxPerSec >= 25 * 4) {
+            retval = 4;
+        } else if (pxPerSec >= 25) {
+            retval = 1;
+        } else if (pxPerSec * 5 >= 25) {
+            retval = 5;
+        } else if (pxPerSec * 15 >= 25) {
+            retval = 15;
+        } else {
+            retval = Math.ceil(0.5 / pxPerSec) * 60;
+        }
+        return retval;
+    }
+    
+    @action secondaryLabelInterval(pxPerSec) {
+        // draw one every 10s as an example
+        return Math.floor(10 / this.timeInterval(pxPerSec));
     }
 
     //FINAL DE LA CLASE TOOLS STORE

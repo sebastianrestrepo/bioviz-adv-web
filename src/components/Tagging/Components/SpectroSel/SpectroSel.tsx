@@ -5,6 +5,7 @@ import Spectrogram from 'wavesurfer.js/dist/plugin/wavesurfer.spectrogram.js';
 import Cursor from 'wavesurfer.js/dist/plugin/wavesurfer.cursor';
 import * as CSS from 'csstype';
 import toolsStore from '../../../../stores/toolsStore';
+import Timeline from 'wavesurfer.js/dist/plugin/wavesurfer.timeline.js';
 
 interface spectroSelProps {
     regionEnd: any;
@@ -35,16 +36,20 @@ const SpectroSel = ({ regionEnd, regionStart, specWidth, selSpecLeftPos, genSpec
                 Spectrogram.create({
                     wavesurfer: wsRef.current,
                     container: containerSpecRef.current,
-                    height: 215,
+                    height: 350,
                     labels: true,
                 }),
-                /*Timeline.create({
+                Timeline.create({
+                    /*formatTimeCallback: toolsStore.formatTimeCallback(3000, 20),
+                    timeInterval: toolsStore.timeInterval(20),
+                    primaryLabelInterval: toolsStore.primaryLabelInterval(20),
+                    secondaryLabelInterval: toolsStore.secondaryLabelInterval(20),*/
                     container: containerTimelineRef.current,
                     primaryColor: '#838383',
                     secondaryColor: '#838383',
                     primaryFontColor: '#838383',
                     secondaryFontColor: '#838383',
-                }),*/
+                }),
                 Cursor.create({
                     showTime: true,
                     opacity: 0.8,
@@ -83,6 +88,7 @@ const SpectroSel = ({ regionEnd, regionStart, specWidth, selSpecLeftPos, genSpec
                 wsRef.current.zoom(2000);
                 console.log('lmao');
             }} />*/}
+            <div id="timeline" ref={containerTimelineRef} />
             <div id="waveform" ref={containerRef}>
                 <div id="wave-spectrogram" ref={containerSpecRef} />
             </div>

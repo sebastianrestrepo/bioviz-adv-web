@@ -25,6 +25,9 @@ interface TaggingProps {
 
             <div className="two-sections">
                 <div className="spectro-selection">
+                    <div className="black-card-header">
+                        <h3>Selección del audio principal</h3>
+                    </div>
                     <SpectroSel regionEnd={toolsStore.regionEnd}
                         specWidth={toolsStore.selSpecWidth}
                         regionStart={toolsStore.regionStart}

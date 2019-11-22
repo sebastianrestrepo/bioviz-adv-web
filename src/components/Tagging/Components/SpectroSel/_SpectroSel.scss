@@ -1,6 +1,6 @@
 .sel-cont {
     overflow-x: scroll;
-    width: 600px;
+    width: 800px;
     overflow: hidden;
 }
 
@@ -11,40 +11,40 @@
 
     #waveform {
         cursor: pointer;
-        height: 215px;
+        height: 320px;
         width: 100%;
-
+        
         wave {
-            height: 215px;
+            height: 320px !important;
 
             .wavesurfer-region {
-                height: 215px !important;
+                height: 320px !important;
             }
         }
     }
 
     #waveform wave canvas {
-        height: 215px !important;
+        height: 320px !important;
     }
 
     #wave-spectrogram {
         position: absolute;
-        height: 215px;
+        height: 320px;
         opacity: 0.9;
     }
 
     #wave-spectrogram canvas {
         left: 0;
         position: inline-block;
-        height: 215px !important;
+        height: 320px !important;
     }
 
     spectrogram {
-        height: 215px !important;
+        height: 320px !important;
     }
 
     #wave-spectrogram .spectrogram {
-        height: 215px;
+        height: 320px;
     }
 
     #wave-spectrogram .spec-labels {

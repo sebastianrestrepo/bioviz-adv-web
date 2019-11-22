@@ -42,12 +42,6 @@ const SpectroComp = () => {
                     primaryFontColor: '#838383',
                     secondaryFontColor: '#838383',
                 }),
-                /*Minimap.create({
-                    container: containerSpecSel.current,
-                    waveColor: '#777',
-                    progressColor: '#222',
-                    height: 50
-                }),*/
                 Cursor.create({
                     showTime: true,
                     opacity: 0.8,
