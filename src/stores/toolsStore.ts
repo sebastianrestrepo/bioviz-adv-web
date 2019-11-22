@@ -29,6 +29,7 @@ class ToolsStore {
         localStorage.regions = JSON.stringify(
             Object.keys(this.wsRef.regions.list).map(function (id) {
                 var region = that.wsRef.regions.list[id];
+                console.log('LELAZO', that.wsRef.regions.list[id]);
                 console.log('ws', that.wsRef.spectrogram.drawer.width);
                 that.regionStart = region.start;
                 that.regionEnd = region.end;

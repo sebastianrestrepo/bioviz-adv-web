@@ -39,8 +39,8 @@ const SpectroComp = () => {
                     container: containerTimelineRef.current,
                     primaryColor: '#838383',
                     secondaryColor: '#838383',
-                    primaryFontColor:'#838383',
-                    secondaryFontColor:'#838383',
+                    primaryFontColor: '#838383',
+                    secondaryFontColor: '#838383',
                 }),
                 /*Minimap.create({
                     container: containerSpecSel.current,
@@ -59,7 +59,7 @@ const SpectroComp = () => {
                     }
                 }),
                 Regions.create({
-                    regions: [
+                    /*regions: [
                         {
                             container: containerRegion.current,
                             id: 'rg',
@@ -68,13 +68,14 @@ const SpectroComp = () => {
                             loop: false,
                             color: 'rgba(60, 238, 89, 0.2)',
                         }
-                    ],
+                    ],*/
+                    dragSelection: {
+                        slop: 5,
+                        color: 'rgba(60, 238, 89, 0.2)',
+                    }
                 }),
             ]
         });
-        /*wsRef.current.on('ready', function () {
-            wsRef.current.play();
-        });*/
 
         wsRef.current.load('/assets/audio-files/1_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3');
 
@@ -82,7 +83,13 @@ const SpectroComp = () => {
 
         wsRef.current.on('region-update-end', () => {
             toolsStore.saveRegions();
-            //console.log('askjdbflkasdfsdlfasd');
+        });
+
+        wsRef.current.on('region-created', () => {
+            if (Object.keys(wsRef.current.regions.list).length > 0) {
+                let regionsArray = Object.keys(wsRef.current.regions.list);
+                wsRef.current.regions.list[regionsArray[0]].remove();
+            }
         });
 
         //console.log();
