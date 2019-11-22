@@ -37,32 +37,32 @@
 
     table {
         border-spacing: 0px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        flex-wrap: nowrap;
-        th, td {
+
+
+        th,
+        td {
             padding: 0.15rem 0.5rem;
-            white-space: nowrap;
+            white-space: nowrap ;
             min-width: 120px;
             &:first-child {
                 min-width: 35px !important;
             }
+
             &:nth-child(2) {
-                width: 150px
+                min-width: 150px
             }
 
             &:nth-child(3) {
-                width: 250px
+                min-width: 250px
             }
 
             &:nth-child(4),
             &:nth-child(5) {
-                width: 250px
+                min-width: 250px
             }
 
             &:nth-child(6) {
-                width: 120px
+                min-width: 120px
             }
         }
 
@@ -91,7 +91,6 @@
             height: calc(100vh - 130px);
             overflow-y: auto;
             overflow-x: hidden;
-
             tr {
                 &:hover {
                     background-color: rgba(176, 234, 125, 0.425);
