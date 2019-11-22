@@ -91,6 +91,7 @@ import projectsStore from '../../stores/projectsStore';
                                 onClick={() => {
                                     genStore.onDahshNavClick('actualproject')
                                   projectsStore.openProjectTab(1)
+                                  genStore.isDashOpen = false;
                                 }}>
                                 <span className={(genStore.isActualProjectActive) ? 'selected project-section-btn' : 'project-section-btn'}>
                                     <div className={(projectsStore.projectTabs[1].open) ? 'dot tab-open' : 'dot'}></div>
