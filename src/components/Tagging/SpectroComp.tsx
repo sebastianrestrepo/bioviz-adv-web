@@ -81,7 +81,7 @@ const SpectroComp = () => {
 
         toolsStore.wsRef = wsRef.current;
 
-        wsRef.current.on('region-updated', () => {
+        wsRef.current.on('region-update-end', () => {
             toolsStore.saveRegions();
             //console.log('askjdbflkasdfsdlfasd');
         });
