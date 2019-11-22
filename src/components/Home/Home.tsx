@@ -26,6 +26,9 @@ interface HomeProps {
     }
 
     render() {
+        if (!authStore.isLogged) {
+            this.props.history.push ("/login");
+        }
         return (<div className="home">
             <DashMenu />
             <div className="page-layout">
