@@ -7,7 +7,8 @@ import { Route, Switch } from "react-router-dom";
 import { HashRouter } from "react-router-dom";
 import Projects from '../Projects/Projects';
 import projectsStore from '../../stores/projectsStore';
-import ProjectOverview from '../Projects/Overview/ProjectOverview';
+import ActualProject from '../Projects/ActualProject/ActualProject';
+
 interface AppProps {
   history: any
 }
@@ -15,7 +16,7 @@ interface AppProps {
 class App extends Component {
   constructor(props: {}) {
     super(props);
-    projectsStore.onRetrieveProjects();
+     projectsStore.onRetrieveProjects() 
   }
 
   render() {
@@ -26,7 +27,7 @@ class App extends Component {
         <Switch>
         <Route exact path="/projects" component={Projects} />
         <Route path="/projects/:projectID" render={props => {
-        return <ProjectOverview {...props} projectId={props.match.params.projectID} />;
+        return <ActualProject {...props} projectId={props.match.params.projectID} />;
       }} />
         </Switch>
         

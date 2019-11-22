@@ -1,0 +1,76 @@
+@import './../../../../variables.scss';
+
+.species-list-cont {
+    width: 100%;
+    background-color: white;
+
+    .list-header {
+        display: flex;
+        flex-direction: row;
+        padding: 0.5rem;
+        justify-content: space-between;
+        align-items: center;
+        h1 {
+            font-weight: 900;
+        }
+    }
+
+    thead,
+    tbody tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+        /* even columns width , fix width of table too*/
+    }
+
+    table {
+        border-spacing: 0px;
+        display: flex;
+        flex-direction: column;
+
+        thead {
+            background-color: $mainActiveColor;
+            color: white;
+            th {
+                padding: 0.15rem 0.5rem;
+            }
+        }
+
+        tbody {
+            background-color: white;
+            display: block;
+            height: calc(100vh - 130px);
+            overflow-y: auto;
+            overflow: scroll;
+            tr {
+                &:hover {
+                    background-color: rgba(176, 234, 125, 0.425);
+                    td:first-child {
+                        background-color: $mainActiveColor;
+                        color: white;
+                    }
+                }
+            }
+            .blank-cell {
+                border-bottom: 0.2px solid rgb(224, 224, 224);
+                border-right: 0.2px solid rgb(224, 224, 224);
+                cursor: default;
+                word-wrap: break-word;
+            }
+
+            td {
+                padding: 0.15rem 0.5rem;
+
+            }
+        }
+    }
+}
+
+.gray-cell {
+    background-color: #E5E5E5;
+    border-top: 1px solid rgb(209, 209, 209);
+    text-align: center;
+    font-size: 13px;
+    color: rgb(143, 143, 143);
+    width: 35px;
+}

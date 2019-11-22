@@ -29,12 +29,13 @@ class ProfileMenu extends Component {
   }
 
   render() {
-    
-    return (<div className="profile-icon">
+
+    return (<div className="profile-icon" onClick={() => {
+      this.showProfileMenu = !this.showProfileMenu;
+    }}>
       {(!authStore.isLogged) ? <Redirect to='/' /> : ''}
-      <button onClick={() => {
-        this.showProfileMenu = !this.showProfileMenu;
-      }} className="profile-photo">
+      <h4>{authStore.currentUserInfo.name}</h4>
+      <button  className="profile-photo">
         {(authStore.profilePhotoURL !== "")
           ? <img src={"" + authStore.profilePhotoURL + ""} alt="" width="37"
             style={{
@@ -64,9 +65,9 @@ class ProfileMenu extends Component {
               }}
               style={{
                 backgroundColor: this.profileBtnSelected
-                  ? '#35E285'
-                  : this.profileBtnOver ? '#C4C4C4' : '#FFFFFF',
-              }}>VER PERFIL</button>
+                  ? '#AFEA7D'
+                  : this.profileBtnOver ? '#AFEA7D' : '#FFFFFF',
+              }}>Ver perfil</button>
             <button className="config-btn"
               onClick={() => {
                 this.profileBtnSelected = false;
@@ -84,9 +85,9 @@ class ProfileMenu extends Component {
               }}
               style={{
                 backgroundColor: this.configBtnSelected
-                  ? '#35E285'
-                  : this.configBtnOver ? '#C4C4C4' : '#FFFFFF'
-              }}>CONFIGURACIÓN</button>
+                  ? '#AFEA7D'
+                  : this.configBtnOver ? '#AFEA7D' : '#FFFFFF'
+              }}>Configuración</button>
             <button
               onMouseOver={() => {
                 //this.signOutBtnOver = true;
@@ -99,21 +100,18 @@ class ProfileMenu extends Component {
               }}
               style={{
                 backgroundColor: this.signOutBtnSelected
-                  ? '#35E285'
-                  : this.signOutBtnOver ? '#C4C4C4' : '#FFFFFF'
+                  ? '#AFEA7D'
+                  : this.signOutBtnOver ? '#AFEA7D' : '#FFFFFF'
               }}
               onClick={() => {
                 //this.props.history.push("/");
-                authStore.signOut();
-                console.log('CERRANDO SESIÓN LOL');
-
                 this.profileBtnSelected = false;
                 this.configBtnSelected = false;
                 this.signOutBtnSelected = !this.signOutBtnSelected;
-                
+                authStore.signOut();
 
               }}>
-              CERRAR SESIÓN
+              Cerrar sesión
           </button>
           </div>
         </div>

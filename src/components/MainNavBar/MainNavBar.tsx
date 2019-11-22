@@ -1,10 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './_MainNavBar.scss'
-import { Link, withRouter, Redirect, Route, Router } from 'react-router-dom';
-
 import { observer } from 'mobx-react';
-import authStore from '../../stores/authStore';
-import { observable, autorun } from 'mobx';
+import { observable } from 'mobx';
 import ProfileMenu from '../ProfileMenu/ProfileMenu';
 
 interface MainNavBarProps {

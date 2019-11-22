@@ -1,21 +1,13 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router';
+import React from 'react';
 import authStore from '../../stores/authStore';
 import { observer } from 'mobx-react';
-import { Redirect } from 'react-router-dom';
 
-interface formLoginProps {
-
-}
-
-const SignIn = observer((formLoginProps) => {
+const SignIn = observer(() => {
 
     return (<form className="sign-in firstdisplay"
         onSubmit={(event: any) => {
             event.preventDefault();
             authStore.login(authStore.credentials.email, authStore.credentials.password);
-          
-
         }}>
 
         <div className="form-imput">

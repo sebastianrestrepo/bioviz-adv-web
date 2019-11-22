@@ -1,3 +1,5 @@
+@import './../../variables.scss';
+
 .dash-menu {
     background-color: #272E2E;
     height: 100vh;
@@ -6,21 +8,23 @@
     align-items: center;
 
     &.open {
-        width: 200px;
+        width: 240px;
 
         .logo {
             width: 100%;
             display: flex;
             flex-direction: row;
             justify-content: space-around;
+            height: 31px;
 
-            img {
+            .ham-icon {
                 display: inherit;
                 transform: rotate(-180deg);
             }
 
-            p {
+            .logo-file {
                 display: flex;
+                width: 62%;
             }
         }
 
@@ -45,13 +49,20 @@
         width: 45px;
 
         .logo {
-            img {
+            height: 31px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .ham-icon {
                 display: inherit;
+                margin: auto 0;
             }
 
-            p {
+            .logo-file {
                 display: none;
             }
+            
         }
 
         span {
@@ -70,7 +81,9 @@
             h4 {
                 display: none;
             }
+           
         }
+
     }
 
     .logo {
@@ -79,7 +92,11 @@
         color: white;
         margin: 15px 0;
 
-        img {
+        .logo-file {
+            display: none;
+        }
+
+        .ham-icon {
             width: 27px;
             height: auto;
             display: none;
@@ -92,6 +109,7 @@
         font-weight: 700;
         color: white;
     }
+
     .dash-icon-link {
         width: 100%;
         display: flex;
@@ -99,6 +117,51 @@
         align-items: flex-start;
         margin: 0;
     }
+
+    .project-nav {
+        width: 100%;
+        .p-wrapper {
+            border-top: 0.5px solid #BDBDBD;
+
+        }
+        .p-project {
+            color: #BDBDBD;
+            font-weight: 400;
+            font-size: 15px;
+        }
+
+        .project-section-handler {
+            .project-section-btn {
+                padding: 7px 0 7px 3rem;
+                position: relative;
+                cursor: default;
+
+                &:hover {
+                    background-color: #4F4F4F;
+                }
+
+                .dot {
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 10px;
+                    background-color: $secondActiveColor;
+                    position: absolute;
+                    left: 35px;
+                    display: none;
+
+                    &.tab-open {
+                        display: inherit;
+
+                    }
+                }
+
+                h4 {
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+
     .dash-icon {
         width: 100%;
         display: flex;
@@ -107,7 +170,11 @@
         margin: 0;
 
         #analysis-btn,
-        #home-btn {
+        #actualProject-btn,
+        #home-btn,
+        #notifications-btn,
+        #lists-btn {
+
             cursor: pointer;
             background-color: #272E2E;
 
@@ -124,6 +191,10 @@
 
                 img {
                     filter: invert(100%);
+                }
+
+                .color-icon {
+                    filter: invert(0%);
                 }
             }
         }
