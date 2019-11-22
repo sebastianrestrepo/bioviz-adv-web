@@ -16,10 +16,16 @@ const SpecieRow = observer(({ sciName, commonName, index, order, family }: speci
             <td className="gray-cell">{index + 1}</td>
             <td className="blank-cell">{order}</td>
             <td className="blank-cell">{family}</td>
-            <td className="blank-cell">Género</td>
             <td className="blank-cell">{sciName}</td>
             <td className="blank-cell">{commonName}</td>
             <td className="blank-cell">0</td>
+            <td className="blank-cell">0</td>
+            <td className="blank-cell">0</td>
+            <td className="blank-cell">0</td>
+            <td className="blank-cell">0</td>
+            <td className="blank-cell">0</td>
+            <td className="blank-cell">0</td>
+    
         </tr>
     );
 });

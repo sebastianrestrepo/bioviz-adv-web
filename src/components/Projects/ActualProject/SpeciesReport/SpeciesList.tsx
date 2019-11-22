@@ -36,16 +36,24 @@ export class SpeciesList extends React.Component {
                     </button>
 
             </div>
-            <table>
+
+            <div className="hack1">
+                <div className="hack2">
+                <table>
                 <thead>
                     <tr>
                         <th className="gray-cell"></th>
                         <th>Orden</th>
                         <th>Familia</th>
-                        <th>Género</th>
                         <th>Nombre científico</th>
                         <th>Nombre común</th>
                         <th>Tiempo inicio</th>
+                        <th>Tiempo final</th>
+                        <th>Fecha</th>
+                        <th>País</th>
+                        <th>Estado</th>
+                        <th>Lugar</th>
+                        <th>Coordenadas</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,6 +70,9 @@ export class SpeciesList extends React.Component {
                 </tbody>
 
             </table>
+                </div>
+            </div>
+         
         </div>
     }
 }
