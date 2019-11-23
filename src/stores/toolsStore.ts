@@ -24,13 +24,34 @@ class ToolsStore {
     constructor() {
     }
 
-    @action handlePlayPause () {
-        if (this.panel == 1) {
-            this.wsRef.playPause();
-        } else if (this.panel == 2) {
-            this.wsSelectionRef.playPause();
+    @action handlePlayPause() {
+        switch (this.panel) {
+            case 0:
+                this.wsRef.playPause();
+                break;
+            case 1:
+                this.wsRef.playPause();
+                break;
+            case 2:
+                this.wsSelectionRef.playPause();
+                break;
         }
     }
+
+    @action handlePause() {
+        switch (this.panel) {
+            case 0:
+                this.wsSelectionRef.pause();
+                break;
+            case 1:
+                this.wsSelectionRef.pause();
+                break;
+            case 2:
+                this.wsRef.pause();
+                break;
+        }
+    }
+    
 
     @action saveRegions() {
         let that = this;

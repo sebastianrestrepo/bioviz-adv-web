@@ -11,9 +11,9 @@ interface spectroCompProps {
     panel: any;
 }
 
-const SpectroComp = ({panel}: spectroCompProps) => {
+const SpectroComp = ({ panel }: spectroCompProps) => {
 
- 
+
     // General Spectrogram
     const containerRef: any = React.useRef();
     const containerSpecRef: any = React.useRef();
@@ -94,7 +94,13 @@ const SpectroComp = ({panel}: spectroCompProps) => {
         //console.log();
     }, []);
 
-    return (<div className="general-spectro" onClick={() => { toolsStore.panel = 1; console.log('panel-1', toolsStore.panel)}}
+    return (<div className="general-spectro" onClick={() => {
+        toolsStore.panel = 1;
+        if (toolsStore.isPlaying) {
+            toolsStore.isPlaying = false;
+            toolsStore.handlePause();
+        }
+    }}
         style={{
             border: panel == 1 ? toolsStore.panelActivated : toolsStore.panelDisabled
         }}>

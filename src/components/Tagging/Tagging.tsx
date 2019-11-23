@@ -25,7 +25,13 @@ interface TaggingProps {
             <ToolsMenu />
 
             <div className="two-sections">
-                <div className="spectro-selection" onClick={() => { toolsStore.panel = 2; console.log('panel-2') }}
+                <div className="spectro-selection" onClick={() => {
+                    toolsStore.panel = 2;
+                    if (toolsStore.isPlaying) {
+                        toolsStore.isPlaying = false;
+                        toolsStore.handlePause();
+                    }
+                }}
                     style={{
                         border: toolsStore.panel == 2 ? toolsStore.panelActivated : toolsStore.panelDisabled
                     }}>
