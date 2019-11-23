@@ -7,14 +7,7 @@ import * as CSS from 'csstype';
 import toolsStore from '../../../../stores/toolsStore';
 import Timeline from 'wavesurfer.js/dist/plugin/wavesurfer.timeline.js';
 
-interface spectroSelProps {
-    regionEnd: any;
-    regionStart: any;
-    specWidth: any;
-    selSpecLeftPos: any;
-    genSpecWidth: any;
-}
-const SpectroSel = ({ regionEnd, regionStart, specWidth, selSpecLeftPos, genSpecWidth }: spectroSelProps) => {
+const SpectroSel = () => {
 
     // Selección Spectro
     const containerRef: any = React.useRef();
@@ -67,21 +60,7 @@ const SpectroSel = ({ regionEnd, regionStart, specWidth, selSpecLeftPos, genSpec
         //toolsStore.loadSelection(1000, 5000);
     }, []);
 
-    const SpectroWidthStyles: CSS.Properties = {
-        width: specWidth + 'px',
-        left: selSpecLeftPos + 'px',
-    }
-
-    const SpectroPosStyles: CSS.Properties = {
-        left: selSpecLeftPos + 'px',
-        width: genSpecWidth + 'px',
-    }
-
-    const spectroSettingsChange = () => {
-        wsRef.current.start(regionStart);
-    }
-
-    return (<div className="sel-cont">
+    return (<div className="sel-cont" >
         <div className="container-sel">
 
             {/*<div id="timeline" ref={containerTimelineRef} onClick={() => {

@@ -7,8 +7,13 @@ import Regions from 'wavesurfer.js/dist/plugin/wavesurfer.regions';
 import Cursor from 'wavesurfer.js/dist/plugin/wavesurfer.cursor';
 import toolsStore from '../../../../stores/toolsStore';
 
-const SpectroComp = () => {
+interface spectroCompProps {
+    panel: any;
+}
 
+const SpectroComp = ({panel}: spectroCompProps) => {
+
+ 
     // General Spectrogram
     const containerRef: any = React.useRef();
     const containerSpecRef: any = React.useRef();
@@ -89,13 +94,18 @@ const SpectroComp = () => {
         //console.log();
     }, []);
 
-    return (<div className="container">
+    return (<div className="general-spectro" onClick={() => { toolsStore.panel = 1; console.log('panel-1', toolsStore.panel)}}
+        style={{
+            border: panel == 1 ? toolsStore.panelActivated : toolsStore.panelDisabled
+        }}>
+        <div className="container">
 
-        <div id="timeline" ref={containerTimelineRef} />
-        <div id="waveform" ref={containerRef}>
-            <div id="wave-spectrogram" ref={containerSpecRef} />
+            <div id="timeline" ref={containerTimelineRef} />
+            <div id="waveform" ref={containerRef}>
+                <div id="wave-spectrogram" ref={containerSpecRef} />
+            </div>
+
         </div>
-
     </div>);
 }
 

@@ -7,6 +7,7 @@ import SpectroComp from './Components/GenSpectro/SpectroComp';
 import SpectroSel from './Components/SpectroSel/SpectroSel';
 import toolsStore from '../../stores/toolsStore';
 import ToolsMenu from './Components/ToolsMenu/ToolsMenu';
+import { observable } from 'mobx';
 
 interface TaggingProps {
 }
@@ -20,19 +21,20 @@ interface TaggingProps {
     render() {
         return (<div className="tagging">
             <TaggingHeader></TaggingHeader>
-            <SpectroComp />
+            <SpectroComp panel={toolsStore.panel} />
             <ToolsMenu />
 
             <div className="two-sections">
-                <div className="spectro-selection">
+                <div className="spectro-selection" onClick={() => { toolsStore.panel = 2; console.log('panel-2') }}
+                    style={{
+                        border: toolsStore.panel == 2 ? toolsStore.panelActivated : toolsStore.panelDisabled
+                    }}>
                     <div className="black-card-header">
                         <h3>Selección del audio principal</h3>
                     </div>
-                    <SpectroSel regionEnd={toolsStore.regionEnd}
-                        specWidth={toolsStore.selSpecWidth}
-                        regionStart={toolsStore.regionStart}
-                        selSpecLeftPos={toolsStore.selSpecLeftPos}
-                        genSpecWidth={toolsStore.genSpecWidth} />
+                    <div className="spectro-div">
+                        <SpectroSel />
+                    </div>
                 </div>
                 <TagSound></TagSound>
             </div>

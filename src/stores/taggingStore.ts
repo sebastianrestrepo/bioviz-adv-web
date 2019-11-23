@@ -2,6 +2,7 @@ import { observable, action } from "mobx";
 
 class TaggingStore {
 
+
     //---------------------------------DATE selection -----------------------------//
 
     @observable dayAnalyzing: any = ''
@@ -199,7 +200,9 @@ class TaggingStore {
     @action onDisplayOtherSings() {
         this.isUnfoldedReference = !this.isUnfoldedReference;
     }
+
 }
+
 const tagStore = new TaggingStore();
 
 export default tagStore;

@@ -1,27 +1,35 @@
 import { observable, autorun, action } from 'mobx';
 import { Decoder, BufferManipulations, Encoder } from 'alamp';
+import * as CSS from 'csstype';
 
 class ToolsStore {
 
+    @observable isPlaying: boolean = false;
     @observable wsRef: any;
     @observable regionStart: any;
     @observable regionEnd: any;
     @observable genSpecWidth: number = 0;
     @observable selSpecLeftPos: number = 0;
     @observable selSpecWidth: number = 0;
-    
+
     //
     @observable wsSelectionRef: any;
     //
+
+    //---------------------------------Panel selection -----------------------------//
+    @observable panel: number = 0;
+    @observable panelActivated: string = '1.5px solid #44CD88';
+    @observable panelDisabled: string = '0px solid #44CD88';
+
     constructor() {
     }
 
-    @action handlePlay = () => {
-        this.wsRef.play();
-    }
-
-    @action handlePause = () => {
-        this.wsRef.pause();
+    @action handlePlayPause () {
+        if (this.panel == 1) {
+            this.wsRef.playPause();
+        } else if (this.panel == 2) {
+            this.wsSelectionRef.playPause();
+        }
     }
 
     @action saveRegions() {
@@ -35,8 +43,8 @@ class ToolsStore {
                 that.regionEnd = region.end;
                 that.genSpecWidth = that.wsRef.spectrogram.drawer.width;
                 console.log('Timeline', that.wsRef.timeline);
-                console.log('that region start',  that.regionStart);
-                console.log('normie region start',  region.start);
+                console.log('that region start', that.regionStart);
+                console.log('normie region start', region.start);
                 return {
                     start: region.start,
                     end: region.end,
@@ -46,16 +54,16 @@ class ToolsStore {
             })
         );
         this.settingsSelSpectro();
-        console.log('OUTSIDE that region start',  that.regionStart);
-        this.loadSelection(that.regionStart *1000, that.regionEnd*1000);
+        console.log('OUTSIDE that region start', that.regionStart);
+        this.loadSelection(that.regionStart * 1000, that.regionEnd * 1000);
     }
 
 
-    settingsSelSpectro(){
-        let secondWidth = this.genSpecWidth/59;
-        this.selSpecLeftPos = -secondWidth*this.regionStart;
+    settingsSelSpectro() {
+        let secondWidth = this.genSpecWidth / 59;
+        this.selSpecLeftPos = -secondWidth * this.regionStart;
         console.log('LEFT POS=', this.selSpecLeftPos)
-        this.selSpecWidth =  secondWidth*(this.regionEnd-this.regionStart)
+        this.selSpecWidth = secondWidth * (this.regionEnd - this.regionStart)
     }
 
     async loadSelection(start: number, end: number) {
@@ -89,7 +97,7 @@ class ToolsStore {
         seconds = Number(seconds);
         var minutes = Math.floor(seconds / 60);
         seconds = seconds % 60;
-    
+
         // fill up seconds with zeroes
         var secondsStr = Math.round(seconds).toString();
         if (pxPerSec >= 25 * 10) {
@@ -97,7 +105,7 @@ class ToolsStore {
         } else if (pxPerSec >= 25 * 1) {
             secondsStr = seconds.toFixed(1);
         }
-    
+
         if (minutes > 0) {
             if (seconds < 10) {
                 secondsStr = '0' + secondsStr;
@@ -106,7 +114,7 @@ class ToolsStore {
         }
         return secondsStr;
     }
-    
+
     @action timeInterval(pxPerSec) {
         var retval = 1;
         if (pxPerSec >= 25 * 100) {
@@ -128,7 +136,7 @@ class ToolsStore {
         }
         return retval;
     }
-    
+
     @action primaryLabelInterval(pxPerSec) {
         var retval = 1;
         if (pxPerSec >= 25 * 100) {
@@ -150,7 +158,7 @@ class ToolsStore {
         }
         return retval;
     }
-    
+
     @action secondaryLabelInterval(pxPerSec) {
         // draw one every 10s as an example
         return Math.floor(10 / this.timeInterval(pxPerSec));
