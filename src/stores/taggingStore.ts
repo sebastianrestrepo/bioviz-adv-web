@@ -8,7 +8,7 @@ class TaggingStore {
     @observable dayAnalyzing: any = ''
     @observable focusedDayInput: boolean = false;
     @observable actualTime: any = '00:01'
-    @observable isAiOn: boolean =  false;
+    @observable isAiOn: boolean = false;
     //------------------------------------ Color edition -------------------//
     @observable colorEditionStatus: boolean = false;
     @observable contrastEditionStatus: boolean = false;
@@ -106,9 +106,77 @@ class TaggingStore {
     @observable brightVal = 1;
     @observable contrastVal = 1;
 
+    //--------------------------------COMPARING AUDIO DATA -------------------------------//
+
+    //COMPARE SECTION
+    @observable comparedMicro1Activated = true;
+    @observable comparedMicro2Activated = false;
+    @observable comparedMicro3Activated = false;
+    @observable comparedMicro4Activated = false;
+    @observable comparedMicro5Activated = false;
+    @observable comparedMicro6Activated = false;
+
+    @observable isPrincipal1 = true;
+    @observable isPrincipal2 = false;
+    @observable isPrincipal3 = false;
+    @observable isPrincipal4 = false;
+    @observable isPrincipal5 = false;
+    @observable isPrincipal6 = false;
+
+    @observable volume = 10;
+
+    @action activateMicro(micro: string) {
+        switch (micro) {
+            case '1':
+                this.comparedMicro1Activated = true;
+                break;
+            case '2':
+                this.comparedMicro2Activated = !this.comparedMicro2Activated
+                break;
+            case '3':
+                this.comparedMicro3Activated = !this.comparedMicro3Activated
+                break;
+            case '4':
+                this.comparedMicro4Activated = !this.comparedMicro4Activated
+                break;
+
+            case '5':
+                this.comparedMicro5Activated = !this.comparedMicro5Activated
+                break;
+            case '6':
+                this.comparedMicro6Activated = !this.comparedMicro6Activated
+                break;
+            case 'all':
+                if (this.comparedMicro1Activated &&
+                    this.comparedMicro2Activated &&
+                    this.comparedMicro3Activated &&
+                    this.comparedMicro4Activated &&
+                    this.comparedMicro5Activated &&
+                    this.comparedMicro6Activated) {
+                    this.comparedMicro1Activated = true;
+                    this.comparedMicro2Activated = false;
+                    this.comparedMicro3Activated = false;
+                    this.comparedMicro4Activated = false;
+                    this.comparedMicro5Activated = false;
+                    this.comparedMicro6Activated = false;
+                } else {
+                    this.comparedMicro1Activated = true
+                    this.comparedMicro2Activated = true;
+                    this.comparedMicro3Activated = true;
+                    this.comparedMicro4Activated = true;
+                    this.comparedMicro5Activated = true;
+                    this.comparedMicro6Activated = true;
+                }
+                break;
+        }
+    }
+
+    @action onChangeVolume(val) {
+        this.volume = val;
+    }
     //--------------------------------SAVE DATA LABELED --------------------------------//
 
-    
+
     @observable playingSuggestion = false;
     @observable selected1 = false;
     @observable selected2 = false;
@@ -147,12 +215,12 @@ class TaggingStore {
     @observable isNoteActivated = false;
     @observable commonName;
     @observable sciName;
-    
+
     @action onNoteClick() {
         this.isNoteActivated = true;
     }
 
-    
+
     @action birdClick(value: number) {
         switch (value) {
             case 1:
@@ -176,7 +244,7 @@ class TaggingStore {
     }
 
 
-    
+
 
     //with AI
     @observable mainSpecSuggested = false;

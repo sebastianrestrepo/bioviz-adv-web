@@ -9,6 +9,7 @@ import { autorun } from 'mobx';
 import authStore from '../../../stores/authStore';
 import { SpeciesList } from './SpeciesReport/SpeciesList';
 import Tagging from '../../Tagging/Tagging';
+import { CompareAudios } from '../../Tagging/Components/CompareAudios/CompareAudios';
 interface ActualProjectProps {
     projectId: string,
 }
@@ -33,6 +34,7 @@ class ActualProject extends React.Component<ActualProjectProps> {
                 {
                     (projectsStore.projectTabs[0].selected) ? <section className="dash-section">
                         <ProjectHeader name={projectsStore.actualProject.name} description={projectsStore.actualProject.description} />
+                        <CompareAudios></CompareAudios>
                     </section> : (projectsStore.projectTabs[1].selected) ? <section className="dash-section">
                         <Tagging></Tagging>
                     </section> : (projectsStore.projectTabs[2].selected) ? <section className="dash-section">
