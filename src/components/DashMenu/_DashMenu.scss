@@ -8,7 +8,7 @@
     align-items: center;
 
     &.open {
-        width: 240px;
+        min-width: 240px;
 
         .logo {
             width: 100%;
@@ -46,7 +46,7 @@
     }
 
     &.closed {
-        width: 45px;
+        min-width: 45px;
 
         .logo {
             height: 31px;
