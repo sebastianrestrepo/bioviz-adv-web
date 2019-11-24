@@ -61,6 +61,7 @@ const SpectroSel = () => {
     }, []);
 
     return (<div className="sel-cont" >
+
         <div className="container-sel">
 
             {/*<div id="timeline" ref={containerTimelineRef} onClick={() => {

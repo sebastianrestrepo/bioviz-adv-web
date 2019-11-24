@@ -143,6 +143,39 @@
             flex-direction: column;
             overflow-x: hidden;
 
+            .MuiSlider-root {
+                color: #AFEA7D;
+            }
+
+            .MuiSlider-rail {
+                color: #BDBDBD;
+            }
+
+            .MuiSlider-root.MuiSlider-vertical {
+                height: 316px;
+            }
+
+            .MuiSlider-rail {
+                width: 6px;
+            }
+
+            .MuiSlider-track {
+                width: 6px;
+            }
+
+            .MuiSlider-thumb {
+                width: 18px;
+                height: 18px;
+                border: 2px solid white;
+                -webkit-box-shadow: 1px 1px 10px -4px rgba(0, 0, 0, 0.75);
+                -moz-box-shadow: 1px 1px 10px -4px rgba(0, 0, 0, 0.75);
+                box-shadow: 1px 1px 10px -4px rgba(0, 0, 0, 0.75);
+            }
+
+            .PrivateValueLabel-circle-24 {
+                background-color: #333333;
+            }
+
             .black-card-header {
                 width: 100%;
                 display: flex;
@@ -166,6 +199,10 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+
+                #slider {
+                    transform: rotate(90deg);
+                }
             }
         }
 
