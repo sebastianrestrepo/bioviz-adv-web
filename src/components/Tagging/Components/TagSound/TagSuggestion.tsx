@@ -106,7 +106,8 @@ class TagSuggestion extends Component<tagSuggestionProps> {
                                     <span className="play" onClick={() => tagStore.playBirdSong(song.audioUrl)}>
                                         <img className="play-img" src="./assets/tagging-section/play-audio.svg" height="20px" alt="" />
                                         <p className="_14px"> Reproducir canto</p>
-                                    </span><p className=" _14px">{song.location}</p>
+                                    </span>
+                                    <p className=" _14px">{song.location}</p>
                                     <p className="gray-text _14px">{song.owner}</p>
                                     <img className="lens-img"
                                         onClick={() => tagStore.onSpecZoomView(song.spectroImgUrl, song.audioUrl)}

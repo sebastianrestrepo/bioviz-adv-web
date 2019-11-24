@@ -8,6 +8,8 @@ import SpectroSel from './Components/SpectroSel/SpectroSel';
 import toolsStore from '../../stores/toolsStore';
 import ToolsMenu from './Components/ToolsMenu/ToolsMenu';
 import { observable } from 'mobx';
+import { SelSuggestions } from './Components/SpectroSel/SelSuggestions';
+import tagStore from '../../stores/taggingStore';
 
 interface TaggingProps {
 }
@@ -25,13 +27,14 @@ interface TaggingProps {
             <ToolsMenu />
 
             <div className="two-sections">
-                <div className="spectro-selection" onClick={() => {
-                    toolsStore.panel = 2;
-                    if (toolsStore.isPlaying) {
-                        toolsStore.isPlaying = false;
-                        toolsStore.handlePause();
-                    }
-                }}
+                <div className="spectro-selection"
+                    onClick={() => {
+                        toolsStore.panel = 2;
+                        if (toolsStore.isPlaying) {
+                            toolsStore.isPlaying = false;
+                            toolsStore.handlePause();
+                        }
+                    }}
                     style={{
                         border: toolsStore.panel == 2 ? toolsStore.panelActivated : toolsStore.panelDisabled
                     }}>
@@ -42,7 +45,10 @@ interface TaggingProps {
                         <SpectroSel />
                     </div>
                 </div>
-                <TagSound></TagSound>
+                {
+                    (tagStore.isAiOn) ? <SelSuggestions/> : ''
+                }
+                
             </div>
         </div>);
     }

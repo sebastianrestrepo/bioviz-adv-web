@@ -65,6 +65,11 @@ body {
     font-weight: bold;
 }
 
+.yellow-text {
+    color: $thirdActiveColor;
+    font-weight: bold;
+}
+
 h1 {
     font-size: 18px;
 }
@@ -278,6 +283,21 @@ button {
 
 }
 
+.yellow-btn {
+    border-style: none;
+    background-color: $thirdActiveColor;
+    color: $mainDarkColor;
+    font-weight: 700;
+    border-radius: 2px;
+    padding: 0 1rem;
+    min-width: 120px;
+    font-family: 'Lato', sans-serif;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $thirdActiveColorHover;
+    }
+}
 .green-button {
     border-style: none;
     background-color: $secondActiveColor;
@@ -414,4 +434,22 @@ h1 {
         }
     }
 
+}
+
+
+.arrow-left {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid $mainActiveColor;
+    transform: rotate(0deg);
+    border-radius: 15px;
+    &.white {
+        border-right: 10px solid white;
+    }
+    &:hover {
+        border-right: 10px solid $mainDarkColor;
+        cursor: pointer;
+    }
 }

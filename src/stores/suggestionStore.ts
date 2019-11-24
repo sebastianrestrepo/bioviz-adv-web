@@ -1,4 +1,4 @@
-import { observable} from 'mobx';
+import { observable } from 'mobx';
 
 class SuggestionStore {
     @observable speciesSuggested = [
@@ -35,6 +35,48 @@ class SuggestionStore {
         }
     ];
 
+    @observable suggestionsArray = [
+        {
+            percentage: 87,
+            commonName: 'Hormiguero colimocho',
+            scientificName: 'Sipia berlepschi',
+            coincidences: '2 AUDIOS SIMILARES ENCONTRADOS',
+            color: '#53D470',
+            spectrogramImg: './assets/atom2B-assets/sipiaberlepschi.png',
+            birdPhoto: './assets/atom2B-assets/birds-photos/sipiaberlepschi.png',
+            audio: './assets/audio-samples/Atom2B/sipiaberlepschi.mp3'
+        },
+        {
+            percentage: 81,
+            commonName: 'Hormiguero de zeledón',
+            scientificName: 'Sipia nigricauda',
+            coincidences: '3 AUDIOS SIMILARES ENCONTRADOS',
+            color: '#53D470',
+            spectrogramImg: './assets/atom2B-assets/sipianigricauda.png',
+            birdPhoto: './assets/atom2B-assets/birds-photos/sipianigricauda.png',
+            audio: './assets/audio-samples/Atom2B/sipianigricauda.wav'
+        },
+        {
+            percentage: 61,
+            commonName: 'Homiguero guardarribera',
+            scientificName: 'Sipia palliata',
+            coincidences: '1 AUDIO SIMILAR ENCONTRADO',
+            color: '#B8D449',
+            spectrogramImg: './assets/atom2B-assets/sipiapalliata.png',
+            birdPhoto: './assets/atom2B-assets/birds-photos/sipiapalliata.png',
+            audio: './assets/audio-samples/Atom2B/sipiapalliata.mp3'
+        },
+        {
+            percentage: 30,
+            commonName: 'Hormiguero cuerniblanco',
+            scientificName: 'Pithys albifrons',
+            coincidences: '1 AUDIO SIMILAR ENCONTRADO',
+            color: '#FAC22B',
+            spectrogramImg: './assets/atom2B-assets/pithysalbifrons.png',
+            birdPhoto: './assets/atom2B-assets/birds-photos/pithysalbifrons.png',
+            audio: './assets/audio-samples/Atom2B/pithysalbifrons.mp3'
+        }]
+   
 
 }
 
