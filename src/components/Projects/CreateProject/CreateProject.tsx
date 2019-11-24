@@ -121,13 +121,13 @@ class CreateProject extends Component {
 
                             </span>
 
-                            <span className="question-structure">
+                            <span className="question-structure step3">
                                 <label className="green-subtitle">Tipo de micrófono utilizado</label>
                                 <Select
                                     placeholder="Escoger dispositivo"
                                     options={projectsStore.monitoringSystems} />
                             </span>
-                            <span className="question-structure">
+                            <span className="question-structure step3">
                                 <label className="green-subtitle">Distribución de micrófonos de MONAC utilizada</label>
                                 <Select
                                     placeholder="Escoger distribución"
