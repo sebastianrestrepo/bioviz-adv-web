@@ -4,6 +4,7 @@
     width: 50%;
     padding: 1rem;
     overflow-y: auto;
+
     .sel-suggest-card {
         width: 100%;
         border-radius: 4px;
@@ -39,9 +40,29 @@
             position: relative;
             border-radius: 5px;
             padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
 
-            .yellow-text {
-                margin: 0.1rem 0 1rem 0;
+            .up {
+                display: flex;
+                flex-direction: row;
+
+                .audio {
+                    width: 350px;
+                    height: 150px;
+                }
+            }
+
+            .sample-info {
+                padding: 0.5rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                .caption {
+                    margin: 0.5rem 0;
+                }
             }
 
             .play {
@@ -54,6 +75,17 @@
                 p {
                     font-weight: 700;
                     margin: 0 0 0 0.5rem;
+                }
+            }
+
+            .suggestions {
+                opacity: 1;
+
+                &.undisplay {
+                    opacity: 0;
+                    visibility: hidden;
+                    max-height: 0;
+                    transition: max-height 0.3s, opacity 0.2s, visibility 0.2s linear;
                 }
             }
 
@@ -84,7 +116,6 @@
                 }
 
                 &:hover {
-                    transform: scale(1.01);
 
                     .exploreaction {
                         display: inherit;
@@ -98,68 +129,105 @@
                 }
 
                 .specie-card {
+
                     .percentage-title {
                         padding: 3px;
-                        font-size: 13px;
                         font-weight: 800;
                         text-align: center;
                         color: white;
+                        background-color: $mainActiveColor;
                     }
 
-                    .spectrogram {
-                        width: 238px;
-                        cursor: pointer;
-                    }
+                    .info {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
 
-                    .specie-card-down {
-                        margin: 5px;
+                        .spectrogram {
+                            width: 250px;
+                            height: 150px;
+                            cursor: pointer;
+                        }
 
-                        .bird-info {
-                            display: flex;
-                            flex-direction: row;
 
-                            .bird-photo {
-                                width: 35px;
-                                height: 35px;
-                                margin-right: 10px;
+
+                        .specie-card-down {
+                            padding: 0.5rem ;
+
+                            .sug-actions {
+                                display: flex;
+                                flex-direction: row;
+                                align-items: center;
+                                margin: 0.5rem 0 0 0;
+                                img {
+                                    margin: 0 0.5rem;
+
+                                }
                             }
 
-                            .bird-text {
+                            .bird-info {
                                 display: flex;
-                                flex-direction: column;
+                                flex-direction: row;
+                                justify-content: flex-start;
+                                align-items: center;
 
-                                .position-sci {
-                                    display: flex;
-                                    flex-direction: row;
-                                    margin-bottom: 1px;
+                                .bird-photo-cont {
+                                    width: 50px;
+                                    height: 50px;
+                                    border-radius: 35px;
+                                    margin: 0 1rem 0 0;
+                                    overflow: hidden;
+                                    background-color: white;
+                                    border: solid 1.5px $thirdActiveColor;
 
-                                    .position {
-                                        font-size: 15px;
-                                        font-weight: 800;
-                                    }
-
-                                    .sci-name {
-                                        font-size: 15px;
-                                        font-weight: 800;
-                                        font-style: italic;
-                                        color: #828282;
+                                    img {
+                                        height: 100%;
+                                        width: 100%;
+                                        object-fit: cover;
                                     }
                                 }
 
-                                .common-name {
+                                .bird-text {
+                                    display: flex;
+                                    flex-direction: column;
+
+                                    .position-sci {
+                                        display: flex;
+                                        flex-direction: row;
+                                        margin-bottom: 1px;
+
+                                        .position {
+                                            font-size: 16px;
+                                            font-weight: 700;
+                                            color: $thirdActiveColor;
+                                        }
+
+                                        .sci-name {
+                                            font-size: 16px;
+                                            font-weight: 500;
+                                            margin: 0 0 0 0.5rem;
+                                            font-style: italic;
+                                            color: #828282;
+                                        }
+                                    }
+
+                                    .common-name {
+                                        font-size: 16px;
+                                    }
+                                }
+                            }
+
+                            p {
+                                &.sources {
                                     font-size: 14px;
                                     font-weight: 800;
-                                    margin-bottom: 10px;
+
                                 }
                             }
                         }
-
-
-                        p {
-                            font-size: 12px;
-                            font-weight: 800;
-                        }
                     }
+
+
                 }
             }
         }

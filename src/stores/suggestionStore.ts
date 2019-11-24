@@ -1,4 +1,4 @@
-import { observable } from 'mobx';
+import { observable, action } from 'mobx';
 
 class SuggestionStore {
     @observable speciesSuggested = [
@@ -35,6 +35,13 @@ class SuggestionStore {
         }
     ];
 
+    //------------------TIMELINE SUGGESTION-----------------
+    @observable isSampleSuggestionsOn = false;
+
+    @action onSampleSugDisplay() {
+        this.isSampleSuggestionsOn = !this.isSampleSuggestionsOn;
+    }
+
     @observable suggestionsArray = [
         {
             percentage: 87,
@@ -42,8 +49,8 @@ class SuggestionStore {
             scientificName: 'Sipia berlepschi',
             coincidences: '2 AUDIOS SIMILARES ENCONTRADOS',
             color: '#53D470',
-            spectrogramImg: './assets/atom2B-assets/sipiaberlepschi.png',
-            birdPhoto: './assets/atom2B-assets/birds-photos/sipiaberlepschi.png',
+            spectrogramImg: './assets/sipiaberlepschi.png',
+            birdPhoto: './assets/birds-photos/sipiaberlepschi.png',
             audio: './assets/audio-samples/Atom2B/sipiaberlepschi.mp3'
         },
         {
@@ -52,8 +59,8 @@ class SuggestionStore {
             scientificName: 'Sipia nigricauda',
             coincidences: '3 AUDIOS SIMILARES ENCONTRADOS',
             color: '#53D470',
-            spectrogramImg: './assets/atom2B-assets/sipianigricauda.png',
-            birdPhoto: './assets/atom2B-assets/birds-photos/sipianigricauda.png',
+            spectrogramImg: './assets/atom2B-/sipianigricauda.png',
+            birdPhoto: './assets/birds-photos/sipianigricauda.png',
             audio: './assets/audio-samples/Atom2B/sipianigricauda.wav'
         },
         {
@@ -62,8 +69,8 @@ class SuggestionStore {
             scientificName: 'Sipia palliata',
             coincidences: '1 AUDIO SIMILAR ENCONTRADO',
             color: '#B8D449',
-            spectrogramImg: './assets/atom2B-assets/sipiapalliata.png',
-            birdPhoto: './assets/atom2B-assets/birds-photos/sipiapalliata.png',
+            spectrogramImg: './assets/sipiapalliata.png',
+            birdPhoto: './assets/birds-photos/sipiapalliata.png',
             audio: './assets/audio-samples/Atom2B/sipiapalliata.mp3'
         },
         {
@@ -72,11 +79,11 @@ class SuggestionStore {
             scientificName: 'Pithys albifrons',
             coincidences: '1 AUDIO SIMILAR ENCONTRADO',
             color: '#FAC22B',
-            spectrogramImg: './assets/atom2B-assets/pithysalbifrons.png',
-            birdPhoto: './assets/atom2B-assets/birds-photos/pithysalbifrons.png',
+            spectrogramImg: './assets/pithysalbifrons.png',
+            birdPhoto: './assets/birds-photos/pithysalbifrons.png',
             audio: './assets/audio-samples/Atom2B/pithysalbifrons.mp3'
         }]
-   
+
 
 }
 

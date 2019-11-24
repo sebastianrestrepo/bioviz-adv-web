@@ -18,13 +18,23 @@ const SampleCard = observer(({ }: sampleCardProps) => {
         </div>
         <div className="card">
             <span className="arrow-left white"></span>
-            <span className="play" onClick={() => ''}>
-                <img className="play-img" src="./assets/tagging-section/play-audio.svg" height="20px" alt="" />
-                <p> Reproducir muestra</p>
-            </span>
-            <p className="yellow-text">Se han encontrado 3 subespecies para esta muestra</p>
-            <button className="yellow-btn">Revisar sugerencias</button>
-            <section className="suggestions">
+            <div className="up">
+                <span className="audio">
+
+                </span>
+                <span className="sample-info">
+                    <span className="play" onClick={() => ''}>
+                        <img className="play-img" src="./assets/tagging-section/play-audio.svg" height="20px" alt="" />
+                        <p> Reproducir muestra</p>
+                    </span>
+                    <p className="caption" >De acuerdo a este fragmento se han encontrado <span className="yellow-text">3 subespecies</span> que coinciden.</p>
+                    <button className="yellow-btn"
+                        onClick={() => suggestionStore.onSampleSugDisplay()}
+                    >Revisar sugerencias</button>
+                </span>
+            </div>
+
+            <section className = { (suggestionStore.isSampleSuggestionsOn) ? 'suggestions' : 'suggestions undisplay'}>
                 {
                     suggestionStore.suggestionsArray.map((s, i) => {
                         return <SuggestionCard

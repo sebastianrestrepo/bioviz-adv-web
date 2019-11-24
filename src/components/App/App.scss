@@ -9,6 +9,10 @@
     transition: all 0.4s;
 }
 
+.sci-name-style {
+    font-style: italic;
+}
+
 a {
 
     &:hover,
@@ -282,7 +286,7 @@ button {
     font-size: 15px;
 
 }
-
+:focus { outline: none; }
 .yellow-btn {
     border-style: none;
     background-color: $thirdActiveColor;
