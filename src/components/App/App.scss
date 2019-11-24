@@ -440,6 +440,23 @@ h1 {
 
 }
 
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-right: 7px solid $mainActiveColor;
+    transform: rotate(-90deg);
+    border-radius: 15px;
+    margin: 0 0.5rem 0 0;
+    &.white {
+        border-right: 7px solid white;
+    }
+    &:hover {
+        border-right: 7px solid $mainDarkColor;
+        cursor: pointer;
+    }
+}
 
 .arrow-left {
     width: 0;

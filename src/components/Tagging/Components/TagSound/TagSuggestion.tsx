@@ -29,7 +29,6 @@ class TagSuggestion extends Component<tagSuggestionProps> {
                         <h2>{this.props.coincidence}% DE COINCIDENCIA TOTAL</h2>
                     </div>
                     <span className="main-spec">
-                        <img className="spec-img" src={this.props.spectroImgUrl} alt="" />
                         <img className="lens-img"
                             onClick={() => tagStore.onSpecZoomView(this.props.spectroImgUrl, this.props.mainAudioUrl)}
                             src="./assets/tagging-section/lens.svg" alt="" />
@@ -96,7 +95,7 @@ class TagSuggestion extends Component<tagSuggestionProps> {
                 <p className={(tagStore.isUnfoldedReference) ? 'unfolded' : ''}
                     onClick={() => tagStore.onDisplayOtherSings()}>
                     <span className="arrow-down"></span>
-                    Ver otros cantos de esta especie encontrados en eBird:</p>
+                    Sugerencia basada en estos otros registros encontrados en eBird:</p>
                 {
                     (tagStore.isUnfoldedReference) ? <span className="row">
                         {

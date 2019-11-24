@@ -64,7 +64,7 @@
                     justify-content: flex-start;
                     align-items: center;
                     cursor: pointer;
-                    
+
                     p {
                         font-weight: 700;
                         margin: 0 0 0 0.5rem;
@@ -163,6 +163,40 @@
         .column-wrapper {
             width: 70%;
             height: 220px;
+            display: flex;
+            flex-direction: column;
+            .main-spec {
+                margin: 0 0.5rem 0 0;
+                width: 100%;
+                height: 220px;
+                position: relative;
+                overflow: hidden;
+                border: 1.5px solid $mainActiveColor;
+
+                .spec-img {
+                    height: 100%;
+                    padding: 2px;
+                }
+
+                .lens-img {
+                    position: absolute;
+                    top: 40%;
+                    left: 40%;
+                    height: 35px;
+                    display: none;
+                    cursor: pointer;
+
+                    &:hover {
+                        transform: scale(1.2);
+                    }
+                }
+
+                &:hover {
+                    .lens-img {
+                        display: inherit;
+                    }
+                }
+            }
 
             .coincidence-header {
                 display: flex;
@@ -195,42 +229,9 @@
 
         }
 
-        .main-spec {
-            margin: 0 0.5rem 0 0;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-            border: 1.5px solid $mainActiveColor;
-
-            .spec-img {
-                height: 100%;
-                padding: 2px;
-                vertical-align: middle;
-                object-fit: cover;
-                transform: scale(1.2);
-            }
-
-            .lens-img {
-                position: absolute;
-                top: 40%;
-                left: 40%;
-                height: 35px;
-                display: none;
-                cursor: pointer;
-                &:hover {
-                    transform: scale(1.2);
-                }
-            }
-
-            &:hover {
-                .lens-img {
-                    display: inherit;
-                }
-            }
-        }
 
         .bird-info {
-          
+
             p {
                 margin: 0.2rem 0;
                 font-size: 15px;
@@ -266,14 +267,17 @@
             color: $mainDarkColor;
             font-weight: 700;
             cursor: pointer;
+
             &:hover {
                 color: $mainActiveColor;
             }
+
             &.unfolded {
                 div {
                     transform: rotate(90deg);
                 }
             }
+
             div {
                 margin: 0 0.5rem 0 0;
             }
@@ -299,6 +303,7 @@
                     height: 35px;
                     display: none;
                     cursor: pointer;
+
                     &:hover {
                         transform: scale(1.2);
                     }
@@ -365,7 +370,7 @@
         margin: 0;
     }
 
-    h3{
+    h3 {
         font-size: 18px;
         color: #333333;
     }
