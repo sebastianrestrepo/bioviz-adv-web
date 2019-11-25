@@ -24,9 +24,10 @@ class ReportStore {
         this.onOptionsListBuild()
     }
 
-    
+
     //---------------------- TAGGING SECTION LISTS REQUIRED -------------------------//
     @observable scinamesOptions: any = []
+    @observable commonNamesOptions: any = []
 
     onOptionsListBuild() {
         let tempScinameOption = {
@@ -34,9 +35,11 @@ class ReportStore {
             label: ''
         }
         this.birdsData.map((e, i) => {
+            if (e.SPA_NAME != 'NA') {
             tempScinameOption.value = e.SCI_NAME;
-            tempScinameOption.label = e.SCI_NAME;
+            tempScinameOption.label = e.SPA_NAME + ' (' + e.SCI_NAME + ')';
             this.scinamesOptions.push(tempScinameOption)
+            }
         })
     }
     //-----------------------------LISTADO----------------------------------------

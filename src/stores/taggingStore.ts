@@ -1,4 +1,5 @@
 import { observable, action } from "mobx";
+import reportStore from './reportStore';
 
 class TaggingStore {
 
@@ -213,8 +214,28 @@ class TaggingStore {
     //Without AI
 
     @observable isNoteActivated = false;
-    @observable commonName;
-    @observable sciName;
+    @observable commonName = '';
+    @observable sciName = '';
+
+    @action onCommonNameChange() {
+        let sci = ''
+        reportStore.birdsData.map((e, i) => {
+            if (e.SPA_NAME == this.commonName) {
+               sci = this.sciName = e.SCI_NAME
+            }
+        })
+        return sci
+    }
+
+    @action onSciNameChange() {
+        let common =''
+        reportStore.birdsData.map((e, i) => {
+            if (e.SCI_NAME == this.sciName) {
+                common=  this.commonName = e.SPA_NAME
+            }
+        })
+        return common
+    }
 
     @action onNoteClick() {
         this.isNoteActivated = !this.isNoteActivated;

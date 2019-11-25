@@ -7,6 +7,8 @@ import TagSuggestion from './TagSuggestion';
 import tagStore from '../../../../stores/taggingStore';
 import { suggestionStore } from '../../../../stores/suggestionStore';
 import reportStore from '../../../../stores/reportStore';
+import AsyncSelect from 'react-select/async';
+import projectsStore from '../../../../stores/projectsStore';
 
 const options = [
     { value: 'song', label: 'Canción' },
@@ -20,27 +22,40 @@ const sex = [
     { value: 'unknown', label: 'Desconocido' }
 ]
 
-const species = [
-    { value: 'a', label: 'Sipia nigricauda' },
-    { value: 'b', label: 'Sipia berlschepi' },
-    { value: 'c', label: 'Piranga rubra' },
-    { value: 'c', label: 'Hafferia zeledoni' }
-]
 
 
 @observer
 export class TagSound extends React.Component {
-    handleChange = (newValue: any, actionMeta: any) => {
-        console.group('Value Changed');
-        console.log(newValue);
-        console.log(`action: ${actionMeta.action}`);
-        console.groupEnd();
+
+    handleCommonChange = (newValue: any, actionMeta: any) => {
+        let action = actionMeta.action;
+        if (action == 'select-option') {
+            tagStore.commonName = newValue.value
+            tagStore.sciName = tagStore.onCommonNameChange();
+        }
+
     };
-    handleInputChange = (inputValue: any, actionMeta: any) => {
-        console.group('Input Changed');
-        console.log(inputValue);
-        console.log(`action: ${actionMeta.action}`);
-        console.groupEnd();
+    handleSciChange = (newValue: any, actionMeta: any) => {
+
+        let action = actionMeta.action;
+        if (action == 'select-option') {
+            tagStore.sciName = newValue.value
+            tagStore.commonName = tagStore.onSciNameChange();
+        }
+    };
+    handleCommonInputChange = (inputValue: any, actionMeta: any) => {
+        //console.group('Input Changed');
+        //console.log(inputValue);
+        //console.log(`action: ${actionMeta.action}`);
+        //console.groupEnd();
+
+    };
+    handleSciInputChange = (inputValue: any, actionMeta: any) => {
+        //console.group('Input Changed');
+        //console.log(inputValue);
+        //console.log(`action: ${actionMeta.action}`);
+        //console.groupEnd();
+
     };
     render() {
         return <section className="tagging-section">
@@ -52,117 +67,87 @@ export class TagSound extends React.Component {
                 <img src="./assets/spectroSelected.png" alt="" />
             </div>
             <div className={(tagStore.isAiOn) ? 'suggestion-cont' : 'suggestion-cont undisplay'}>
-            <div className="suggest-header">
+                <div className="suggest-header">
                     <h1>Sugerencias del sistema</h1>
                 </div>
-            <div className="cards-cont">
-            
-                {
-                    suggestionStore.speciesSuggested.map((e,i) => {
-                        const jsonData =JSON.stringify(e.otherSongs);
-                        return <TagSuggestion
-                            key={i}
-                            sciName={e.sciName}
-                            commonName={e.commonName}
-                            order={e.order}
-                            family={e.family}
-                            gender={e.gender}
-                            coincidence={e.coincidence}
-                            mainAudioUrl={e.mainAudioUrl}
-                            spectroImgUrl={e.spectroImgUrl}
-                            birdPhoto={e.birdPhotoUrl}
-                            otherSongs={jsonData} />
-                    })
-                }
+                <div className="cards-cont">
+
+                    {
+                        suggestionStore.speciesSuggested.map((e, i) => {
+                            const jsonData = JSON.stringify(e.otherSongs);
+                            return <TagSuggestion
+                                key={i}
+                                sciName={e.sciName}
+                                commonName={e.commonName}
+                                order={e.order}
+                                family={e.family}
+                                gender={e.gender}
+                                coincidence={e.coincidence}
+                                mainAudioUrl={e.mainAudioUrl}
+                                spectroImgUrl={e.spectroImgUrl}
+                                birdPhoto={e.birdPhotoUrl}
+                                otherSongs={jsonData} />
+                        })
+                    }
 
 
-                <span className="next-card">
-                    <img src="./assets/tagging-section/right-arrow.svg" width="25px" alt="" />
-                </span>
-                <span className={(tagStore.isSomethingZoomed) ? "zoomed-spectro" : "zoomed-spectro undisplay"} >
-                    <div className='spectro-card'>
-                        <img className="spec-img" src={tagStore.zoomedSpeImgUrl} alt="" />
+                    <span className="next-card">
+                        <img src="./assets/tagging-section/right-arrow.svg" width="25px" alt="" />
+                    </span>
+                    <span className={(tagStore.isSomethingZoomed) ? "zoomed-spectro" : "zoomed-spectro undisplay"} >
+                        <div className='spectro-card'>
+                            <img className="spec-img" src={tagStore.zoomedSpeImgUrl} alt="" />
 
-                        <span className="play" onClick={() => tagStore.playBirdSong(tagStore.zoomedSpeAudioUrl)}>
-                            <img className="play-img" src="./assets/tagging-section/play-audio.svg" height="20px" alt="" />
-                            <p className="_14px"> Reproducir canto</p>
-                        </span>
-                        <img className="close-img"
-                            onClick={() => tagStore.onExitZoomView()}
-                            src="./assets/gen-icons/dark-x-close.svg" alt="" />
-                    </div>
-                </span>
+                            <span className="play" onClick={() => tagStore.playBirdSong(tagStore.zoomedSpeAudioUrl)}>
+                                <img className="play-img" src="./assets/tagging-section/play-audio.svg" height="20px" alt="" />
+                                <p className="_14px"> Reproducir canto</p>
+                            </span>
+                            <img className="close-img"
+                                onClick={() => tagStore.onExitZoomView()}
+                                src="./assets/gen-icons/dark-x-close.svg" alt="" />
+                        </div>
+                    </span>
 
+                </div>
             </div>
-            </div>
-  
+
             <div className="card-section">
-               
+
 
                 <div className="form-section">
                     <div className="card-item">
                         <span >¿Es alguna de las especies en estudio?</span>
                         <div className="imgs-array">
-                            <span className="tooltip">
-                                <img src="./assets/birds-array/bird-1.png"
-                                    onClick={() => {
-                                        tagStore.birdClick(1)
-                                    }}
-                                    alt="" className="img-birds" width="50"></img>
-                                <span className="tooltiptext">Electron platyrhynchum</span>
-                            </span>
-                            <span className="tooltip">
-                                <img src="./assets/birds-array/bird-2.png"
-                                    onClick={() => {
-                                        tagStore.birdClick(2)
-                                    }}
-                                    alt="" className="img-birds" width="50"></img>
-                                <span className="tooltiptext">Piranga rubra</span>
-                            </span>
-                            <span className="tooltip">
-                                <img src="./assets/birds-array/bird-3.png"
-                                    onClick={() => {
-                                        tagStore.birdClick(3)
-                                    }}
-                                    alt="" className="img-birds" width="50"></img>
-                                <span className="tooltiptext">Mitrephanes phaeocercus</span>
-                            </span>
-                            <span className="tooltip">
-                                <img src="./assets/birds-array/bird-4.png"
-                                    onClick={() => {
-                                        tagStore.birdClick(4)
-                                    }}
-                                    alt="" className="img-birds" width="50"></img>
-                                <span className="tooltiptext">Capito maculicoronatus</span>
-                            </span>
+
+                            {
+                                projectsStore.actualProject.species.map((e, i) => {
+                                    return <span className="tooltip">
+                                        <div className="bird-photo">
+                                            <img src={e.photo} alt="" />
+                                        </div>
+                                        <span className="tooltiptext">{e.sciName}</span>
+                                    </span>
+                                })
+                            }
+
                         </div>
                     </div>
-                    <span className="naming">
-                        <span className="input-row card-item">
-                            <p className="text-title">Nombre científico:</p>
-                            <CreatableSelect className={'react-selector'}
-                                isClearable
-                                onChange={this.handleChange}
-                                onInputChange={this.handleInputChange}
-                                options={species}
-                                placeholder={'Escribe la especie'}
-                            />
-                        </span>
-                        <span className="input-row card-item">
-                            <p className="text-title">Nombre común:</p>
-                            <CreatableSelect className={'react-selector'}
-                                isClearable
-                                onChange={this.handleChange}
-                                onInputChange={this.handleInputChange}
-                                options={reportStore.scinamesOptions}
-                                placeholder={'Escribe la especie'}
-                            />
-                        </span>
-                        
+                    <span className="input-row card-item name-specie">
+                        <p className="text-title">Nombre común o científico:</p>
+                        <CreatableSelect
+                            className={'react-selector'}
+                            isClearable
+                            defaultValue={tagStore.sciName}
+                            onChange={this.handleSciChange}
+                            onInputChange={this.handleSciInputChange}
+                            options={reportStore.scinamesOptions}
+                            placeholder={'Escribe la especie'}
+                        />
                     </span>
 
+
                     <span className='naming'>
-                    <span className="input-row card-item">
+                        <span className="input-row card-item">
                             <p className="text-title">Tipo de canto:</p>
                             <Select className={'react-selector'}
                                 options={options}

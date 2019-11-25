@@ -2,6 +2,7 @@ import { observable, action } from 'mobx';
 import firebase from 'firebase';
 import { db } from '../firebaseConfig';
 import authStore from './authStore';
+import reportStore from './reportStore';
 
 class ProjectsStore {
 
@@ -118,7 +119,15 @@ class ProjectsStore {
     ///// PROJECT CREATION
 
     @observable creationStep = 1;
-    @observable stepTitle = 'Detalles del Proyecto'
+    @observable stepTitle = 'Detalles del Proyecto';
+    @observable studyingSpecies:any = []
+
+    @observable newSpecieStudied = {
+        photo: '',
+        sciName: '',
+        commonName: ''
+    }
+
     @observable monacDistribution = [
         { value: '6', label: 'Hexágono' },
         { value: '4', label: 'Cruz' },
@@ -178,10 +187,29 @@ class ProjectsStore {
         audioFiles: ''
     }
 
+    @observable defaultSpecieStudy: any;
 
+    @action onAddSpecieStudy(sci) {
+        this.newSpecieStudied.sciName = sci;
+
+        reportStore.birdsData.map((e,i) => {
+            if(e.SCI_NAME == sci) {
+                this.newSpecieStudied.commonName = e.SPA_NAME;
+                this.newSpecieStudied.photo = e.PHOTO;
+            }
+        })
+
+        this.studyingSpecies.push(this.newSpecieStudied)
+        this.newSpecieStudied = {
+            photo: '',
+            sciName: '',
+            commonName: ''
+        }
+    }
     @action uploadNewProject() {
         this.newProject.date = this.getCurrentDate();
         this.newProject.owner = authStore.currentUserInfo.id;
+        this.newProject.species = this.studyingSpecies;
         let that = this;
         let tempId = '';
         db.collection("projects").add(this.newProject)

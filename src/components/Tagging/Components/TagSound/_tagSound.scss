@@ -382,9 +382,18 @@
     display: flex;
     flex-direction: row;
     margin: 0.3rem 0;
-
-    .img-birds {
-        padding: 4px;
+    .bird-photo {
+        height: 50px;
+        width: 50px;
+        overflow: hidden;
+        position: relative;
+        border-radius: 35px;
+        margin: 0 0.5rem 0 0;
+        img {
+            position: absolute;
+            right: -10%;
+            height: 100%;
+        }
     }
 }
 
@@ -427,6 +436,13 @@
         width: 100%;
         margin: 0.5rem 0;
         font-family: 'Lato', sans-serif;
+    }
+
+    .name-specie {
+        .react-selector {
+            width: 60%;
+            margin: 0 0 0 0.5rem;
+        }
     }
 
     .naming {
