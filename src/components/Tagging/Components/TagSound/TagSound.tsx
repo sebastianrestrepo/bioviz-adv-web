@@ -6,6 +6,7 @@ import { observer } from 'mobx-react';
 import TagSuggestion from './TagSuggestion';
 import tagStore from '../../../../stores/taggingStore';
 import { suggestionStore } from '../../../../stores/suggestionStore';
+import reportStore from '../../../../stores/reportStore';
 
 const options = [
     { value: 'song', label: 'Canción' },
@@ -153,7 +154,7 @@ export class TagSound extends React.Component {
                                 isClearable
                                 onChange={this.handleChange}
                                 onInputChange={this.handleInputChange}
-                                options={species}
+                                options={reportStore.scinamesOptions}
                                 placeholder={'Escribe la especie'}
                             />
                         </span>

@@ -21,9 +21,25 @@ class ReportStore {
     constructor() {
         this.birdsData = birdsDataJSON;
         console.log(this.birdsData)
-
+        this.onOptionsListBuild()
     }
 
+    
+    //---------------------- TAGGING SECTION LISTS REQUIRED -------------------------//
+    @observable scinamesOptions: any = []
+
+    onOptionsListBuild() {
+        let tempScinameOption = {
+            value: '',
+            label: ''
+        }
+        this.birdsData.map((e, i) => {
+            tempScinameOption.value = e.SCI_NAME;
+            tempScinameOption.label = e.SCI_NAME;
+            this.scinamesOptions.push(tempScinameOption)
+        })
+    }
+    //-----------------------------LISTADO----------------------------------------
     @action onRetrieveSpeciesList() {
         let that = this;
         db.collection("projects").doc(projectsStore.actualProject.id).collection("speciesList").onSnapshot((querySnapshot) => {
@@ -109,6 +125,7 @@ class ReportStore {
         this.fileUri = 'data:text/csv;charset=utf-8,' + escape(CSV);
         this.convertionDone = true;
     }
+
 }
 const reportStore = new ReportStore();
 

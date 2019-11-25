@@ -1,4 +1,5 @@
 @import './../../../../variables.scss';
+
 .sel-cont {
     overflow-x: scroll;
     width: 837px;
@@ -7,16 +8,16 @@
     padding-left: 20px;
 }
 
- .spectro-header {
-        display: flex;
-        align-items: center;
-        background-color: #FFF;
+.spectro-header {
+    display: flex;
+    align-items: center;
+    background-color: #FFF;
 
-        #timeline {
-            width: 100%;
-            background-color: #ECECEC;
-        }
+    #timeline {
+        width: 100%;
+        background-color: #ECECEC;
     }
+}
 
 
 .container-sel {
@@ -165,7 +166,7 @@
     width: 50%;
     padding: 1rem;
     overflow-y: auto;
-   
+
     .sel-suggest-card {
         width: 100%;
         border-radius: 4px;
@@ -312,6 +313,7 @@
                             position: relative;
                             border-radius: 4px;
                             margin: 0.5rem 0;
+
                             img {
                                 height: 100%;
                                 position: absolute;
@@ -322,13 +324,14 @@
 
 
                         .specie-card-down {
-                            padding: 0.5rem ;
+                            padding: 0.5rem;
 
                             .sug-actions {
                                 display: flex;
                                 flex-direction: row;
                                 align-items: center;
                                 margin: 0.5rem 0 0 0;
+
                                 img {
                                     margin: 0 0.5rem;
 
@@ -340,16 +343,19 @@
                                 flex-direction: row;
                                 justify-content: flex-start;
                                 align-items: center;
+
                                 .act-cont {
                                     display: flex;
                                     flex-direction: column;
                                     justify-content: space-around;
                                     align-items: center;
                                     margin: 0 1rem 0 0;
+
                                     img {
                                         margin: 0.2rem 0;
                                     }
                                 }
+
                                 .bird-photo-cont {
                                     width: 50px;
                                     height: 50px;
