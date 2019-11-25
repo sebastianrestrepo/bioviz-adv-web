@@ -217,7 +217,7 @@ class TaggingStore {
     @observable sciName;
 
     @action onNoteClick() {
-        this.isNoteActivated = true;
+        this.isNoteActivated = !this.isNoteActivated;
     }
 
 

@@ -9,7 +9,9 @@ import toolsStore from '../../stores/toolsStore';
 import ToolsMenu from './Components/ToolsMenu/ToolsMenu';
 import { observable } from 'mobx';
 import Slider from '@material-ui/core/Slider';
-import { withStyles, makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { SelSuggestions } from './Components/SpectroSel/SelSuggestions';
+import tagStore from '../../stores/taggingStore';
+import P5Wrapper from 'react-p5-wrapper';
 
 interface TaggingProps {
 }
@@ -27,31 +29,26 @@ interface TaggingProps {
             <ToolsMenu />
 
             <div className="two-sections">
-                <div className="spectro-selection" onClick={() => {
-                    toolsStore.panel = 2;
-                    if (toolsStore.isPlaying) {
-                        toolsStore.isPlaying = false;
-                        toolsStore.handlePause();
-                    }
-                }}
+                <div className="spectro-selection"
+                    onClick={() => {
+                        toolsStore.panel = 2;
+                        if (toolsStore.isPlaying) {
+                            toolsStore.isPlaying = false;
+                            toolsStore.handlePause();
+                        }
+                    }}
                     style={{
                         border: toolsStore.panel == 2 ? toolsStore.panelActivated : toolsStore.panelDisabled
                     }}>
                     <div className="black-card-header">
                         <h3>Selección del audio principal</h3>
                     </div>
-                    <div className="spectro-div">
-                        <Slider
-                            orientation="vertical"
-                            defaultValue={[20, 40]}
-                            onChange={() => { }}
-                            valueLabelDisplay="auto"
-                            aria-labelledby="range-slider"
-                        />
-                        <SpectroSel />
-                    </div>
+                    <SpectroSel selectionEmpty={toolsStore.selectionEmpty}/>
                 </div>
-                <TagSound></TagSound>
+                {
+                    (tagStore.isAiOn) ? <SelSuggestions/> : ''
+                }
+                
             </div>
         </div>);
     }

@@ -6,8 +6,14 @@ import Cursor from 'wavesurfer.js/dist/plugin/wavesurfer.cursor';
 import * as CSS from 'csstype';
 import toolsStore from '../../../../stores/toolsStore';
 import Timeline from 'wavesurfer.js/dist/plugin/wavesurfer.timeline.js';
+import Slider from '@material-ui/core/Slider';
+import Regions from 'wavesurfer.js/dist/plugin/wavesurfer.regions';
 
-const SpectroSel = () => {
+interface spectroSelProps {
+    selectionEmpty: any;
+}
+
+const SpectroSel = ({ selectionEmpty }: spectroSelProps) => {
 
     // Selección Spectro
     const containerRef: any = React.useRef();
@@ -33,10 +39,6 @@ const SpectroSel = () => {
                     labels: true,
                 }),
                 Timeline.create({
-                    /*formatTimeCallback: toolsStore.formatTimeCallback(3000, 20),
-                    timeInterval: toolsStore.timeInterval(20),
-                    primaryLabelInterval: toolsStore.primaryLabelInterval(20),
-                    secondaryLabelInterval: toolsStore.secondaryLabelInterval(20),*/
                     container: containerTimelineRef.current,
                     primaryColor: '#838383',
                     secondaryColor: '#838383',
@@ -53,24 +55,50 @@ const SpectroSel = () => {
                         'font-size': '10px'
                     }
                 }),
+                Regions.create({
+                    dragSelection: {
+                        slop: 5,
+                        color: 'rgba(60, 238, 89, 0.2)',
+                    }
+                }),
             ]
         });
 
         toolsStore.wsSelectionRef = wsRef.current;
+        toolsStore.containerTimelineRef = containerTimelineRef.current;
         //toolsStore.loadSelection(1000, 5000);
+        wsRef.current.on('region-created', () => {
+            if (Object.keys(wsRef.current.regions.list).length > 0) {
+                let regionsArray = Object.keys(wsRef.current.regions.list);
+                wsRef.current.regions.list[regionsArray[0]].remove();
+            }
+        });
+
     }, []);
 
     return (<div className="sel-cont" >
 
-        <div className="container-sel">
-
-            {/*<div id="timeline" ref={containerTimelineRef} onClick={() => {
-                wsRef.current.zoom(2000);
-                console.log('lmao');
-            }} />*/}
+        <div className="spectro-header">
+            <div style={{ width: '53px', height: '100%', backgroundColor: '#FFF' }}></div>
+            <img className="" src="./assets/gen-icons/freq-filter-icon.svg" alt="" width="32" />
             <div id="timeline" ref={containerTimelineRef} />
+        </div>
+        <div className="container-sel">
+            <img className="" src="./assets/tagging-section/frequency-label.png" alt="" height="316" />
+            <Slider
+                orientation="vertical"
+                defaultValue={[10, 15]}
+                onChange={() => { }}
+                valueLabelDisplay="auto"
+                aria-labelledby="range-slider"
+                min={0}
+                max={24}
+            />
             <div id="waveform" ref={containerRef}>
+                <div className="top-filter"></div>
+                {/*<h3 style={{ display: (selectionEmpty)?'flex':'none'}}>Selecciona un área del espectrograma general</h3>*/}
                 <div id="wave-spectrogram" ref={containerSpecRef} />
+                <div className="bottom-filter"></div>
             </div>
 
         </div>

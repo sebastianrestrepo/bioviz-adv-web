@@ -13,6 +13,12 @@ const options = [
     { value: 'alert', label: 'Alerta' }
 ]
 
+const sex = [
+    { value: 'male', label: 'Macho' },
+    { value: 'female', label: 'Hembra' },
+    { value: 'unknown', label: 'Desconocido' }
+]
+
 const species = [
     { value: 'a', label: 'Sipia nigricauda' },
     { value: 'b', label: 'Sipia berlschepi' },
@@ -90,24 +96,7 @@ export class TagSound extends React.Component {
             </div>
   
             <div className="card-section">
-                <span className="description-items-row">
-                    <p><span className="text-title">Esta identificación está:</span> </p>
-                    <label className="check-container">
-                        <img src="./assets/pending-dot.svg" width="12px" alt="" /> Pendiente
-                        <input type="checkbox" />
-                        <span className="checkmark"></span>
-                    </label>
-                    <label className="check-container">
-                        <img src="./assets/doubt-dot.svg" width="12px" alt="" />  En duda
-                        <input type="checkbox" />
-                        <span className="checkmark"></span>
-                    </label>
-                    <label className="check-container">
-                        <img src="./assets/sure-dot.svg" width="12px" alt="" />  Verificado
-                        <input type="checkbox" />
-                        <span className="checkmark"></span>
-                    </label>
-                </span>
+               
 
                 <div className="form-section">
                     <div className="card-item">
@@ -149,7 +138,7 @@ export class TagSound extends React.Component {
                     </div>
                     <span className="naming">
                         <span className="input-row card-item">
-                            <p className="text-title">Especie:</p>
+                            <p className="text-title">Nombre científico:</p>
                             <CreatableSelect className={'react-selector'}
                                 isClearable
                                 onChange={this.handleChange}
@@ -159,12 +148,34 @@ export class TagSound extends React.Component {
                             />
                         </span>
                         <span className="input-row card-item">
+                            <p className="text-title">Nombre común:</p>
+                            <CreatableSelect className={'react-selector'}
+                                isClearable
+                                onChange={this.handleChange}
+                                onInputChange={this.handleInputChange}
+                                options={species}
+                                placeholder={'Escribe la especie'}
+                            />
+                        </span>
+                        
+                    </span>
+
+                    <span className='naming'>
+                    <span className="input-row card-item">
                             <p className="text-title">Tipo de canto:</p>
                             <Select className={'react-selector'}
                                 options={options}
                                 isClearable
                                 isSearchable />
                         </span>
+                        <span className="input-row card-item">
+                            <p className="text-title">Sexo:</p>
+                            <Select className={'react-selector'}
+                                options={sex}
+                                isClearable
+                                isSearchable />
+                        </span>
+
                     </span>
                     <p className={tagStore.isNoteActivated ? 'green-link card-item undisplay' : 'green-link card-item'}
                         onClick={() => tagStore.onNoteClick()}
@@ -173,31 +184,9 @@ export class TagSound extends React.Component {
                         <p className="text-title green-text">Anotación</p>
                         <textarea placeholder="Escribir anotación" name="" id="" ></textarea>
                     </div>
-                    {/* <span className="actions">
-                        <p>Marcar como:</p>
-                        <Select className={'react-selector'}
-                                options={tagState}
-                                isClearable = {false}
-                                isSearchable = {false}
-                                styles={colourStyles}
-                                defaultValue={tagState[2]}
-                                />
-                        <br />
-                        <br />
-                        <button className="dark-button">Guardar</button>
-                        </span> */}
                 </div>
 
             </div>
-            {/* 
-            <div className="card-section">
-                <p className="hint-text">¿Alguna duda sobre el canto? Verifica con cantos de Xeno-Canto</p>
-                <span className="input-row search card-item">
-                    <p className="text-title">Buscar en Xeno-Canto:</p> <input type="text" />
-                    <button className="green-button">Buscar</button>
-                </span>
-            </div>
-            */}
 
         </section>
     }

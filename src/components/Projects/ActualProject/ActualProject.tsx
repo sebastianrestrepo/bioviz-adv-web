@@ -10,6 +10,7 @@ import authStore from '../../../stores/authStore';
 import { SpeciesList } from './SpeciesReport/SpeciesList';
 import Tagging from '../../Tagging/Tagging';
 import { CompareAudios } from '../../Tagging/Components/CompareAudios/CompareAudios';
+import { TagSound } from '../../Tagging/Components/TagSound/TagSound';
 interface ActualProjectProps {
     projectId: string,
 }
@@ -40,7 +41,7 @@ class ActualProject extends React.Component<ActualProjectProps> {
                     </section> : (projectsStore.projectTabs[2].selected) ? <section className="dash-section">
                         <SpeciesList></SpeciesList>
                     </section> : (projectsStore.projectTabs[3].selected) ? <section className="dash-section">
-                        Visualización
+                        <TagSound></TagSound>
                     </section> : (projectsStore.projectTabs[4].selected) ? <section className="dash-section">
                         Audios
                     </section> : ''

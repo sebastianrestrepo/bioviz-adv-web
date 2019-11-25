@@ -9,6 +9,10 @@
     transition: all 0.4s;
 }
 
+.sci-name-style {
+    font-style: italic;
+}
+
 a {
 
     &:hover,
@@ -65,8 +69,20 @@ body {
     font-weight: bold;
 }
 
+.yellow-text {
+    color: $thirdActiveColor;
+    font-weight: bold;
+}
+
+.bold {
+    font-weight: bold;
+}
+
 h1 {
     font-size: 18px;
+}
+.undisplay {
+    display: none;
 }
 
 .tooltip {
@@ -261,6 +277,7 @@ select {
     padding: 0.3rem 1rem;
 }
 
+
 .gray-text {
     color: $hintColor;
 }
@@ -277,7 +294,22 @@ button {
     font-size: 15px;
 
 }
+:focus { outline: none; }
+.yellow-btn {
+    border-style: none;
+    background-color: $thirdActiveColor;
+    color: $mainDarkColor;
+    font-weight: 700;
+    border-radius: 2px;
+    padding: 0 1rem;
+    min-width: 120px;
+    font-family: 'Lato', sans-serif;
+    cursor: pointer;
 
+    &:hover {
+        background-color: $thirdActiveColorHover;
+    }
+}
 .green-button {
     border-style: none;
     background-color: $secondActiveColor;
@@ -330,11 +362,16 @@ h1 {
 
 .react-selector,
 .css-2b097c-container {
+
     margin: 0;
     padding: 0;
     font-family: 'Lato', sans-serif;
     font-size: 14px;
 
+    .css-b8ldur-Input {
+        height: 25px;
+        margin: 0;
+    }
     .css-1pahdxg-control {
         height: 25px;
         display: flex;
@@ -414,4 +451,39 @@ h1 {
         }
     }
 
+}
+
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-right: 7px solid $mainActiveColor;
+    transform: rotate(-90deg);
+    border-radius: 15px;
+    margin: 0 0.5rem 0 0;
+    &.white {
+        border-right: 7px solid white;
+    }
+    &:hover {
+        border-right: 7px solid $mainDarkColor;
+        cursor: pointer;
+    }
+}
+
+.arrow-left {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid $mainActiveColor;
+    transform: rotate(0deg);
+    border-radius: 15px;
+    &.white {
+        border-right: 10px solid white;
+    }
+    &:hover {
+        border-right: 10px solid $mainDarkColor;
+        cursor: pointer;
+    }
 }
