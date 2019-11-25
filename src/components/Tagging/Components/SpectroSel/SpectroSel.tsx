@@ -58,7 +58,19 @@ const SpectroSel = () => {
         });
 
         toolsStore.wsSelectionRef = wsRef.current;
+        toolsStore.containerTimelineRef = containerTimelineRef.current;
         //toolsStore.loadSelection(1000, 5000);
+
+        wsRef.current.on('destroy ', () => {
+            wsRef.current.addPlugin(WaveSurfer.Timeline.create({
+                container: containerTimelineRef.current,
+                primaryColor: '#838383',
+                secondaryColor: '#838383',
+                primaryFontColor: '#838383',
+                secondaryFontColor: '#838383',
+            })).initPlugin('timeline');
+        });
+
     }, []);
 
     return (<div className="sel-cont" >
@@ -68,17 +80,17 @@ const SpectroSel = () => {
             <div id="timeline" ref={containerTimelineRef} />
         </div>
         <div className="container-sel">
-
-            <div className="slider-div">
-                <Slider
-                    orientation="vertical"
-                    defaultValue={[20, 40]}
-                    onChange={() => { }}
-                    valueLabelDisplay="auto"
-                    aria-labelledby="range-slider"
-                />
-            </div>
+            <Slider
+                orientation="vertical"
+                defaultValue={[10, 15]}
+                onChange={() => { }}
+                valueLabelDisplay="auto"
+                aria-labelledby="range-slider"
+                min={0}
+                max={24}
+            />
             <div id="waveform" ref={containerRef}>
+                <h3>Selecciona un área del espectrograma general</h3>
                 <div id="wave-spectrogram" ref={containerSpecRef} />
             </div>
 

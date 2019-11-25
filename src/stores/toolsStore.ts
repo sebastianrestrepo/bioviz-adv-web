@@ -3,16 +3,20 @@ import { Decoder, BufferManipulations, Encoder } from 'alamp';
 import p5 from 'p5';
 import "p5/lib/addons/p5.sound";
 import * as CSS from 'csstype';
+import WaveSurfer from 'wavesurfer.js';
+import Timeline from 'wavesurfer.js/dist/plugin/wavesurfer.timeline.js';
 
 class ToolsStore {
 
     @observable isPlaying: boolean = false;
     @observable wsRef: any;
+    @observable containerTimelineRef: any;
     @observable regionStart: any;
     @observable regionEnd: any;
     @observable genSpecWidth: number = 0;
     @observable selSpecLeftPos: number = 0;
     @observable selSpecWidth: number = 0;
+    @observable counter = 0;
 
 
     //
@@ -21,8 +25,10 @@ class ToolsStore {
 
     //---------------------------------Panel selection -----------------------------//
     @observable panel: number = 0;
-    @observable panelActivated: string = '1.5px solid #44CD88';
-    @observable panelDisabled: string = '0px solid #44CD88';
+    @observable panelActivated: string = '1.5px solid #838383';
+    @observable panelDisabled: string = '0px solid #838383';
+
+    @observable onDestroy: boolean = false;
 
     constructor() {
 
@@ -78,9 +84,28 @@ class ToolsStore {
                 };
             })
         );
+
         this.settingsSelSpectro();
-        console.log('OUTSIDE that region start', that.regionStart);
+
+        this.counter++;
+        if (this.counter > 1) {
+            //this.wsSelectionRef.destroyPlugin('timeline'); 
+            this.onDestroy = true;           
+        }
+
         this.loadSelection(that.regionStart * 1000, that.regionEnd * 1000);
+
+       /* if(this.onDestroy){
+            this.wsSelectionRef.addPlugin(WaveSurfer.timeline.create({
+                container: this.containerTimelineRef,
+                primaryColor: '#838383',
+                secondaryColor: '#838383',
+                primaryFontColor: '#838383',
+                secondaryFontColor: '#838383',
+            })).initPlugin('timeline');
+            this.onDestroy = false;
+        }*/
+
     }
 
 

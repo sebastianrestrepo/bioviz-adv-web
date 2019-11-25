@@ -1,6 +1,6 @@
 .sel-cont {
     overflow-x: scroll;
-    width: 838px;
+    width: 837px;
     overflow: hidden;
     padding-top: 20px;
     padding-left:20px;
@@ -9,6 +9,7 @@
 .spectro-header {
     display: flex;
     align-items: center;
+    background-color: #ECECEC;
 
     #timeline {
         width: 100%;
@@ -16,8 +17,8 @@
 }
 
 .container-sel {
-    background-color: #ECECEC;
     display: flex;
+    background-color: #ECECEC;
 
     .slider-div {
         display: flex;
@@ -31,7 +32,18 @@
         cursor: pointer;
         height: 320px;
         width: 100%;
-
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ECECEC;
+        h3{
+            position: absolute;
+            display: flex;
+            align-self: center;
+            justify-self: center;
+            z-index: 1;
+            color: #838383;
+        }
         wave {
             height: 320px !important;
 
