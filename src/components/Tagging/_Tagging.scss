@@ -146,7 +146,7 @@
             .MuiSlider-root {
                 color: #AFEA7D;
                 z-index: 1;
-                margin-right: 3px;
+                margin-right: 2px;
             }
 
             .MuiSlider-rail {
@@ -155,6 +155,7 @@
 
             .MuiSlider-root.MuiSlider-vertical {
                 height: 316px;
+                padding: 0;
             }
 
             .MuiSlider-rail {

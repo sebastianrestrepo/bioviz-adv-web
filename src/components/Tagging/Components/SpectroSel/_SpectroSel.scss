@@ -9,16 +9,17 @@
 .spectro-header {
     display: flex;
     align-items: center;
-    background-color: #ECECEC;
+    background-color: #FFF;
 
     #timeline {
         width: 100%;
+        background-color: #ECECEC;
     }
 }
 
 .container-sel {
     display: flex;
-    background-color: #ECECEC;
+    background-color: #FFF;
 
     .slider-div {
         display: flex;

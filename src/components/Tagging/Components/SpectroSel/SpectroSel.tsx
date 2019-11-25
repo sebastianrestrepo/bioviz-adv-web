@@ -76,10 +76,12 @@ const SpectroSel = () => {
     return (<div className="sel-cont" >
 
         <div className="spectro-header">
+            <div style={{ width: '53px', height: '100%', backgroundColor: '#FFF'}}></div>
             <img className="" src="./assets/gen-icons/freq-filter-icon.svg" alt="" width="32" />
             <div id="timeline" ref={containerTimelineRef} />
         </div>
         <div className="container-sel">
+            <img className="" src="./assets/tagging-section/frequency-label.png" alt="" height="316" />
             <Slider
                 orientation="vertical"
                 defaultValue={[10, 15]}
