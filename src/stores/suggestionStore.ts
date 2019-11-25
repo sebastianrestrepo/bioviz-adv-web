@@ -11,6 +11,7 @@ class SuggestionStore {
             date: '18 Junio 2019',
             hour: '6:35',
             time: 'AM',
+            sugOpen: false,
             suggestions: [
                 {
                     sciName: 'Hafferia zeledoni',
@@ -20,7 +21,7 @@ class SuggestionStore {
                     percentage: 99,
                     mainAudioUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/72880',
                     spectroImgUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/72880/poster',
-                    birdPhotoUrl: './assets/birds/sipiaberlepschi.jpg',
+                    birdPhotoUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/121699541/1200',
                     owner: 'David L. Ross, Jr.',
                     location: 'Alajuela, Costa Rica',
                     url: 'https://macaulaylibrary.org/asset/72880',
@@ -65,7 +66,108 @@ class SuggestionStore {
                     location: 'Orellana, Ecuador',
                     url: 'https://macaulaylibrary.org/asset/243173',
                     isPlaying: false,
-                    otherSongs: [ ]
+                    otherSongs: [ 
+                        {
+                            audioUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/34338',
+                            spectroImgUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/34338/poster',
+                            location: 'Loreto, Peru',
+                            owner: 'Gregory Budney',
+                            url: 'https://macaulaylibrary.org/asset/34338',
+                            isPlaying: false
+                        },
+                        {
+                            audioUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/29174',
+                            spectroImgUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/29174/poster',
+                            location: 'Loreto, Peru',
+                            owner: 'Ted Parker',
+                            url: 'https://macaulaylibrary.org/asset/29174',
+                            isPlaying: false
+                        },
+                    ]
+                }
+            ]
+        },
+        {
+            startTime: 17,
+            endTime: 19,
+            maxFreq: 8000,
+            minFreq: 4000,
+            date: '18 Junio 2019',
+            hour: '6:35',
+            time: 'AM',
+            sugOpen: false,
+            suggestions: [
+                {
+                    sciName: 'Sipia nigricauda',
+                    commonName: 'Hormiguero de Esmeraldas',
+                    order: 'Passeriformes',
+                    family: 'Thamnophilidae',
+                    percentage: 98,
+                    mainAudioUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/47328',
+                    spectroImgUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/47328/poster',
+                    birdPhotoUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/159809471/1200',
+                    owner: 'Bret Whitney',
+                    location: 'El Oro, Ecuador',
+                    url: 'https://macaulaylibrary.org/asset/47328',
+                    isPlaying: false,
+                    otherSongs: [
+                        {
+                            audioUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/82413',
+                            spectroImgUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/82413/poster',
+                            location: 'Cañar, Ecuador',
+                            owner: 'Ted Parker',
+                            url: 'https://macaulaylibrary.org/asset/82413',
+                            isPlaying: false
+                        },
+                        {
+                            audioUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/47813801',
+                            spectroImgUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/47813801/poster',
+                            location: 'Pichincha, Ecuador',
+                            owner: 'Andrew Spencer',
+                            url: 'https://macaulaylibrary.org/asset/47813801',
+                            isPlaying: false
+                        },
+                        {
+                            audioUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/179634651',
+                            spectroImgUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/179634651/poster',
+                            location: 'Pichincha, Ecuador',
+                            url: 'https://macaulaylibrary.org/asset/179634651',
+                            owner: 'Julia Wittmann',
+                            isPlaying: false
+                        }
+                    ]
+                }, 
+                {
+                    sciName: 'Sipia berlepschi',
+                    commonName: 'Hormiguero Colimocho',
+                    order: 'Passeriformes',
+                    family: 'Thamnophilidae',
+                    percentage: 89,
+                    mainAudioUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/139069',
+                    spectroImgUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/139069/poster',
+                    birdPhotoUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/159810051/1800',
+                    owner: 'Linda Macaulay',
+                    location: 'Ecuador',
+                    url: 'https://macaulaylibrary.org/asset/139069',
+                    isPlaying: false,
+                    otherSongs: [ 
+                        {
+                            audioUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/31412211',
+                            spectroImgUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/31412211/poster',
+                            location: 'Esmeraldas, Ecuador',
+                            owner: 'Andrew Spencer',
+                            url: 'https://macaulaylibrary.org/asset/31412211',
+                            isPlaying: false
+                        },
+                        {
+                            audioUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/106329641',
+                            spectroImgUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/106329641/poster',
+                            location: 'Valle del Cauca, Colombia',
+                            owner: 'Edwin Munera',
+                            url: 'https://macaulaylibrary.org/asset/106329641',
+                            isPlaying: false
+                        }
+                    ]
                 }
             ]
         }

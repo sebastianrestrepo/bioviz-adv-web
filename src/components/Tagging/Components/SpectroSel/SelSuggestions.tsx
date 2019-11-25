@@ -9,18 +9,21 @@ export class SelSuggestions extends React.Component {
     render() {
         return <section className="SelSuggestions-section">
             {
-                suggestionStore.anchicayaSuggestions.map((e,i)=> {
+                suggestionStore.anchicayaSuggestions.map((e, i) => {
                     let jsonData = JSON.stringify(e.suggestions)
                     return <SampleCard
-                        hour= {e.hour}
-                        time = {e.time}
-                        second = {e.startTime}
-                        index = {i}
-                        suggestions = {jsonData} />
-                    
+                        key={i}
+                        hour={e.hour}
+                        time={e.time}
+                        second={e.startTime}
+                        sugCant={e.suggestions.length}
+                        index={i}
+                        suggestions={jsonData}
+                        open={e.sugOpen} />
+
                 })
             }
-           
+
         </section>
     }
 }
