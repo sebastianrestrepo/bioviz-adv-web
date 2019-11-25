@@ -8,7 +8,11 @@ import toolsStore from '../../../../stores/toolsStore';
 import Timeline from 'wavesurfer.js/dist/plugin/wavesurfer.timeline.js';
 import Slider from '@material-ui/core/Slider';
 
-const SpectroSel = () => {
+interface spectroSelProps {
+    selectionEmpty: any;
+}
+
+const SpectroSel = ({ selectionEmpty }: spectroSelProps) => {
 
     // Selección Spectro
     const containerRef: any = React.useRef();
@@ -92,7 +96,7 @@ const SpectroSel = () => {
                 max={24}
             />
             <div id="waveform" ref={containerRef}>
-                <h3>Selecciona un área del espectrograma general</h3>
+                <h3 style={{ display: (selectionEmpty)?'flex':'none'}}>Selecciona un área del espectrograma general</h3>
                 <div id="wave-spectrogram" ref={containerSpecRef} />
             </div>
 

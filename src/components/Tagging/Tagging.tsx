@@ -40,7 +40,7 @@ interface TaggingProps {
                     <div className="black-card-header">
                         <h3>Selección del audio principal</h3>
                     </div>
-                    <SpectroSel />
+                    <SpectroSel selectionEmpty={toolsStore.selectionEmpty}/>
                 </div>
                 <TagSound></TagSound>
             </div>

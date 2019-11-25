@@ -17,7 +17,7 @@ class ToolsStore {
     @observable selSpecLeftPos: number = 0;
     @observable selSpecWidth: number = 0;
     @observable counter = 0;
-
+    @observable selectionEmpty = true;
 
     //
     @observable wsSelectionRef: any;
@@ -90,21 +90,21 @@ class ToolsStore {
         this.counter++;
         if (this.counter > 1) {
             //this.wsSelectionRef.destroyPlugin('timeline'); 
-            this.onDestroy = true;           
+            this.onDestroy = true;
         }
 
         this.loadSelection(that.regionStart * 1000, that.regionEnd * 1000);
 
-       /* if(this.onDestroy){
-            this.wsSelectionRef.addPlugin(WaveSurfer.timeline.create({
-                container: this.containerTimelineRef,
-                primaryColor: '#838383',
-                secondaryColor: '#838383',
-                primaryFontColor: '#838383',
-                secondaryFontColor: '#838383',
-            })).initPlugin('timeline');
-            this.onDestroy = false;
-        }*/
+        /* if(this.onDestroy){
+             this.wsSelectionRef.addPlugin(WaveSurfer.timeline.create({
+                 container: this.containerTimelineRef,
+                 primaryColor: '#838383',
+                 secondaryColor: '#838383',
+                 primaryFontColor: '#838383',
+                 secondaryFontColor: '#838383',
+             })).initPlugin('timeline');
+             this.onDestroy = false;
+         }*/
 
     }
 
@@ -140,6 +140,7 @@ class ToolsStore {
 
         //wsRef.current.load('/assets/audio-files/1_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3');
         console.log('uy', this.wsSelectionRef);
+        this.selectionEmpty = false;
     }
 
     // Override Timeline Formatting
