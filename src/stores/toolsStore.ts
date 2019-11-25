@@ -25,8 +25,8 @@ class ToolsStore {
 
     //---------------------------------Panel selection -----------------------------//
     @observable panel: number = 0;
-    @observable panelActivated: string = '1.5px solid #838383';
-    @observable panelDisabled: string = '0px solid #838383';
+    @observable panelActivated: string = '1px solid #ECECEC';
+    @observable panelDisabled: string = '0px solid #ECECEC';
 
     @observable onDestroy: boolean = false;
 
