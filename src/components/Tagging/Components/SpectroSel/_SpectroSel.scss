@@ -1,10 +1,9 @@
 @import './../../../../variables.scss';
 .sel-cont {
     overflow-x: scroll;
-    width: 837px;
+    width: 100%;
     overflow: hidden;
-    padding-top: 20px;
-    padding-left: 20px;
+    padding: 20px;
 }
 
 .spectro-header {
@@ -41,7 +40,7 @@
     #waveform {
         position: relative;
         cursor: pointer;
-        height: 320px;
+        height: 270px;
         width: 100%;
         background-color: #ECECEC;
 
@@ -62,6 +61,7 @@
         }
 
         h3 {
+            font-size: 16px;
             position: absolute;
             display: flex;
             align-self: center;
@@ -71,36 +71,36 @@
         }
 
         wave {
-            height: 320px !important;
+            height: 270px !important;
 
             .wavesurfer-region {
-                height: 320px !important;
+                height: 270px !important;
             }
         }
     }
 
     #waveform wave canvas {
-        height: 320px !important;
+        height: 270px !important;
     }
 
     #wave-spectrogram {
         position: absolute;
-        height: 320px;
+        height: 270px;
         opacity: 0.9;
     }
 
     #wave-spectrogram canvas {
         left: 0;
         position: inline-block;
-        height: 320px !important;
+        height: 270px !important;
     }
 
     spectrogram {
-        height: 320px !important;
+        height: 270px !important;
     }
 
     #wave-spectrogram .spectrogram {
-        height: 320px;
+        height: 270px;
     }
 
     #wave-spectrogram .spec-labels {

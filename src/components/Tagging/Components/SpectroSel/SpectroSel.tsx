@@ -32,12 +32,12 @@ const SpectroSel = ({ selectionEmpty }: spectroSelProps) => {
             progressColor: 'rgba(137, 212, 110, 0.01)',
             cursorWidth: 4,
             cursorColor: '#AFEA7D',
-            height: 215,
+            height: 250,
             plugins: [
                 Spectrogram.create({
                     wavesurfer: wsRef.current,
                     container: containerSpecRef.current,
-                    height: 350,
+                    height: 210,
                     labels: true,
                 }),
                 Timeline.create({
@@ -82,11 +82,11 @@ const SpectroSel = ({ selectionEmpty }: spectroSelProps) => {
 
         <div className="spectro-header">
             <div style={{ width: '53px', height: '100%', backgroundColor: '#FFF' }}></div>
-            <img className="" src="./assets/gen-icons/freq-filter-icon.svg" alt="" width="32" />
+            <img className="" src="./assets/gen-icons/freq-filter-icon.svg" alt="" width="28" />
             <div id="timeline" ref={containerTimelineRef} />
         </div>
         <div className="container-sel">
-            <img className="" src="./assets/tagging-section/frequency-label.png" alt="" height="316" />
+            <img className="" src="./assets/tagging-section/frequency-label.png" alt="" height="280" />
             <Slider
                 ref={silderRef}
                 orientation="vertical"
