@@ -3,7 +3,7 @@
     overflow-x: scroll;
     width: 100%;
     overflow: hidden;
-    padding: 20px;
+    padding: 15px;
 }
 
 .spectro-header {
@@ -40,7 +40,7 @@
     #waveform {
         position: relative;
         cursor: pointer;
-        height: 270px;
+        height: 220px;
         width: 100%;
         background-color: #ECECEC;
 
@@ -71,36 +71,36 @@
         }
 
         wave {
-            height: 270px !important;
+            height: 220px !important;
 
             .wavesurfer-region {
-                height: 270px !important;
+                height: 220px !important;
             }
         }
     }
 
     #waveform wave canvas {
-        height: 270px !important;
+        height: 220px !important;
     }
 
     #wave-spectrogram {
         position: absolute;
-        height: 270px;
+        height: 220px;
         opacity: 0.9;
     }
 
     #wave-spectrogram canvas {
         left: 0;
         position: inline-block;
-        height: 270px !important;
+        height: 220px !important;
     }
 
     spectrogram {
-        height: 270px !important;
+        height: 220px !important;
     }
 
     #wave-spectrogram .spectrogram {
-        height: 270px;
+        height: 220px;
     }
 
     #wave-spectrogram .spec-labels {

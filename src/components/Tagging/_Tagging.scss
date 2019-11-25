@@ -131,7 +131,7 @@
         display: flex;
         flex-direction: row;
         padding: 7px 7px 0 7px;
-        height: calc(100vh - 295px);
+        height: calc(100vh - 341px);
         justify-content: space-between;
 
 
@@ -154,7 +154,7 @@
             }
 
             .MuiSlider-root.MuiSlider-vertical {
-                height: 316px;
+                height: 220px;                
                 padding: 0;
             }
 
@@ -186,8 +186,7 @@
                 align-self: flex-start;
                 justify-content: space-between;
                 background-color: #333333;
-                padding: 0.7rem 1rem;
-
+                padding: 0.5rem 0.8rem;
                 h1 {
                     margin: 0;
                 }
