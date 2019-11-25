@@ -1,0 +1,423 @@
+@import './../../../../variables.scss';
+
+.sel-cont {
+    overflow-x: scroll;
+    width: 837px;
+    overflow: hidden;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.spectro-header {
+    display: flex;
+    align-items: center;
+    background-color: #FFF;
+
+    #timeline {
+        width: 100%;
+        background-color: #ECECEC;
+    }
+}
+
+
+.container-sel {
+    display: flex;
+    background-color: #FFF;
+
+    .slider-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+
+    #waveform {
+        position: relative;
+        cursor: pointer;
+        height: 320px;
+        width: 100%;
+        background-color: #ECECEC;
+
+        .top-filter {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.3);
+            height: 108px;
+            width: 100%;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.3)
+        }
+
+        .bottom-filter {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.3);
+            width: 100%;
+            z-index: 1;
+        }
+
+        h3 {
+            position: absolute;
+            display: flex;
+            align-self: center;
+            justify-self: center;
+            z-index: 1;
+            color: #838383;
+        }
+
+        wave {
+            height: 320px !important;
+
+            .wavesurfer-region {
+                height: 320px !important;
+            }
+        }
+    }
+
+    #waveform wave canvas {
+        height: 320px !important;
+    }
+
+    #wave-spectrogram {
+        position: absolute;
+        height: 320px;
+        opacity: 0.9;
+    }
+
+    #wave-spectrogram canvas {
+        left: 0;
+        position: inline-block;
+        height: 320px !important;
+    }
+
+    spectrogram {
+        height: 320px !important;
+    }
+
+    #wave-spectrogram .spectrogram {
+        height: 320px;
+    }
+
+    #wave-spectrogram .spec-labels {
+        position: absolute;
+        display: none;
+    }
+}
+
+/*.wavesurfer-region{
+    border-right: 5px solid black;
+    border-left: 5px solid black;
+}*/
+
+.wavesurfer-handle {
+    width: 5px !important;
+    max-width: 5px !important;
+    background-color: black;
+}
+
+#zoom-bar {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+
+    #slider {
+        margin: 10px;
+        cursor: grab;
+        width: 150px;
+    }
+}
+
+
+.div-btns {
+    background-color: #F4F4F4;
+    display: flex;
+    flex-direction: row;
+    max-height: 55px;
+}
+
+#play-pause {
+    cursor: pointer;
+    border-radius: 27;
+    border-style: none;
+    padding: .5rem 1rem;
+    border-radius: 27px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 800;
+    font-size: 19;
+    margin: 10px;
+    background-color: #5855ff;
+    color: white;
+}
+
+#color-change {
+    cursor: pointer;
+    border-radius: 27;
+    border-style: none;
+    padding: .5rem 1rem;
+    border-radius: 27px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 800;
+    font-size: 19;
+    margin: 10px;
+    background-color: #ffd255;
+    color: black;
+}
+
+.SelSuggestions-section {
+    width: 50%;
+    padding: 1rem;
+    overflow-y: auto;
+
+    .sel-suggest-card {
+        width: 100%;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 1rem 0;
+
+        .time {
+            h3 {
+                font-weight: 800;
+                font-size: 23px;
+            }
+
+            p {
+                color: $mainActiveColor;
+            }
+
+            .time-separator {
+                display: block;
+                height: 57%;
+                min-width: 0;
+                width: 0;
+                border-left: 1.5px dashed $mainActiveColor;
+                margin: 1rem 0;
+
+            }
+        }
+
+        .card {
+            width: 80%;
+            background-color: white;
+            position: relative;
+            border-radius: 5px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+
+            .up {
+                display: flex;
+                flex-direction: row;
+
+                .audio {
+                    width: 350px;
+                    height: 150px;
+                }
+            }
+
+            .sample-info {
+                padding: 0.5rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                .caption {
+                    margin: 0.5rem 0;
+                }
+            }
+
+            .play {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+                cursor: pointer;
+
+                p {
+                    font-weight: 700;
+                    margin: 0 0 0 0.5rem;
+                }
+            }
+
+            .suggestions {
+                opacity: 1;
+
+                &.undisplay {
+                    opacity: 0;
+                    visibility: hidden;
+                    max-height: 0;
+                    transition: max-height 0.3s, opacity 0.2s, visibility 0.2s linear;
+                }
+            }
+
+            .arrow-left {
+                position: absolute;
+                left: -9px;
+                top: 15px;
+            }
+
+            .suggested-specie {
+                position: relative;
+                margin: 0 3px 0 3px;
+                padding: 3px;
+                background-color: white;
+
+                .play-audio {
+                    display: none;
+                    position: absolute;
+                    top: 28%;
+                    right: 30%;
+                }
+
+                .exploreaction {
+                    display: none;
+                    position: absolute;
+                    top: 25%;
+                    left: 30%;
+                }
+
+                &:hover {
+
+                    .exploreaction {
+                        display: inherit;
+                        cursor: pointer;
+                    }
+
+                    .play-audio {
+                        display: inherit;
+                        cursor: pointer;
+                    }
+                }
+
+                .specie-card {
+
+                    .percentage-title {
+                        padding: 3px;
+                        font-weight: 800;
+                        text-align: center;
+                        color: white;
+                        background-color: $mainActiveColor;
+                    }
+
+                    .info {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+
+                        .spectrogram {
+                            width: 350px;
+                            height: 150px;
+                            cursor: pointer;
+                            overflow: hidden;
+                            position: relative;
+                            border-radius: 4px;
+                            margin: 0.5rem 0;
+
+                            img {
+                                height: 100%;
+                                position: absolute;
+                                right: -65%;
+                            }
+                        }
+
+
+
+                        .specie-card-down {
+                            padding: 0.5rem;
+
+                            .sug-actions {
+                                display: flex;
+                                flex-direction: row;
+                                align-items: center;
+                                margin: 0.5rem 0 0 0;
+
+                                img {
+                                    margin: 0 0.5rem;
+
+                                }
+                            }
+
+                            .bird-info {
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: flex-start;
+                                align-items: center;
+
+                                .act-cont {
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: space-around;
+                                    align-items: center;
+                                    margin: 0 1rem 0 0;
+
+                                    img {
+                                        margin: 0.2rem 0;
+                                    }
+                                }
+
+                                .bird-photo-cont {
+                                    width: 50px;
+                                    height: 50px;
+                                    border-radius: 35px;
+                                    overflow: hidden;
+                                    background-color: white;
+                                    border: solid 1.5px $thirdActiveColor;
+
+                                    img {
+                                        height: 100%;
+                                        width: 100%;
+                                        object-fit: cover;
+                                    }
+                                }
+
+                                .bird-text {
+                                    display: flex;
+                                    flex-direction: column;
+
+                                    .position-sci {
+                                        display: flex;
+                                        flex-direction: row;
+                                        margin-bottom: 1px;
+
+                                        .position {
+                                            font-size: 16px;
+                                            font-weight: 700;
+                                            color: $thirdActiveColor;
+                                        }
+
+                                        .sci-name {
+                                            font-size: 16px;
+                                            font-weight: 500;
+                                            margin: 0 0 0 0.5rem;
+                                            font-style: italic;
+                                            color: #828282;
+                                        }
+                                    }
+
+                                    .common-name {
+                                        font-size: 16px;
+                                    }
+
+                                    .maucalay {
+                                        margin: 0.5rem 0;
+                                    }
+                                }
+                            }
+
+                            p {
+                                &.sources {
+                                    font-size: 14px;
+                                    font-weight: 800;
+
+                                }
+                            }
+                        }
+                    }
+
+
+                }
+            }
+        }
+    }
+}

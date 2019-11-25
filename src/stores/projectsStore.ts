@@ -1,7 +1,8 @@
-import { observable, autorun, action } from 'mobx';
+import { observable, action } from 'mobx';
 import firebase from 'firebase';
 import { db } from '../firebaseConfig';
 import authStore from './authStore';
+import reportStore from './reportStore';
 
 class ProjectsStore {
 
@@ -15,43 +16,7 @@ class ProjectsStore {
     @observable audioName: any = "";
 
     constructor() {
-
     }
-
-    @action addProjectToDB(projectName: any, username: any, email: any) {
-/*
-        db.ref('projects/' + authStore.user.uid).push({
-            projectName: projectName,
-            username: username,
-            email: email,
-            creationDate: this.getCurrentDate(),
-            audio_file: this.audioFileURL
-        }); */
-
-        this.setAudioFileUploaded(false);
-
-    }
-
-    /*
-    getProjects = (userId: any) => {
-        var projectsDB =
-            db.ref('projects/' + userId)
-                .limitToLast(500);
-        projectsDB.on("value", snapshot => {
-            let newProjects: any[] = [];
-            snapshot.forEach(child => {
-                var project = child.val();
-                newProjects.push({
-                    projectName: project.projectName,
-                    username: project.username,
-                    email: project.email,
-                    creationDate: project.creationDate
-                });
-                this.projects = newProjects;
-                console.log(this.projects);
-            });
-        });
-    } */
 
     getCurrentDate() {
         var today: any = new Date();
@@ -139,10 +104,30 @@ class ProjectsStore {
         this.showNewProjectForm = false;
     }
 
+    @action onRetrieveProjects() {
+        let that = this;
+        db.collection("projects").onSnapshot((querySnapshot) => {
+            this.projects = [];
+            querySnapshot.forEach((doc) => {
+                if (doc.data().owner == authStore.currentUserInfo.id) {
+                this.projects.push(doc.data())
+                }
+            });
+        })
+    }
+
     ///// PROJECT CREATION
 
     @observable creationStep = 1;
-    @observable stepTitle = 'Detalles del Proyecto'
+    @observable stepTitle = 'Detalles del Proyecto';
+    @observable studyingSpecies:any = []
+
+    @observable newSpecieStudied = {
+        photo: '',
+        sciName: '',
+        commonName: ''
+    }
+
     @observable monacDistribution = [
         { value: '6', label: 'Hexágono' },
         { value: '4', label: 'Cruz' },
@@ -169,8 +154,7 @@ class ProjectsStore {
                 this.stepTitle = 'Datos recolectados'
                 break;
             case 4:
-                this.showNewProjectForm = false;
-                this.creationStep = 1;
+                this.uploadNewProject();
                 break;
         }
     }
@@ -183,6 +167,141 @@ class ProjectsStore {
     @action onStepBackClick() {
         this.creationStep -= 1;
         this.setStepTitle()
+    }
+
+    @observable newProject = {
+        id: "",
+        date: "",
+        name: "",
+        description: "",
+        owner: "",
+        colleagues: "",
+        location: "",
+        species: [],
+        intervalMode: false,
+        continousMode: false,
+        audioDuration: 5,
+        frequency: 0,
+        microhphone: '',
+        monacDistribution: '',
+        audioFiles: ''
+    }
+
+    @observable defaultSpecieStudy: any;
+
+    @action onAddSpecieStudy(sci) {
+        this.newSpecieStudied.sciName = sci;
+
+        reportStore.birdsData.map((e,i) => {
+            if(e.SCI_NAME == sci) {
+                this.newSpecieStudied.commonName = e.SPA_NAME;
+                this.newSpecieStudied.photo = e.PHOTO;
+            }
+        })
+
+        this.studyingSpecies.push(this.newSpecieStudied)
+        this.newSpecieStudied = {
+            photo: '',
+            sciName: '',
+            commonName: ''
+        }
+    }
+    @action uploadNewProject() {
+        this.newProject.date = this.getCurrentDate();
+        this.newProject.owner = authStore.currentUserInfo.id;
+        this.newProject.species = this.studyingSpecies;
+        let that = this;
+        let tempId = '';
+        db.collection("projects").add(this.newProject)
+            .then(function (docRef) {
+                tempId = docRef.id;
+                db.collection("projects").doc(tempId).update({
+                    "id": tempId
+                })
+                that.newProject = {
+                    id: "",
+                    date: "",
+                    owner: "",
+                    name: "",
+                    description: "",
+                    colleagues: "",
+                    location: "",
+                    species: [],
+                    intervalMode: false,
+                    continousMode: false,
+                    audioDuration: 5,
+                    frequency: 0,
+                    microhphone: '',
+                    monacDistribution: '',
+                    audioFiles: ''
+                }
+                that.showNewProjectForm = false;
+                that.creationStep = 1;
+            })
+            .catch(function (error) {
+                console.error("Error adding document: ", error);
+            });
+        console.log('Subido')
+    }
+
+    @observable actualProject: any = {};
+
+    @action retreiveOnlyProjectInfo(projectId: string) {
+        let docRef = db.collection("projects").doc(projectId);
+        let that = this;
+        docRef.get().then(function (doc) {
+            if (doc.exists) {
+                that.actualProject = doc.data();
+            } else {
+                console.log("No such project!");
+            }
+        }).catch(function (error) {
+            console.log("Error getting project:", error);
+        });
+
+    }
+
+    //-------------Project Navigation
+    @observable projectTabs: any = [
+        {
+            name: 'Vista General',
+            selected: true,
+            open: false
+        }, {
+            name: 'Etiquetado',
+            selected: true,
+            open: false
+        }, {
+            name: 'Listado',
+            selected: true,
+            open: false
+        }, {
+            name: 'Visualización',
+            selected: true,
+            open: false
+        }, {
+            name: 'Audios',
+            selected: true,
+            open: false
+        }
+
+    ]
+
+    @action openProjectTab(section: number) {
+        this.projectTabs[section].open = true;
+        this.projectTabs.map((tab, index) => {
+            (index == section) ? tab.selected = true : tab.selected = false;
+        })
+    }
+    @action onClickProjectTab(section: number) {
+        this.projectTabs.map((tab, index) => {
+            (index == section) ? tab.selected = true : tab.selected = false;
+        })
+    }
+    @action onCloseProjectTab(section: number) {
+        this.projectTabs.map((tab, index) => {
+            if (index == section) { tab.selected = false; tab.open = false; }
+        })
     }
 }
 

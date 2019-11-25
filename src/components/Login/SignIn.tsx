@@ -1,21 +1,13 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router';
+import React from 'react';
 import authStore from '../../stores/authStore';
 import { observer } from 'mobx-react';
-import { Redirect } from 'react-router-dom';
 
-interface formLoginProps {
+const SignIn = observer(() => {
 
-}
-
-const SignIn = observer(withRouter((formLoginProps) => {
-
-    return (<form className="sign-in"
+    return (<form className="sign-in firstdisplay"
         onSubmit={(event: any) => {
             event.preventDefault();
             authStore.login(authStore.credentials.email, authStore.credentials.password);
-          
-
         }}>
 
         <div className="form-imput">
@@ -36,6 +28,6 @@ const SignIn = observer(withRouter((formLoginProps) => {
         <p>¿Aún no tienes cuenta? <a>Regístrate</a></p>
     </form>
     );
-}));
+});
 
 export default SignIn;

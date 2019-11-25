@@ -1,13 +1,10 @@
 import * as React from 'react';
 import './_Login.scss'
-import { withRouter } from 'react-router';
 import authStore from '../../stores/authStore';
 import SignIn from '../Login/SignIn';
 import SignUp from '../Login/SignUp';
 import { observer } from 'mobx-react';
 import { observable, autorun } from 'mobx';
-import ImgDropzone from '../Login/ImgDropzone'
-import Dropzone from 'react-dropzone';
 
 interface LoginProps {
     history: any
@@ -21,11 +18,7 @@ interface LoginProps {
 
     constructor(props: any) {
         super(props);
-        autorun(() => {
-            (authStore.isLogged) ?
-            props.history.push ("/home")
-        : props.history.push("/") 
-        })
+
         
     }
 
@@ -34,8 +27,10 @@ interface LoginProps {
     }
 
     render() {
-        
-        return (<div className="Login">
+        if(authStore.isLogged){
+            this.props.history.push ("/");
+        } 
+        return (<div className="Login firstdisplay">
             <section className="info-section">
                 <div className="logo">BioViz</div>
                 <div className="img-div">

@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router';
+import React from 'react';
 import authStore from '../../stores/authStore';
 import { observer } from 'mobx-react';
 import ImgDropzone from '../Login/ImgDropzone'
-import { Redirect } from 'react-router-dom';
 
 interface formRegisterProps {
 
 }
 
-const SignUp = observer(withRouter((formRegisterProps) => {
+const SignUp = observer((formRegisterProps) => {
     return (<form className="sign-up" onSubmit={(e: any) => {
         e.preventDefault();
 
@@ -42,6 +40,6 @@ const SignUp = observer(withRouter((formRegisterProps) => {
         <p>¿Ya tienes una cuenta? <a>Inicia Sesión</a></p>
     </form>
     );
-}));
+});
 
 export default SignUp;

@@ -1,5 +1,216 @@
-.tagging{
+@import './../../variables.scss';
+
+.tag-header-cont {
+    background-color: white;
+    padding: 0.5rem;
     display: flex;
     flex-direction: row;
-    background-color: #E5E5E5;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+        font-weight: 900;
+    }
+
+    .datetime {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        label {
+            margin: 0 1rem;
+        }
+    }
+
+    label {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        p {
+            margin: 0 0.5rem;
+        }
+
+        input[type=time]::-webkit-datetime-edit-ampm-field {
+            display: none;
+        }
+    }
+
+    .right-handlers {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        button {
+            margin: 0 1rem;
+        }
+
+        div {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            p {
+                font-weight: 700;
+            }
+
+            label {
+                margin: 0 1rem;
+            }
+        }
+    }
+
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 25px;
+
+        input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+
+            &:before {
+                position: absolute;
+                content: "";
+                height: 21px;
+                width: 21px;
+                left: 2px;
+                bottom: 2px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+        }
+
+        .slider.round {
+            border-radius: 7px;
+        }
+
+        .slider.round:before {
+            border-radius: 30%;
+        }
+
+
+        input:checked+.slider {
+            background-color: $thirdActiveColor;
+        }
+
+        input:focus+.slider {
+            box-shadow: 0 0 1px rgb(187, 197, 204);
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(15px);
+            -ms-transform: translateX(15px);
+            transform: translateX(15px);
+        }
+    }
+}
+
+.tagging {
+    height: 94vh;
+    max-height: 94vh;
+    overflow: hidden;
+
+    .two-sections {
+        display: flex;
+        flex-direction: row;
+        padding: 7px 7px 0 7px;
+        height: calc(100vh - 295px);
+        justify-content: space-between;
+
+
+        .spectro-selection {
+            width: 50%;
+            background-color: white;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+
+            .MuiSlider-root {
+                color: #AFEA7D;
+                z-index: 1;
+                margin-right: 2px;
+            }
+
+            .MuiSlider-rail {
+                color: #BDBDBD;
+            }
+
+            .MuiSlider-root.MuiSlider-vertical {
+                height: 316px;
+                padding: 0;
+            }
+
+            .MuiSlider-rail {
+                width: 7px;
+            }
+
+            .MuiSlider-track {
+                width: 7px;
+            }
+
+            .MuiSlider-thumb {
+                width: 18px;
+                height: 18px;
+                border: 2px solid white;
+                -webkit-box-shadow: 1px 1px 10px -4px rgba(0, 0, 0, 0.75);
+                -moz-box-shadow: 1px 1px 10px -4px rgba(0, 0, 0, 0.75);
+                box-shadow: 1px 1px 10px -4px rgba(0, 0, 0, 0.75);
+            }
+
+            .PrivateValueLabel-circle-24 {
+                background-color: #333333;
+            }
+
+            .black-card-header {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-self: flex-start;
+                justify-content: space-between;
+                background-color: #333333;
+                padding: 0.7rem 1rem;
+
+                h1 {
+                    margin: 0;
+                }
+
+                h3 {
+                    font-size: 18px;
+                    color: white;
+                }
+            }
+
+        }
+
+        .tagging-section {
+            overflow-y: scroll;
+            width: 49%;
+            border-radius: 5px;
+            overflow-x: hidden;
+
+            .suggestion-cont {
+                &.undisplay {
+                    display: none;
+                }
+            }
+        }
+    }
 }
