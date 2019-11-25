@@ -143,6 +143,42 @@
             flex-direction: column;
             overflow-x: hidden;
 
+            .MuiSlider-root {
+                color: #AFEA7D;
+                z-index: 1;
+                margin-right: 2px;
+            }
+
+            .MuiSlider-rail {
+                color: #BDBDBD;
+            }
+
+            .MuiSlider-root.MuiSlider-vertical {
+                height: 316px;
+                padding: 0;
+            }
+
+            .MuiSlider-rail {
+                width: 7px;
+            }
+
+            .MuiSlider-track {
+                width: 7px;
+            }
+
+            .MuiSlider-thumb {
+                width: 18px;
+                height: 18px;
+                border: 2px solid white;
+                -webkit-box-shadow: 1px 1px 10px -4px rgba(0, 0, 0, 0.75);
+                -moz-box-shadow: 1px 1px 10px -4px rgba(0, 0, 0, 0.75);
+                box-shadow: 1px 1px 10px -4px rgba(0, 0, 0, 0.75);
+            }
+
+            .PrivateValueLabel-circle-24 {
+                background-color: #333333;
+            }
+
             .black-card-header {
                 width: 100%;
                 display: flex;
@@ -162,11 +198,6 @@
                 }
             }
 
-            .spectro-div {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
         }
 
         .tagging-section {

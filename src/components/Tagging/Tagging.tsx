@@ -8,8 +8,10 @@ import SpectroSel from './Components/SpectroSel/SpectroSel';
 import toolsStore from '../../stores/toolsStore';
 import ToolsMenu from './Components/ToolsMenu/ToolsMenu';
 import { observable } from 'mobx';
+import Slider from '@material-ui/core/Slider';
 import { SelSuggestions } from './Components/SpectroSel/SelSuggestions';
 import tagStore from '../../stores/taggingStore';
+import P5Wrapper from 'react-p5-wrapper';
 
 interface TaggingProps {
 }
@@ -41,9 +43,7 @@ interface TaggingProps {
                     <div className="black-card-header">
                         <h3>Selección del audio principal</h3>
                     </div>
-                    <div className="spectro-div">
-                        <SpectroSel />
-                    </div>
+                    <SpectroSel selectionEmpty={toolsStore.selectionEmpty}/>
                 </div>
                 {
                     (tagStore.isAiOn) ? <SelSuggestions/> : ''

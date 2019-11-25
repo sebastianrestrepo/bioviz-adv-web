@@ -15,7 +15,8 @@ const options = [
 
 const sex = [
     { value: 'male', label: 'Macho' },
-    { value: 'female', label: 'Hembra' }
+    { value: 'female', label: 'Hembra' },
+    { value: 'unknown', label: 'Desconocido' }
 ]
 
 const species = [
