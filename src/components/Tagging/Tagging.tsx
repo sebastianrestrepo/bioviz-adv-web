@@ -12,6 +12,7 @@ import Slider from '@material-ui/core/Slider';
 import { SelSuggestions } from './Components/SpectroSel/SelSuggestions';
 import tagStore from '../../stores/taggingStore';
 import P5Wrapper from 'react-p5-wrapper';
+import { AIGenSuggestions } from './Components/GenSpectro/AIGenSuggestions';
 
 interface TaggingProps {
 }
@@ -25,6 +26,7 @@ interface TaggingProps {
     render() {
         return (<div className="tagging">
             <TaggingHeader></TaggingHeader>
+            <AIGenSuggestions></AIGenSuggestions>
             <SpectroComp panel={toolsStore.panel} />
             <ToolsMenu />
 

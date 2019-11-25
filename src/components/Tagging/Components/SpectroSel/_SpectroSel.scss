@@ -1,5 +1,4 @@
 @import './../../../../variables.scss';
-
 .sel-cont {
     overflow-x: scroll;
     width: 837px;
@@ -16,9 +15,16 @@
     #timeline {
         width: 100%;
         background-color: #ECECEC;
+
+        timeline {
+            display: none !important;
+
+            &:last-child {
+                display: block !important;
+            }
+        }
     }
 }
-
 
 .container-sel {
     display: flex;
@@ -409,13 +415,10 @@
                                 &.sources {
                                     font-size: 14px;
                                     font-weight: 800;
-
                                 }
                             }
                         }
                     }
-
-
                 }
             }
         }

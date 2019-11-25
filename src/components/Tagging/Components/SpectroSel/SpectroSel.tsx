@@ -22,6 +22,8 @@ const SpectroSel = ({ selectionEmpty }: spectroSelProps) => {
     const wsRef: any = React.useRef();
     const sliderRef: any = React.useRef();
     const containerRegion: any = React.useRef();
+    const silderRef = React.createRef();
+    let handlersValue: any = [24, 0];
 
     React.useEffect(() => {
         wsRef.current = WaveSurfer.create({
@@ -76,7 +78,7 @@ const SpectroSel = ({ selectionEmpty }: spectroSelProps) => {
 
     }, []);
 
-    return (<div className="sel-cont" >
+    return (<div className="sel-cont" key={"" + handlersValue[1] + ""}>
 
         <div className="spectro-header">
             <div style={{ width: '53px', height: '100%', backgroundColor: '#FFF' }}></div>
@@ -86,19 +88,27 @@ const SpectroSel = ({ selectionEmpty }: spectroSelProps) => {
         <div className="container-sel">
             <img className="" src="./assets/tagging-section/frequency-label.png" alt="" height="316" />
             <Slider
+                ref={silderRef}
                 orientation="vertical"
                 defaultValue={[10, 15]}
-                onChange={() => { }}
+                onChange={(event, value) => {
+                    handlersValue = value;
+                    console.log(handlersValue[1]);
+                }}
                 valueLabelDisplay="auto"
                 aria-labelledby="range-slider"
                 min={0}
                 max={24}
             />
-            <div id="waveform" ref={containerRef}>
-                <div className="top-filter"></div>
+            <div id="waveform" ref={containerRef} key={"" + handlersValue[1] + ""}>
+                <div className="top-filter" key={"" + handlersValue[1] + ""} style={{
+                    height: (handlersValue[1]*13.33333) + 'px',
+                }}></div>
                 {/*<h3 style={{ display: (selectionEmpty)?'flex':'none'}}>Selecciona un área del espectrograma general</h3>*/}
                 <div id="wave-spectrogram" ref={containerSpecRef} />
-                <div className="bottom-filter"></div>
+                <div className="bottom-filter" style={{
+                    top: (handlersValue[0]*13.33333),
+                }}></div>
             </div>
 
         </div>

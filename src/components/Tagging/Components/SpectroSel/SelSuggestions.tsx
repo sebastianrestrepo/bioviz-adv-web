@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
-import SampleCard from './SampleCard';
 import { suggestionStore } from '../../../../stores/suggestionStore';
+import SampleCard from './SampleCard';
 
 @observer
 export class SelSuggestions extends React.Component {

@@ -1,5 +1,5 @@
 import { observable, action } from "mobx";
-import reportStore from './reportStore';
+import reportStore from "./reportStore";
 
 class TaggingStore {
 
@@ -214,8 +214,8 @@ class TaggingStore {
     //Without AI
 
     @observable isNoteActivated = false;
-    @observable commonName = '';
-    @observable sciName = '';
+    @observable commonName;
+    @observable sciName;
 
     @action onCommonNameChange() {
         let sci = ''
@@ -238,7 +238,7 @@ class TaggingStore {
     }
 
     @action onNoteClick() {
-        this.isNoteActivated = !this.isNoteActivated;
+        this.isNoteActivated = true;
     }
 
 
@@ -265,6 +265,92 @@ class TaggingStore {
     }
 
 
+
+    @action selectMark(url, index) {
+
+        switch (index) {
+            case 1:
+                if (!this.selected1) {
+                    this.playBirdSong(url);
+                    this.isSomethingSelected = true;
+                    this.selected2 = false;
+                    this.selected3 = false;
+                    this.selected4 = false;
+                    this.selected5 = false;
+                    this.selected6 = false;
+                } else {
+                    this.isSomethingSelected = false;
+                }
+                this.selected1 = !this.selected1;
+                break;
+            case 2:
+                if (!this.selected2) {
+                    this.playBirdSong(url);
+                    this.isSomethingSelected = true;
+                    this.selected1 = false;
+                    this.selected3 = false;
+                    this.selected4 = false;
+                    this.selected5 = false;
+                    this.selected6 = false;
+                } else {
+                    this.isSomethingSelected = false;
+                }
+                this.selected2 = !this.selected2;
+                break;
+            case 3:
+                if (!this.selected3) {
+                    this.playBirdSong(url);
+                    this.isSomethingSelected = true;
+                    this.selected2 = false;
+                    this.selected1 = false;
+                    this.selected4 = false;
+                    this.selected5 = false;
+                    this.selected6 = false;
+                } else {
+                    this.isSomethingSelected = false;
+                } this.selected3 = !this.selected3;
+                break;
+            case 4:
+                if (!this.selected4) {
+                    this.playBirdSong(url)
+                    this.isSomethingSelected = true;
+                    this.selected2 = false;
+                    this.selected3 = false;
+                    this.selected1 = false;
+                    this.selected5 = false;
+                    this.selected6 = false;
+                } else {
+                    this.isSomethingSelected = false;
+                } this.selected4 = !this.selected4;
+                break;
+            case 5:
+                if (!this.selected5) {
+                    this.playBirdSong(url)
+                    this.isSomethingSelected = true;
+                    this.selected2 = false;
+                    this.selected3 = false;
+                    this.selected4 = false;
+                    this.selected1 = false;
+                    this.selected6 = false;
+                } else {
+                    this.isSomethingSelected = false;
+                } this.selected5 = !this.selected5;
+                break;
+            case 6:
+                if (!this.selected6) {
+                    this.playBirdSong(url)
+                    this.isSomethingSelected = true;
+                    this.selected2 = false;
+                    this.selected3 = false;
+                    this.selected4 = false;
+                    this.selected5 = false;
+                    this.selected1 = false;
+                } else {
+                    this.isSomethingSelected = false;
+                } this.selected6 = !this.selected6;
+                break;
+        }
+    }
 
 
     //with AI
