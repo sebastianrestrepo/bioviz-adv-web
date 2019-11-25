@@ -5,15 +5,20 @@ import { suggestionStore } from '../../../../stores/suggestionStore';
 import SuggestionCard from './SuggestionCard';
 
 interface sampleCardProps {
-
+    hour: string,
+    time: string,
+    second: any,
+    index: any,
+    suggestions: any
 }
 
-const SampleCard = observer(({ }: sampleCardProps) => {
+const SampleCard = observer(({ hour, time, second, index, suggestions }: sampleCardProps) => {
+    let suggestData = JSON.parse(suggestions);
 
     return (<article className="sel-suggest-card">
         <div className="time">
-            <h3>01:52:02</h3>
-            <p>Vocalización 1</p>
+            <h3>{hour}:{second}, {time}</h3>
+            <p>Vocalización {index+1}</p>
             <span className="time-separator"></span>
         </div>
         <div className="card">
@@ -34,18 +39,23 @@ const SampleCard = observer(({ }: sampleCardProps) => {
                 </span>
             </div>
 
-            <section className = { (suggestionStore.isSampleSuggestionsOn) ? 'suggestions' : 'suggestions undisplay'}>
+            <section className={(suggestionStore.isSampleSuggestionsOn) ? 'suggestions' : 'suggestions undisplay'}>
                 {
-                    suggestionStore.suggestionsArray.map((s, i) => {
+                    suggestData.map((s, i) => {
+
                         return <SuggestionCard
                             percentage={s.percentage}
-                            spectro={s.spectrogramImg}
+                            spectro={s.spectroImgUrl}
                             position={i + 1}
-                            sciname={s.scientificName}
+                            sciname={s.sciName}
                             commonName={s.commonName}
-                            _color={s.color}
-                            birdPhoto={s.birdPhoto}
-                            coincidences={s.coincidences}
+                            birdPhoto={s.birdPhotoUrl}
+                            audio={s.mainAudioUrl}
+                            author={s.owner}
+                            location={s.location}
+                            url={s.url}
+                            isPlaying={s.isPlaying}
+                            coincidences={suggestData.length}
                         ></SuggestionCard>
                     })
                 }

@@ -16,7 +16,7 @@
         .time {
             h3 {
                 font-weight: 800;
-                font-size: 25px;
+                font-size: 23px;
             }
 
             p {
@@ -144,9 +144,18 @@
                         justify-content: space-between;
 
                         .spectrogram {
-                            width: 250px;
+                            width: 350px;
                             height: 150px;
                             cursor: pointer;
+                            overflow: hidden;
+                            position: relative;
+                            border-radius: 4px;
+                            margin: 0.5rem 0;
+                            img {
+                                height: 100%;
+                                position: absolute;
+                                right: 0%;
+                            }
                         }
 
 
@@ -170,12 +179,20 @@
                                 flex-direction: row;
                                 justify-content: flex-start;
                                 align-items: center;
-
+                                .act-cont {
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: space-around;
+                                    align-items: center;
+                                    margin: 0 1rem 0 0;
+                                    img {
+                                        margin: 0.2rem 0;
+                                    }
+                                }
                                 .bird-photo-cont {
                                     width: 50px;
                                     height: 50px;
                                     border-radius: 35px;
-                                    margin: 0 1rem 0 0;
                                     overflow: hidden;
                                     background-color: white;
                                     border: solid 1.5px $thirdActiveColor;
@@ -213,6 +230,10 @@
 
                                     .common-name {
                                         font-size: 16px;
+                                    }
+
+                                    .maucalay {
+                                        margin: 0.5rem 0;
                                     }
                                 }
                             }

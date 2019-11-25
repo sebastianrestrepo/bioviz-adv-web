@@ -1,6 +1,76 @@
 import { observable, action } from 'mobx';
 
 class SuggestionStore {
+
+    @observable anchicayaSuggestions = [
+        {
+            startTime: 16,
+            endTime: 19,
+            maxFreq: 4000,
+            minFreq: 2000,
+            date: '18 Junio 2019',
+            hour: '6:35',
+            time: 'AM',
+            suggestions: [
+                {
+                    sciName: 'Hafferia zeledoni',
+                    commonName: 'Hormiguero de Zeledón',
+                    order: 'Passeriformes',
+                    family: 'Thamnophilidae',
+                    percentage: 99,
+                    mainAudioUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/72880',
+                    spectroImgUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/72880/poster',
+                    birdPhotoUrl: './assets/birds/sipiaberlepschi.jpg',
+                    owner: 'David L. Ross, Jr.',
+                    location: 'Alajuela, Costa Rica',
+                    url: 'https://macaulaylibrary.org/asset/72880',
+                    isPlaying: false,
+                    otherSongs: [
+                        {
+                            audioUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/72896',
+                            spectroImgUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/72896/poster',
+                            location: 'Alajuela, Costa Rica',
+                            owner: 'David L. Ross, Jr.',
+                            url: 'https://macaulaylibrary.org/asset/72896',
+                            isPlaying: false
+                        },
+                        {
+                            audioUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/73917751',
+                            spectroImgUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/73917751/poster',
+                            location: 'Puntarenas, Costa Rica',
+                            owner: 'Will Sweet',
+                            url: 'https://macaulaylibrary.org/asset/73917751',
+                            isPlaying: false
+                        },
+                        {
+                            audioUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/80799',
+                            spectroImgUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/80799/poster',
+                            location: 'Cañar, Ecuador',
+                            url: 'https://macaulaylibrary.org/asset/80799',
+                            owner: 'Ted Parker',
+                            isPlaying: false
+                        }
+                    ]
+                }, 
+                {
+                    sciName: 'Hafferia fortis',
+                    commonName: 'Hormiguero Tiznado',
+                    order: 'Passeriformes',
+                    family: 'Thamnophilidae',
+                    percentage: 87,
+                    mainAudioUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/243173',
+                    spectroImgUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/243173/poster',
+                    birdPhotoUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/172768691/1800',
+                    owner: 'Niels Krabbe',
+                    location: 'Orellana, Ecuador',
+                    url: 'https://macaulaylibrary.org/asset/243173',
+                    isPlaying: false,
+                    otherSongs: [ ]
+                }
+            ]
+        }
+    ]
+
     @observable speciesSuggested = [
         {
             sciName: 'Sipia berlepschi',
