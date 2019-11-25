@@ -46,6 +46,8 @@ const SpectroSel = ({ selectionEmpty }: spectroSelProps) => {
                     secondaryColor: '#838383',
                     primaryFontColor: '#838383',
                     secondaryFontColor: '#838383',
+                    primaryLabelInterval: 1,
+                    secondaryLabelInterval: 1
                 }),
                 Cursor.create({
                     showTime: true,
@@ -81,8 +83,8 @@ const SpectroSel = ({ selectionEmpty }: spectroSelProps) => {
     return (<div className="sel-cont" key={"" + handlersValue[1] + ""}>
 
         <div className="spectro-header">
-            <div style={{ width: '53px', height: '100%', backgroundColor: '#FFF' }}></div>
-            <img className="" src="./assets/gen-icons/freq-filter-icon.svg" alt="" width="28" />
+            <div style={{ width: '37px', height: '100%', backgroundColor: '#FFF' }}></div>
+            <img className="" src="./assets/gen-icons/freq-filter-icon.svg" alt="" width="25" />
             <div id="timeline" ref={containerTimelineRef} />
         </div>
         <div className="container-sel">

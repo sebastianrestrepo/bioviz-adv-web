@@ -145,8 +145,8 @@
 
             .MuiSlider-root {
                 color: #AFEA7D;
-                z-index: 1;
-                margin-right: 2px;
+                z-index: 3;
+                margin-right: 3.5px;
             }
 
             .MuiSlider-rail {
@@ -164,6 +164,9 @@
 
             .MuiSlider-track {
                 width: 7px;
+                -webkit-box-shadow: 1px 1px 10px -4px rgba(0, 0, 0, 0.75);
+                -moz-box-shadow: 1px 1px 10px -4px rgba(0, 0, 0, 0.75);
+                box-shadow: 1px 1px 10px -4px rgba(0, 0, 0, 0.75);
             }
 
             .MuiSlider-thumb {

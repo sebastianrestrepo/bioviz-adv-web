@@ -46,6 +46,7 @@ const SpectroComp = ({ panel }: spectroCompProps) => {
                     secondaryColor: '#838383',
                     primaryFontColor: '#838383',
                     secondaryFontColor: '#838383',
+                    primaryLabelInterval: 1,
                 }),
                 Cursor.create({
                     showTime: true,
