@@ -3,7 +3,7 @@
     width: 837px;
     overflow: hidden;
     padding-top: 20px;
-    padding-left:20px;
+    padding-left: 20px;
 }
 
 .spectro-header {
@@ -30,11 +30,29 @@
 
 
     #waveform {
+        position: relative;
         cursor: pointer;
         height: 320px;
         width: 100%;
         background-color: #ECECEC;
-        h3{
+
+        .top-filter {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.3);
+            height: 108px;
+            width: 100%;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.3)
+        }
+
+        .bottom-filter {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.3);
+            width: 100%;
+            z-index: 1;
+        }
+
+        h3 {
             position: absolute;
             display: flex;
             align-self: center;
@@ -42,6 +60,7 @@
             z-index: 1;
             color: #838383;
         }
+
         wave {
             height: 320px !important;
 

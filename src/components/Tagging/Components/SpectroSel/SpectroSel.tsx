@@ -95,8 +95,10 @@ const SpectroSel = ({ selectionEmpty }: spectroSelProps) => {
                 max={24}
             />
             <div id="waveform" ref={containerRef}>
+                <div className="top-filter"></div>
                 {/*<h3 style={{ display: (selectionEmpty)?'flex':'none'}}>Selecciona un área del espectrograma general</h3>*/}
                 <div id="wave-spectrogram" ref={containerSpecRef} />
+                <div className="bottom-filter"></div>
             </div>
 
         </div>
