@@ -76,7 +76,7 @@ const SpectroComp = ({ panel }: spectroCompProps) => {
             ]
         });
 
-        wsRef.current.load('/assets/audio-files/1_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3');
+        wsRef.current.load('./assets/audio-files/1_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3');
 
         toolsStore.wsRef = wsRef.current;
 

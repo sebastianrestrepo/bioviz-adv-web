@@ -1,8 +1,5 @@
 import * as React from 'react';
 import './_AIGenSuggestions.scss';
-import Select from 'react-select'
-import CreatableSelect from 'react-select/creatable';
-import chroma from 'chroma-js';
 import { observer } from 'mobx-react';
 import tagStore from '../../../../stores/taggingStore';
 
@@ -99,14 +96,7 @@ export class AIGenSuggestions extends React.Component {
                             </span>
                         </div>
                     </span>
-
                 </div>
-                {/*<div className="time">
-                <img src="./assets/time-bar.jpg" alt="" width="949px" />
-            </div>
-            <div className="spectro-viz">
-                <img src="./assets/Tagging/general.png" alt="" />
-                    </div>*/}
             </span>
         </div>
     }
