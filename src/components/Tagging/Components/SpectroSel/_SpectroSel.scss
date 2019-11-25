@@ -1,19 +1,37 @@
 .sel-cont {
     overflow-x: scroll;
-    width: 800px;
+    width: 838px;
     overflow: hidden;
+    padding-top: 20px;
+    padding-left:20px;
+}
+
+.spectro-header {
+    display: flex;
+    align-items: center;
+
+    #timeline {
+        width: 100%;
+    }
 }
 
 .container-sel {
-    margin: 20px 0 20px 0;
     background-color: #ECECEC;
+    display: flex;
+
+    .slider-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
 
 
     #waveform {
         cursor: pointer;
         height: 320px;
         width: 100%;
-        
+
         wave {
             height: 320px !important;
 

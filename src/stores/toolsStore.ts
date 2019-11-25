@@ -1,5 +1,7 @@
 import { observable, autorun, action } from 'mobx';
 import { Decoder, BufferManipulations, Encoder } from 'alamp';
+import p5 from 'p5';
+import "p5/lib/addons/p5.sound";
 import * as CSS from 'csstype';
 
 class ToolsStore {
@@ -12,6 +14,7 @@ class ToolsStore {
     @observable selSpecLeftPos: number = 0;
     @observable selSpecWidth: number = 0;
 
+
     //
     @observable wsSelectionRef: any;
     //
@@ -22,6 +25,7 @@ class ToolsStore {
     @observable panelDisabled: string = '0px solid #44CD88';
 
     constructor() {
+
     }
 
     @action handlePlayPause() {
@@ -51,7 +55,7 @@ class ToolsStore {
                 break;
         }
     }
-    
+
 
     @action saveRegions() {
         let that = this;

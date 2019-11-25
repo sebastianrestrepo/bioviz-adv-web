@@ -145,6 +145,8 @@
 
             .MuiSlider-root {
                 color: #AFEA7D;
+                z-index: 1;
+                margin-right: 3px;
             }
 
             .MuiSlider-rail {
@@ -156,11 +158,11 @@
             }
 
             .MuiSlider-rail {
-                width: 6px;
+                width: 7px;
             }
 
             .MuiSlider-track {
-                width: 6px;
+                width: 7px;
             }
 
             .MuiSlider-thumb {
@@ -195,15 +197,6 @@
                 }
             }
 
-            .spectro-div {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                #slider {
-                    transform: rotate(90deg);
-                }
-            }
         }
 
         .tagging-section {

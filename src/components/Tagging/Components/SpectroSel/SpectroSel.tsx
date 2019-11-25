@@ -6,6 +6,7 @@ import Cursor from 'wavesurfer.js/dist/plugin/wavesurfer.cursor';
 import * as CSS from 'csstype';
 import toolsStore from '../../../../stores/toolsStore';
 import Timeline from 'wavesurfer.js/dist/plugin/wavesurfer.timeline.js';
+import Slider from '@material-ui/core/Slider';
 
 const SpectroSel = () => {
 
@@ -62,13 +63,21 @@ const SpectroSel = () => {
 
     return (<div className="sel-cont" >
 
+        <div className="spectro-header">
+            <img className="" src="./assets/gen-icons/freq-filter-icon.svg" alt="" width="32" />
+            <div id="timeline" ref={containerTimelineRef} />
+        </div>
         <div className="container-sel">
 
-            {/*<div id="timeline" ref={containerTimelineRef} onClick={() => {
-                wsRef.current.zoom(2000);
-                console.log('lmao');
-            }} />*/}
-            <div id="timeline" ref={containerTimelineRef} />
+            <div className="slider-div">
+                <Slider
+                    orientation="vertical"
+                    defaultValue={[20, 40]}
+                    onChange={() => { }}
+                    valueLabelDisplay="auto"
+                    aria-labelledby="range-slider"
+                />
+            </div>
             <div id="waveform" ref={containerRef}>
                 <div id="wave-spectrogram" ref={containerSpecRef} />
             </div>
