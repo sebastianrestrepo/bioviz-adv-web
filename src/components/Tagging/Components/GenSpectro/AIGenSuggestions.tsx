@@ -14,7 +14,7 @@ export class AIGenSuggestions extends React.Component {
                 {
                     suggestionStore.anchicayaSuggestions.map((e,i) => {
                         const jsonData = JSON.stringify(e.suggestions[0]);
-                        return <Mark start={e.startTime} end={e.endTime} suggestion={jsonData} />
+                        return <Mark index={e.index} start={e.startTime} end={e.endTime} suggestion={jsonData} />
                     })
                 }
               
