@@ -88,31 +88,38 @@ export class CompareAudios extends React.Component {
 
             <div className="right">
                 <span className="principal-micro">
-                    <SpectrogramCompareView name={'M1'} spectroNum={'1'} volume={50} />
+                    <SpectrogramCompareView name={'M1'} 
+                    audioUrl={'./assets/audio-files/1_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3'} spectroNum={'1'} volume={50} />
                 </span>
                 {
                     (tagStore.comparedMicro1Activated && !tagStore.isPrincipal1) ? 
-                    <SpectrogramCompareView name={'M2'} spectroNum={'1'} volume={50}/> : ''
+                    <SpectrogramCompareView name={'M1'} 
+                    audioUrl={'./assets/audio-files/1_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3'} spectroNum={'1'} volume={50}/> : ''
                 }
                 {
                     (tagStore.comparedMicro2Activated && !tagStore.isPrincipal2) ? 
-                    <SpectrogramCompareView name={'M2'} spectroNum={'2'} volume={50}/> : ''
+                    <SpectrogramCompareView name={'M2'} 
+                    audioUrl={'./assets/audio-files/2_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3'} spectroNum={'2'} volume={50}/> : ''
                 }
                 {
                     (tagStore.comparedMicro3Activated && !tagStore.isPrincipal3) ? 
-                    <SpectrogramCompareView name={'M3'} spectroNum={'3'} volume={50}/> : ''
+                    <SpectrogramCompareView name={'M3'} 
+                    audioUrl={'./assets/audio-files/3_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3'} spectroNum={'3'} volume={50}/> : ''
                 }
                 {
                     (tagStore.comparedMicro4Activated && !tagStore.isPrincipal4) ? 
-                    <SpectrogramCompareView name={'M4'} spectroNum={'4'} volume={50} /> : ''
+                    <SpectrogramCompareView name={'M4'} 
+                    audioUrl={'./assets/audio-files/4_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3'} spectroNum={'4'} volume={50} /> : ''
                 }
                 {
                     (tagStore.comparedMicro5Activated && !tagStore.isPrincipal5) ? 
-                    <SpectrogramCompareView name={'M5'} spectroNum={'5'} volume={50}/> : ''
+                    <SpectrogramCompareView name={'M5'} 
+                    audioUrl={'./assets/audio-files/5_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3'} spectroNum={'5'} volume={50}/> : ''
                 }
                 {
                     (tagStore.comparedMicro6Activated && !tagStore.isPrincipal6) ? 
-                    <SpectrogramCompareView name={'M6'} spectroNum={'6'} volume={50}/> : ''
+                    <SpectrogramCompareView name={'M6'} 
+                    audioUrl={'./assets/audio-files/6_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3'} spectroNum={'6'} volume={50}/> : ''
                 }
             </div>
         </div>

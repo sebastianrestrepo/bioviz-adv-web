@@ -14,6 +14,11 @@ class TaggingStore {
         this.isDateTimeSelected = true;
     }
 
+    @action onCompareClick() {
+        this.isComparingMicros = true;
+        
+    }
+
     //---------------------------------DATE selection -----------------------------//
 
     @observable dayAnalyzing: any = ''

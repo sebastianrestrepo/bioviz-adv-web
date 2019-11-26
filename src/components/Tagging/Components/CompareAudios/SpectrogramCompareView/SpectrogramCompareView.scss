@@ -6,6 +6,7 @@
     justify-content: flex-start;
     width: 100%;
     height: 200px;
+
     .actions {
         display: flex;
         flex-direction: column;
@@ -16,6 +17,7 @@
         width: 50px;
         padding: 0 0 0.5rem 0;
         background-color: $ligthGray2;
+
         .title {
             width: 100%;
             display: flex;
@@ -25,21 +27,190 @@
             color: $white;
             padding: 0.5rem 0;
         }
+
         p {
             margin: 0;
         }
+
         .slidecontainer {
             transform: rotate(-90deg);
             width: 80px;
         }
     }
+
     .spectro-viz {
         max-width: 800px;
+        width: 100%;
         overflow-x: auto;
         overflow-y: hidden;
-        img {
-            height: 100% ;
 
+        .sel-cont {
+            overflow-x: scroll;
+            width: 100%;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .spectro-header {
+            display: flex;
+            align-items: center;
+            background-color: #FFF;
+
+            #timeline {
+                width: 100%;
+                background-color: #ECECEC;
+
+                timeline {
+                    display: none !important;
+
+                    &:last-child {
+                        display: block !important;
+                    }
+                }
+            }
+        }
+
+        .container-sel {
+            display: flex;
+            background-color: #FFF;
+            width: 100%;
+            .slider-div {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+
+
+            #waveform {
+                position: relative;
+                cursor: pointer;
+                height: 220px;
+                width: 100%;
+                background-color: #ECECEC;
+
+                .top-filter {
+                    position: absolute;
+                    background-color: rgba(0, 0, 0, 0.3);
+                    width: 100%;
+                    height: 100%;
+                    z-index: 1;
+                    background-color: rgba(0, 0, 0, 0.3)
+                }
+
+                .bottom-filter {
+                    position: absolute;
+                    background-color: rgba(0, 0, 0, 0.3);
+                    width: 100%;
+                    z-index: 1;
+                }
+
+                h3 {
+                    font-size: 16px;
+                    position: absolute;
+                    display: flex;
+                    align-self: center;
+                    justify-self: center;
+                    z-index: 1;
+                    color: #838383;
+                }
+
+                wave {
+                    height: 220px !important;
+
+                    .wavesurfer-region {
+                        height: 220px !important;
+                    }
+                }
+            }
+
+            #waveform wave canvas {
+                height: 220px !important;
+            }
+
+            #wave-spectrogram {
+                position: absolute;
+                height: 220px;
+                opacity: 0.9;
+            }
+
+            #wave-spectrogram canvas {
+                left: 0;
+                position: inline-block;
+                height: 220px !important;
+            }
+
+            spectrogram {
+                height: 220px !important;
+            }
+
+            #wave-spectrogram .spectrogram {
+                height: 220px;
+            }
+
+            #wave-spectrogram .spec-labels {
+                position: absolute;
+                display: none;
+            }
+        }
+
+        /*.wavesurfer-region{
+            border-right: 5px solid black;
+            border-left: 5px solid black;
+        }*/
+
+        .wavesurfer-handle {
+            width: 5px !important;
+            max-width: 5px !important;
+            background-color: black;
+        }
+
+        #zoom-bar {
+            margin: 10px;
+            display: flex;
+            align-items: center;
+
+            #slider {
+                margin: 10px;
+                cursor: grab;
+                width: 150px;
+            }
+        }
+
+
+        .div-btns {
+            background-color: #F4F4F4;
+            display: flex;
+            flex-direction: row;
+            max-height: 55px;
+        }
+
+        #play-pause {
+            cursor: pointer;
+            border-radius: 27;
+            border-style: none;
+            padding: .5rem 1rem;
+            border-radius: 27px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 800;
+            font-size: 19;
+            margin: 10px;
+            background-color: #5855ff;
+            color: white;
+        }
+
+        #color-change {
+            cursor: pointer;
+            border-radius: 27;
+            border-style: none;
+            padding: .5rem 1rem;
+            border-radius: 27px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 800;
+            font-size: 19;
+            margin: 10px;
+            background-color: #ffd255;
+            color: black;
         }
     }
 }
