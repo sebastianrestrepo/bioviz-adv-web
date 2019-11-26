@@ -19,6 +19,11 @@ class TaggingStore {
         
     }
 
+    @action onTagAudio() {
+        this.isDataLabeling = true;
+        
+    }
+
     //---------------------------------DATE selection -----------------------------//
 
     @observable dayAnalyzing: any = ''

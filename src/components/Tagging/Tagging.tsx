@@ -54,8 +54,14 @@ interface TaggingProps {
                             </div>
                             <SpectroSel handlersValue={toolsStore.handlersValue} />
                         </div>
+                        { 
+                            (tagStore.isAiOn) ? <SelSuggestions /> : <div> 
+                                 <button onClick={() => tagStore.onCompareClick()}> Compare</button> 
+                                 <button onClick={() => tagStore.onTagAudio()}> Tag</button> 
+                            </div> 
+                        }
                         {
-                            (tagStore.isAiOn) ? <SelSuggestions /> : <button onClick={() => tagStore.onCompareClick()}> Compare</button>
+                            (tagStore.isDataLabeling) ? <TagSound></TagSound> : ''
                         }
                     </div>
                 </section> : ''

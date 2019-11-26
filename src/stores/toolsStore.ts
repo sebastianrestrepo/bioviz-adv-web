@@ -5,6 +5,7 @@ import "p5/lib/addons/p5.sound";
 import * as CSS from 'csstype';
 import WaveSurfer from 'wavesurfer.js';
 import Timeline from 'wavesurfer.js/dist/plugin/wavesurfer.timeline.js';
+import tagStore from './taggingStore';
 
 class ToolsStore {
 
@@ -100,7 +101,8 @@ class ToolsStore {
         }
 
         this.loadSelection(that.regionStart * 1000, that.regionEnd * 1000);
-
+        if (tagStore.isComparingMicros) {
+        this.updateWsRefs() }
         /* if(this.onDestroy){
              this.wsSelectionRef.addPlugin(WaveSurfer.timeline.create({
                  container: this.containerTimelineRef,
@@ -149,6 +151,42 @@ class ToolsStore {
         this.selectionEmpty = false;
     }
 
+    updateWsRefs() {
+        let audios = [
+            {
+                microNum: '2',
+                audio: './assets/audio-files/2_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3',
+                open: tagStore.comparedMicro2Activated
+            },
+            {
+                microNum: '3',
+                audio: './assets/audio-files/3_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3',
+                open: tagStore.comparedMicro3Activated
+            },
+            {
+                microNum: '4',
+                audio: './assets/audio-files/4_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3',
+                open: tagStore.comparedMicro4Activated
+
+            },
+            {
+                microNum: '5',
+                audio: './assets/audio-files/5_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3',
+                open: tagStore.comparedMicro5Activated
+
+            },
+            {
+                microNum: '6',
+                audio: './assets/audio-files/6_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3',
+                open: tagStore.comparedMicro6Activated
+
+            }
+        ]
+        audios.map((e) => {
+            (e.open) ?  this.loadSpectroSel(this.regionStart * 1000, this.regionEnd * 1000, e.audio, e.microNum) : console.log()
+
+        })
+    }
     async loadSpectroSel(start: number, end: number, audio: string, microNum: any) {
         const decoder = new Decoder();
         // Lo decodifico, para poder cortarlo

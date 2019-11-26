@@ -9,10 +9,13 @@ export class CompareAudios extends React.Component {
 
     render() {
         return <div className="compare-section">
+            <div className="close" onClick={() => tagStore.isComparingMicros = false}>
+                <img src="./assets/gen-icons/dark-x-close.svg" alt=""/>
+            </div>
             <div className="left">
                 <h1>Comparando audios</h1>
                 <span className="line-row">
-                    <h3>Micrófono principal: {} </h3>
+                    <h3>Micrófono principal: M1 </h3>
                     <img src="./assets/pinned.svg" height="20px" alt="" />
                     <span className="tooltip">
                         <img src="./assets/question-helper.svg" height="15px" alt="" />
