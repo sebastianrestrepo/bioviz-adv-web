@@ -27,7 +27,7 @@ interface TaggingProps {
         return (<div className="tagging">
             <TaggingHeader></TaggingHeader>
             {
-                (tagStore.isAiOn) ? <AIGenSuggestions></AIGenSuggestions> : ''
+                (tagStore.isAiOn) ? <AIGenSuggestions isGeneralSpectro={true}/> : ''
             }
             {
                 (tagStore.isDateTimeSelected) ? <section>
@@ -49,6 +49,9 @@ interface TaggingProps {
                             <div className="black-card-header">
                                 <h3>Selección del audio principal</h3>
                             </div>
+                            {
+                                (tagStore.isAiOn) ? <AIGenSuggestions isGeneralSpectro={false}/> : ''
+                            }
                             <SpectroSel handlersValue={toolsStore.handlersValue} />
                         </div>
                         {
