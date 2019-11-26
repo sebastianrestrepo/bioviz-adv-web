@@ -14,6 +14,7 @@ import tagStore from '../../stores/taggingStore';
 import P5Wrapper from 'react-p5-wrapper';
 import { AIGenSuggestions } from './Components/GenSpectro/AIGenSuggestions';
 import ColorEditor from './Components/SpectroEditor/ColorEditor';
+import ContrastEditor from './Components/SpectroEditor/ContrastEditor';
 
 interface TaggingProps {
 }
@@ -60,6 +61,9 @@ interface TaggingProps {
                         }
                         {
                             (tagStore.isColorEditorOn) ? <ColorEditor /> : ''
+                        }
+                        {
+                            (tagStore.isContrastEditorOn) ? <ContrastEditor /> : ''
                         }
 
                     </div>

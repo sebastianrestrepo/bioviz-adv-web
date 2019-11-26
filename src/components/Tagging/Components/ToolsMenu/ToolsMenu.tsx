@@ -68,12 +68,16 @@ export default class ToolsMenu extends React.Component {
                     <button className="tool-btn"><img src="./assets/tool-bar-assets/color-icon.svg"
                         alt="" onClick={()=>{
                           tagStore.isColorEditorOn = !tagStore.isColorEditorOn;
+                          tagStore.isContrastEditorOn = false;
                         }}></img></button>
                     <span className="tooltiptext">Mapa de Color</span>
                 </span>
                 <span className="tooltip">
                     <button className="tool-btn"><img src="./assets/tool-bar-assets/bright-icon.svg"
-                        alt=""></img></button>
+                        alt="" onClick={()=>{
+                            tagStore.isContrastEditorOn = !tagStore.isContrastEditorOn;
+                            tagStore.isColorEditorOn = false;
+                          }}></img></button>
                     <span className="tooltiptext">Brillo/Contraste</span>
                 </span>
             </div>

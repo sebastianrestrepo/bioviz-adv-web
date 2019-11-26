@@ -22,6 +22,7 @@ class TaggingStore {
     @observable actualTime: any = '00:01'
     @observable isAiOn: boolean = false;
     @observable isColorEditorOn: boolean = false;
+    @observable isContrastEditorOn: boolean = false;
     //------------------------------------ Color edition -------------------//
     @observable colorEditionStatus: boolean = false;
     @observable contrastEditionStatus: boolean = false;
