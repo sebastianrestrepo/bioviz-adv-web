@@ -18,10 +18,10 @@ class Mark extends Component<markProps> {
         super(props);
     }
     render() {
-        return <div className="marks">
-            <span className={((tagStore.selected1 && this.props.index==1) ? "mark selected" : (tagStore.selected2 && this.props.index==2) ?  "mark selected" : "mark") /* + ((tagStore.isSomethingSelected && !tagStore.selected1) ? " prevent-hover" : "")*/}
+        return <span className={((tagStore.selected1 && this.props.index == 1) ? "mark selected" : (tagStore.selected2 && this.props.index == 2) ? "mark selected" : "mark") }
                 onClick={() =>
-                    tagStore.selectMark("./assets/audio-samples/vireon.wav", this.props.index)}>
+                    tagStore.selectMark("./assets/audio-samples/vireon.wav", this.props.index)}
+                    style={{ left: (true)?(this.props.start) * 1.69491525 + '%' : ''}}>
                 <img src={"./assets/marks/" + ((tagStore.verified) ? "ai-mark-verified" : "ai-mark-suggestion") + ".svg"}
                     width="17px" alt=""
                     className="mark-icon" />
@@ -31,7 +31,7 @@ class Mark extends Component<markProps> {
                 <div className="mark-info" onClick={(e) => e.preventDefault}>
                     <span className="info">
                         <p className="bold" onClick={() => console.log("hols")}>
-                        {this.sugData.commonName}</p>
+                            {this.sugData.commonName}</p>
                         <p className="sci-name-style gray-text _14px">{this.sugData.sciName}</p>
                         <p className="green-text _12px">{this.sugData.sciName + '% coincidencia'}</p>
                         <span className="tooltip">
@@ -62,8 +62,6 @@ class Mark extends Component<markProps> {
                     </span>
                 </div>
             </span>
-
-        </div>
     }
 }
 export default observer(Mark);

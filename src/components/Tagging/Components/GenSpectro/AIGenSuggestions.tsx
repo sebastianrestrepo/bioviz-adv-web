@@ -9,16 +9,14 @@ import Mark from './Mark';
 export class AIGenSuggestions extends React.Component {
 
     render() {
-        return <div className="gen-spectro-section-A" >
-            <span className="spectro-section">
-                {
-                    suggestionStore.anchicayaSuggestions.map((e,i) => {
-                        const jsonData = JSON.stringify(e.suggestions[0]);
-                        return <Mark index={e.index} start={e.startTime} end={e.endTime} suggestion={jsonData} />
-                    })
-                }
-              
-            </span>
-        </div>
+        return  <div className="marks">
+                    {
+                        suggestionStore.anchicayaSuggestions.map((e, i) => {
+                            const jsonData = JSON.stringify(e.suggestions[0]);
+                            return <Mark index={e.index} start={e.startTime} end={e.endTime} suggestion={jsonData} />
+                        })
+                    }
+                </div>
+        
     }
 }
