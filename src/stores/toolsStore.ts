@@ -21,6 +21,11 @@ class ToolsStore {
 
     //
     @observable wsSelectionRef: any;
+    @observable wsM2Ref: any;
+    @observable wsM3Ref: any;
+    @observable wsM4Ref: any;
+    @observable wsM5Ref: any;
+    @observable wsM6Ref: any;
     //
 
     //---------------------------------Panel selection -----------------------------//
@@ -144,6 +149,50 @@ class ToolsStore {
         this.selectionEmpty = false;
     }
 
+    async loadSpectroSel(start: number, end: number, audio: string, microNum: any) {
+        const decoder = new Decoder();
+        // Lo decodifico, para poder cortarlo
+        let blob = await fetch(audio).then(r => r.blob());
+        const buf = await decoder.decodeFile(blob);
+        // Esta clase recibe el audio decodificado y permite hacer algunas modificaciones
+        const manipulator = new BufferManipulations(buf);
+        // Crop a piece of audio. From 1st second to 5th second.
+        manipulator.cut(start, end);
+        // Apply cuts and fades and get modified buffer.
+        const processedBuffer = await manipulator.apply();
+
+        const encoder = new Encoder();
+
+        // Encode modified buffer to MP3 data. Este es el blob que deberia cargarse en el wave
+        const newBlob = await encoder.encodeToMP3Blob(processedBuffer, 196);
+        // Your file blob is ready here. Esta es una url del blob que utilizo par poder descargar el archivo
+        //let modified = URL.createObjectURL(newBlob);
+
+        // Aqui cargo el audio a wavesurfer como un blob, ya solo seria configurar el espectrograma y eso, pero si funciona
+        switch (microNum) {
+            case '1':
+                this.wsSelectionRef.loadBlob(newBlob);
+                break;
+            case '2':
+                this.wsM2Ref.loadBlob(newBlob);
+                break;
+            case '3':
+                this.wsM3Ref.loadBlob(newBlob);
+                break;
+            case '4':
+                this.wsM4Ref.loadBlob(newBlob);
+                break;
+            case '5':
+                this.wsM5Ref.loadBlob(newBlob);
+                break;
+            case '6':
+                this.wsM6Ref.loadBlob(newBlob);
+                break;
+        }
+
+        //wsRef.current.load('/assets/audio-files/1_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3');
+        this.selectionEmpty = false;
+    }
     // Override Timeline Formatting
     @action formatTimeCallback(seconds, pxPerSec) {
         seconds = Number(seconds);

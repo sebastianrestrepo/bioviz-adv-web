@@ -13,6 +13,7 @@ import { SelSuggestions } from './Components/SpectroSel/SelSuggestions';
 import tagStore from '../../stores/taggingStore';
 import P5Wrapper from 'react-p5-wrapper';
 import { AIGenSuggestions } from './Components/GenSpectro/AIGenSuggestions';
+import { CompareAudios } from './Components/CompareAudios/CompareAudios';
 
 interface TaggingProps {
 }
@@ -33,8 +34,10 @@ interface TaggingProps {
                 (tagStore.isDateTimeSelected) ? <section>
                     <SpectroComp panel={toolsStore.panel} />
                     <ToolsMenu />
-
                     <div className="two-sections">
+                        {
+                            (tagStore.isComparingMicros) ? <CompareAudios></CompareAudios> : ''
+                        }
                         <div className="spectro-selection"
                             onClick={() => {
                                 toolsStore.panel = 2;
@@ -52,9 +55,8 @@ interface TaggingProps {
                             <SpectroSel handlersValue={toolsStore.handlersValue} />
                         </div>
                         {
-                            (tagStore.isAiOn) ? <SelSuggestions /> : ''
+                            (tagStore.isAiOn) ? <SelSuggestions /> : <button onClick={() => tagStore.onCompareClick()}> Compare</button>
                         }
-
                     </div>
                 </section> : ''
             }
