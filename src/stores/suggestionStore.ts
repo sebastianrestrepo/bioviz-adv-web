@@ -4,13 +4,16 @@ class SuggestionStore {
 
     @observable anchicayaSuggestions = [
         {
-            startTime: 16,
+            index:1,
+            startTime: 15,
             endTime: 19,
             maxFreq: 4000,
             minFreq: 2000,
             date: '18 Junio 2019',
             hour: '6:35',
             time: 'AM',
+            audio:'./assets/tagging-section/timeline-suggestion/filteredHafferia.wav',
+            specImg: './assets/tagging-section/timeline-suggestion/filteredhafferia.png',
             sugOpen: false,
             suggestions: [
                 {
@@ -88,13 +91,16 @@ class SuggestionStore {
             ]
         },
         {
-            startTime: 17,
+            index:2,
+            startTime: 16,
             endTime: 19,
             maxFreq: 8000,
             minFreq: 4000,
             date: '18 Junio 2019',
             hour: '6:35',
             time: 'AM',
+            audio:'./assets/tagging-section/timeline-suggestion/filteredSipia.wav',
+            specImg: './assets/tagging-section/timeline-suggestion/filteredsipia.png',
             sugOpen: false,
             suggestions: [
                 {

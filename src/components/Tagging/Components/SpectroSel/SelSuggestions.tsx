@@ -19,6 +19,8 @@ export class SelSuggestions extends React.Component {
                         sugCant={e.suggestions.length}
                         index={i}
                         suggestions={jsonData}
+                        mainAudio = {e.audio}
+                        mainspec = {e.specImg}
                         open={e.sugOpen} />
 
                 })

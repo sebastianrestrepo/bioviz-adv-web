@@ -3,7 +3,6 @@ import { observer } from 'mobx-react';
 import tagStore from '../../../../stores/taggingStore';
 import { suggestionStore } from '../../../../stores/suggestionStore';
 import SuggestionCard from './SuggestionCard';
-import { observable } from 'mobx';
 
 interface sampleCardProps {
     hour: string,
@@ -12,14 +11,14 @@ interface sampleCardProps {
     index: any,
     suggestions: any,
     sugCant: any,
-    open: boolean
+    open: boolean,
+    mainspec: any
+    mainAudio:any
 }
 
-
-
-const SampleCard = observer(({ hour, open, sugCant, time, second, index, suggestions }: sampleCardProps) => {
+const SampleCard = observer(({ hour, open, sugCant, mainspec, mainAudio, time, second, index, suggestions }: sampleCardProps) => {
     let suggestData = JSON.parse(suggestions);
-    return (<article className="sel-suggest-card">
+    return (<article className="sel-suggest-card firstdisplay">
         <div className="time">
             <h3>{hour}:{second}, {time}</h3>
             <p>Vocalización {index + 1}</p>
@@ -29,10 +28,10 @@ const SampleCard = observer(({ hour, open, sugCant, time, second, index, suggest
             <span className="arrow-left white"></span>
             <div className="up">
                 <span className="audio">
-
+                    <img src={mainspec} alt=""/>
                 </span>
                 <span className="sample-info">
-                    <span className="play" onClick={() => ''}>
+                    <span className="play" onClick={() => tagStore.playBirdSong(mainAudio, 15)}>
                         <img className="play-img" src="./assets/tagging-section/play-audio.svg" height="20px" alt="" />
                         <p> Reproducir muestra</p>
                     </span>

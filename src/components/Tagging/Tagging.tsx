@@ -7,12 +7,12 @@ import SpectroComp from './Components/GenSpectro/SpectroComp';
 import SpectroSel from './Components/SpectroSel/SpectroSel';
 import toolsStore from '../../stores/toolsStore';
 import ToolsMenu from './Components/ToolsMenu/ToolsMenu';
-import { observable } from 'mobx';
-import Slider from '@material-ui/core/Slider';
 import { SelSuggestions } from './Components/SpectroSel/SelSuggestions';
 import tagStore from '../../stores/taggingStore';
-import P5Wrapper from 'react-p5-wrapper';
 import { AIGenSuggestions } from './Components/GenSpectro/AIGenSuggestions';
+import ColorEditor from './Components/SpectroEditor/ColorEditor';
+import ContrastEditor from './Components/SpectroEditor/ContrastEditor';
+import { CompareAudios } from './Components/CompareAudios/CompareAudios';
 
 interface TaggingProps {
 }
@@ -27,14 +27,16 @@ interface TaggingProps {
         return (<div className="tagging">
             <TaggingHeader></TaggingHeader>
             {
-                (tagStore.isAiOn) ? <AIGenSuggestions></AIGenSuggestions> : ''
+                (tagStore.isAiOn) ? <AIGenSuggestions isGeneralSpectro={true} /> : ''
             }
             {
                 (tagStore.isDateTimeSelected) ? <section>
                     <SpectroComp panel={toolsStore.panel} />
                     <ToolsMenu />
-
                     <div className="two-sections">
+                        {
+                            (tagStore.isComparingMicros) ? <CompareAudios></CompareAudios> : ''
+                        }
                         <div className="spectro-selection"
                             onClick={() => {
                                 toolsStore.panel = 2;
@@ -49,10 +51,32 @@ interface TaggingProps {
                             <div className="black-card-header">
                                 <h3>Selección del audio principal</h3>
                             </div>
-                            <SpectroSel handlersValue={toolsStore.handlersValue} />
+                            {
+                                (tagStore.isAiOn) ? <AIGenSuggestions isGeneralSpectro={false} /> : ''
+                            }
+                            <SpectroSel handlersValue={toolsStore.handlersValue}
+                                rSpectro={toolsStore.rSpectro}
+                                gSpectro={toolsStore.gSpectro}
+                                bSpectro={toolsStore.bSpectro}
+                                rBack={toolsStore.rBack}
+                                gBack={toolsStore.gBack}
+                                bBack={toolsStore.bBack}
+                                whiteAndBlack={toolsStore.whiteAndBlack} />
                         </div>
+                        { 
+                            (tagStore.isAiOn) ? <SelSuggestions /> : <div> 
+                                 <button onClick={() => tagStore.onCompareClick()}> Compare</button> 
+                                 <button onClick={() => tagStore.onTagAudio()}> Tag</button> 
+                            </div> 
+                        }
                         {
-                            (tagStore.isAiOn) ? <SelSuggestions /> : ''
+                            (tagStore.isDataLabeling) ? <TagSound></TagSound> : ''
+                        }
+                        {
+                            (tagStore.isColorEditorOn) ? <ColorEditor /> : ''
+                        }
+                        {
+                            (tagStore.isContrastEditorOn) ? <ContrastEditor /> : ''
                         }
 
                     </div>

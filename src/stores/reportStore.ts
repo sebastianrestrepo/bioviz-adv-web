@@ -15,7 +15,9 @@ class ReportStore {
         gender: '',
         audioUrl: '',
         startTime: 0,
-        endTime: 0
+        endTime: 0,
+        sex: '',
+        type: ''
     }
 
     constructor() {
@@ -36,9 +38,9 @@ class ReportStore {
         }
         this.birdsData.map((e, i) => {
             if (e.SPA_NAME != 'NA') {
-            tempScinameOption.value = e.SCI_NAME;
-            tempScinameOption.label = e.SPA_NAME + ' (' + e.SCI_NAME + ')';
-            this.scinamesOptions.push(tempScinameOption)
+                tempScinameOption.value = e.SCI_NAME;
+                tempScinameOption.label = e.SPA_NAME + ' (' + e.SCI_NAME + ')';
+                this.scinamesOptions.push(tempScinameOption)
             }
         })
     }
@@ -53,10 +55,12 @@ class ReportStore {
         })
     }
 
-    @action onSaveDataLabeled(sciname, commonName) {
+    @action onSaveDataLabeled(sciname, commonName, sex, type) {
 
         this.newSpecieLabeled.sciName = sciname;
         this.newSpecieLabeled.commonName = commonName;
+        this.newSpecieLabeled.sex = sex;
+        this.newSpecieLabeled.type = type;
 
         this.birdsData.map((e) => {
             if (e.SCI_NAME === sciname) {
@@ -74,6 +78,10 @@ class ReportStore {
                     family: '',
                     gender: '',
                     audioUrl: '',
+                    startTime: 0,
+                    endTime: 0,
+                    sex: '',
+                    type: ''
                 }
                 that.onRetrieveSpeciesList();
             })

@@ -2,12 +2,14 @@
 
 .color-atom,
 .contrast-atom {
-    width: 80%;
+    width: 50%;
     background-color: $white;
+    margin-left: 7px;
     padding: 0.7rem;
     display: flex;
     flex-direction: column;
     border-radius: 5px;
+    overflow-y: scroll;
 
     p {
         margin: 1rem 0;

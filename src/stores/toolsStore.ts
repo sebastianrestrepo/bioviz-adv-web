@@ -5,8 +5,12 @@ import "p5/lib/addons/p5.sound";
 import * as CSS from 'csstype';
 import WaveSurfer from 'wavesurfer.js';
 import Timeline from 'wavesurfer.js/dist/plugin/wavesurfer.timeline.js';
+import tagStore from './taggingStore';
+import { palette } from '@material-ui/system';
 
 class ToolsStore {
+
+    @observable showMarksInSelection: boolean = false;
 
     @observable isPlaying: boolean = false;
     @observable wsRef: any;
@@ -21,6 +25,11 @@ class ToolsStore {
 
     //
     @observable wsSelectionRef: any;
+    @observable wsM2Ref: any;
+    @observable wsM3Ref: any;
+    @observable wsM4Ref: any;
+    @observable wsM5Ref: any;
+    @observable wsM6Ref: any;
     //
 
     //---------------------------------Panel selection -----------------------------//
@@ -32,9 +41,96 @@ class ToolsStore {
 
     @observable handlersValue: any = [24, 0];
 
+    //-----------------Spectro Color-------------//
+    //@observable palette: number = 0;
+
+    @observable whiteAndBlack: boolean = true;
+    @observable rSpectro: any;
+    @observable gSpectro: any;
+    @observable bSpectro: any;
+
+    @observable rBack: any;
+    @observable gBack: any;
+    @observable bBack: any;
 
     constructor() {
 
+    }
+
+    @action changeSpectrogramColor(palette: number) {
+        switch (palette) {
+            case 0:
+                this.whiteAndBlack = true;
+                break;
+            case 1:
+                this.rSpectro = 234;
+                this.gSpectro = 30;
+                this.bSpectro = 0;
+
+                this.rBack = 255;
+                this.gBack = 227;
+                this.bBack = 94;
+
+                this.whiteAndBlack = false;
+                console.log('OSSA' + palette, this.rSpectro)
+                break;
+            case 2:
+                this.rSpectro = 122;
+                this.gSpectro = 0;
+                this.bSpectro = 192;
+
+                this.rBack = 33;
+                this.gBack = 255;
+                this.bBack = 21;
+
+                this.whiteAndBlack = false;
+                console.log('OSSA' + palette, this.rSpectro)
+                break;
+            case 3:
+                this.rSpectro = 0;
+                this.gSpectro = 3;
+                this.bSpectro = 252;
+
+                this.rBack = 0;
+                this.gBack = 251;
+                this.bBack = 130;
+
+                this.whiteAndBlack = false;
+                break;
+            case 4:
+                this.rSpectro = 0;
+                this.gSpectro = 68;
+                this.bSpectro = 27;
+
+                this.rBack = 241;
+                this.gBack = 250;
+                this.bBack = 238;
+
+                this.whiteAndBlack = false;
+                break;
+            case 5:
+                this.rSpectro = 130;
+                this.gSpectro = 0;
+                this.bSpectro = 38;
+
+                this.rBack = 255;
+                this.gBack = 255;
+                this.bBack = 197;
+
+                this.whiteAndBlack = false;
+                break;
+            case 6:
+                this.rSpectro = 255;
+                this.gSpectro = 0;
+                this.bSpectro = 255;
+
+                this.rBack = 255;
+                this.gBack = 255;
+                this.bBack = 0;
+
+                this.whiteAndBlack = false;
+                break;
+        }
     }
 
     @action handlePlayPause() {
@@ -95,7 +191,8 @@ class ToolsStore {
         }
 
         this.loadSelection(that.regionStart * 1000, that.regionEnd * 1000);
-
+        if (tagStore.isComparingMicros) {
+        this.updateWsRefs() }
         /* if(this.onDestroy){
              this.wsSelectionRef.addPlugin(WaveSurfer.timeline.create({
                  container: this.containerTimelineRef,
@@ -144,6 +241,86 @@ class ToolsStore {
         this.selectionEmpty = false;
     }
 
+    updateWsRefs() {
+        let audios = [
+            {
+                microNum: '2',
+                audio: './assets/audio-files/2_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3',
+                open: tagStore.comparedMicro2Activated
+            },
+            {
+                microNum: '3',
+                audio: './assets/audio-files/3_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3',
+                open: tagStore.comparedMicro3Activated
+            },
+            {
+                microNum: '4',
+                audio: './assets/audio-files/4_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3',
+                open: tagStore.comparedMicro4Activated
+
+            },
+            {
+                microNum: '5',
+                audio: './assets/audio-files/5_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3',
+                open: tagStore.comparedMicro5Activated
+
+            },
+            {
+                microNum: '6',
+                audio: './assets/audio-files/6_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3',
+                open: tagStore.comparedMicro6Activated
+
+            }
+        ]
+        audios.map((e) => {
+            (e.open) ?  this.loadSpectroSel(this.regionStart * 1000, this.regionEnd * 1000, e.audio, e.microNum) : console.log()
+
+        })
+    }
+    async loadSpectroSel(start: number, end: number, audio: string, microNum: any) {
+        const decoder = new Decoder();
+        // Lo decodifico, para poder cortarlo
+        let blob = await fetch(audio).then(r => r.blob());
+        const buf = await decoder.decodeFile(blob);
+        // Esta clase recibe el audio decodificado y permite hacer algunas modificaciones
+        const manipulator = new BufferManipulations(buf);
+        // Crop a piece of audio. From 1st second to 5th second.
+        manipulator.cut(start, end);
+        // Apply cuts and fades and get modified buffer.
+        const processedBuffer = await manipulator.apply();
+
+        const encoder = new Encoder();
+
+        // Encode modified buffer to MP3 data. Este es el blob que deberia cargarse en el wave
+        const newBlob = await encoder.encodeToMP3Blob(processedBuffer, 196);
+        // Your file blob is ready here. Esta es una url del blob que utilizo par poder descargar el archivo
+        //let modified = URL.createObjectURL(newBlob);
+
+        // Aqui cargo el audio a wavesurfer como un blob, ya solo seria configurar el espectrograma y eso, pero si funciona
+        switch (microNum) {
+            case '1':
+                this.wsSelectionRef.loadBlob(newBlob);
+                break;
+            case '2':
+                this.wsM2Ref.loadBlob(newBlob);
+                break;
+            case '3':
+                this.wsM3Ref.loadBlob(newBlob);
+                break;
+            case '4':
+                this.wsM4Ref.loadBlob(newBlob);
+                break;
+            case '5':
+                this.wsM5Ref.loadBlob(newBlob);
+                break;
+            case '6':
+                this.wsM6Ref.loadBlob(newBlob);
+                break;
+        }
+
+        //wsRef.current.load('/assets/audio-files/1_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3');
+        this.selectionEmpty = false;
+    }
     // Override Timeline Formatting
     @action formatTimeCallback(seconds, pxPerSec) {
         seconds = Number(seconds);

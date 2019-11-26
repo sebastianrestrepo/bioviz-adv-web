@@ -35,7 +35,7 @@ class ActualProject extends React.Component<ActualProjectProps> {
                 {
                     (projectsStore.projectTabs[0].selected) ? <section className="dash-section">
                         <ProjectHeader name={projectsStore.actualProject.name} description={projectsStore.actualProject.description} />
-                        <CompareAudios></CompareAudios>
+
                     </section> : (projectsStore.projectTabs[1].selected) ? <section className="dash-section">
                         <Tagging></Tagging>
                     </section> : (projectsStore.projectTabs[2].selected) ? <section className="dash-section">
