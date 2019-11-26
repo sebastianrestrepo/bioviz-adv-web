@@ -27,7 +27,7 @@ interface SliderFreqProps {
                 valueLabelDisplay="auto"
                 aria-labelledby="range-slider"
                 min={0}
-                max={24}
+                max={13}
             />
         </div>);
     }

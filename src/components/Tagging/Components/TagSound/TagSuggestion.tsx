@@ -29,6 +29,7 @@ class TagSuggestion extends Component<tagSuggestionProps> {
                         <h2>{this.props.coincidence}% DE COINCIDENCIA TOTAL</h2>
                     </div>
                     <span className="main-spec">
+                        <img className="spec-img" src={this.props.spectroImgUrl} alt=""/>
                         <img className="lens-img"
                             onClick={() => tagStore.onSpecZoomView(this.props.spectroImgUrl, this.props.mainAudioUrl)}
                             src="./assets/tagging-section/lens.svg" alt="" />

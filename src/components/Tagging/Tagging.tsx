@@ -37,39 +37,39 @@ interface TaggingProps {
                         {
                             (tagStore.isComparingMicros) ? <CompareAudios></CompareAudios> : ''
                         }
-                        <div className="spectro-selection"
-                            onClick={() => {
-                                toolsStore.panel = 2;
-                                if (toolsStore.isPlaying) {
-                                    toolsStore.isPlaying = false;
-                                    toolsStore.handlePause();
+                        {
+                            (tagStore.isSelSpectroSelected) ? <div className="spectro-selection"
+                                onClick={() => {
+                                    toolsStore.panel = 2;
+                                    if (toolsStore.isPlaying) {
+                                        toolsStore.isPlaying = false;
+                                        toolsStore.handlePause();
+                                    }
+                                }}
+                                style={{
+                                    border: toolsStore.panel == 2 ? toolsStore.panelActivated : toolsStore.panelDisabled
+                                }}>
+                                <div className="black-card-header">
+                                    <h3>Selección del audio principal</h3>
+                                </div>
+                                {
+                                    (tagStore.isAiOn) ? <AIGenSuggestions isGeneralSpectro={false} /> : ''
                                 }
-                            }}
-                            style={{
-                                border: toolsStore.panel == 2 ? toolsStore.panelActivated : toolsStore.panelDisabled
-                            }}>
-                            <div className="black-card-header">
-                                <h3>Selección del audio principal</h3>
-                            </div>
-                            {
-                                (tagStore.isAiOn) ? <AIGenSuggestions isGeneralSpectro={false} /> : ''
-                            }
-                            <SpectroSel handlersValue={toolsStore.handlersValue}
-                                rSpectro={toolsStore.rSpectro}
-                                gSpectro={toolsStore.gSpectro}
-                                bSpectro={toolsStore.bSpectro}
-                                rBack={toolsStore.rBack}
-                                gBack={toolsStore.gBack}
-                                bBack={toolsStore.bBack}
-                                whiteAndBlack={toolsStore.whiteAndBlack}
-                                contrastVal={tagStore.contrastVal}
-                                brightVal={tagStore.brightVal} />
-                        </div>
-                        { 
-                            (tagStore.isAiOn) ? <SelSuggestions /> : <div> 
-                                 <button onClick={() => tagStore.onCompareClick()}> Compare</button> 
-                                 <button onClick={() => tagStore.onTagAudio()}> Tag</button> 
-                            </div> 
+                                <SpectroSel handlersValue={toolsStore.handlersValue}
+                                    rSpectro={toolsStore.rSpectro}
+                                    gSpectro={toolsStore.gSpectro}
+                                    bSpectro={toolsStore.bSpectro}
+                                    rBack={toolsStore.rBack}
+                                    gBack={toolsStore.gBack}
+                                    bBack={toolsStore.bBack}
+                                    whiteAndBlack={toolsStore.whiteAndBlack}
+                                    contrastVal={tagStore.contrastVal}
+                                    brightVal={tagStore.brightVal} />
+                            </div> : ''
+                        }
+
+                        {
+                            (tagStore.isAiOn && !tagStore.isDataLabeling) ? <SelSuggestions /> :''
                         }
                         {
                             (tagStore.isDataLabeling) ? <TagSound></TagSound> : ''

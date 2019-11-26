@@ -18,7 +18,7 @@ export class AIGenSuggestions extends Component<aiGenSuggestionsProps> {
     }
 
     render() {
-        return  <div className="marks">
+        return  <div className="marks firstdisplay">
                     {
                         suggestionStore.anchicayaSuggestions.map((e, i) => {
                             const jsonData = JSON.stringify(e.suggestions[0]);

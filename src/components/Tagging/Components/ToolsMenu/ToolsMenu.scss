@@ -5,6 +5,9 @@
     justify-content: space-between;
     align-items: center;
 
+    .compare {
+        filter: invert(100%);
+    }
     .audio-options {
         margin-left: 10px;
     }
