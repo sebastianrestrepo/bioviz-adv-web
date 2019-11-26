@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import { observable } from 'mobx';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Dropzone from 'react-dropzone';
-import authStore from '../../stores/authStore';
 import projectsStore from '../../stores/projectsStore';
-import { auth } from 'firebase';
-import { withRouter } from 'react-router';
-
-//import WaveSurfer from 'wavesurfer.js'
-import WaveSurfer from 'react-wavesurfer';
-
-require('wavesurfer.js');
 
 class AudioDropzone extends Component {
 
@@ -48,12 +39,6 @@ class AudioDropzone extends Component {
                             <div {...getRootProps()}>
                                 <input {...getInputProps()} />
                                 <div className="add-audio-dropzone">
-                                    {/* <WaveSurfer
-                                        audioFile={this.audioFile}
-                                        /*pos={this.state.pos}
-                                        onPosChange={this.handlePosChange}
-                                        playing={this.state.playing}
-                                   />*/}
                                     <img src="./assets/audio-drop-arrow.png" alt="" />
                                     <p>.MP3 O .WAV</p>
                                 </div>
@@ -64,14 +49,17 @@ class AudioDropzone extends Component {
                 </Dropzone>
 
                 {this.audioFile && <div className="user-audio-div">
-                    {/*<img className="user-img" src={this.audioFile} width="140" style={{ borderRadius: '100px' }} />*/}
-                    <h3>Perfecto, has seleccionado un audio.</h3>
-                    <div className="upload-audio-btn" onClick={() => {
-                        projectsStore.uploadAudioFile(this.audioFile);
-                        //this.history.push("/home");
-                    }}>¡Subir audio!</div>
-                    {/*<input type="text" onInput={(e: any) => this.fileName = e.target.value} />*/}
-                    {/*<button className="subir-img-btn" >Subir Foto</button>*/}
+                    <h3>Perfecto, se han subido 6 audios.</h3>
+                    <span>
+                        <ul>
+                            <li> <img src="./assets/create-projects/file.png" height="20px" alt="" /> 1_AnchicayaLaLocaCarretera_2019-06-18_06-34.mp3</li>
+                            <li> <img src="./assets/create-projects/file.png" height="20px" alt="" />2_AnchicayaLaLocaCarretera_2019-06-18_06-34.mp3</li>
+                            <li> <img src="./assets/create-projects/file.png" height="20px" alt="" />3_AnchicayaLaLocaCarretera_2019-06-18_06-34.mp3</li>
+                            <li> <img src="./assets/create-projects/file.png" height="20px" alt="" />4_AnchicayaLaLocaCarretera_2019-06-18_06-34.mp3</li>
+                            <li> <img src="./assets/create-projects/file.png" height="20px" alt="" />5_AnchicayaLaLocaCarretera_2019-06-18_06-34.mp3</li>
+                            <li> <img src="./assets/create-projects/file.png" height="20px" alt="" />6_AnchicayaLaLocaCarretera_2019-06-18_06-34.mp3</li>
+                        </ul>
+                    </span>
                 </div>}
             </div>
         );

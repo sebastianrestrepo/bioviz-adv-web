@@ -69,7 +69,7 @@ class CreateProject extends Component {
                                     isMulti
                                     name="colors"
                                     placeholder="Busca colegas por su correo electrónico"
-                                    options={options}
+                                    options={projectsStore.bioUsers}
                                     className="basic-multi-select"
                                     classNamePrefix="select"
                                 />
@@ -80,10 +80,10 @@ class CreateProject extends Component {
                             <form className="content" >
                                 <span className="question-structure">
                                     <label className="green-subtitle">Zona de localización</label>
-                                    <input placeholder="Ingresa una dirección o coordenadas" type="text" />
+                                    <input placeholder="Ingresa una dirección o coordenadas" value="Anchicayá La Loca, Valle del Cauca, Colombia" type="text" />
                                 </span>
                                 <div className="map">
-
+                                    <img src="./assets/create-projects/map.png" alt=""/>
                                 </div>
                             </form>
                         </div>
