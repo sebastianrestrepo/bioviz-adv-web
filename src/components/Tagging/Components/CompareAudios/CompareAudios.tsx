@@ -90,7 +90,7 @@ export class CompareAudios extends React.Component {
             </div>
 
             <div className="right">
-                <span className="principal-micro">
+                <span className="principal-micro ">
                     <SpectrogramCompareView name={'M1'} 
                     audioUrl={'./assets/audio-files/1_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3'} spectroNum={'1'} volume={50} />
                 </span>

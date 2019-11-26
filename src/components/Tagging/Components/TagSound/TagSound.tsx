@@ -31,7 +31,6 @@ export class TagSound extends React.Component {
         let action = actionMeta.action;
         if (action == 'select-option') {
             tagStore.sex = newValue.value
-            tagStore.sciName = tagStore.onSexChange();
         }
 
     };
@@ -39,7 +38,6 @@ export class TagSound extends React.Component {
         let action = actionMeta.action;
         if (action == 'select-option') {
             tagStore.type = newValue.value
-            tagStore.sciName = tagStore.onTypeChange();
         }
 
     };
@@ -48,7 +46,6 @@ export class TagSound extends React.Component {
         let action = actionMeta.action;
         if (action == 'select-option') {
             tagStore.sciName = newValue.value
-            tagStore.commonName = tagStore.onSciNameChange();
         }
     };
 
@@ -109,7 +106,7 @@ export class TagSound extends React.Component {
                             {
                                 projectsStore.actualProject.species.map((e, i) => {
                                     return <span className="tooltip">
-                                        <div className="bird-photo">
+                                        <div className="bird-photo" onClick={() => tagStore.sciName = e.sciName}>
                                             <img src={e.photo} alt="" />
                                         </div>
                                         <span className="tooltiptext">{e.sciName}</span>
@@ -123,7 +120,8 @@ export class TagSound extends React.Component {
                         <CreatableSelect
                             className={'react-selector'}
                             isClearable
-                            defaultValue={tagStore.sciName}
+                            defaultValue={{value: tagStore.sciName, label: tagStore.onSciNameChange()}}
+                            value={{value: tagStore.sciName, label: tagStore.onSciNameChange()}}
                             onChange={this.handleSciChange}
                             options={reportStore.scinamesOptions}
                             placeholder={'Escribe la especie'}

@@ -241,32 +241,20 @@ class TaggingStore {
     @observable type;
 
     @action onSexChange() {
-        let sci = ''
-        reportStore.birdsData.map((e, i) => {
-            if (e.SPA_NAME == this.commonName) {
-               sci = this.sciName = e.SCI_NAME
-            }
-        })
-        return sci
+      
     }
     @action onTypeChange() {
-        let sci = ''
-        reportStore.birdsData.map((e, i) => {
-            if (e.SPA_NAME == this.commonName) {
-               sci = this.sciName = e.SCI_NAME
-            }
-        })
-        return sci
+   
     }
 
     @action onSciNameChange() {
-        let common =''
+        let label =''
         reportStore.birdsData.map((e, i) => {
             if (e.SCI_NAME == this.sciName) {
-                common=  this.commonName = e.SPA_NAME
+                label=  this.commonName = e.SPA_NAME + ' (' + e.SCI_NAME + ')';
             }
         })
-        return common
+        return label
     }
 
     @action onNoteClick() {
