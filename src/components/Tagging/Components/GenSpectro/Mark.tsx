@@ -19,7 +19,9 @@ class Mark extends Component<markProps> {
     constructor(props: any) {
         super(props);
     }
+    
     render() {
+        
         return <span className={((tagStore.selected1 && this.props.index == 1) ? "mark selected" : (tagStore.selected2 && this.props.index == 2) ? "mark selected" : "mark")}
             onClick={() =>
                 tagStore.selectMark("./assets/audio-samples/vireon.wav", this.props.index)}

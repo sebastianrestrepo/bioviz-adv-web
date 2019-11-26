@@ -13,6 +13,7 @@ import { SelSuggestions } from './Components/SpectroSel/SelSuggestions';
 import tagStore from '../../stores/taggingStore';
 import P5Wrapper from 'react-p5-wrapper';
 import { AIGenSuggestions } from './Components/GenSpectro/AIGenSuggestions';
+import ColorEditor from './Components/SpectroEditor/ColorEditor';
 
 interface TaggingProps {
 }
@@ -27,7 +28,7 @@ interface TaggingProps {
         return (<div className="tagging">
             <TaggingHeader></TaggingHeader>
             {
-                (tagStore.isAiOn) ? <AIGenSuggestions isGeneralSpectro={true}/> : ''
+                (tagStore.isAiOn) ? <AIGenSuggestions isGeneralSpectro={true} /> : ''
             }
             {
                 (tagStore.isDateTimeSelected) ? <section>
@@ -50,12 +51,15 @@ interface TaggingProps {
                                 <h3>Selección del audio principal</h3>
                             </div>
                             {
-                                (tagStore.isAiOn) ? <AIGenSuggestions isGeneralSpectro={false}/> : ''
+                                (tagStore.isAiOn) ? <AIGenSuggestions isGeneralSpectro={false} /> : ''
                             }
                             <SpectroSel handlersValue={toolsStore.handlersValue} />
                         </div>
                         {
                             (tagStore.isAiOn) ? <SelSuggestions /> : ''
+                        }
+                        {
+                            (tagStore.isColorEditorOn) ? <ColorEditor /> : ''
                         }
 
                     </div>

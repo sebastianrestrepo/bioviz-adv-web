@@ -8,6 +8,8 @@ import Timeline from 'wavesurfer.js/dist/plugin/wavesurfer.timeline.js';
 
 class ToolsStore {
 
+    @observable showMarksInSelection: boolean = false;
+
     @observable isPlaying: boolean = false;
     @observable wsRef: any;
     @observable containerTimelineRef: any;
