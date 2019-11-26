@@ -178,8 +178,8 @@
     color: black;
 }
 
+
 .SelSuggestions-section {
-    width: 50%;
     padding: 1rem;
     overflow-y: auto;
 
@@ -266,7 +266,7 @@
 
             .suggestions {
                 opacity: 1;
-
+               
                 &.undisplay {
                     opacity: 0;
                     visibility: hidden;

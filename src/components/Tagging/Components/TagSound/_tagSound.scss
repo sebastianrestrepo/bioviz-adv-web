@@ -30,6 +30,16 @@
         background-color: $semiWhite;
         padding: 10px;
         position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        .suggest-card-cont {
+            display: none;
+            &:first-child {
+                display: block;
+            }
+        }
+        
 
         .zoomed-spectro {
             &.undisplay {
@@ -44,18 +54,18 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
 
             .spectro-card {
                 padding: 15px;
-                margin: auto;
-                height: 80%;
+                width: 80%;
+                margin: 2rem auto 0 auto;
                 background-color: white;
                 border-radius: 5px;
                 position: relative;
 
                 .spec-img {
-                    height: 90%;
+                    width: 90%;
                 }
 
                 .close-img {
@@ -169,7 +179,7 @@
         padding: 15px;
 
         .column-wrapper {
-            width: 70%;
+            width: 60%;
             height: 220px;
             display: flex;
             flex-direction: column;

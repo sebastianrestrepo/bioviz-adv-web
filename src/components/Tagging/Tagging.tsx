@@ -2,7 +2,6 @@ import React from 'react';
 import './_Tagging.scss'
 import { observer } from 'mobx-react';
 import { TaggingHeader } from './Components/TaggingHeader';
-import { TagSound } from './Components/TagSound/TagSound';
 import SpectroComp from './Components/GenSpectro/SpectroComp';
 import SpectroSel from './Components/SpectroSel/SpectroSel';
 import toolsStore from '../../stores/toolsStore';
@@ -13,6 +12,8 @@ import { AIGenSuggestions } from './Components/GenSpectro/AIGenSuggestions';
 import ColorEditor from './Components/SpectroEditor/ColorEditor';
 import ContrastEditor from './Components/SpectroEditor/ContrastEditor';
 import { CompareAudios } from './Components/CompareAudios/CompareAudios';
+import TagSound from './Components/TagSound/TagSound';
+import { suggestionStore } from '../../stores/suggestionStore';
 
 interface TaggingProps {
 }
@@ -69,10 +70,15 @@ interface TaggingProps {
                         }
 
                         {
-                            (tagStore.isAiOn && !tagStore.isDataLabeling) ? <SelSuggestions /> :''
+                            (tagStore.isAiOn && !tagStore.isDataLabeling) ?
+                                <section className="ai-sel-cont">
+                                    <h3>Vocalizaciones encontradas en la selección:</h3>
+                                    <SelSuggestions />
+                                </section>
+                                : ''
                         }
                         {
-                            (tagStore.isDataLabeling) ? <TagSound></TagSound> : ''
+                            (tagStore.isDataLabeling) ? <TagSound sampleIndex={suggestionStore.actualSampleDataLabeling}></TagSound> : ''
                         }
                         {
                             (tagStore.isColorEditorOn) ? <ColorEditor /> : ''

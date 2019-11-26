@@ -7,8 +7,8 @@ import TagSuggestion from './TagSuggestion';
 import tagStore from '../../../../stores/taggingStore';
 import { suggestionStore } from '../../../../stores/suggestionStore';
 import reportStore from '../../../../stores/reportStore';
-import AsyncSelect from 'react-select/async';
 import projectsStore from '../../../../stores/projectsStore';
+import { Component } from 'react';
 
 const options = [
     { value: 'song', label: 'Canción' },
@@ -21,9 +21,10 @@ const sex = [
     { value: 'female', label: 'Hembra' },
     { value: 'unknown', label: 'Desconocido' }
 ]
-
-@observer
-export class TagSound extends React.Component {
+interface tagSoundProps {
+    sampleIndex: any;
+}
+class TagSound extends Component<tagSoundProps> {
 
     handleSexChange = (newValue: any, actionMeta: any) => {
         let action = actionMeta.action;
@@ -51,8 +52,8 @@ export class TagSound extends React.Component {
         return <section className="tagging-section firstdisplay">
             <div className="card-header">
                 <h3>Selección</h3>
-                <img className="close-icon" src="./assets/gen-icons/dark-x-close.svg" alt="" 
-                onClick={() => tagStore.onCloseLabelingClick()} />
+                <img className="close-icon" src="./assets/gen-icons/dark-x-close.svg" alt=""
+                    onClick={() => tagStore.onCloseLabelingClick()} />
             </div>
             <div className="spec">
                 <img src="./assets/spectroSelected.png" alt="" />
@@ -63,7 +64,7 @@ export class TagSound extends React.Component {
                 </div>
                 <div className="cards-cont">
                     {
-                        suggestionStore.speciesSuggested.map((e, i) => {
+                        suggestionStore.anchicayaSuggestions[this.props.sampleIndex].suggestions.map((e, i) => {
                             const jsonData = JSON.stringify(e.otherSongs);
                             return <TagSuggestion
                                 key={i}
@@ -71,8 +72,7 @@ export class TagSound extends React.Component {
                                 commonName={e.commonName}
                                 order={e.order}
                                 family={e.family}
-                                gender={e.gender}
-                                coincidence={e.coincidence}
+                                coincidence={e.percentage}
                                 mainAudioUrl={e.mainAudioUrl}
                                 spectroImgUrl={e.spectroImgUrl}
                                 birdPhoto={e.birdPhotoUrl}
@@ -119,8 +119,8 @@ export class TagSound extends React.Component {
                         <CreatableSelect
                             className={'react-selector'}
                             isClearable
-                            defaultValue={{value: tagStore.sciName, label: tagStore.onSciNameChange()}}
-                            value={{value: tagStore.sciName, label: tagStore.onSciNameChange()}}
+                            defaultValue={{ value: tagStore.sciName, label: tagStore.onSciNameChange() }}
+                            value={{ value: tagStore.sciName, label: tagStore.onSciNameChange() }}
                             onChange={this.handleSciChange}
                             options={reportStore.scinamesOptions}
                             placeholder={'Escribe la especie'}
@@ -159,4 +159,4 @@ export class TagSound extends React.Component {
         </section>
     }
 }
-
+export default observer(TagSound);

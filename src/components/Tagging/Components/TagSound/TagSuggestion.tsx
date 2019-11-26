@@ -7,7 +7,6 @@ interface tagSuggestionProps {
     commonName: string;
     order: string;
     family: string;
-    gender: string;
     coincidence: number;
     mainAudioUrl: string;
     spectroImgUrl: string;

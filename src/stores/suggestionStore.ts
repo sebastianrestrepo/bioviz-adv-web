@@ -2,6 +2,7 @@ import { observable, action } from 'mobx';
 
 class SuggestionStore {
 
+    @observable actualSampleDataLabeling: any;
     @observable anchicayaSuggestions = [
         {
             index:1,
