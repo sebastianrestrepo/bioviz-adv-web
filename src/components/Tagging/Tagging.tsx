@@ -45,7 +45,7 @@ interface TaggingProps {
                     <div className="black-card-header">
                         <h3>Selección del audio principal</h3>
                     </div>
-                    <SpectroSel selectionEmpty={toolsStore.selectionEmpty}/>
+                    <SpectroSel handlersValue={toolsStore.handlersValue}/>
                 </div>
                 {
                     (tagStore.isAiOn) ? <SelSuggestions/> : ''

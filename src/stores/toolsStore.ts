@@ -30,6 +30,9 @@ class ToolsStore {
 
     @observable onDestroy: boolean = false;
 
+    @observable handlersValue: any = [24, 0];
+
+
     constructor() {
 
     }

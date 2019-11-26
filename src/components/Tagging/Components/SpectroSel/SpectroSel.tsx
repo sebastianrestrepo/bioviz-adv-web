@@ -1,19 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './_SpectroSel.scss'
 import WaveSurfer from 'wavesurfer.js';
 import Spectrogram from 'wavesurfer.js/dist/plugin/wavesurfer.spectrogram.js';
 import Cursor from 'wavesurfer.js/dist/plugin/wavesurfer.cursor';
-import * as CSS from 'csstype';
-import toolsStore from '../../../../stores/toolsStore';
 import Timeline from 'wavesurfer.js/dist/plugin/wavesurfer.timeline.js';
-import Slider from '@material-ui/core/Slider';
 import Regions from 'wavesurfer.js/dist/plugin/wavesurfer.regions';
+import SliderFreq from './SliderFreq';
+import toolsStore from '../../../../stores/toolsStore';
 
 interface spectroSelProps {
-    selectionEmpty: any;
+    handlersValue: any;
 }
 
-const SpectroSel = ({ selectionEmpty }: spectroSelProps) => {
+const SpectroSel = ({ handlersValue }: spectroSelProps) => {
 
     // Selección Spectro
     const containerRef: any = React.useRef();
@@ -23,7 +22,6 @@ const SpectroSel = ({ selectionEmpty }: spectroSelProps) => {
     const sliderRef: any = React.useRef();
     const containerRegion: any = React.useRef();
     const silderRef = React.createRef();
-    let handlersValue: any = [24, 0];
 
     React.useEffect(() => {
         wsRef.current = WaveSurfer.create({
@@ -80,7 +78,7 @@ const SpectroSel = ({ selectionEmpty }: spectroSelProps) => {
 
     }, []);
 
-    return (<div className="sel-cont" key={"" + handlersValue[1] + ""}>
+    return (<div className="sel-cont">
 
         <div className="spectro-header">
             <div style={{ width: '37px', height: '100%', backgroundColor: '#FFF' }}></div>
@@ -89,27 +87,15 @@ const SpectroSel = ({ selectionEmpty }: spectroSelProps) => {
         </div>
         <div className="container-sel">
             <img className="" src="./assets/tagging-section/frequency-label.png" alt="" height="220" />
-            <Slider
-                ref={silderRef}
-                orientation="vertical"
-                defaultValue={[10, 15]}
-                onChange={(event, value) => {
-                    handlersValue = value;
-                    console.log(handlersValue[1]);
-                }}
-                valueLabelDisplay="auto"
-                aria-labelledby="range-slider"
-                min={0}
-                max={24}
-            />
-            <div id="waveform" ref={containerRef} key={"" + handlersValue[1] + ""}>
-                <div className="top-filter" key={"" + handlersValue[1] + ""} style={{
-                    height: (handlersValue[1]*13.33333) + 'px',
+            <SliderFreq />
+            <div id="waveform" ref={containerRef}>
+                <div className="top-filter" key={handlersValue[1]} style={{
+                    height: (handlersValue[1]) + '%',
                 }}></div>
                 {/*<h3 style={{ display: (selectionEmpty)?'flex':'none'}}>Selecciona un área del espectrograma general</h3>*/}
                 <div id="wave-spectrogram" ref={containerSpecRef} />
                 <div className="bottom-filter" style={{
-                    top: (handlersValue[0]*13.33333),
+                    bottom: (handlersValue[0]) + '%',
                 }}></div>
             </div>
 
