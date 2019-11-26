@@ -3,10 +3,19 @@ import './_AIGenSuggestions.scss';
 import { observer } from 'mobx-react';
 import tagStore from '../../../../stores/taggingStore';
 import { suggestionStore } from '../../../../stores/suggestionStore';
+import { Component } from 'react';
 
-@observer
-export class Mark extends React.Component {
+interface markProps {
+    start: any,
+    end: any,
+    suggestion: any,
+}
 
+class Mark extends Component<markProps> {
+    sugData = JSON.parse(this.props.suggestion);
+    constructor(props: any) {
+        super(props);
+    }
     render() {
         return <div className="marks">
             <span className={((tagStore.selected1) ? "mark selected" : "mark") /* + ((tagStore.isSomethingSelected && !tagStore.selected1) ? " prevent-hover" : "")*/}
@@ -56,3 +65,4 @@ export class Mark extends React.Component {
         </div>
     }
 }
+export default observer(Mark);
