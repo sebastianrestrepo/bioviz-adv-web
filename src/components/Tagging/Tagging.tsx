@@ -26,32 +26,40 @@ interface TaggingProps {
     render() {
         return (<div className="tagging">
             <TaggingHeader></TaggingHeader>
-            <AIGenSuggestions></AIGenSuggestions>
-            <SpectroComp panel={toolsStore.panel} />
-            <ToolsMenu />
+            {
+                (tagStore.isAiOn) ? <AIGenSuggestions></AIGenSuggestions> : ''
+            }
+            {
+                (tagStore.isDateTimeSelected) ? <section>
+                    <SpectroComp panel={toolsStore.panel} />
+                    <ToolsMenu />
 
-            <div className="two-sections">
-                <div className="spectro-selection"
-                    onClick={() => {
-                        toolsStore.panel = 2;
-                        if (toolsStore.isPlaying) {
-                            toolsStore.isPlaying = false;
-                            toolsStore.handlePause();
+                    <div className="two-sections">
+                        <div className="spectro-selection"
+                            onClick={() => {
+                                toolsStore.panel = 2;
+                                if (toolsStore.isPlaying) {
+                                    toolsStore.isPlaying = false;
+                                    toolsStore.handlePause();
+                                }
+                            }}
+                            style={{
+                                border: toolsStore.panel == 2 ? toolsStore.panelActivated : toolsStore.panelDisabled
+                            }}>
+                            <div className="black-card-header">
+                                <h3>Selección del audio principal</h3>
+                            </div>
+                            <SpectroSel selectionEmpty={toolsStore.selectionEmpty} />
+                        </div>
+                        {
+                            (tagStore.isAiOn) ? <SelSuggestions /> : ''
                         }
-                    }}
-                    style={{
-                        border: toolsStore.panel == 2 ? toolsStore.panelActivated : toolsStore.panelDisabled
-                    }}>
-                    <div className="black-card-header">
-                        <h3>Selección del audio principal</h3>
+
                     </div>
-                    <SpectroSel selectionEmpty={toolsStore.selectionEmpty}/>
-                </div>
-                {
-                    (tagStore.isAiOn) ? <SelSuggestions/> : ''
-                }
-                
-            </div>
+                </section> : ''
+            }
+
+
         </div>);
     }
 }

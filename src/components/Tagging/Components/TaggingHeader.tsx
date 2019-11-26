@@ -22,10 +22,13 @@ export class TaggingHeader extends React.Component {
         super(props);
     }
     onChange(value) {
-        //console.log(value && value.format(str));
-    }
+        console.log(value && value.format(str));
+        tagStore.timeAnalyzing =  value && value.format(str)
+    }   
 
     render() {
+        (tagStore.timeAnalyzing == '06:35' && 
+        tagStore.dayAnalyzing == 'Tue Nov 12 2019 12:00:00 GMT-0500 (hora estándar de Colombia)') ? tagStore.onDateSelected(): console.log('sdfs')
         return <section className="tag-header-cont">
             <div className="datetime">
                 <h1>Etiquetando</h1>
