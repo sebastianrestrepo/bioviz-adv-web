@@ -4,7 +4,7 @@ import reportStore from "./reportStore";
 class TaggingStore {
 
     //------------------------------- MANAGE ATOMS-------------------------------//
-    @observable  isDateTimeSelected = false;
+    @observable isDateTimeSelected = false;
     @observable isGenSpectroSelected = false;
     @observable isSelSpectroSelected = false;
     @observable isDataLabeling = false;
@@ -16,12 +16,12 @@ class TaggingStore {
 
     @action onCompareClick() {
         this.isComparingMicros = true;
-        
+
     }
 
     @action onTagAudio() {
         this.isDataLabeling = true;
-        
+
     }
 
     //---------------------------------DATE selection -----------------------------//
@@ -215,7 +215,7 @@ class TaggingStore {
         this.verified = true;
     }
 
-    @action playBirdSong(url) {
+    @action playBirdSong(url, seconds) {
         let a = new Audio(url);
         let setPlay = true;
         if (!this.isPlaying) {
@@ -227,7 +227,7 @@ class TaggingStore {
                 a.pause();
 
             },
-                4500)
+                seconds*1000)
         }
 
     }
@@ -241,17 +241,17 @@ class TaggingStore {
     @observable type;
 
     @action onSexChange() {
-      
+
     }
     @action onTypeChange() {
-   
+
     }
 
     @action onSciNameChange() {
-        let label =''
+        let label = ''
         reportStore.birdsData.map((e, i) => {
             if (e.SCI_NAME == this.sciName) {
-                label=  this.commonName = e.SPA_NAME + ' (' + e.SCI_NAME + ')';
+                label = e.SPA_NAME + ' (' + e.SCI_NAME + ')';
             }
         })
         return label
@@ -262,41 +262,30 @@ class TaggingStore {
     }
 
     @action onSaveClick() {
-        reportStore.onSaveDataLabeled(this.sciName, this.commonName, this.sex, this.type);
-        tagStore.isDataLabeling = false;
+        let _commonName;
+        reportStore.birdsData.map((e, i) => {
+            if (e.SCI_NAME == this.sciName) {
+                _commonName = e.SPA_NAME;
+            }
+        })
+        reportStore.onSaveDataLabeled(this.sciName, _commonName, this.sex, this.type);
+        this.isDataLabeling = false;
     }
 
-
-    @action birdClick(value: number) {
-        switch (value) {
-            case 1:
-                this.commonName = 'Barranquero bocon'
-                this.sciName = 'Electron platyrhynchum'
-                break;
-            case 2:
-                this.commonName = 'Piranga Roja'
-                this.sciName = 'Piranga rubra'
-                break;
-            case 3:
-                this.commonName = 'Mosquero moñudo'
-                this.sciName = 'Mitrephanes phaeocercus'
-                break;
-            case 4:
-                this.commonName = 'Torito cabeciblanco'
-                this.sciName = 'Capito maculicoronatus'
-                break;
-        }
-
+    @action onCloseLabelingClick() {
+        this.isDataLabeling = false;
+        this.commonName = '';
+        this.sciName = '';
+        this.sex = '';
+        this.type = '';
     }
-
-
 
     @action selectMark(url, index) {
 
         switch (index) {
             case 1:
                 if (!this.selected1) {
-                    this.playBirdSong(url);
+                    this.playBirdSong(url,5);
                     this.isSomethingSelected = true;
                     this.selected2 = false;
                     this.selected3 = false;
@@ -310,7 +299,7 @@ class TaggingStore {
                 break;
             case 2:
                 if (!this.selected2) {
-                    this.playBirdSong(url);
+                    this.playBirdSong(url,5);
                     this.isSomethingSelected = true;
                     this.selected1 = false;
                     this.selected3 = false;
@@ -324,7 +313,7 @@ class TaggingStore {
                 break;
             case 3:
                 if (!this.selected3) {
-                    this.playBirdSong(url);
+                    this.playBirdSong(url,5);
                     this.isSomethingSelected = true;
                     this.selected2 = false;
                     this.selected1 = false;
@@ -337,7 +326,7 @@ class TaggingStore {
                 break;
             case 4:
                 if (!this.selected4) {
-                    this.playBirdSong(url)
+                    this.playBirdSong(url,5)
                     this.isSomethingSelected = true;
                     this.selected2 = false;
                     this.selected3 = false;
@@ -350,7 +339,7 @@ class TaggingStore {
                 break;
             case 5:
                 if (!this.selected5) {
-                    this.playBirdSong(url)
+                    this.playBirdSong(url,5)
                     this.isSomethingSelected = true;
                     this.selected2 = false;
                     this.selected3 = false;
@@ -363,7 +352,7 @@ class TaggingStore {
                 break;
             case 6:
                 if (!this.selected6) {
-                    this.playBirdSong(url)
+                    this.playBirdSong(url,5)
                     this.isSomethingSelected = true;
                     this.selected2 = false;
                     this.selected3 = false;

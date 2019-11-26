@@ -11,6 +11,8 @@ class SuggestionStore {
             date: '18 Junio 2019',
             hour: '6:35',
             time: 'AM',
+            audio:'./assets/tagging-section/timeline-suggestion/filteredHafferia.wav',
+            specImg: './assets/tagging-section/timeline-suggestion/filteredhafferia.png',
             sugOpen: false,
             suggestions: [
                 {
@@ -95,6 +97,8 @@ class SuggestionStore {
             date: '18 Junio 2019',
             hour: '6:35',
             time: 'AM',
+            audio:'./assets/tagging-section/timeline-suggestion/filteredSipia.wav',
+            specImg: './assets/tagging-section/timeline-suggestion/filteredsipia.png',
             sugOpen: false,
             suggestions: [
                 {

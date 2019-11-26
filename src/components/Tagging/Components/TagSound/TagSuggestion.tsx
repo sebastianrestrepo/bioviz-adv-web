@@ -49,7 +49,7 @@ class TagSuggestion extends Component<tagSuggestionProps> {
                         <div className="suggestion-actions">
 
                             <span className="match-perc">
-                                <span className="play" onClick={() => tagStore.playBirdSong(this.props.mainAudioUrl)}>
+                                <span className="play" onClick={() => tagStore.playBirdSong(this.props.mainAudioUrl, 10)}>
                                     <img className="play-img" src="./assets/tagging-section/play-audio.svg"
                                         height="25px" alt="" />
                                     <p> Reproducir canto</p>
@@ -102,7 +102,7 @@ class TagSuggestion extends Component<tagSuggestionProps> {
                             this.songsData.map((song) => {
                                 return <article className="spec">
                                     <img className="spectro-img" src={song.spectroImgUrl} height="150px" alt="" />
-                                    <span className="play" onClick={() => tagStore.playBirdSong(song.audioUrl)}>
+                                    <span className="play" onClick={() => tagStore.playBirdSong(song.audioUrl,10)}>
                                         <img className="play-img" src="./assets/tagging-section/play-audio.svg" height="20px" alt="" />
                                         <p className="_14px"> Reproducir canto</p>
                                     </span>

@@ -22,8 +22,6 @@ const sex = [
     { value: 'unknown', label: 'Desconocido' }
 ]
 
-
-
 @observer
 export class TagSound extends React.Component {
 
@@ -53,7 +51,8 @@ export class TagSound extends React.Component {
         return <section className="tagging-section firstdisplay">
             <div className="card-header">
                 <h3>Selección</h3>
-                <img className="close-icon" src="./assets/gen-icons/dark-x-close.svg" alt="" />
+                <img className="close-icon" src="./assets/gen-icons/dark-x-close.svg" alt="" 
+                onClick={() => tagStore.onCloseLabelingClick()} />
             </div>
             <div className="spec">
                 <img src="./assets/spectroSelected.png" alt="" />
@@ -87,7 +86,7 @@ export class TagSound extends React.Component {
                         <div className='spectro-card'>
                             <img className="spec-img" src={tagStore.zoomedSpeImgUrl} alt="" />
 
-                            <span className="play" onClick={() => tagStore.playBirdSong(tagStore.zoomedSpeAudioUrl)}>
+                            <span className="play" onClick={() => tagStore.playBirdSong(tagStore.zoomedSpeAudioUrl, 5)}>
                                 <img className="play-img" src="./assets/tagging-section/play-audio.svg" height="20px" alt="" />
                                 <p className="_14px"> Reproducir canto</p>
                             </span>
@@ -144,7 +143,6 @@ export class TagSound extends React.Component {
                                 isClearable
                                 isSearchable />
                         </span>
-
                     </span>
                     <p className={tagStore.isNoteActivated ? 'green-link card-item undisplay' : 'green-link card-item'}
                         onClick={() => tagStore.onNoteClick()}
@@ -158,7 +156,6 @@ export class TagSound extends React.Component {
                     <button className="green-button" onClick={() => tagStore.onSaveClick()}>Guardar en Listado</button>
                 </div>
             </div>
-
         </section>
     }
 }

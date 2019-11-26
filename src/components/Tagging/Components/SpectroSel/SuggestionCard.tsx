@@ -1,5 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
+import tagStore from '../../../../stores/taggingStore';
 
 interface suggestionCardProps {
     percentage: any,
@@ -30,11 +31,16 @@ const SuggestionCard = observer(({ percentage,
                 <div className="specie-card-down">
                     <div className="bird-info">
                         <span className="act-cont">
-                            <div className="bird-photo-cont">
+                            <a className="bird-photo-cont" href="" target="_blank">
                                 <img src={birdPhoto} alt="" />
-                            </div>
-                            <img src="./assets/tagging-section/vision.png" height="35px" alt="" />
-                            <img src="./assets/tagging-section/play-audio.svg" height="30px" alt="" />
+                            </a>
+                            <img onClick={() => {
+                                tagStore.isDataLabeling = true;
+                            }}
+                                src="./assets/tagging-section/vision.png" height="35px" alt="" />
+                            <img onClick={() => {
+                                tagStore.playBirdSong(audio, 15)
+                            }} src="./assets/tagging-section/play-audio.svg" height="30px" alt="" />
                         </span>
                         <div className="bird-text">
                             <div className="position-sci">
