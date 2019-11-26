@@ -116,6 +116,12 @@
 
                     .location-cont {
                         width: 40%;
+                        .map {
+                            width: 100%;
+                            img {
+                                width:100%
+                            }
+                        }
                     }
 
                     .species-cont {
@@ -205,6 +211,68 @@
                     .audio-cont {
                         width: 40%;
 
+                        .audio-dropzone {
+                            display: flex;
+                        }
+        
+                        .audio-drop-section {
+                            display: flex;
+                            width: 100%;
+                            align-items: center;
+                            justify-content: center;
+                            padding: 10px 0 10px 0;
+                            margin: 20px 0 20px 0;
+                            border-style: dashed;
+                            border-width: 2px;
+                            color: gray;
+                            cursor: pointer;
+        
+                            .add-audio-dropzone {
+                                display: flex;
+                                width: 100%;
+                                flex-direction: column;
+                                align-items: center;
+                                justify-content: center;
+                            }
+        
+                            p {
+                                font-family: 'Roboto', sans-serif;
+                                font-size: 14px;
+                            }
+                        }
+        
+
+                        .user-audio-div{
+                            display: flex;
+                            flex-direction: column;
+                            width: 80%;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: white;
+                            border-radius: 5px;
+                            padding: 1rem;
+                            margin: 2rem 0 0 0;
+                            h3 {
+                                font-family: 'Roboto', sans-serif;
+                                font-size: 17px;
+                                font-weight: 700;
+                                color: #282032;
+                                padding-bottom: 10px;
+                                margin:0.51rem 0;
+                            }
+                            ul {
+                                text-decoration: none;
+                                list-style: none;
+                                li {
+                                    margin: 1rem 0;
+                                    display: flex;
+                                    flex-direction: row;
+                                    justify-content: flex-start;
+                                    align-items: center;
+                                }
+                            }
+                        }
+        
                         input {
                             width: 80%;
                         }
@@ -240,71 +308,14 @@
                     font-family: 'Roboto', sans-serif;
                     width: 360px;
                     height: 35px;
-                    //margin-bottom: 10px;
                     background-color: #F4F4F4;
                     border: none;
                     text-decoration: none;
                     padding: 0 10px 0 10px;
                 }
 
-                .audio-dropzone {
-                    display: flex;
-                }
-
-                .audio-drop-section {
-                    display: flex;
-                    width: 100%;
-                    align-items: center;
-                    justify-content: center;
-                    padding: 10px 0 10px 0;
-                    margin: 20px 0 20px 0;
-                    border-style: dashed;
-                    border-width: 2px;
-                    color: gray;
-                    cursor: pointer;
-
-                    .add-audio-dropzone {
-                        display: flex;
-                        width: 100%;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                    }
-
-                    p {
-                        font-family: 'Roboto', sans-serif;
-                        font-size: 14px;
-                    }
-                }
-
-                .user-audio-div {
-                    display: flex;
-                    flex-direction: column;
-                    width: 100%;
-                    align-items: center;
-                    justify-content: center;
-                    padding: 30px 0 30px 0;
-
-                    h3 {
-                        font-family: 'Roboto', sans-serif;
-                        font-size: 17px;
-                        font-weight: 700;
-                        color: #282032;
-                        padding-bottom: 10px;
-                    }
-
-                    .upload-audio-btn {
-                        font-family: 'Roboto', sans-serif;
-                        font-size: 13px;
-                        background-color: #282032;
-                        padding: 8px 30px 8px 30px;
-                        color: white;
-                        border: none;
-                        text-decoration: none;
-                        cursor: pointer;
-                    }
-                }
-
+           
+                
                 .new-project-btns {
                     display: flex;
                     flex-direction: row;

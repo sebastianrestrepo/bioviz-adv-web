@@ -17,15 +17,18 @@ const str = showSecond ? 'HH:mm:ss' : 'HH:mm';
 
 @observer
 export class TaggingHeader extends React.Component {
-
+    _date : any;
     constructor(props) {
         super(props);
     }
     onChange(value) {
         console.log(value && value.format(str));
-    }
+        tagStore.timeAnalyzing =  value && value.format(str)
+    }   
 
     render() {
+        (tagStore.timeAnalyzing == '06:35' && 
+        tagStore.dayAnalyzing == 'Tue Nov 12 2019 12:00:00 GMT-0500 (hora estándar de Colombia)') ? tagStore.onDateSelected(): console.log('sdfs')
         return <section className="tag-header-cont">
             <div className="datetime">
                 <h1>Etiquetando</h1>
@@ -33,19 +36,19 @@ export class TaggingHeader extends React.Component {
                 <label >
                     <p>Día:</p>
                     <SingleDatePicker
-                        date={moment()} // momentPropTypes.momentObj or null
+                        date={this._date}
                         onDateChange={date => {
-                            tagStore.dayAnalyzing = date
-                            // console.log( date._d, 'FECHA')
-                        }} // PropTypes.func.isRequired
+                            tagStore.dayAnalyzing = date._d
+                            this._date = date;
+                            console.log( date._d, 'FECHA')
+                        }} 
                         isDayBlocked={function noRefCheck() { }}
                         placeholder="Seleccionar"
-                        displayFormat="MMM D"
+                        displayFormat="MMM DD"
                         focused={tagStore.focusedDayInput} // PropTypes.bool
                         onFocusChange={({ focused }) => tagStore.focusedDayInput = focused} // PropTypes.func.isRequired
                         id="id" // PropTypes.string.isRequired,
                         numberOfMonths={1}
-                        showKeyboardShortcuts={false}
                         dayPickerNavigationInlineStyles={null}
                         isDayHighlighted={function noRefCheck() { }}
                         isOutsideRange={function noRefCheck() { }}

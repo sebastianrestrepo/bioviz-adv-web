@@ -14,8 +14,19 @@ class ProjectsStore {
     @observable audioFileUploaded: boolean = false;
     @observable projectName: any = "";
     @observable audioName: any = "";
-
+    @observable bioUsers:any = [];
     constructor() {
+
+        db.collection("users").onSnapshot((querySnapshot) => {
+            this.projects = [];
+            querySnapshot.forEach((doc) => {
+                let bioUserOption = {
+                    value: doc.data().email,
+                    label: doc.data().name + ' ('+ doc.data().email + ')'
+                }
+                this.bioUsers.push(bioUserOption)
+            });
+        })
     }
 
     getCurrentDate() {
@@ -93,7 +104,7 @@ class ProjectsStore {
 
     }
 
-    ///////////
+    //-----------------------------------CREATE PROJECTS--------------------//
     @observable showNewProjectForm: boolean = false;
 
     @action onCreateProject() {
@@ -115,8 +126,6 @@ class ProjectsStore {
             });
         })
     }
-
-    ///// PROJECT CREATION
 
     @observable creationStep = 1;
     @observable stepTitle = 'Detalles del Proyecto';
@@ -206,10 +215,20 @@ class ProjectsStore {
             commonName: ''
         }
     }
+
+    
+
     @action uploadNewProject() {
         this.newProject.date = this.getCurrentDate();
         this.newProject.owner = authStore.currentUserInfo.id;
         this.newProject.species = this.studyingSpecies;
+        this.newProject.audioDuration = 1;
+        this.newProject.location = 'Anchicayá, Valle del Cauca, Colombia'
+        this.newProject.intervalMode = true;
+        this.newProject.frequency = 15;
+        this.newProject.microhphone = 'MONAC';
+        this.newProject.monacDistribution = 'Hexagono'
+
         let that = this;
         let tempId = '';
         db.collection("projects").add(this.newProject)
@@ -229,7 +248,7 @@ class ProjectsStore {
                     species: [],
                     intervalMode: false,
                     continousMode: false,
-                    audioDuration: 5,
+                    audioDuration: 0,
                     frequency: 0,
                     microhphone: '',
                     monacDistribution: '',
