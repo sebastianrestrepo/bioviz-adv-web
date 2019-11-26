@@ -131,7 +131,7 @@
         display: flex;
         flex-direction: row;
         padding: 7px 7px 0 7px;
-        height: calc(100vh - 295px);
+        height: calc(100vh - 341px);
         justify-content: space-between;
 
 
@@ -145,8 +145,8 @@
 
             .MuiSlider-root {
                 color: #AFEA7D;
-                z-index: 1;
-                margin-right: 2px;
+                z-index: 3;
+                margin-right: 3.5px;
             }
 
             .MuiSlider-rail {
@@ -154,7 +154,7 @@
             }
 
             .MuiSlider-root.MuiSlider-vertical {
-                height: 316px;
+                height: 220px;                
                 padding: 0;
             }
 
@@ -164,6 +164,9 @@
 
             .MuiSlider-track {
                 width: 7px;
+                -webkit-box-shadow: 1px 1px 10px -4px rgba(0, 0, 0, 0.75);
+                -moz-box-shadow: 1px 1px 10px -4px rgba(0, 0, 0, 0.75);
+                box-shadow: 1px 1px 10px -4px rgba(0, 0, 0, 0.75);
             }
 
             .MuiSlider-thumb {
@@ -186,14 +189,13 @@
                 align-self: flex-start;
                 justify-content: space-between;
                 background-color: #333333;
-                padding: 0.7rem 1rem;
-
+                padding: 0.5rem 0.8rem;
                 h1 {
                     margin: 0;
                 }
 
                 h3 {
-                    font-size: 18px;
+                    font-size: 16px;
                     color: white;
                 }
             }

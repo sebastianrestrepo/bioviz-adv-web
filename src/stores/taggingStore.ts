@@ -3,10 +3,21 @@ import reportStore from "./reportStore";
 
 class TaggingStore {
 
+    //------------------------------- MANAGE ATOMS-------------------------------//
+    @observable  isDateTimeSelected = false;
+    @observable isGenSpectroSelected = false;
+    @observable isSelSpectroSelected = false;
+    @observable isDataLabeling = false;
+    @observable isComparingMicros = false;
+
+    @action onDateSelected() {
+        this.isDateTimeSelected = true;
+    }
 
     //---------------------------------DATE selection -----------------------------//
 
     @observable dayAnalyzing: any = ''
+    @observable timeAnalyzing: any = ''
     @observable focusedDayInput: boolean = false;
     @observable actualTime: any = '00:01'
     @observable isAiOn: boolean = false;

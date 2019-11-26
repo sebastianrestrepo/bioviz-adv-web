@@ -1,4 +1,4 @@
-import birdsDataJSON from './../bird_classification.json';
+import birdsDataJSON from '../bird_classification.json';
 import { observable, action } from "mobx";
 import { db } from "../firebaseConfig";
 import projectsStore from './projectsStore';
