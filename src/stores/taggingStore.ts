@@ -237,8 +237,19 @@ class TaggingStore {
     @observable isNoteActivated = false;
     @observable commonName;
     @observable sciName;
+    @observable sex;
+    @observable type;
 
-    @action onCommonNameChange() {
+    @action onSexChange() {
+        let sci = ''
+        reportStore.birdsData.map((e, i) => {
+            if (e.SPA_NAME == this.commonName) {
+               sci = this.sciName = e.SCI_NAME
+            }
+        })
+        return sci
+    }
+    @action onTypeChange() {
         let sci = ''
         reportStore.birdsData.map((e, i) => {
             if (e.SPA_NAME == this.commonName) {
@@ -260,6 +271,11 @@ class TaggingStore {
 
     @action onNoteClick() {
         this.isNoteActivated = true;
+    }
+
+    @action onSaveClick() {
+        reportStore.onSaveDataLabeled(this.sciName, this.commonName, this.sex, this.type);
+        tagStore.isDataLabeling = false;
     }
 
 

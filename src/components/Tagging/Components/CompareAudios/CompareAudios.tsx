@@ -8,7 +8,7 @@ import tagStore from '../../../../stores/taggingStore';
 export class CompareAudios extends React.Component {
 
     render() {
-        return <div className="compare-section">
+        return <div className="compare-section firstdisplay">
             <div className="close" onClick={() => tagStore.isComparingMicros = false}>
                 <img src="./assets/gen-icons/dark-x-close.svg" alt=""/>
             </div>

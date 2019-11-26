@@ -27,11 +27,19 @@ const sex = [
 @observer
 export class TagSound extends React.Component {
 
-    handleCommonChange = (newValue: any, actionMeta: any) => {
+    handleSexChange = (newValue: any, actionMeta: any) => {
         let action = actionMeta.action;
         if (action == 'select-option') {
-            tagStore.commonName = newValue.value
-            tagStore.sciName = tagStore.onCommonNameChange();
+            tagStore.sex = newValue.value
+            tagStore.sciName = tagStore.onSexChange();
+        }
+
+    };
+    handleTypeChange = (newValue: any, actionMeta: any) => {
+        let action = actionMeta.action;
+        if (action == 'select-option') {
+            tagStore.type = newValue.value
+            tagStore.sciName = tagStore.onTypeChange();
         }
 
     };
@@ -43,22 +51,9 @@ export class TagSound extends React.Component {
             tagStore.commonName = tagStore.onSciNameChange();
         }
     };
-    handleCommonInputChange = (inputValue: any, actionMeta: any) => {
-        //console.group('Input Changed');
-        //console.log(inputValue);
-        //console.log(`action: ${actionMeta.action}`);
-        //console.groupEnd();
 
-    };
-    handleSciInputChange = (inputValue: any, actionMeta: any) => {
-        //console.group('Input Changed');
-        //console.log(inputValue);
-        //console.log(`action: ${actionMeta.action}`);
-        //console.groupEnd();
-
-    };
     render() {
-        return <section className="tagging-section">
+        return <section className="tagging-section firstdisplay">
             <div className="card-header">
                 <h3>Selección</h3>
                 <img className="close-icon" src="./assets/gen-icons/dark-x-close.svg" alt="" />
@@ -71,7 +66,6 @@ export class TagSound extends React.Component {
                     <h1>Sugerencias del sistema</h1>
                 </div>
                 <div className="cards-cont">
-
                     {
                         suggestionStore.speciesSuggested.map((e, i) => {
                             const jsonData = JSON.stringify(e.otherSongs);
@@ -89,8 +83,6 @@ export class TagSound extends React.Component {
                                 otherSongs={jsonData} />
                         })
                     }
-
-
                     <span className="next-card">
                         <img src="./assets/tagging-section/right-arrow.svg" width="25px" alt="" />
                     </span>
@@ -107,18 +99,13 @@ export class TagSound extends React.Component {
                                 src="./assets/gen-icons/dark-x-close.svg" alt="" />
                         </div>
                     </span>
-
                 </div>
             </div>
-
             <div className="card-section">
-
-
                 <div className="form-section">
                     <div className="card-item">
                         <span >¿Es alguna de las especies en estudio?</span>
                         <div className="imgs-array">
-
                             {
                                 projectsStore.actualProject.species.map((e, i) => {
                                     return <span className="tooltip">
@@ -129,7 +116,6 @@ export class TagSound extends React.Component {
                                     </span>
                                 })
                             }
-
                         </div>
                     </div>
                     <span className="input-row card-item name-specie">
@@ -139,18 +125,16 @@ export class TagSound extends React.Component {
                             isClearable
                             defaultValue={tagStore.sciName}
                             onChange={this.handleSciChange}
-                            onInputChange={this.handleSciInputChange}
                             options={reportStore.scinamesOptions}
                             placeholder={'Escribe la especie'}
                         />
                     </span>
-
-
                     <span className='naming'>
                         <span className="input-row card-item">
                             <p className="text-title">Tipo de canto:</p>
                             <Select className={'react-selector'}
                                 options={options}
+                                onChange={this.handleTypeChange}
                                 isClearable
                                 isSearchable />
                         </span>
@@ -158,6 +142,7 @@ export class TagSound extends React.Component {
                             <p className="text-title">Sexo:</p>
                             <Select className={'react-selector'}
                                 options={sex}
+                                onChange={this.handleSexChange}
                                 isClearable
                                 isSearchable />
                         </span>
@@ -171,7 +156,9 @@ export class TagSound extends React.Component {
                         <textarea placeholder="Escribir anotación" name="" id="" ></textarea>
                     </div>
                 </div>
-
+                <div className="btn-actions">
+                    <button className="green-button" onClick={() => tagStore.onSaveClick()}>Guardar en Listado</button>
+                </div>
             </div>
 
         </section>

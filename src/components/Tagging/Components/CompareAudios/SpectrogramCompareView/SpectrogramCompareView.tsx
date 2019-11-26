@@ -62,7 +62,7 @@ export class SpectrogramCompareView extends React.Component<SpectroProps, any>  
     };
 
     render() {
-        return <div className="spectro-atom">
+        return <div className="spectro-atom firstdisplay">
             <div className="actions">
                 <span className="title">
                     <img src="" alt="" />

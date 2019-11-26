@@ -4,6 +4,14 @@
     background-color: white;
     width: 60%;
     font-size: 15px;
+    .card-section {
+       
+        .btn-actions {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+    }
 
     .suggest-header {
         background-color: $thirdActiveColor;
