@@ -61,7 +61,9 @@ interface TaggingProps {
                                 rBack={toolsStore.rBack}
                                 gBack={toolsStore.gBack}
                                 bBack={toolsStore.bBack}
-                                whiteAndBlack={toolsStore.whiteAndBlack} />
+                                whiteAndBlack={toolsStore.whiteAndBlack}
+                                contrastVal={tagStore.contrastVal}
+                                brightVal={tagStore.brightVal} />
                         </div>
                         { 
                             (tagStore.isAiOn) ? <SelSuggestions /> : <div> 

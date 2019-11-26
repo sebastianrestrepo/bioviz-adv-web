@@ -16,7 +16,9 @@ interface spectroSelProps {
     rBack: any,
     gBack: any,
     bBack: any,
-    whiteAndBlack: any;
+    whiteAndBlack: any,
+    contrastVal: any,
+    brightVal: any,
 }
 
 const SpectroSel = ({ 
@@ -27,7 +29,9 @@ const SpectroSel = ({
     rBack,
     gBack,
     bBack,
-    whiteAndBlack
+    whiteAndBlack,
+    contrastVal,
+    brightVal,
 }: spectroSelProps) => {
 
     // Selección Spectro
@@ -128,7 +132,7 @@ const SpectroSel = ({
        </filter>
    </svg>
                 <div id="wave-spectrogram" ref={containerSpecRef} style={{
-                    filter: 'brightness(100%) contrast(100%) url(#duotone-1)',
+                    filter: 'brightness(' + brightVal + ') contrast(' + contrastVal + ') url(#duotone-1)',
                 }} />
                 <div className="bottom-filter" style={{
                     bottom: (handlersValue[0]) + '%',
