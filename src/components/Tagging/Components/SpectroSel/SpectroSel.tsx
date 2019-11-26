@@ -9,10 +9,26 @@ import SliderFreq from './SliderFreq';
 import toolsStore from '../../../../stores/toolsStore';
 
 interface spectroSelProps {
-    handlersValue: any;
+    handlersValue: any,
+    rSpectro: any,
+    gSpectro: any,
+    bSpectro: any,
+    rBack: any,
+    gBack: any,
+    bBack: any,
+    whiteAndBlack: any;
 }
 
-const SpectroSel = ({ handlersValue }: spectroSelProps) => {
+const SpectroSel = ({ 
+    handlersValue, 
+    rSpectro,
+    gSpectro,
+    bSpectro,
+    rBack,
+    gBack,
+    bBack,
+    whiteAndBlack
+}: spectroSelProps) => {
 
     // Selección Spectro
     const containerRef: any = React.useRef();
@@ -93,7 +109,27 @@ const SpectroSel = ({ handlersValue }: spectroSelProps) => {
                     height: (handlersValue[1]) + '%',
                 }}></div>
                 {/*<h3 style={{ display: (selectionEmpty)?'flex':'none'}}>Selecciona un área del espectrograma general</h3>*/}
-                <div id="wave-spectrogram" ref={containerSpecRef} />
+                <svg className="duotone-filter" xmlns="http://www.w3.org/2000/svg" key={toolsStore.rSpectro + "" + toolsStore.rBack}>
+       <filter id="duotone-1" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+       <feColorMatrix type="matrix" result="gray" values=".33 .33 .33 0 0
+ .33 .33 .33 0 0
+ .33 .33 .33 0 0
+ 0 0 0 1 0"></feColorMatrix>
+
+    <feComponentTransfer colorInterpolationFilters="sRGB" result="duotone">
+    <feFuncR type="table" tableValues={rSpectro/255 + " " + rBack/255}></feFuncR>            
+    <feFuncB type="table" tableValues={gSpectro/255 + " " + gBack/255}></feFuncB>
+    <feFuncG type="table" tableValues={bSpectro/255 + " " + bBack/255}></feFuncG>
+                {(whiteAndBlack)
+            ?<feFuncA type="table" tableValues="0 0"></feFuncA>
+            :<feFuncA type="table" tableValues="0 1"></feFuncA>}
+        </feComponentTransfer>
+    <feBlend mode="normal" in="componentTransfer" in2="SourceGraphic" result="blend"/>
+       </filter>
+   </svg>
+                <div id="wave-spectrogram" ref={containerSpecRef} style={{
+                    filter: 'brightness(100%) contrast(100%) url(#duotone-1)',
+                }} />
                 <div className="bottom-filter" style={{
                     bottom: (handlersValue[0]) + '%',
                 }}></div>

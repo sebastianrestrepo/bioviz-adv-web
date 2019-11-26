@@ -5,6 +5,7 @@ import "p5/lib/addons/p5.sound";
 import * as CSS from 'csstype';
 import WaveSurfer from 'wavesurfer.js';
 import Timeline from 'wavesurfer.js/dist/plugin/wavesurfer.timeline.js';
+import { palette } from '@material-ui/system';
 
 class ToolsStore {
 
@@ -34,9 +35,96 @@ class ToolsStore {
 
     @observable handlersValue: any = [24, 0];
 
+    //-----------------Spectro Color-------------//
+    //@observable palette: number = 0;
+
+    @observable whiteAndBlack: boolean = true;
+    @observable rSpectro: any;
+    @observable gSpectro: any;
+    @observable bSpectro: any;
+
+    @observable rBack: any;
+    @observable gBack: any;
+    @observable bBack: any;
 
     constructor() {
 
+    }
+
+    @action changeSpectrogramColor(palette: number) {
+        switch (palette) {
+            case 0:
+                this.whiteAndBlack = true;
+                break;
+            case 1:
+                this.rSpectro = 234;
+                this.gSpectro = 30;
+                this.bSpectro = 0;
+
+                this.rBack = 255;
+                this.gBack = 227;
+                this.bBack = 94;
+
+                this.whiteAndBlack = false;
+                console.log('OSSA' + palette, this.rSpectro)
+                break;
+            case 2:
+                this.rSpectro = 122;
+                this.gSpectro = 0;
+                this.bSpectro = 192;
+
+                this.rBack = 33;
+                this.gBack = 255;
+                this.bBack = 21;
+
+                this.whiteAndBlack = false;
+                console.log('OSSA' + palette, this.rSpectro)
+                break;
+            case 3:
+                this.rSpectro = 0;
+                this.gSpectro = 3;
+                this.bSpectro = 252;
+
+                this.rBack = 0;
+                this.gBack = 251;
+                this.bBack = 130;
+
+                this.whiteAndBlack = false;
+                break;
+            case 4:
+                this.rSpectro = 0;
+                this.gSpectro = 68;
+                this.bSpectro = 27;
+
+                this.rBack = 241;
+                this.gBack = 250;
+                this.bBack = 238;
+
+                this.whiteAndBlack = false;
+                break;
+            case 5:
+                this.rSpectro = 130;
+                this.gSpectro = 0;
+                this.bSpectro = 38;
+
+                this.rBack = 255;
+                this.gBack = 255;
+                this.bBack = 197;
+
+                this.whiteAndBlack = false;
+                break;
+            case 6:
+                this.rSpectro = 255;
+                this.gSpectro = 0;
+                this.bSpectro = 255;
+
+                this.rBack = 255;
+                this.gBack = 255;
+                this.bBack = 0;
+
+                this.whiteAndBlack = false;
+                break;
+        }
     }
 
     @action handlePlayPause() {

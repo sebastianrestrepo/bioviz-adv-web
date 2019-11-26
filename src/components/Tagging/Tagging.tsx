@@ -54,7 +54,14 @@ interface TaggingProps {
                             {
                                 (tagStore.isAiOn) ? <AIGenSuggestions isGeneralSpectro={false} /> : ''
                             }
-                            <SpectroSel handlersValue={toolsStore.handlersValue} />
+                            <SpectroSel handlersValue={toolsStore.handlersValue}
+                                rSpectro={toolsStore.rSpectro}
+                                gSpectro={toolsStore.gSpectro}
+                                bSpectro={toolsStore.bSpectro}
+                                rBack={toolsStore.rBack}
+                                gBack={toolsStore.gBack}
+                                bBack={toolsStore.bBack}
+                                whiteAndBlack={toolsStore.whiteAndBlack} />
                         </div>
                         {
                             (tagStore.isAiOn) ? <SelSuggestions /> : ''
