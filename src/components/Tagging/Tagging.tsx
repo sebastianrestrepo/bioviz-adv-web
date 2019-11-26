@@ -7,14 +7,12 @@ import SpectroComp from './Components/GenSpectro/SpectroComp';
 import SpectroSel from './Components/SpectroSel/SpectroSel';
 import toolsStore from '../../stores/toolsStore';
 import ToolsMenu from './Components/ToolsMenu/ToolsMenu';
-import { observable } from 'mobx';
-import Slider from '@material-ui/core/Slider';
 import { SelSuggestions } from './Components/SpectroSel/SelSuggestions';
 import tagStore from '../../stores/taggingStore';
-import P5Wrapper from 'react-p5-wrapper';
 import { AIGenSuggestions } from './Components/GenSpectro/AIGenSuggestions';
 import ColorEditor from './Components/SpectroEditor/ColorEditor';
 import ContrastEditor from './Components/SpectroEditor/ContrastEditor';
+import { CompareAudios } from './Components/CompareAudios/CompareAudios';
 
 interface TaggingProps {
 }
