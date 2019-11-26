@@ -2,6 +2,7 @@ import { observable, action } from 'mobx';
 
 class SuggestionStore {
 
+    @observable actualSampleDataLabeling: any;
     @observable anchicayaSuggestions = [
         {
             index:1,
@@ -186,7 +187,7 @@ class SuggestionStore {
             order: 'Passeriformes',
             family: 'Thamnophilidae',
             gender: 'Sipia',
-            coincidence: 87,
+            coincidence: 89,
             mainAudioUrl: '//www.xeno-canto.org/sounds/uploaded/FPAGKPAQYO/XC428690-Stub-tailed%20Antbird_SanCipriano_Co_1sep2017_FSchmitt.mp3',
             spectroImgUrl: './assets/tagging-section/ai/colimocho-spec.jpg',
             birdPhotoUrl: './assets/birds/sipiaberlepschi.jpg',

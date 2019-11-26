@@ -125,7 +125,7 @@
 .tagging {
     height: 94vh;
     max-height: 94vh;
-    overflow: hidden;
+    //overflow: hidden;
 
     .two-sections {
         display: flex;
@@ -142,13 +142,14 @@
             z-index: 10;
             height: 92%;
         }
+
         .spectro-selection {
             width: 50%;
             background-color: white;
             border-radius: 5px;
             display: flex;
             flex-direction: column;
-            overflow-x: hidden;
+            //  overflow-x: hidden;
 
             .MuiSlider-root {
                 color: #AFEA7D;
@@ -161,7 +162,7 @@
             }
 
             .MuiSlider-root.MuiSlider-vertical {
-                height: 220px;                
+                height: 220px;
                 padding: 0;
             }
 
@@ -197,6 +198,7 @@
                 justify-content: space-between;
                 background-color: #333333;
                 padding: 0.5rem 0.8rem;
+
                 h1 {
                     margin: 0;
                 }
@@ -207,6 +209,18 @@
                 }
             }
 
+        }
+
+
+        .ai-sel-cont {
+            width: 50%;
+
+            >h3 {
+                &:first-child {
+                    padding: 10px;
+                    color: #44cd88;
+                }
+            }
         }
 
         .tagging-section {

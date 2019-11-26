@@ -1,8 +1,10 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import tagStore from '../../../../stores/taggingStore';
+import { suggestionStore } from '../../../../stores/suggestionStore';
 
 interface suggestionCardProps {
+    id: any,
     percentage: any,
     spectro: any,
     position: any,
@@ -18,7 +20,7 @@ interface suggestionCardProps {
 }
 
 const SuggestionCard = observer(({ percentage,
-    audio, author, location, url, isPlaying, spectro, position,
+    audio, author, location, url,id, isPlaying, spectro, position,
     sciname, commonName, birdPhoto, coincidences }: suggestionCardProps) => {
     return (<article className="suggested-specie">
         <span className="specie-card">
@@ -35,6 +37,7 @@ const SuggestionCard = observer(({ percentage,
                                 <img src={birdPhoto} alt="" />
                             </a>
                             <img onClick={() => {
+                                suggestionStore.actualSampleDataLabeling = id;
                                 tagStore.isDataLabeling = true;
                             }}
                                 src="./assets/tagging-section/vision.png" height="35px" alt="" />

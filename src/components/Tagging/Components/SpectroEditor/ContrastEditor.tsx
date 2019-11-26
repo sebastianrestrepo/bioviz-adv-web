@@ -105,7 +105,7 @@ class ContrastEditor extends Component {
         <br/>
         <span className="bcEditOption">
         <button className="dark-button">Cancelar</button>
-        <button className="green-button">Guardar cambios</button>
+        <button className="green-button" onClick={() => { tagStore.isContrastEditorOn =  false}}>Guardar cambios</button>
         </span>
        
     </span>;

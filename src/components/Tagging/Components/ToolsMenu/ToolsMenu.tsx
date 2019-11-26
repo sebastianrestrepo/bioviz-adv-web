@@ -42,6 +42,14 @@ export default class ToolsMenu extends React.Component {
                         alt=""></img></button>
                     <span className="tooltiptext">Volumen</span>
                 </span>
+                <span className="tooltip">
+                    <button className="tool-btn "><img src="./assets/tool-bar-assets/compare-icon.svg" className="compare"
+                        onClick={() => {
+                            tagStore.onCompareClick();
+                        }}
+                        alt=""></img></button>
+                    <span className="tooltiptext">Comparar audios</span>
+                </span>
             </div>
             <div className="edition-options">
                 <span className="tooltip">
@@ -49,11 +57,6 @@ export default class ToolsMenu extends React.Component {
                         alt=""></img></button>
                     <span className="tooltiptext">Cursor</span>
                 </span>
-                {/*<span className="tooltip">
-                    <button className="tool-btn" onClick={toolsStore.saveRegions}><img src="./assets/tool-bar-assets/select-icon.svg"
-                        alt="" ></img></button>
-                    <span className="tooltiptext">Realizar una selección</span>
-                </span>*/}
                 <span className="tooltip">
                     <button className="tool-btn"><img src="./assets/tool-bar-assets/zoom-in-icon.svg"
                         alt="" ></img></button>

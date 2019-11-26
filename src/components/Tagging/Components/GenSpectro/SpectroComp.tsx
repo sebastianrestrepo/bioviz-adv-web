@@ -6,6 +6,7 @@ import Timeline from 'wavesurfer.js/dist/plugin/wavesurfer.timeline.js';
 import Regions from 'wavesurfer.js/dist/plugin/wavesurfer.regions';
 import Cursor from 'wavesurfer.js/dist/plugin/wavesurfer.cursor';
 import toolsStore from '../../../../stores/toolsStore';
+import tagStore from '../../../../stores/taggingStore';
 
 interface spectroCompProps {
     panel: any;
@@ -86,6 +87,7 @@ const SpectroComp = ({ panel }: spectroCompProps) => {
         });
 
         wsRef.current.on('region-created', () => {
+            tagStore.isSelSpectroSelected = true;
             if (Object.keys(wsRef.current.regions.list).length > 0) {
                 let regionsArray = Object.keys(wsRef.current.regions.list);
                 wsRef.current.regions.list[regionsArray[0]].remove();

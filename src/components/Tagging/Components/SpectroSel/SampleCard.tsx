@@ -48,6 +48,7 @@ const SampleCard = observer(({ hour, open, sugCant, mainspec, mainAudio, time, s
 
                         return <SuggestionCard
                             key={i}
+                            id ={index}
                             percentage={s.percentage}
                             spectro={s.spectroImgUrl}
                             position={i + 1}
