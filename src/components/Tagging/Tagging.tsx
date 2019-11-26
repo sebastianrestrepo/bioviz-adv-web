@@ -13,7 +13,8 @@ import { SelSuggestions } from './Components/SpectroSel/SelSuggestions';
 import tagStore from '../../stores/taggingStore';
 import P5Wrapper from 'react-p5-wrapper';
 import { AIGenSuggestions } from './Components/GenSpectro/AIGenSuggestions';
-import { CompareAudios } from './Components/CompareAudios/CompareAudios';
+import ColorEditor from './Components/SpectroEditor/ColorEditor';
+import ContrastEditor from './Components/SpectroEditor/ContrastEditor';
 
 interface TaggingProps {
 }
@@ -28,7 +29,7 @@ interface TaggingProps {
         return (<div className="tagging">
             <TaggingHeader></TaggingHeader>
             {
-                (tagStore.isAiOn) ? <AIGenSuggestions></AIGenSuggestions> : ''
+                (tagStore.isAiOn) ? <AIGenSuggestions isGeneralSpectro={true} /> : ''
             }
             {
                 (tagStore.isDateTimeSelected) ? <section>
@@ -52,7 +53,17 @@ interface TaggingProps {
                             <div className="black-card-header">
                                 <h3>Selección del audio principal</h3>
                             </div>
-                            <SpectroSel handlersValue={toolsStore.handlersValue} />
+                            {
+                                (tagStore.isAiOn) ? <AIGenSuggestions isGeneralSpectro={false} /> : ''
+                            }
+                            <SpectroSel handlersValue={toolsStore.handlersValue}
+                                rSpectro={toolsStore.rSpectro}
+                                gSpectro={toolsStore.gSpectro}
+                                bSpectro={toolsStore.bSpectro}
+                                rBack={toolsStore.rBack}
+                                gBack={toolsStore.gBack}
+                                bBack={toolsStore.bBack}
+                                whiteAndBlack={toolsStore.whiteAndBlack} />
                         </div>
                         { 
                             (tagStore.isAiOn) ? <SelSuggestions /> : <div> 
@@ -63,6 +74,13 @@ interface TaggingProps {
                         {
                             (tagStore.isDataLabeling) ? <TagSound></TagSound> : ''
                         }
+                        {
+                            (tagStore.isColorEditorOn) ? <ColorEditor /> : ''
+                        }
+                        {
+                            (tagStore.isContrastEditorOn) ? <ContrastEditor /> : ''
+                        }
+
                     </div>
                 </section> : ''
             }

@@ -1,4 +1,14 @@
 @import './../../../../variables.scss';
+
+.duotone-filter {
+    height: 0;
+    width: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: -999px;
+}
+
 .sel-cont {
     overflow-x: scroll;
     width: 100%;

@@ -4,7 +4,8 @@ class SuggestionStore {
 
     @observable anchicayaSuggestions = [
         {
-            startTime: 16,
+            index:1,
+            startTime: 15,
             endTime: 19,
             maxFreq: 4000,
             minFreq: 2000,
@@ -90,7 +91,8 @@ class SuggestionStore {
             ]
         },
         {
-            startTime: 17,
+            index:2,
+            startTime: 16,
             endTime: 19,
             maxFreq: 8000,
             minFreq: 4000,
