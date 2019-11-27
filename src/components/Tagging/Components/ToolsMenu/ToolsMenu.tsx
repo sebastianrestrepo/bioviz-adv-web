@@ -42,11 +42,11 @@ export default class ToolsMenu extends React.Component {
                         alt=""></img></button>
                     <span className="tooltiptext">Volumen</span>
                 </span>
-                <span className="tooltip">
+                <span className="tooltip" onClick={() => {
+                    tagStore.onCompareClick();
+                }}>
                     <button className="tool-btn "><img src="./assets/tool-bar-assets/compare-icon.svg" className="compare"
-                        onClick={() => {
-                            tagStore.onCompareClick();
-                        }}
+
                         alt=""></img></button>
                     <span className="tooltiptext">Comparar audios</span>
                 </span>
