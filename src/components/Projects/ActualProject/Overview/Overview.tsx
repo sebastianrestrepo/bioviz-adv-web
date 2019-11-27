@@ -16,7 +16,10 @@ class Overview extends Component {
 
             </div>
             <div className="overview-cols right">
-                <div className="location"></div>
+                <div className="location">
+                    <h3>Zona de estudio:</h3>
+                    <img src="./assets/create-projects/map.png" alt="" />
+                </div>
                 <div className="species"></div>
             </div>
         </section>
