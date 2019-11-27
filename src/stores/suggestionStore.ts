@@ -5,7 +5,7 @@ class SuggestionStore {
     @observable actualSampleDataLabeling: any;
     @observable anchicayaSuggestions = [
         {
-            index:1,
+            index: 1,
             startTime: 15,
             endTime: 19,
             maxFreq: 4000,
@@ -13,7 +13,7 @@ class SuggestionStore {
             date: '18 Junio 2019',
             hour: '6:35',
             time: 'AM',
-            audio:'./assets/tagging-section/timeline-suggestion/filteredHafferia.wav',
+            audio: './assets/tagging-section/timeline-suggestion/filteredHafferia.wav',
             specImg: './assets/tagging-section/timeline-suggestion/filteredhafferia.png',
             sugOpen: false,
             suggestions: [
@@ -56,7 +56,7 @@ class SuggestionStore {
                             isPlaying: false
                         }
                     ]
-                }, 
+                },
                 {
                     sciName: 'Hafferia fortis',
                     commonName: 'Hormiguero Tiznado',
@@ -70,7 +70,7 @@ class SuggestionStore {
                     location: 'Orellana, Ecuador',
                     url: 'https://macaulaylibrary.org/asset/243173',
                     isPlaying: false,
-                    otherSongs: [ 
+                    otherSongs: [
                         {
                             audioUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/34338',
                             spectroImgUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/34338/poster',
@@ -92,7 +92,7 @@ class SuggestionStore {
             ]
         },
         {
-            index:2,
+            index: 2,
             startTime: 16,
             endTime: 19,
             maxFreq: 8000,
@@ -100,7 +100,7 @@ class SuggestionStore {
             date: '18 Junio 2019',
             hour: '6:35',
             time: 'AM',
-            audio:'./assets/tagging-section/timeline-suggestion/filteredSipia.wav',
+            audio: './assets/tagging-section/timeline-suggestion/filteredSipia.wav',
             specImg: './assets/tagging-section/timeline-suggestion/filteredsipia.png',
             sugOpen: false,
             suggestions: [
@@ -143,7 +143,7 @@ class SuggestionStore {
                             isPlaying: false
                         }
                     ]
-                }, 
+                },
                 {
                     sciName: 'Sipia berlepschi',
                     commonName: 'Hormiguero Colimocho',
@@ -157,7 +157,7 @@ class SuggestionStore {
                     location: 'Ecuador',
                     url: 'https://macaulaylibrary.org/asset/139069',
                     isPlaying: false,
-                    otherSongs: [ 
+                    otherSongs: [
                         {
                             audioUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/31412211',
                             spectroImgUrl: 'https://download.ams.birds.cornell.edu/api/v1/asset/31412211/poster',
@@ -263,7 +263,50 @@ class SuggestionStore {
             audio: './assets/audio-samples/Atom2B/pithysalbifrons.mp3'
         }]
 
+    @observable activeSuggestionLabeling = 'first'
+    @observable activeSugIndex = 1;
+    @action nextCardLabelingSection() {
+        this.activeSugIndex += 1;
 
+        switch (this.activeSugIndex) {
+            case 0:
+                this.activeSugIndex = 3;
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                this.activeSugIndex = 1;
+                break;
+        }
+    }
+
+    @action backCardLabelingSection() {
+        this.activeSugIndex -= 1;
+
+        switch (this.activeSugIndex) {
+            case 0:
+                this.activeSugIndex = 3;
+                this.activeSuggestionLabeling = 'third'
+                break;
+            case 1:
+                this.activeSuggestionLabeling = 'first'
+                break;
+            case 2:
+                this.activeSuggestionLabeling = 'second'
+                break;
+            case 3:
+                this.activeSuggestionLabeling = 'third'
+                break;
+            case 4:
+                this.activeSugIndex = 1;
+                this.activeSuggestionLabeling = 'first'
+                break;
+        }
+    }
 }
 
 export const suggestionStore = new SuggestionStore();

@@ -66,6 +66,13 @@ interface TaggingProps {
                                     whiteAndBlack={toolsStore.whiteAndBlack}
                                     contrastVal={tagStore.contrastVal}
                                     brightVal={tagStore.brightVal} />
+
+                                <button className="green-button" onClick={() => { 
+                                    tagStore.onTagAudio()
+                                }}>
+                                    <img src="./assets/tagging-section/vision.png" height="25px" alt="" />
+                                    <p>Etiquetar</p>
+                                </button>
                             </div> : ''
                         }
 

@@ -25,7 +25,20 @@ interface tagSoundProps {
     sampleIndex: any;
 }
 class TagSound extends Component<tagSoundProps> {
+    e: any;
+    jsonData: any;
+    constructor(props: any) {
+        super(props);
+        if (this.props.sampleIndex != null) {
+            this.e = suggestionStore.anchicayaSuggestions[this.props.sampleIndex].suggestions[suggestionStore.activeSugIndex - 1]
+            this.jsonData = JSON.stringify(this.e.otherSongs);
+        }
+    }
 
+    updateInfo() {
+        this.e = suggestionStore.anchicayaSuggestions[this.props.sampleIndex].suggestions[suggestionStore.activeSugIndex - 1]
+        this.jsonData = JSON.stringify(this.e.otherSongs);
+    }
     handleSexChange = (newValue: any, actionMeta: any) => {
         let action = actionMeta.action;
         if (action == 'select-option') {
@@ -41,7 +54,6 @@ class TagSound extends Component<tagSoundProps> {
 
     };
     handleSciChange = (newValue: any, actionMeta: any) => {
-
         let action = actionMeta.action;
         if (action == 'select-option') {
             tagStore.sciName = newValue.value
@@ -49,54 +61,68 @@ class TagSound extends Component<tagSoundProps> {
     };
 
     render() {
+        (suggestionStore.activeSugIndex < 3 && suggestionStore.activeSugIndex > 0
+            && this.props.sampleIndex != null) ? this.updateInfo() : console.log()
         return <section className="tagging-section firstdisplay">
             <div className="card-header">
                 <h3>Selección</h3>
                 <img className="close-icon" src="./assets/gen-icons/dark-x-close.svg" alt=""
                     onClick={() => tagStore.onCloseLabelingClick()} />
             </div>
-            <div className="spec">
+            <div className="spec" onClick={() => tagStore.playBirdSong('./assets/audio-samples/filteredSipia.wav', 5)}>
                 <img src="./assets/spectroSelected.png" alt="" />
             </div>
-            <div className={(tagStore.isAiOn) ? 'suggestion-cont' : 'suggestion-cont undisplay'}>
-                <div className="suggest-header">
-                    <h1>Sugerencias del sistema</h1>
-                </div>
-                <div className="cards-cont">
-                    {
-                        suggestionStore.anchicayaSuggestions[this.props.sampleIndex].suggestions.map((e, i) => {
-                            const jsonData = JSON.stringify(e.otherSongs);
-                            return <TagSuggestion
-                                key={i}
-                                sciName={e.sciName}
-                                commonName={e.commonName}
-                                order={e.order}
-                                family={e.family}
-                                coincidence={e.percentage}
-                                mainAudioUrl={e.mainAudioUrl}
-                                spectroImgUrl={e.spectroImgUrl}
-                                birdPhoto={e.birdPhotoUrl}
-                                otherSongs={jsonData} />
-                        })
-                    }
-                    <span className="next-card">
-                        <img src="./assets/tagging-section/right-arrow.svg" width="25px" alt="" />
-                    </span>
-                    <span className={(tagStore.isSomethingZoomed) ? "zoomed-spectro" : "zoomed-spectro undisplay"} >
-                        <div className='spectro-card'>
-                            <img className="spec-img" src={tagStore.zoomedSpeImgUrl} alt="" />
+            {
+                (this.props.sampleIndex != null) ? <div className={(tagStore.isAiOn) ? 'suggestion-cont' : 'suggestion-cont undisplay'}>
+                    <div className="suggest-header">
+                        <h1>Sugerencias del sistema</h1>
+                    </div>
+                    <div className="cards-cont">
+                        {
+                            <TagSuggestion
+                                indexName={suggestionStore.activeSugIndex}
+                                sciName={this.e.sciName}
+                                commonName={this.e.commonName}
+                                order={this.e.order}
+                                family={this.e.family}
+                                coincidence={this.e.percentage}
+                                mainAudioUrl={this.e.mainAudioUrl}
+                                spectroImgUrl={this.e.spectroImgUrl}
+                                birdPhoto={this.e.birdPhotoUrl}
+                                otherSongs={this.jsonData} />
 
-                            <span className="play" onClick={() => tagStore.playBirdSong(tagStore.zoomedSpeAudioUrl, 5)}>
-                                <img className="play-img" src="./assets/tagging-section/play-audio.svg" height="20px" alt="" />
-                                <p className="_14px"> Reproducir canto</p>
-                            </span>
-                            <img className="close-img"
-                                onClick={() => tagStore.onExitZoomView()}
-                                src="./assets/gen-icons/dark-x-close.svg" alt="" />
-                        </div>
-                    </span>
-                </div>
-            </div>
+                        }
+                        <span className="next-card" onClick={() => {
+                            (suggestionStore.activeSugIndex < 2) ?
+                                suggestionStore.nextCardLabelingSection() : console.log()
+                        }}>
+                            <img src="./assets/tagging-section/right-arrow.svg" width="25px" alt="" />
+                        </span>
+                        <span className="back-card" onClick={() => {
+                            (suggestionStore.activeSugIndex > 1) ?
+                                suggestionStore.backCardLabelingSection() : console.log()
+                        }}>
+                            <img src="./assets/tagging-section/right-arrow.svg" width="25px" alt="" />
+                        </span>
+
+
+                        <span className={(tagStore.isSomethingZoomed) ? "zoomed-spectro" : "zoomed-spectro undisplay"} >
+                            <div className='spectro-card'>
+                                <img className="spec-img" src={tagStore.zoomedSpeImgUrl} alt="" />
+
+                                <span className="play" onClick={() => tagStore.playBirdSong(tagStore.zoomedSpeAudioUrl, 5)}>
+                                    <img className="play-img" src="./assets/tagging-section/play-audio.svg" height="20px" alt="" />
+                                    <p className="_14px"> Reproducir canto</p>
+                                </span>
+                                <img className="close-img"
+                                    onClick={() => tagStore.onExitZoomView()}
+                                    src="./assets/gen-icons/dark-x-close.svg" alt="" />
+                            </div>
+                        </span>
+                    </div>
+                </div> : ''
+            }
+
             <div className="card-section">
                 <div className="form-section">
                     <div className="card-item">
@@ -153,7 +179,10 @@ class TagSound extends Component<tagSoundProps> {
                     </div>
                 </div>
                 <div className="btn-actions">
-                    <button className="green-button" onClick={() => tagStore.onSaveClick()}>Guardar en Listado</button>
+                    <button className="green-button" onClick={() => {
+                        tagStore.onSaveClick()
+                        projectsStore.openProjectTab(2)
+                    }}>Guardar en Listado</button>
                 </div>
             </div>
         </section>

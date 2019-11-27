@@ -97,7 +97,7 @@ const SpectroComp = ({ panel }: spectroCompProps) => {
         //console.log();
     }, []);
 
-    return (<div className="general-spectro" onClick={() => {
+    return (<div className="general-spectro firstdisplay" onClick={() => {
         toolsStore.panel = 1;
         if (toolsStore.isPlaying) {
             toolsStore.isPlaying = false;

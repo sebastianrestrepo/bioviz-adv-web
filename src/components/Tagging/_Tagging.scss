@@ -227,7 +227,8 @@
             overflow-y: scroll;
             width: 49%;
             border-radius: 5px;
-            overflow-x: hidden;
+            
+            //overflow-x: hidden;
 
             .suggestion-cont {
                 &.undisplay {

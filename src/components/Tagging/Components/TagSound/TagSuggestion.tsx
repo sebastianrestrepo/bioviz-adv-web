@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import tagStore from '../../../../stores/taggingStore';
+import { suggestionStore } from '../../../../stores/suggestionStore';
 
 interface tagSuggestionProps {
     sciName: string;
@@ -12,6 +13,7 @@ interface tagSuggestionProps {
     spectroImgUrl: string;
     birdPhoto: string;
     otherSongs: string;
+    indexName: number;
 }
 
 class TagSuggestion extends Component<tagSuggestionProps> {
@@ -20,7 +22,8 @@ class TagSuggestion extends Component<tagSuggestionProps> {
         super(props);
     }
     render() {
-        return <div className={(tagStore.isAiOn) ? 'suggest-card-cont firstdisplay' : 'suggest-card-cont undisplay firstdisplay'}>
+        return <div className={(tagStore.isAiOn) ? 'suggest-card-cont firstdisplay'
+            : 'suggest-card-cont undisplay firstdisplay'}>
 
             <div className="ai-section">
                 <div className="column-wrapper">
@@ -28,7 +31,7 @@ class TagSuggestion extends Component<tagSuggestionProps> {
                         <h2>{this.props.coincidence}% DE COINCIDENCIA TOTAL</h2>
                     </div>
                     <span className="main-spec">
-                        <img className="spec-img" src={this.props.spectroImgUrl} alt=""/>
+                        <img className="spec-img" src={this.props.spectroImgUrl} alt="" />
                         <img className="lens-img"
                             onClick={() => tagStore.onSpecZoomView(this.props.spectroImgUrl, this.props.mainAudioUrl)}
                             src="./assets/tagging-section/lens.svg" alt="" />
@@ -40,7 +43,7 @@ class TagSuggestion extends Component<tagSuggestionProps> {
                             <div className="bird-photo-cont">
                                 <img src={this.props.birdPhoto} alt="" />
                             </div>
-                            <h3 className="yellow-text">#1</h3>
+                            <h3 className="yellow-text">#{this.props.indexName}</h3>
                         </div>
                         <p className="sci-name-style gray-text _12px">{this.props.order} > {this.props.family} </p>
                         <p className="bold  _14px">{this.props.commonName}</p>
@@ -102,7 +105,7 @@ class TagSuggestion extends Component<tagSuggestionProps> {
                             this.songsData.map((song) => {
                                 return <article className="spec">
                                     <img className="spectro-img" src={song.spectroImgUrl} height="150px" alt="" />
-                                    <span className="play" onClick={() => tagStore.playBirdSong(song.audioUrl,10)}>
+                                    <span className="play" onClick={() => tagStore.playBirdSong(song.audioUrl, 10)}>
                                         <img className="play-img" src="./assets/tagging-section/play-audio.svg" height="20px" alt="" />
                                         <p className="_14px"> Reproducir canto</p>
                                     </span>

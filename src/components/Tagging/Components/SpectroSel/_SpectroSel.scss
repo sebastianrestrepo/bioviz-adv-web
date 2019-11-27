@@ -1,5 +1,15 @@
 @import './../../../../variables.scss';
-
+.spectro-selection {
+    button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        p {
+            margin: 0 1rem;
+        }
+    }
+}
 .duotone-filter {
     height: 0;
     width: 0;
@@ -232,6 +242,7 @@
                     cursor: default;
                     position: relative;
                     overflow: hidden;
+
                     img {
                         position: absolute;
                         height: 100%;
@@ -266,7 +277,7 @@
 
             .suggestions {
                 opacity: 1;
-               
+
                 &.undisplay {
                     opacity: 0;
                     visibility: hidden;
@@ -348,24 +359,28 @@
                                     align-items: center;
                                     margin: 0 1rem 0 0;
 
+                                    :first-child {
+                                        display: block;
+
+                                        .bird-photo-cont {
+                                            width: 50px;
+                                            height: 50px;
+                                            border-radius: 35px;
+                                            overflow: hidden;
+                                            background-color: white;
+                                            border: solid 1.5px $thirdActiveColor;
+
+                                            img {
+                                                height: 100%;
+                                                width: 100%;
+                                                object-fit: cover;
+                                            }
+                                        }
+                                    }
+
                                     img {
                                         margin: 0.2rem 0;
                                         cursor: pointer;
-                                    }
-                                }
-
-                                .bird-photo-cont {
-                                    width: 50px;
-                                    height: 50px;
-                                    border-radius: 35px;
-                                    overflow: hidden;
-                                    background-color: white;
-                                    border: solid 1.5px $thirdActiveColor;
-
-                                    img {
-                                        height: 100%;
-                                        width: 100%;
-                                        object-fit: cover;
                                     }
                                 }
 

@@ -20,7 +20,7 @@ interface suggestionCardProps {
 }
 
 const SuggestionCard = observer(({ percentage,
-    audio, author, location, url,id, isPlaying, spectro, position,
+    audio, author, location, url, id, isPlaying, spectro, position,
     sciname, commonName, birdPhoto, coincidences }: suggestionCardProps) => {
     return (<article className="suggested-specie">
         <span className="specie-card">
@@ -33,17 +33,27 @@ const SuggestionCard = observer(({ percentage,
                 <div className="specie-card-down">
                     <div className="bird-info">
                         <span className="act-cont">
-                            <a className="bird-photo-cont" href="" target="_blank">
-                                <img src={birdPhoto} alt="" />
-                            </a>
-                            <img onClick={() => {
-                                suggestionStore.actualSampleDataLabeling = id;
-                                tagStore.isDataLabeling = true;
-                            }}
-                                src="./assets/tagging-section/vision.png" height="35px" alt="" />
-                            <img onClick={() => {
-                                tagStore.playBirdSong(audio, 15)
-                            }} src="./assets/tagging-section/play-audio.svg" height="30px" alt="" />
+                            <span className="tooltip">
+                                <a className="bird-photo-cont" href="" target="_blank">
+                                    <img src={birdPhoto} alt="" />
+                                </a>
+                                <span className="tooltiptext">Ver ave</span>
+                            </span>
+                            <span className="tooltip">
+                                <img onClick={() => {
+                                    suggestionStore.actualSampleDataLabeling = id;
+                                    tagStore.isDataLabeling = true;
+                                }}
+                                    src="./assets/tagging-section/vision.png" height="35px" alt="" />
+                                <span className="tooltiptext">Explorar</span>
+                            </span>
+                            <span className="tooltip">
+                                <img onClick={() => {
+                                    tagStore.playBirdSong(audio, 15)
+                                }} src="./assets/tagging-section/play-audio.svg" height="30px" alt="" />
+                                <span className="tooltiptext">Play</span>
+                            </span>
+
                         </span>
                         <div className="bird-text">
                             <div className="position-sci">
