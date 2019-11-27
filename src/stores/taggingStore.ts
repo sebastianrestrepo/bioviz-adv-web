@@ -9,6 +9,7 @@ class TaggingStore {
     @observable isSelSpectroSelected = false;
     @observable isDataLabeling = false;
     @observable isComparingMicros = false;
+    @observable isGeneralSpectro = false;
 
     @action onDateSelected() {
         this.isDateTimeSelected = true;
@@ -210,6 +211,10 @@ class TaggingStore {
     @observable selected6 = false;
     @observable isSomethingSelected = false;
 
+
+    @observable selected1Sel = false;
+    @observable selected2Sel = false;
+
     @observable isPlaying = false;
     @observable verified = false;
 
@@ -229,7 +234,7 @@ class TaggingStore {
                 a.pause();
 
             },
-                seconds*1000)
+                seconds * 1000)
         }
 
     }
@@ -283,88 +288,142 @@ class TaggingStore {
     }
 
     @action selectMark(url, index) {
+        if (this.isGeneralSpectro) {
+            switch (index) {
+                case 1:
+                    if (!this.selected1) {
+                        this.playBirdSong(url, 5);
+                        this.isSomethingSelected = true;
+                        this.selected2 = false;
+                        this.selected3 = false;
+                        this.selected4 = false;
+                        this.selected5 = false;
+                        this.selected6 = false;
+                        this.selected1Sel = false;
+                        this.selected2Sel = false;
+                    } else {
+                        this.isSomethingSelected = false;
+                    }
+                    this.selected1 = !this.selected1;
+                    break;
+                case 2:
+                    if (!this.selected2) {
+                        this.playBirdSong(url, 5);
+                        this.isSomethingSelected = true;
+                        this.selected1 = false;
+                        this.selected3 = false;
+                        this.selected4 = false;
+                        this.selected5 = false;
+                        this.selected6 = false;
+                        this.selected1Sel = false;
+                        this.selected2Sel = false;
+                    } else {
+                        this.isSomethingSelected = false;
+                    }
+                    this.selected2 = !this.selected2;
+                    break;
+                case 3:
+                    if (!this.selected3) {
+                        this.playBirdSong(url, 5);
+                        this.isSomethingSelected = true;
+                        this.selected2 = false;
+                        this.selected1 = false;
+                        this.selected4 = false;
+                        this.selected5 = false;
+                        this.selected6 = false;
+                        this.selected1Sel = false;
+                        this.selected2Sel = false;
+                    } else {
+                        this.isSomethingSelected = false;
+                    } this.selected3 = !this.selected3;
+                    break;
+                case 4:
+                    if (!this.selected4) {
+                        this.playBirdSong(url, 5)
+                        this.isSomethingSelected = true;
+                        this.selected2 = false;
+                        this.selected3 = false;
+                        this.selected1 = false;
+                        this.selected5 = false;
+                        this.selected6 = false;
+                        this.selected1Sel = false;
+                        this.selected2Sel = false;
+                    } else {
+                        this.isSomethingSelected = false;
+                    } this.selected4 = !this.selected4;
+                    break;
+                case 5:
+                    if (!this.selected5) {
+                        this.playBirdSong(url, 5)
+                        this.isSomethingSelected = true;
+                        this.selected2 = false;
+                        this.selected3 = false;
+                        this.selected4 = false;
+                        this.selected1 = false;
+                        this.selected6 = false;
+                        this.selected1Sel = false;
+                        this.selected2Sel = false;
+                    } else {
+                        this.isSomethingSelected = false;
+                    } this.selected5 = !this.selected5;
+                    break;
+                case 6:
+                    if (!this.selected6) {
+                        this.playBirdSong(url, 5)
+                        this.isSomethingSelected = true;
+                        this.selected2 = false;
+                        this.selected3 = false;
+                        this.selected4 = false;
+                        this.selected5 = false;
+                        this.selected1 = false;
+                        this.selected1Sel = false;
+                        this.selected2Sel = false;
+                    } else {
+                        this.isSomethingSelected = false;
+                    } this.selected6 = !this.selected6;
+                    break;
+            }
+        }
+    }
 
-        switch (index) {
-            case 1:
-                if (!this.selected1) {
-                    this.playBirdSong(url,5);
-                    this.isSomethingSelected = true;
-                    this.selected2 = false;
-                    this.selected3 = false;
-                    this.selected4 = false;
-                    this.selected5 = false;
-                    this.selected6 = false;
-                } else {
-                    this.isSomethingSelected = false;
-                }
-                this.selected1 = !this.selected1;
-                break;
-            case 2:
-                if (!this.selected2) {
-                    this.playBirdSong(url,5);
-                    this.isSomethingSelected = true;
-                    this.selected1 = false;
-                    this.selected3 = false;
-                    this.selected4 = false;
-                    this.selected5 = false;
-                    this.selected6 = false;
-                } else {
-                    this.isSomethingSelected = false;
-                }
-                this.selected2 = !this.selected2;
-                break;
-            case 3:
-                if (!this.selected3) {
-                    this.playBirdSong(url,5);
-                    this.isSomethingSelected = true;
-                    this.selected2 = false;
-                    this.selected1 = false;
-                    this.selected4 = false;
-                    this.selected5 = false;
-                    this.selected6 = false;
-                } else {
-                    this.isSomethingSelected = false;
-                } this.selected3 = !this.selected3;
-                break;
-            case 4:
-                if (!this.selected4) {
-                    this.playBirdSong(url,5)
-                    this.isSomethingSelected = true;
-                    this.selected2 = false;
-                    this.selected3 = false;
-                    this.selected1 = false;
-                    this.selected5 = false;
-                    this.selected6 = false;
-                } else {
-                    this.isSomethingSelected = false;
-                } this.selected4 = !this.selected4;
-                break;
-            case 5:
-                if (!this.selected5) {
-                    this.playBirdSong(url,5)
-                    this.isSomethingSelected = true;
-                    this.selected2 = false;
-                    this.selected3 = false;
-                    this.selected4 = false;
-                    this.selected1 = false;
-                    this.selected6 = false;
-                } else {
-                    this.isSomethingSelected = false;
-                } this.selected5 = !this.selected5;
-                break;
-            case 6:
-                if (!this.selected6) {
-                    this.playBirdSong(url,5)
-                    this.isSomethingSelected = true;
-                    this.selected2 = false;
-                    this.selected3 = false;
-                    this.selected4 = false;
-                    this.selected5 = false;
-                    this.selected1 = false;
-                } else {
-                    this.isSomethingSelected = false;
-                } this.selected6 = !this.selected6;
-                break;
+    @action selectMarkSel(url, index) {
+        if (!this.isGeneralSpectro) {
+            switch (index) {
+                case 1:
+                    if (!this.selected1Sel) {
+                        this.playBirdSong(url, 5);
+                        this.isSomethingSelected = true;
+                        this.selected1Sel = false;
+                        this.selected2Sel = false;
+                        this.selected1 = false;
+                        this.selected2 = false;
+                        this.selected3 = false;
+                        this.selected4 = false;
+                        this.selected5 = false;
+                        this.selected6 = false;
+                    } else {
+                        this.isSomethingSelected = false;
+                    }
+                    this.selected1Sel = !this.selected1Sel;
+                    break;
+                case 2:
+                    if (!this.selected2) {
+                        this.playBirdSong(url, 5);
+                        this.isSomethingSelected = true;
+                        this.selected1Sel = false;
+                        this.selected2Sel = false;
+                        this.selected1 = false;
+                        this.selected2 = false;
+                        this.selected3 = false;
+                        this.selected4 = false;
+                        this.selected5 = false;
+                        this.selected6 = false;
+                    } else {
+                        this.isSomethingSelected = false;
+                    }
+                    this.selected2Sel = !this.selected2Sel;
+                    break;
+            }
         }
     }
 
