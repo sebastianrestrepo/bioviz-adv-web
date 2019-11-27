@@ -238,3 +238,20 @@
         }
     }
 }
+
+.tag-hint-div {
+    width: 100%;
+    padding: 5rem 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    user-select: none;
+    img {
+        opacity: 0.5;
+    }
+    h3 {
+        margin: 1rem auto;
+        text-align: center;
+    }
+}

@@ -1,0 +1,22 @@
+.overview-cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    .overview-cols {    
+        display: flex;
+        flex-direction: column;
+        width: 49%;
+        &.left {
+            .progress {
+                background-color: white;
+            }
+        }
+
+        &.right {
+            .location {
+                background-color: white;
+            }
+        }
+    }
+}
