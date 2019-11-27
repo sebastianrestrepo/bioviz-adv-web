@@ -217,7 +217,7 @@ class ToolsStore {
     async loadSelection(start: number, end: number) {
         const decoder = new Decoder();
         // Lo decodifico, para poder cortarlo
-        let blob = await fetch('/assets/audio-files/1_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3').then(r => r.blob());
+        let blob = await fetch('./assets/audio-files/1_AnchicayaLaLocaCarretera_2019-06-18_06-34_min.mp3').then(r => r.blob());
         const buf = await decoder.decodeFile(blob);
         // Esta clase recibe el audio decodificado y permite hacer algunas modificaciones
         const manipulator = new BufferManipulations(buf);
