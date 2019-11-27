@@ -264,20 +264,22 @@ class ProjectsStore {
     }
 
     @observable actualProject: any = {};
-
+    @observable actualStudyingSpecies: any = []
     @action retreiveOnlyProjectInfo(projectId: string) {
         let docRef = db.collection("projects").doc(projectId);
         let that = this;
         docRef.get().then(function (doc) {
             if (doc.exists) {
                 that.actualProject = doc.data();
+                console.log(that.actualProject.species)
+                that.actualStudyingSpecies =  that.actualProject.species;
             } else {
                 console.log("No such project!");
             }
         }).catch(function (error) {
             console.log("Error getting project:", error);
         });
-
+        
     }
 
     //-------------Project Navigation

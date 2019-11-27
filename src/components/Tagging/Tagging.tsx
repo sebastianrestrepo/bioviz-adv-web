@@ -67,13 +67,16 @@ interface TaggingProps {
                                     contrastVal={tagStore.contrastVal}
                                     brightVal={tagStore.brightVal} />
 
-                                <button className="green-button" onClick={() => { 
+                                <button className="green-button" onClick={() => {
                                     tagStore.onTagAudio()
                                 }}>
                                     <img src="./assets/tagging-section/vision.png" height="25px" alt="" />
                                     <p>Etiquetar</p>
                                 </button>
-                            </div> : ''
+                            </div> : <div className="tag-hint-div">
+                                    <img src="./assets/gen-icons/selectsel.svg" height="50px" alt="" />
+                                    <h3 className="gray-text">Realiza una selección del espectrograma general para ver con más amplitud una zona de preferencia</h3>
+                                </div>
                         }
 
                         {
@@ -95,7 +98,10 @@ interface TaggingProps {
                         }
 
                     </div>
-                </section> : ''
+                </section> : <div className="tag-hint-div">
+                        <img src="./assets/gen-icons/calendar.svg" height="50px" alt="" />
+                        <h3 className="gray-text">Selecciona una fecha y hora para analizar</h3>
+                    </div>
             }
 
         </div>);

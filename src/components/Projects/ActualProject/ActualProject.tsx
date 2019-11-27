@@ -13,6 +13,7 @@ import { CompareAudios } from '../../Tagging/Components/CompareAudios/CompareAud
 import TagSound from '../../Tagging/Components/TagSound/TagSound';
 import tagStore from '../../../stores/taggingStore';
 import { suggestionStore } from '../../../stores/suggestionStore';
+import Overview from './Overview/Overview';
 interface ActualProjectProps {
     projectId: string,
 }
@@ -37,14 +38,14 @@ class ActualProject extends React.Component<ActualProjectProps> {
                 {
                     (projectsStore.projectTabs[0].selected) ? <section className="dash-section">
                         <ProjectHeader name={projectsStore.actualProject.name} description={projectsStore.actualProject.description} />
-
+                        <Overview />
                     </section> : (projectsStore.projectTabs[1].selected) ? <section className="dash-section">
                         <Tagging></Tagging>
                     </section> : (projectsStore.projectTabs[2].selected) ? <section className="dash-section">
                         <SpeciesList></SpeciesList>
                     </section> : (projectsStore.projectTabs[3].selected) ? <section className="dash-section">
                         visualización
-                        </section> : (projectsStore.projectTabs[4].selected) ? <section className="dash-section">
+                    </section> : (projectsStore.projectTabs[4].selected) ? <section className="dash-section">
                                         Audios
                     </section> : ''
                 }
