@@ -19,17 +19,23 @@ class Mark extends Component<markProps> {
     constructor(props: any) {
         super(props);
     }
-    
+
     render() {
-        
+
         return <span className={((tagStore.selected1 && this.props.index == 1) ? "mark selected" : (tagStore.selected2 && this.props.index == 2) ? "mark selected" : "mark")}
-            onClick={() =>
-                tagStore.selectMark("./assets/audio-samples/vireon.wav", this.props.index)}
+            onClick={() => {
+                tagStore.selectMark("./assets/audio-samples/vireon.wav", this.props.index);
+                console.log('isGeneralSpectro?', this.props.isGeneralSpectro);
+                console.log('this.props.start', this.props.start);
+                console.log('toolsStore.regionStart', toolsStore.regionStart);
+                console.log('toolsStore.regionEnd', toolsStore.regionEnd);
+                console.log('left value', (this.props.start - toolsStore.regionStart) * (100 / (toolsStore.regionEnd - toolsStore.regionStart)));
+            }}
             style={{
                 left: (this.props.isGeneralSpectro)
-                    ? (this.props.start) * 1.69491525 + '%'
-                    : (this.props.start - toolsStore.regionStart) * (100/(toolsStore.regionEnd - toolsStore.regionStart)) + '%',
-                    display: (this.props.isGeneralSpectro)? 'flex' : (this.props.start > toolsStore.regionStart  && this.props.start < toolsStore.regionEnd)? 'flex' : 'none',
+                    ? (this.props.start) * 1.6 + '%'
+                    : (((this.props.start - toolsStore.regionStart) * (100 / (toolsStore.regionEnd - toolsStore.regionStart))) + 7) + '%',
+                display: (this.props.isGeneralSpectro) ? 'flex' : (this.props.start > toolsStore.regionStart && this.props.start < toolsStore.regionEnd) ? 'flex' : 'none',
             }}>
             <img src={"./assets/marks/" + ((tagStore.verified) ? "ai-mark-verified" : "ai-mark-suggestion") + ".svg"}
                 width="17px" alt=""
