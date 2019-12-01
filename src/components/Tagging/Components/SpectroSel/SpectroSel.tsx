@@ -21,8 +21,8 @@ interface spectroSelProps {
     brightVal: any,
 }
 
-const SpectroSel = ({ 
-    handlersValue, 
+const SpectroSel = ({
+    handlersValue,
     rSpectro,
     gSpectro,
     bSpectro,
@@ -109,9 +109,14 @@ const SpectroSel = ({
             <img className="" src="./assets/tagging-section/frequency-label.png" alt="" height="220" />
             <SliderFreq />
             <div id="waveform" ref={containerRef}>
-                <div className="top-filter" key={handlersValue[1]} style={{
+                <div className="top-filter" key={handlersValue[0]} style={{
                     height: (handlersValue[1]) + '%',
-                }}></div>
+                }}/>
+                <div className="bottom-filter" style={{
+                    position: 'absolute',
+                    bottom: '0',
+                    height: (handlersValue[0]) + '%',
+                }}/>
                 {/*<h3 style={{ display: (selectionEmpty)?'flex':'none'}}>Selecciona un área del espectrograma general</h3>*/}
                 <svg className="duotone-filter" xmlns="http://www.w3.org/2000/svg" key={toolsStore.rSpectro + "" + toolsStore.rBack}>
        <filter id="duotone-1" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
@@ -121,7 +126,7 @@ const SpectroSel = ({
  0 0 0 1 0"></feColorMatrix>
 
     <feComponentTransfer colorInterpolationFilters="sRGB" result="duotone">
-    <feFuncR type="table" tableValues={rSpectro/255 + " " + rBack/255}></feFuncR>            
+    <feFuncR type="table" tableValues={rSpectro/255 + " " + rBack/255}></feFuncR>
     <feFuncB type="table" tableValues={gSpectro/255 + " " + gBack/255}></feFuncB>
     <feFuncG type="table" tableValues={bSpectro/255 + " " + bBack/255}></feFuncG>
                 {(whiteAndBlack)
@@ -134,9 +139,7 @@ const SpectroSel = ({
                 <div id="wave-spectrogram" ref={containerSpecRef} style={{
                     filter: 'brightness(' + brightVal + ') contrast(' + contrastVal + ') url(#duotone-1)',
                 }} />
-                <div className="bottom-filter" style={{
-                    bottom: (handlersValue[0]) + '%',
-                }}></div>
+
             </div>
 
         </div>

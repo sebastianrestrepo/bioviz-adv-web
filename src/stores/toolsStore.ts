@@ -39,7 +39,7 @@ class ToolsStore {
 
     @observable onDestroy: boolean = false;
 
-    @observable handlersValue: any = [24, 0];
+    @observable handlersValue: any = [0, 0];
 
     //-----------------Spectro Color-------------//
     //@observable palette: number = 0;
@@ -55,6 +55,10 @@ class ToolsStore {
 
     constructor() {
 
+    }
+
+    @action setHandlerValue(newValue) {
+        this.handlersValue = newValue;
     }
 
     @action changeSpectrogramColor(palette: number) {
@@ -186,7 +190,7 @@ class ToolsStore {
 
         this.counter++;
         if (this.counter > 1) {
-            //this.wsSelectionRef.destroyPlugin('timeline'); 
+            //this.wsSelectionRef.destroyPlugin('timeline');
             this.onDestroy = true;
         }
 
